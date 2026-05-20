@@ -1,0 +1,52 @@
+[
+  {
+    "id": "blog-1",
+    "slug": "best-villas-families",
+    "title": "Best Villas in Mahabaleshwar for Family Vacation",
+    "excerpt": "Discover the perfect family-friendly villas with all amenities to make your vacation memorable.",
+    "banner": "/images/villa-listing-1.jpg",
+    "content": "Mahabaleshwar is one of the best destinations for family vacations in India. Our carefully selected family villas offer spacious rooms, safe play areas, and excellent facilities for children. Whether you're looking for adventure or relaxation, we have the perfect villa for your family getaway.",
+    "date": "2024-11-20",
+    "relatedVillas": ["valley-view-manor", "peaceful-nook", "nature-haven"]
+  },
+  {
+    "id": "blog-2",
+    "slug": "romantic-couple-retreat",
+    "title": "Ultimate Romantic Couples Retreat in Mahabaleshwar",
+    "excerpt": "Plan the perfect romantic getaway with our premium couple-friendly villas with breathtaking views.",
+    "banner": "/images/villa-listing-2.jpg",
+    "content": "Looking for a romantic escape? Mahabaleshwar offers stunning villas perfect for couples seeking intimate moments and spectacular valley views. Our curated selection includes villas with luxury amenities, private gardens, and romantic dining setups ideal for anniversaries and honeymoons.",
+    "date": "2024-11-18",
+    "relatedVillas": ["sunset-retreat", "artisan-villa", "riverside-hideaway"]
+  },
+  {
+    "id": "blog-3",
+    "slug": "group-gathering-guide",
+    "title": "Guide to Planning Group Gatherings in Mahabaleshwar Villas",
+    "excerpt": "Learn how to organize perfect team retreats and group celebrations in our spacious villas.",
+    "banner": "/images/villa-gallery-1.jpg",
+    "content": "Host the perfect group gathering in Mahabaleshwar! Our large villas are ideal for corporate retreats, family reunions, and celebration events. With conference rooms, entertainment areas, and ample space, these villas ensure every guest enjoys their stay.",
+    "date": "2024-11-15",
+    "relatedVillas": ["timeless-elegance", "celestial-dreams", "grand-vista"]
+  },
+  {
+    "id": "blog-4",
+    "slug": "budget-travel-mahabaleshwar",
+    "title": "Budget Travel Guide: Affordable Villas in Mahabaleshwar",
+    "excerpt": "Enjoy luxury at budget prices with our affordable villa options in Mahabaleshwar.",
+    "banner": "/images/villa-gallery-2.jpg",
+    "content": "Traveling on a budget doesn't mean compromising on comfort! Mahabaleshwar has excellent budget villas that offer great value for money with essential amenities and good hospitality. Discover our handpicked affordable options perfect for budget-conscious travelers.",
+    "date": "2024-11-12",
+    "relatedVillas": ["mist-haven", "heritage-manor", "zen-retreat"]
+  },
+  {
+    "id": "blog-5",
+    "slug": "valley-views-photography",
+    "title": "Capturing Mahabaleshwar Valley Views: Photography Tips",
+    "excerpt": "Get professional photography tips for capturing stunning valley views from our premium villas.",
+    "banner": "/images/villa-gallery-3.jpg",
+    "content": "Mahabaleshwar's valley views are a photographer's dream! Learn how to capture the best shots from your villa with our expert photography guide. From sunrise to sunset, we share tips for creating Instagram-worthy memories.",
+    "date": "2024-11-10",
+    "relatedVillas": ["mountain-echo", "cloud-castle", "royal-abode"]
+  }
+]

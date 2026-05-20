@@ -1,0 +1,23 @@
+{
+  "phone": "8080557611",
+  "whatsapp": "9921372661",
+  "location": "Mahabaleshwar, Maharashtra, India",
+  "coordinates": {
+    "latitude": 17.9211,
+    "longitude": 73.4362
+  },
+  "hours": {
+    "monday": "9:00 AM - 9:00 PM",
+    "tuesday": "9:00 AM - 9:00 PM",
+    "wednesday": "9:00 AM - 9:00 PM",
+    "thursday": "9:00 AM - 9:00 PM",
+    "friday": "9:00 AM - 9:00 PM",
+    "saturday": "9:00 AM - 9:00 PM",
+    "sunday": "10:00 AM - 8:00 PM"
+  },
+  "socials": {
+    "instagram": "https://instagram.com/mahabaleshwarvillastays",
+    "facebook": "https://facebook.com/mahabaleshwarvillastays",
+    "twitter": "https://twitter.com/MVStays"
+  }
+}

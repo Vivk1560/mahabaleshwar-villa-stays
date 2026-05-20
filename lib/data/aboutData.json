@@ -1,0 +1,39 @@
+{
+  "company": {
+    "name": "Mahabaleshwar Villa Stays",
+    "founded": 2015,
+    "mission": "To provide the finest luxury villa vacation experiences in Mahabaleshwar, offering guests unparalleled comfort, breathtaking views, and exceptional hospitality.",
+    "vision": "To be the most trusted and beloved villa rental platform in the Mahabaleshwar region, known for quality, authenticity, and personalized service."
+  },
+  "founder": {
+    "name": "Rajesh Garela",
+    "title": "Founder & CEO",
+    "bio": "With over 20 years of experience in hospitality and real estate, Rajesh Garela founded Mahabaleshwar Villa Stays with a vision to transform the vacation rental experience in Mahabaleshwar. His passion for luxury, attention to detail, and commitment to customer satisfaction have made the company a leader in the industry. Rajesh personally oversees every property to ensure it meets the highest standards.",
+    "image": "/images/villa-listing-1.jpg"
+  },
+  "values": [
+    {
+      "title": "Quality",
+      "description": "We maintain the highest standards of quality in every villa and service aspect."
+    },
+    {
+      "title": "Integrity",
+      "description": "Transparent dealings and honest communication are the foundation of our business."
+    },
+    {
+      "title": "Hospitality",
+      "description": "We treat every guest as family, ensuring their comfort and satisfaction."
+    },
+    {
+      "title": "Excellence",
+      "description": "We constantly strive to exceed expectations and improve our offerings."
+    }
+  ],
+  "highlights": [
+    "25 premium handpicked villas",
+    "Expert local knowledge and personalized service",
+    "100% guest satisfaction guarantee",
+    "24/7 concierge support",
+    "Authentic Mahabaleshwar experience"
+  ]
+}

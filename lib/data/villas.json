@@ -1,0 +1,948 @@
+[
+  {
+    "id": "mist-haven",
+    "name": "Mist Haven Villa",
+    "category": "budget-villas",
+    "description": "Experience luxury with panoramic valley views and a sparkling infinity pool overlooking the misty mountains.",
+    "location": "Near Mapro Garden, Mahabaleshwar",
+    "address": "Near Mapro Garden, Mahabaleshwar",
+    "bhk": "4 BHK",
+    "amenities": ["4 BHK", "Valley View", "Near Mapro Garden", "Near Venna Lake", "Professional Cook", "Caretaker Available", "WiFi", "Hot Water", "Parking", "Power Inverter Backup", "Fully AC Rooms", "Indoor Games", "Large Private Pool", "Spacious Garden Area", "Fireplace"],
+    "capacity": 15,
+    "rating": 4.8,
+    "images": {
+              "listing": "/villaImages/villa1/villa1.1.jpeg",
+                  "gallery": [
+                                "/villaImages/villa1/villa1.2.jpeg",
+                                "/villaImages/villa1/villa1.3.jpeg",
+                                "/villaImages/villa1/villa1.4.jpeg",
+                                "/villaImages/villa1/villa1.5.jpeg",
+                                "/villaImages/villa1/villa1.6.jpeg",
+                                "/villaImages/villa1/villa1.7.jpeg"
+  ]
+}
+  },
+  {
+  "id": "valley-view-manor",
+  "name": "Valley View Manor",
+  "category": "valley-view-villas",
+  "description": "Perfect for families with spacious rooms, entertainment areas, and breathtaking valley vistas.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Mapro Garden Road, Mahabaleshwar",
+  "bhk": "8 BHK",
+  "amenities": [
+    "Valley View",
+    "8 BHK",
+    "Near Mapro Garden",
+    "Near Venna Lake",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "BBQ Area"
+  ],
+  "capacity": 25,
+  "rating": 4.9,
+  "images": {
+    "listing": "/villaImages/villa2/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa2/v2.jpeg",
+      "/villaImages/villa2/v3.jpeg",
+      "/villaImages/villa2/v4.jpeg",
+      "/villaImages/villa2/v5.jpeg",
+      "/villaImages/villa2/v6.jpeg",
+      "/villaImages/villa2/v7.jpeg",
+      "/villaImages/villa2/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "sunset-retreat",
+  "name": "Sunset Retreat",
+  "category": "group-villas",
+  "description": "Intimate retreat with romantic ambiance, perfect for couples seeking tranquility and stunning sunsets.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Mapro Garden, Mahabaleshwar",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Mountain View",
+    "Fireplace",
+    "Near Mapro Garden",
+    "Near Venna Lake",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area"
+  ],
+  "capacity": 18,
+  "rating": 4.3,
+  "images": {
+    "listing": "/villaImages/villa3/V1.jpeg",
+    "gallery": [
+      "/villaImages/villa3/V2.jpeg",
+      "/villaImages/villa3/V3.jpeg",
+      "/villaImages/villa3/V4.jpeg",
+      "/villaImages/villa3/V5.jpeg",
+      "/villaImages/villa3/V6.jpeg",
+      "/villaImages/villa3/V7.jpeg",
+      "/villaImages/villa3/V8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "mountain-echo",
+  "name": "Mountain Echo Residence",
+  "category": "valley-view-villas",
+  "description": "Spacious villa perfect for families or couple getaways with multiple living areas and entertainment spaces.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Bhilar Water Fall Point, Mahabaleshwar",
+  "bhk": "4 BHK",
+  "amenities": [
+    "4 BHK",
+    "Premium Celebrity Villa",
+    "Near Mapro Garden",
+    "Near Bhilar Water Fall Point",
+    "Valley Facing Pool",
+    "Valley View",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Lush Green Views",
+    "Fully AC Rooms",
+    "Spacious Garden Area"
+  ],
+  "capacity": 12,
+  "rating": 5,
+  "images": {
+    "listing": "/villaImages/villa4/vv1.jpeg",
+    "gallery": [
+      "/villaImages/villa4/vv2.jpeg",
+      "/villaImages/villa4/vv3.jpeg",
+      "/villaImages/villa4/vv4.jpeg",
+      "/villaImages/villa4/vv5.jpeg",
+      "/villaImages/villa4/vv6.jpeg",
+      "/villaImages/villa4/vv7.jpeg",
+      "/villaImages/villa4/vv8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "peaceful-nook",
+  "name": "Peaceful Nook Villa",
+  "category": "family-villas",
+  "description": "Serene getaway with intimate spaces, cozy fireplaces, and stunning sunset views from private terraces.",
+  "location": "Bhilar, Mahabaleshwar",
+  "address": "Bhilar, Mahabaleshwar",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Quiet Location",
+    "Near Mapro Garden",
+    "Near Bhilar",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Private Terrace"
+  ],
+  "capacity": 20,
+  "rating": 4.8,
+  "images": {
+    "listing": "/villaImages/villa5/vv1.jpeg",
+    "gallery": [
+      "/villaImages/villa5/vv2.jpeg",
+      "/villaImages/villa5/vv3.jpeg",
+      "/villaImages/villa5/vv4.jpeg",
+      "/villaImages/villa5/vv5.jpeg",
+      "/villaImages/villa5/vv6.jpeg",
+      "/villaImages/villa5/vv7.jpeg",
+      "/villaImages/villa5/vv8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "garden-palace",
+  "name": "Garden Palace",
+  "category": "valley-view-villas",
+  "description": "Luxury villa with extensive gardens, infinity pool, and premium amenities perfect for special occasions.",
+  "location": "Satara Mahabaleshwar Road, Mahabaleshwar",
+  "address": "Machutar, Mahabaleshwar",
+  "bhk": "5 BHK",
+  "amenities": [
+    "Infinity Pool",
+    "5 BHK",
+    "Luxurious Villa",
+    "Valley Facing",
+    "Good Views",
+    "Premium Villa",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Event Space"
+  ],
+  "capacity": 18,
+  "rating": 5,
+  "images": {
+    "listing": "/villaImages/villa6/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa6/v2.jpeg",
+      "/villaImages/villa6/v3.jpeg",
+      "/villaImages/villa6/v4.jpeg",
+      "/villaImages/villa6/v5.jpeg",
+      "/villaImages/villa6/v6.jpeg",
+      "/villaImages/villa6/v7.jpeg",
+      "/villaImages/villa6/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "adventure-lodge",
+  "name": "Adventure Lodge",
+  "category": "pool-villas",
+  "description": "Best Villa With All Facilities under best rate and budget, perfect for groups",
+  "location": "Panchgani Mahabaleshwar Road, Mahabaleshwar",
+  "address": "Panchgani Mahabaleshwar Road, Mahabaleshwar",
+  "bhk": "6 BHK",
+  "amenities": [
+    "6 BHK",
+    "Activity Area",
+    "Valley Facing Pool",
+    "Near Mapro Garden",
+    "Best Budget",
+    "Suitable For Groups",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Sports Equipment"
+  ],
+  "capacity": 17,
+  "rating": 4.1,
+  "images": {
+    "listing": "/villaImages/villa7/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa7/v2.jpeg",
+      "/villaImages/villa7/v3.jpeg",
+      "/villaImages/villa7/v4.jpeg",
+      "/villaImages/villa7/v5.jpeg",
+      "/villaImages/villa7/v6.jpeg",
+      "/villaImages/villa7/v7.jpeg",
+      "/villaImages/villa7/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "celestial-dreams",
+  "name": "Celestial Dreams Villa",
+  "category": "group-villas",
+  "description": "Enchanting villa with starry night views, perfect for romantic retreats and peaceful escapes.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Mapro Garden Road, Mahabaleshwar",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Observatory Terrace",
+    "Near Mapro Garden",
+    "Near Kamat Hotel",
+    "Luxury Yet Budget",
+    "Mountain View",
+    "Celebrity Villa",
+    "Indoor Games",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Pool",
+    "Spacious Garden Area",
+    "Bonfire Area"
+  ],
+  "capacity": 19,
+  "rating": 4.6,
+  "images": {
+    "listing": "/villaImages/villa8/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa8/v2.jpeg",
+      "/villaImages/villa8/v3.jpeg",
+      "/villaImages/villa8/v4.jpeg",
+      "/villaImages/villa8/v5.jpeg",
+      "/villaImages/villa8/v6.jpeg",
+      "/villaImages/villa8/v7.jpeg",
+      "/villaImages/villa8/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "luxury-retreat",
+  "name": "Luxury Retreat Estate",
+  "category": "pool-villas",
+  "description": "Premium estate with world-class amenities, spa facilities, and exclusive luxury services.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Mapro Garden, Mahabaleshwar",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Near Bhilar Water Fall Point",
+    "Near Mapro Garden",
+    "Large Private Pool",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Spacious Garden Area"
+  ],
+  "capacity": 20,
+  "rating": 4.5,
+  "images": {
+    "listing": "/villaImages/villa9/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa9/v2.jpeg",
+      "/villaImages/villa9/v3.jpeg",
+      "/villaImages/villa9/v4.jpeg",
+      "/villaImages/villa9/v5.jpeg",
+      "/villaImages/villa9/v6.jpeg",
+      "/villaImages/villa9/v7.jpeg"
+    ]
+  }
+},
+  {
+  "id": "heritage-manor",
+  "name": "Heritage Manor Villa",
+  "category": "budget-villas",
+  "description": "Charming villa with traditional architecture and modern comforts with best budget, ideal for families.",
+  "location": "Panchgani, Mahabaleshwar",
+  "address": "Panchgani Mahabaleshwar Road, Mahabaleshwar",
+  "bhk": "5 BHK",
+  "amenities": [
+    "5 BHK",
+    "Heritage Design",
+    "Family Dining",
+    "Near Mapro Garden",
+    "Panchgani",
+    "Panoramic View",
+    "Caretaker Available",
+    "WiFi",
+    "Best Budget",
+    "Pool",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Library"
+  ],
+  "capacity": 15,
+  "rating": 4.7,
+  "images": {
+    "listing": "/villaImages/villa10/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa10/v2.jpeg",
+      "/villaImages/villa10/v3.jpeg",
+      "/villaImages/villa10/v4.jpeg",
+      "/villaImages/villa10/v5.jpeg",
+      "/villaImages/villa10/v6.jpeg",
+      "/villaImages/villa10/v7.jpeg",
+      "/villaImages/villa10/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "modern-essence",
+  "name": "Modern Essence Villa",
+  "category": "couple-villas",
+  "description": "Contemporary villa with sleek design, minimalist aesthetics, and cutting-edge amenities.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Mapro Garden, In Between Panchgani and Mahabaleshwar",
+  "bhk": "5 BHK",
+  "amenities": [
+    "5 BHK Luxurious Villa with Valley View Pool",
+    "Near Mapro Garden",
+    "Near Parsi Point",
+    "Professional Cook",
+    "Panoramic View",
+    "Panchgani",
+    "Large Private Pool",
+    "Lush Green Views",
+    "Luxurious Villa",
+    "Best Budget",
+    "Indoor Games",
+    "Open Space",
+    "Spacious Garden Area",
+    "Home Theater"
+  ],
+  "capacity": 18,
+  "rating": 4.9,
+  "images": {
+    "listing": "/villaImages/villa11/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa11/v2.jpeg",
+      "/villaImages/villa11/v3.jpeg",
+      "/villaImages/villa11/v4.jpeg",
+      "/villaImages/villa11/v5.jpeg",
+      "/villaImages/villa11/v6.jpeg",
+      "/villaImages/villa11/v7.jpeg",
+      "/villaImages/villa11/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "grand-vista",
+  "name": "Grand Vista Palace",
+  "category": "budget-villas",
+  "description": "Magnificent villa with breathtaking views, grand interiors, and extensive recreational facilities.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Mapro Garden, Mahabaleshwar",
+  "bhk": "4 BHK",
+  "amenities": [
+    "4 BHK",
+    "Panoramic View",
+    "Grand Hall",
+    "Near Mapro Garden",
+    "Near Venna Lake",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Guest House",
+    "Best Budget",
+    "Luxurious Villa"
+  ],
+  "capacity": 15,
+  "rating": 4.9,
+  "images": {
+    "listing": "/villaImages/villa12/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa12/v2.jpeg",
+      "/villaImages/villa12/v3.jpeg",
+      "/villaImages/villa12/v4.jpeg",
+      "/villaImages/villa12/v5.jpeg",
+      "/villaImages/villa12/v6.jpeg",
+      "/villaImages/villa12/v7.jpeg",
+      "/villaImages/villa12/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "serene-valley",
+  "name": "Serene Valley Villa",
+  "category": "budget-villas",
+  "description": "Tranquil villa nestled in nature with valley views and peaceful ambiance for relaxation.",
+  "location": "Panchgani Table Land",
+  "address": "Panchgani Table Land",
+  "bhk": "3 BHK",
+  "amenities": [
+    "3 BHK",
+    "Large Private Pool",
+    "Private Terrace",
+    "Near Table Land",
+    "Panchgani",
+    "Celebrity Villa",
+    "Classic Architecture",
+    "Cloud Views",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Spacious Garden Area",
+    "Meditation Area",
+    "Best Budget"
+  ],
+  "capacity": 15,
+  "rating": 4.8,
+  "images": {
+    "listing": "/villaImages/villa13/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa13/v2.jpeg",
+      "/villaImages/villa13/v3.jpeg",
+      "/villaImages/villa13/v4.jpeg",
+      "/villaImages/villa13/v5.jpeg",
+      "/villaImages/villa13/v6.jpeg",
+      "/villaImages/villa13/v7.jpeg",
+      "/villaImages/villa13/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "royal-abode",
+  "name": "Royal Abode Estate",
+  "category": "pool-villas",
+  "description": "Regal villa with opulent design, premium furnishings, and royal treatment throughout.",
+  "location": "Satara Mahabaleshwar Road, Mahabaleshwar",
+  "address": "Satara Mahabaleshwar Road, Mahabaleshwar",
+  "bhk": "4 BHK",
+  "amenities": [
+    "4 BHK",
+    "Valley Facing Pool",
+    "Valley View",
+    "Satara Mahabaleshwar Road",
+    "Lush Green Views",
+    "Celebrity Villa",
+    "Premium Villa",
+    "Hot Water",
+    "Parking",
+    "Panoramic View",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Grand Staircase"
+  ],
+  "capacity": 15,
+  "rating": 4.9,
+  "images": {
+    "listing": "/villaImages/villa14/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa14/v2.jpeg",
+      "/villaImages/villa14/v3.jpeg",
+      "/villaImages/villa14/v4.jpeg",
+      "/villaImages/villa14/v5.jpeg",
+      "/villaImages/villa14/v6.jpeg",
+      "/villaImages/villa14/v7.jpeg",
+      "/villaImages/villa14/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "sunset-paradise",
+  "name": "Sunset Paradise Villa",
+  "category": "family-villas",
+  "description": "Beautiful family villa with spacious interiors and stunning sunset views from multiple terraces.",
+  "location": "Opp To Velocity Park, Near Mapro Garden",
+  "address": "Opp To Velocity Park, Near Mapro Garden, Mahabaleshwar",
+  "bhk": "4 BHK",
+  "amenities": [
+    "4 BHK",
+    "Premium Celebrity Villa",
+    "Near Mapro Garden",
+    "Opp To Velocity Park",
+    "Valley Facing",
+    "Large Private Pool",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Best Budget",
+    "Luxurious Villa",
+    "Indoor Games",
+    "Lush Green Views",
+    "Spacious Garden Area",
+    "Kids Club"
+  ],
+  "capacity": 15,
+  "rating": 4.7,
+  "images": {
+    "listing": "/villaImages/villa15/v1.jpeg",
+    "gallery": [
+      "/villaImages/villa15/v2.jpeg",
+      "/villaImages/villa15/v3.jpeg",
+      "/villaImages/villa15/v4.jpeg",
+      "/villaImages/villa15/v5.jpeg",
+      "/villaImages/villa15/v6.jpeg",
+      "/villaImages/villa15/v7.jpeg",
+      "/villaImages/villa15/v8.jpeg"
+    ]
+  }
+},
+  {
+  "id": "zen-retreat",
+  "name": "Zen Retreat Villa",
+  "category": "budget-villas",
+  "description": "Best Budget Villa, with valley view pool, all facilities",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Mapro Hills, Mahabaleshwar",
+  "bhk": "3 BHK",
+  "amenities": [
+    "3 BHK",
+    "Valley Facing Pool",
+    "Near Mapro Garden",
+    "Near Venna Lake",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Wellness Retreat"
+  ],
+  "capacity": 12,
+  "rating": 4.8,
+  "images": {
+    "listing": "/villaImages/villa16/Screenshot 2026-05-18 134858.png",
+    "gallery": [
+      "/villaImages/villa16/Screenshot 2026-05-18 135012.png",
+      "/villaImages/villa16/Screenshot 2026-05-18 135021.png",
+      "/villaImages/villa16/Screenshot 2026-05-18 135029.png",
+      "/villaImages/villa16/Screenshot 2026-05-18 135048.png",
+      "/villaImages/villa16/Screenshot 2026-05-18 135101.png"
+    ]
+  }
+},
+  {
+  "id": "lavish-escape",
+  "name": "Lavish Escape Manor",
+  "category": "valley-view-villas",
+  "description": "Extravagant villa with luxury decor, premium appliances, and indulgent lifestyle amenities.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Near Mapro Garden, Mahabaleshwar",
+  "bhk": "4 BHK",
+  "amenities": [
+    "4 BHK",
+    "Luxury Decor",
+    "Near Mapro Garden",
+    "Luxury Yet Budget",
+    "Professional Cook",
+    "Caretaker Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Indoor Games",
+    "Large Private Pool",
+    "Spacious Garden Area",
+    "Wine Cellar"
+  ],
+  "capacity": 18,
+  "rating": 4.9,
+  "images": {
+    "listing": "/villaImages/villa17/Screenshot 2026-05-18 135824.png",
+    "gallery": [
+      "/villaImages/villa17/Screenshot 2026-05-18 135833.png",
+      "/villaImages/villa17/Screenshot 2026-05-18 135845.png",
+      "/villaImages/villa17/Screenshot 2026-05-18 135854.png",
+      "/villaImages/villa17/Screenshot 2026-05-18 135905.png",
+      "/villaImages/villa17/Screenshot 2026-05-18 135912.png",
+      "/villaImages/villa17/Screenshot 2026-05-18 135927.png",
+      "/villaImages/villa17/Screenshot 2026-05-18 135937.png"
+    ]
+  }
+},
+  {
+  "id": "nature-haven",
+  "name": "Nature Haven Villa",
+  "category": "family-villas",
+  "description": "Luxury villa featuring breathtaking sunset views, spacious interiors, elegant bedrooms with attached balconies, and a peaceful ambiance perfect for family vacations and group stays.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Sunset Ridge Road, Near Mapro Garden, Mahabaleshwar",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Panoramic View",
+    "Peaceful Location",
+    "Artistic Interior Design",
+    "Beautiful Sunset Views",
+    "Spacious Living Room",
+    "Large Modular Kitchen",
+    "Private Balcony Attached To Bedrooms",
+    "Parking Space",
+    "Mountain View",
+    "Premium Interior",
+    "Fully AC Rooms",
+    "Spacious Garden Area"
+  ],
+  "capacity": 25,
+  "rating": 4.9,
+  "images": {
+    "listing": "/villaImages/villa18/v (2).png",
+    "gallery": [
+      "/villaImages/villa18/v (1).png",
+      "/villaImages/villa18/v (3).png",
+      "/villaImages/villa18/v (4).png",
+      "/villaImages/villa18/v (5).png",
+      "/villaImages/villa18/v (6).png",
+      "/villaImages/villa18/v (7).png",
+      "/villaImages/villa18/v (8).png"
+    ]
+  }
+},
+  {
+  "id": "cloud-castle",
+  "name": "Cloud Castle Villa",
+  "category": "pool-villas",
+  "description": "Elevated luxury villa offering breathtaking cloud and sunset views with spacious interiors, modern comfort, and a peaceful mountain ambiance perfect for families and group stays.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Cloud Castle Heights, Near Mapro Garden, Mahabaleshwar 412806",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Cloud Views",
+    "Beautiful Sunset Views",
+    "Private Terrace",
+    "Spacious Living Room",
+    "Modern Kitchen",
+    "Bedroom Balcony",
+    "Private Pool",
+    "Mountain View",
+    "Bonfire Area",
+    "Outdoor Seating",
+    "Garden Area",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Caretaker Available",
+    "Indoor Games",
+    "Family Friendly"
+  ],
+  "capacity": 23,
+  "rating": 4.5,
+  "images": {
+    "listing": "/villaImages/villa19/v (3).png",
+    "gallery": [
+      "/villaImages/villa19/v (2).png",
+      "/villaImages/villa19/v (1).png",
+      "/villaImages/villa19/v (4).png",
+      "/villaImages/villa19/v (5).png",
+      "/villaImages/villa19/v (6).png",
+      "/villaImages/villa19/v (7).png",
+      "/villaImages/villa19/v (8).png"
+    ]
+  }
+},
+  {
+  "id": "riverside-hideaway",
+  "name": "Riverside Hideaway",
+  "category": "couple-villas",
+  "description": "Peaceful riverside villa offering scenic natural surroundings, spacious interiors, and a relaxing atmosphere perfect for family vacations and peaceful getaways.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Riverside Retreat Road, Near Mapro Garden, Mahabaleshwar 412806",
+  "bhk": "5 BHK",
+  "amenities": [
+    "5 BHK",
+    "Peaceful Location",
+    "Private Balcony",
+    "Spacious Living Room",
+    "Modern Kitchen",
+    "Outdoor Seating Area",
+    "Garden Space",
+    "Bonfire Area",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Caretaker Available",
+    "Family Friendly"
+  ],
+  "capacity": 18,
+  "rating": 4.2,
+  "images": {
+    "listing": "/villaImages/villa20/v (2).png",
+    "gallery": [
+      "/villaImages/villa20/v (1).png",
+      "/villaImages/villa20/v (3).png",
+      "/villaImages/villa20/v (4).png",
+      "/villaImages/villa20/v (5).png",
+      "/villaImages/villa20/v (6).png",
+      "/villaImages/villa20/v (7).png",
+      "/villaImages/villa20/v (8).png"
+    ]
+  }
+},
+{
+  "id": "timeless-elegance",
+  "name": "Timeless Elegance Estate",
+  "category": "group-villas",
+  "description": "Elegant luxury estate featuring premium interiors, spacious living spaces, refined architecture, and a peaceful mountain ambiance perfect for family vacations and group stays.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Elegance Estate Road, Near Mapro Garden, Mahabaleshwar 412806",
+  "bhk": "7 BHK",
+  "amenities": [
+    "7 BHK",
+    "Premium Furnishing",
+    "Spacious Living Room",
+    "Modern Modular Kitchen",
+    "Private Balcony",
+    "Mountain View",
+    "Garden Area",
+    "Indoor Seating Lounge",
+    "Indoor Games Available",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Caretaker Available"
+  ],
+  "capacity": 25,
+  "rating": 4.1,
+  "images": {
+    "listing": "/villaImages/villa21/v (4).png",
+    "gallery": [
+      "/villaImages/villa21/v (2).png",
+      "/villaImages/villa21/v (3).png",
+      "/villaImages/villa21/v (1).png",
+      "/villaImages/villa21/v (5).png",
+      "/villaImages/villa21/v (6).png",
+      "/villaImages/villa21/v (7).png",
+      "/villaImages/villa21/v (8).png",
+      "/villaImages/villa21/v8.jpeg"
+    ]
+  }
+},
+{
+  "id": "exotic-oasis",
+  "name": "Exotic Oasis Villa",
+  "category": "pool-villas",
+  "description": "Luxury tropical villa surrounded by peaceful greenery, elegant interiors, and relaxing outdoor spaces, offering a perfect getaway experience for families and group stays.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Exotic Oasis Road, Near Mapro Garden, Mahabaleshwar 412806",
+  "bhk": "5 BHK",
+  "amenities": [
+    "5 BHK Luxurious Villa",
+    "Tropical Garden",
+    "Beautiful Sunset Views",
+    "Spacious Living Room",
+    "Modern Kitchen",
+    "Outdoor Seating Area",
+    "Garden Space",
+    "Bedroom Balcony",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Caretaker Available",
+    "Bonfire Area"
+  ],
+  "capacity": 18,
+  "rating": 4.7,
+  "images": {
+    "listing": "/villaImages/villa22/v (6).png",
+    "gallery": [
+      "/villaImages/villa22/v (2).png",
+      "/villaImages/villa22/v (3).png",
+      "/villaImages/villa22/v (4).png",
+      "/villaImages/villa22/v (5).png",
+      "/villaImages/villa22/v (1).png",
+      "/villaImages/villa22/v (7).png",
+      "/villaImages/villa22/v (8).png"
+    ]
+  }
+},
+{
+  "id": "mountain-sanctuary",
+  "name": "Mountain Sanctuary",
+  "category": "family-villas",
+  "description": "Peaceful mountain retreat offering scenic valley views, spacious interiors, and relaxing outdoor spaces, perfect for family vacations and nature-filled getaways.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Mountain Sanctuary Road, Near Mapro Garden, Mahabaleshwar 412806",
+  "bhk": "4 BHK",
+  "amenities": [
+    "4 BHK",
+    "Mountain View",
+    "Indoor Games Available",
+    "Private Balcony",
+    "Spacious Living Room",
+    "Modern Kitchen",
+    "Peaceful Location",
+    "Garden Area",
+    "Outdoor Seating",
+    "Bonfire Area",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Caretaker Available",
+    "Indoor Games Available"
+  ],
+  "capacity": 15,
+  "rating": 4.8,
+  "images": {
+    "listing": "/villaImages/villa23/v (2).png",
+    "gallery": [
+      "/villaImages/villa23/v (1).png",
+      "/villaImages/villa23/v (3).png",
+      "/villaImages/villa23/v (4).png",
+      "/villaImages/villa23/v (5).png",
+      "/villaImages/villa23/v (6).png",
+      "/villaImages/villa23/v (7).png",
+      "/villaImages/villa23/v (8).png"
+    ]
+  }
+},
+{
+  "id": "artisan-villa",
+  "name": "Artisan Villa",
+  "category": "couple-villas",
+  "description": "Elegant artistic villa featuring stylish interiors, spacious living spaces, and a relaxing ambiance designed for luxurious family vacations and peaceful getaways.",
+  "location": "Near Mapro Garden, Mahabaleshwar",
+  "address": "Artisan Villa Road, Near Mapro Garden, Mahabaleshwar 412806",
+  "bhk": "5 BHK",
+  "amenities": [
+    "5 BHK Luxurious Villa",
+    "Premium Furnishing",
+    "Spacious Living Room",
+    "Modern Modular Kitchen",
+    "Private Balcony",
+    "Creative Lounge Area",
+    "Garden Space",
+    "Outdoor Seating Area",
+    "WiFi",
+    "Hot Water",
+    "Parking",
+    "Power Inverter Backup",
+    "Fully AC Rooms",
+    "Caretaker Available",
+    "Indoor Games Available"
+  ],
+  "capacity": 18,
+  "rating": 4.1,
+  "images": {
+    "listing": "/villaImages/villa24/v (7).png",
+    "gallery": [
+      "/villaImages/villa24/v (2).png",
+      "/villaImages/villa24/v (3).png",
+      "/villaImages/villa24/v (4).png",
+      "/villaImages/villa24/v (5).png",
+      "/villaImages/villa24/v (6).png",
+      "/villaImages/villa24/v (1).png",
+      "/villaImages/villa24/v (8).png"
+    ]
+  }
+}
+]
+
