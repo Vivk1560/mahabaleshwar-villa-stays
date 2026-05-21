@@ -1,48 +1,52 @@
-'use client';
+'use client'
 
-import { useState, useMemo } from 'react';
-import { NavBar } from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
-import { FloatingButtons } from '@/components/FloatingButtons';
-import { VillaCard } from '@/components/VillaCard';
-import { useSearchParams } from 'next/navigation';
-import villas from '@/lib/data/villas.json';
+import { useState, useMemo } from 'react'
+import { VillaCard } from '@/components/VillaCard'
 
-export default function VillasClient() {
-  const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
+// ✅ Type matching your villas.json structure
+interface Villa {
+  id: string
+  name: string
+  location: string
+  rating: number
+  capacity: number
+  amenities: string[]
+  images: { listing: string; gallery: string[] }
+  category: string
+}
 
-  const categories = [
-    { id: 'all', label: 'All Villas' },
-    { id: 'pool-villas', label: 'Pool Villas' },
-    { id: 'family-villas', label: 'Family Villas' },
-    { id: 'couple-villas', label: 'Couple Villas' },
-    { id: 'group-villas', label: 'Group Villas' },
-    { id: 'valley-view-villas', label: 'Valley View Villas' },
-    { id: 'budget-villas', label: 'Budget Villas' },
-  ];
+interface VillasClientProps {
+  villas: Villa[]
+  initialCategory: string
+}
 
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'all');
+const categories = [
+  { id: 'all', label: 'All Villas' },
+  { id: 'pool-villas', label: 'Pool Villas' },
+  { id: 'family-villas', label: 'Family Villas' },
+  { id: 'couple-villas', label: 'Couple Villas' },
+  { id: 'group-villas', label: 'Group Villas' },
+  { id: 'valley-view-villas', label: 'Valley View Villas' },
+  { id: 'budget-villas', label: 'Budget Villas' },
+]
+
+export default function VillasClient({ villas, initialCategory }: VillasClientProps) {
+  // ✅ No useSearchParams — initialCategory comes from server as prop
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory)
 
   const filteredVillas = useMemo(() => {
-    if (selectedCategory === 'all') {
-      return villas;
-    }
-
-    return villas.filter((villa) => villa.category === selectedCategory);
-  }, [selectedCategory]);
+    if (selectedCategory === 'all') return villas
+    return villas.filter((villa) => villa.category === selectedCategory)
+  }, [selectedCategory, villas])
 
   return (
-    <main className="min-h-screen bg-background">
-      <NavBar />
-
+    <>
       {/* Header Section */}
       <section className="pt-20 pb-12 md:pt-24 md:pb-16 px-4 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-playfair text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4 leading-tight">
             Curated Villa Collection
           </h1>
-
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Discover your perfect villa in Mahabaleshwar with our curated collection of premium properties
           </p>
@@ -55,7 +59,6 @@ export default function VillasClient() {
           <h2 className="font-playfair font-bold text-foreground mb-4 md:mb-6 text-lg md:text-xl">
             Filter by Category
           </h2>
-
           <div className="flex flex-wrap gap-2 md:gap-3">
             {categories.map((category) => (
               <button
@@ -71,10 +74,8 @@ export default function VillasClient() {
               </button>
             ))}
           </div>
-
           <p className="text-muted-foreground mt-4 md:mt-6 text-sm md:text-base">
-            Showing {filteredVillas.length} villa
-            {filteredVillas.length !== 1 ? 's' : ''}
+            Showing {filteredVillas.length} villa{filteredVillas.length !== 1 ? 's' : ''}
           </p>
         </div>
       </section>
@@ -107,9 +108,6 @@ export default function VillasClient() {
           )}
         </div>
       </section>
-
-      <Footer />
-      <FloatingButtons />
-    </main>
-  );
+    </>
+  )
 }
