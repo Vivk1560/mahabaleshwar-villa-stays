@@ -208,7 +208,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 <div className="border-t border-border" />
 
                 {/* ✅ FIXED — <a tag restored for WhatsApp */}
-                
+                <a
                   href={`https://wa.me/9921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -219,7 +219,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </a>
 
                 {/* ✅ FIXED — <a tag restored for Call */}
-                
+                <a
                   href="tel:8080557611"
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
