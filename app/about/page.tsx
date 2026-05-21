@@ -10,8 +10,31 @@ import testimonials from '@/lib/data/testimonials.json';
 
 export const metadata = {
   title: 'About Us | Mahabaleshwar Villa Stays - Premium Villa Collections',
-  description: 'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas since 2015.',
+  description: 'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
   keywords: 'Mahabaleshwar villas, luxury hospitality, hill station resorts, villa collections, Mahabaleshwar stays',
+  alternates: {
+    canonical: 'https://www.mahabaleshwarvillastays.com/about',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.mahabaleshwarvillastays.com/about',
+    title: 'About Us | Mahabaleshwar Villa Stays - Premium Villa Collections',
+    description: 'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About Mahabaleshwar Villa Stays - Premium Luxury Villas',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Mahabaleshwar Villa Stays',
+    description: 'Meet the team behind Mahabaleshwar Villa Stays. Authentic hospitality and curated luxury villas.',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function AboutPage() {
