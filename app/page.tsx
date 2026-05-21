@@ -297,7 +297,7 @@ export default function Home() {
             </PremiumButton>
             {/* ✅ Fixed WhatsApp number with country code 91 */}
             
-              href="https://wa.me/919921372661"
+              <a href="https://wa.me/919921372661"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2"
