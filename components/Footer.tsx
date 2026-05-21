@@ -69,7 +69,7 @@ export function Footer() {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm">
-              © 2024 Mahabaleshwar Villa Stays. All rights reserved.
+             © {new Date().getFullYear()} Mahabaleshwar Villa Stays. All rights reserved.
             </p>
             <div className="flex gap-4">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
@@ -82,6 +82,20 @@ export function Footer() {
           </div>
         </div>
       </div>
+      {/* Developer Credit */}
+<div className="border-t border-white/10 mt-4 pt-4 text-center">
+  <p className="text-xs text-gray-500">
+    Designed & Developed by{" "}
+    
+    <a  href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+    >
+      Vivaan Kukreja
+    </a>
+  </p>
+</div>
     </footer>
   );
 }
