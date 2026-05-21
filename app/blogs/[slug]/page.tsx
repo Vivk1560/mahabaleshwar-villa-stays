@@ -10,9 +10,9 @@ import villas from '@/lib/data/villas.json'
 import { notFound } from 'next/navigation'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 // ── Static params ─────────────────────────────────────────────────────────────
@@ -23,37 +23,46 @@ export async function generateStaticParams() {
 }
 
 // ── Per-blog keywords map ─────────────────────────────────────────────────────
-// Add keywords specific to each blog for better on-page SEO targeting.
 const BLOG_KEYWORDS: Record<string, string> = {
   'best-villas-families':
     'best family villas Mahabaleshwar, family vacation Mahabaleshwar, villas for families hill station, Mahabaleshwar family trip, large villa Mahabaleshwar',
+
   'romantic-couple-retreat':
     'romantic villas Mahabaleshwar, couple villa Mahabaleshwar, honeymoon villa Mahabaleshwar, romantic getaway hill station Maharashtra',
+
   'group-gathering-guide':
     'group villas Mahabaleshwar, large group stay Mahabaleshwar, corporate retreat Mahabaleshwar, team outing villa Maharashtra',
+
   'budget-travel-mahabaleshwar':
     'budget villas Mahabaleshwar, affordable villas Mahabaleshwar, cheap villa Mahabaleshwar, budget stay hill station Maharashtra',
+
   'valley-views-photography':
     'Mahabaleshwar photography guide, valley views Mahabaleshwar, best viewpoints Mahabaleshwar, villa photography hill station',
+
   'best-time-visit-mahabaleshwar':
     'best time to visit Mahabaleshwar, Mahabaleshwar weather, Mahabaleshwar season guide, when to visit Mahabaleshwar',
+
   'mahabaleshwar-tourist-places':
     'tourist places Mahabaleshwar, Mahabaleshwar sightseeing, things to do Mahabaleshwar, Wilson Point Mapro Garden Venna Lake',
+
   'mahabaleshwar-complete-travel-guide':
-    'Mahabaleshwar travel guide 2025, how to reach Mahabaleshwar, Mahabaleshwar trip planning, complete guide Mahabaleshwar',
+    'Mahabaleshwar travel guide 2026, how to reach Mahabaleshwar, Mahabaleshwar trip planning, complete guide Mahabaleshwar',
 }
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = params
+  const { slug } = await params
+
   const blog = blogs.find((b) => b.slug === slug)
-  if (!blog) return {}
+
+  if (!blog) {
+    return {}
+  }
 
   const keywords =
     BLOG_KEYWORDS[slug] ||
-    'Mahabaleshwar villas, luxury villas Mahabaleshwar, hill station Maharashtra'
+    'Mahabaleshwar villas, luxury villas Mahabaleshwar'
 
-  // Build absolute image URL
   const imageUrl = blog.banner.startsWith('http')
     ? blog.banner
     : `https://www.mahabaleshwarvillastays.com${blog.banner}`
@@ -63,9 +72,11 @@ export async function generateMetadata({ params }: PageProps) {
     description: blog.excerpt,
     keywords,
     authors: [{ name: 'Mahabaleshwar Villa Stays' }],
+
     alternates: {
       canonical: `https://www.mahabaleshwarvillastays.com/blogs/${slug}`,
     },
+
     openGraph: {
       type: 'article',
       url: `https://www.mahabaleshwarvillastays.com/blogs/${slug}`,
@@ -74,7 +85,7 @@ export async function generateMetadata({ params }: PageProps) {
       description: blog.excerpt,
       publishedTime: blog.date,
       modifiedTime: blog.date,
-      authors: ['Mahabaleshwar Villa Stays'],
+
       images: [
         {
           url: imageUrl,
@@ -84,6 +95,7 @@ export async function generateMetadata({ params }: PageProps) {
         },
       ],
     },
+
     twitter: {
       card: 'summary_large_image',
       title: `${blog.title} | Mahabaleshwar Villa Stays`,
@@ -94,9 +106,13 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 // ── Page Component ────────────────────────────────────────────────────────────
-export default async function BlogDetailPage({ params }: PageProps) {
-  const { slug } = params
+export default async function BlogDetailPage({
+  params,
+}: PageProps) {
+  const { slug } = await params
+
   const blog = blogs.find((b) => b.slug === slug)
+
   if (!blog) {
     notFound()
   }
@@ -105,50 +121,48 @@ export default async function BlogDetailPage({ params }: PageProps) {
     blog.relatedVillas.includes(villa.id)
   )
 
-  // Absolute image URL for schema
   const imageUrl = blog.banner.startsWith('http')
     ? blog.banner
     : `https://www.mahabaleshwarvillastays.com${blog.banner}`
 
-  // ── Article Schema ──────────────────────────────────────────────────────────
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+
     headline: blog.title,
     description: blog.excerpt,
     image: imageUrl,
+
     datePublished: blog.date,
     dateModified: blog.date,
+
     url: `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
+
     author: {
       '@type': 'Organization',
       name: 'Mahabaleshwar Villa Stays',
-      url: 'https://www.mahabaleshwarvillastays.com',
     },
+
     publisher: {
       '@type': 'Organization',
       name: 'Mahabaleshwar Villa Stays',
-      url: 'https://www.mahabaleshwarvillastays.com',
+
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
-        width: 200,
-        height: 200,
       },
     },
+
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
     },
-    keywords: BLOG_KEYWORDS[slug] || 'Mahabaleshwar villas',
-    articleSection: 'Travel Guide',
-    inLanguage: 'en-IN',
   }
 
-  // ── BreadcrumbList Schema ───────────────────────────────────────────────────
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+
     itemListElement: [
       {
         '@type': 'ListItem',
@@ -159,7 +173,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Blog',
+        name: 'Blogs',
         item: 'https://www.mahabaleshwarvillastays.com/blogs',
       },
       {
@@ -171,45 +185,51 @@ export default async function BlogDetailPage({ params }: PageProps) {
     ],
   }
 
-  // Format the blog content: split on double newlines to create paragraphs
-  // and detect section headings (lines that don't end with punctuation)
-  const contentBlocks = blog.content.split('\n\n').filter(Boolean)
+  const contentBlocks = blog.content
+    .split('\n\n')
+    .filter(Boolean)
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Structured Data */}
+
+      {/* SEO Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
       />
+
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
       />
 
       <NavBar />
 
-      {/* ── Banner ───────────────────────────────────────────────────────── */}
+      {/* Banner */}
       <section className="pt-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
           <div className="relative h-96 rounded-2xl overflow-hidden shadow-elevated mb-8">
             <Image
               src={blog.banner}
-              alt={`${blog.title} — Mahabaleshwar Villa Stays`}
+              alt={blog.title}
               fill
-              className="object-cover"
               priority
+              className="object-cover"
             />
           </div>
         </div>
       </section>
 
-      {/* ── Blog Content ─────────────────────────────────────────────────── */}
+      {/* Content */}
       <section className="py-12 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
 
-          {/* Back link + Title + Date */}
           <div className="mb-10 space-y-4">
+
             <Link
               href="/blogs"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
@@ -224,6 +244,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
             <div className="flex items-center gap-2 text-muted-foreground">
               <Calendar className="w-4 h-4" />
+
               <time dateTime={blog.date}>
                 {new Date(blog.date).toLocaleDateString('en-IN', {
                   year: 'numeric',
@@ -233,32 +254,21 @@ export default async function BlogDetailPage({ params }: PageProps) {
               </time>
             </div>
 
-            {/* Excerpt as lead paragraph */}
             <p className="text-xl text-muted-foreground leading-relaxed border-l-4 border-primary pl-4">
               {blog.excerpt}
             </p>
           </div>
 
-          {/* 
-            Blog body — render each double-newline block as its own element.
-            Lines that look like section headings (short, no trailing punctuation,
-            or followed by a colon) become <h2>. Everything else is <p>.
-            Single newlines within a block become <br />.
-          */}
           <article className="space-y-5 mb-16">
             {contentBlocks.map((block, i) => {
               const trimmed = block.trim()
 
-              // Detect heading: short line (under 80 chars) with no sentence-ending punctuation,
-              // OR ends with a colon, OR starts with a number like "1." or "Day 1"
               const isHeading =
                 trimmed.length < 80 &&
                 !trimmed.endsWith('.') &&
                 !trimmed.endsWith('?') &&
                 !trimmed.endsWith('!') &&
-                !trimmed.startsWith('Q:') &&
-                !trimmed.startsWith('"') &&
-                i > 0 // first block is always body text
+                i > 0
 
               if (isHeading) {
                 return (
@@ -271,10 +281,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 )
               }
 
-              // Regular paragraph — preserve single newlines within block as line breaks
               const lines = trimmed.split('\n')
+
               return (
-                <p key={i} className="text-lg text-foreground leading-relaxed">
+                <p
+                  key={i}
+                  className="text-lg text-foreground leading-relaxed"
+                >
                   {lines.map((line, j) => (
                     <span key={j}>
                       {line}
@@ -286,12 +299,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
             })}
           </article>
 
-          {/* ── Related Villas ──────────────────────────────────────────── */}
+          {/* Related Villas */}
           {relatedVillas.length > 0 && (
             <div className="mt-12 pt-12 border-t border-border">
+
               <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
                 Featured Villas from This Article
               </h2>
+
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedVillas.map((villa) => (
                   <VillaCard
@@ -310,7 +325,6 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* ── Back to all blogs CTA ───────────────────────────────────── */}
           <div className="mt-16 text-center">
             <Link
               href="/blogs"
@@ -320,6 +334,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
               View All Blogs
             </Link>
           </div>
+
         </div>
       </section>
 
