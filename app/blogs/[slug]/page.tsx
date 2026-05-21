@@ -45,7 +45,7 @@ const BLOG_KEYWORDS: Record<string, string> = {
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params
+  const { slug } = params
   const blog = blogs.find((b) => b.slug === slug)
   if (!blog) return {}
 
@@ -95,7 +95,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 // ── Page Component ────────────────────────────────────────────────────────────
 export default async function BlogDetailPage({ params }: PageProps) {
-  const { slug } = await params
+  const { slug } = params
   const blog = blogs.find((b) => b.slug === slug)
   if (!blog) {
     notFound()
