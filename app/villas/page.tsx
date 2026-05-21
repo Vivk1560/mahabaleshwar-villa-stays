@@ -7,11 +7,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
+
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { FloatingButtons } from '@/components/FloatingButtons'
 import { VillaCard } from '@/components/VillaCard'
+
 import VillasFilterClient from './VillasFilterClient'
+
 import villas from '@/lib/data/villas.json'
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
@@ -94,12 +98,13 @@ const CATEGORIES = [
 ]
 
 // ── Page Component ────────────────────────────────────────────────────────────
-export default function VillasPage({
+export default async function VillasPage({
   searchParams,
 }: {
-  searchParams: { category?: string }
+  searchParams: Promise<{ category?: string }>
 }) {
-  const activeCategory = searchParams.category || 'all'
+  const params = await searchParams
+  const activeCategory = params.category || 'all'
 
   return (
     <main className="min-h-screen bg-background">
@@ -108,6 +113,7 @@ export default function VillasPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
@@ -121,6 +127,7 @@ export default function VillasPage({
           <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
             Luxury Villas in Mahabaleshwar
           </h1>
+
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Browse our handpicked collection of {villas.length}+ premium villas.
             Filter by type or explore them all.
@@ -129,25 +136,18 @@ export default function VillasPage({
       </section>
 
       {/* ── Filter Tabs (client) + Villa Grid (server-rendered) ────────────── */}
-      {/*
-        VillasFilterClient renders the category tabs and uses CSS/JS to
-        show/hide villa cards by data-category attribute.
-        All cards are present in the HTML — Google sees every villa.
-      */}
       <section className="py-8 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
 
           {/* Client-side filter tabs */}
-          <VillasFilterClient
-            categories={CATEGORIES}
-            initialCategory={activeCategory}
-          />
+          <Suspense fallback={<div>Loading filters...</div>}>
+            <VillasFilterClient
+              categories={CATEGORIES}
+              initialCategory={activeCategory}
+            />
+          </Suspense>
 
-          {/* 
-            SERVER-RENDERED villa grid.
-            Every villa card is in the HTML. VillasFilterClient toggles
-            visibility via data attributes — no content is hidden from crawlers.
-          */}
+          {/* SERVER-RENDERED villa grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {villas.map((villa) => (
               <div
@@ -169,7 +169,7 @@ export default function VillasPage({
             ))}
           </div>
 
-          {/* No-JS fallback message (hidden by JS when filters run) */}
+          {/* No-JS fallback message */}
           <p
             id="no-results-msg"
             className="hidden text-center text-muted-foreground py-12 text-lg"
