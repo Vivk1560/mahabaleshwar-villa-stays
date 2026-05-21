@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`,
     description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities. Personalized booking and concierge service available.`,
     keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, Mahabaleshwar vacation rentals`,
-    // ✅ FIX 1 — Canonical tag added
     alternates: {
       canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
     },
@@ -63,7 +62,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
                 src={villa.images.listing}
-                // ✅ FIX 2 — Descriptive main image alt text
                 alt={`${villa.name} luxury villa in ${villa.location} Mahabaleshwar`}
                 fill
                 className="object-cover hover:scale-105 transition duration-500"
@@ -78,7 +76,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
               >
                 <Image
                   src={image}
-                  // ✅ FIX 2 — Descriptive gallery alt text
                   alt={`${villa.name} ${villa.location} Mahabaleshwar - interior view ${index + 1}`}
                   fill
                   className="object-cover hover:scale-105 transition duration-500"
@@ -93,8 +90,10 @@ export default async function VillaDetailPage({ params }: PageProps) {
       <section className="py-12 md:py-16 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+
             {/* Main Info */}
             <div className="md:col-span-2 space-y-6 md:space-y-8">
+
               {/* Header */}
               <div className="space-y-4">
                 <div>
@@ -208,18 +207,20 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 <div className="border-t border-border" />
 
+                {/* ✅ FIXED — <a tag restored for WhatsApp */}
                 
                   href={`https://wa.me/9921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
->
-  <MessageCircle className="w-5 h-5" />
-  WhatsApp Inquiry
-</a>
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Inquiry
+                </a>
 
+                {/* ✅ FIXED — <a tag restored for Call */}
                 
-                  href={`tel:8080557611`}
+                  href="tel:8080557611"
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
@@ -234,6 +235,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
