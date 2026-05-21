@@ -7,18 +7,31 @@ import { ArrowRight, Calendar } from 'lucide-react';
 import blogs from '@/lib/data/blogs.json';
 
 export const metadata = {
+  metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
   title: 'Travel Guides & Tips | Mahabaleshwar Villa Stays Blog',
   description: 'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
   keywords: 'Mahabaleshwar travel guide, hill station tips, travel blog, vacation planning, Mahabaleshwar attractions',
   alternates: {
     canonical: 'https://www.mahabaleshwarvillastays.com/blogs',
-  },
+  },twitter: {
+  card: 'summary_large_image',
+  title: 'Travel Guides & Tips | Mahabaleshwar Villa Stays Blog',
+  description:
+    'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
+  images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
+},
   openGraph: {
     type: 'website',
     url: 'https://www.mahabaleshwarvillastays.com/blogs',
     title: 'Travel Guides & Tips | Mahabaleshwar Villa Stays Blog',
     description: 'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    images: [
+  {
+    url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+    width: 1200,
+    height: 630,
+  },
+],
   },
 };
 
@@ -71,11 +84,13 @@ export default function BlogsPage() {
                 <div className="group cursor-pointer">
                   <div className="relative h-64 rounded-lg overflow-hidden shadow-card hover:shadow-elevated transition-all mb-4">
                     <Image
-                      src={blog.banner}
-                      alt={blog.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+  src={blog.banner}
+  alt={`${blog.title} - Mahabaleshwar travel guide`}
+  fill
+  priority={blog.id === 'blog-1'}
+  sizes="(max-width: 768px) 100vw, 50vw"
+  className="object-cover group-hover:scale-110 transition-transform duration-300"
+/>
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
