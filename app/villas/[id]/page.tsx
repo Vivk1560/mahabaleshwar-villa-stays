@@ -135,6 +135,18 @@ export default async function VillaDetailPage({ params }: PageProps) {
   };
 
   return (
+    const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: villa.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
     <main className="min-h-screen bg-background">
       <script
         type="application/ld+json"
@@ -220,6 +232,106 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">{villa.address}</p>
               </div>
+              {/* Long Description */}
+<section className="py-12 border-t border-border">
+  <div className="max-w-5xl mx-auto px-4">
+    <h2 className="font-playfair text-3xl font-bold text-foreground mb-6">
+      About {villa.name}
+    </h2>
+
+    <div className="space-y-5 text-muted-foreground leading-8 text-lg">
+      {villa.longDescription
+        .split('. ')
+        .filter(Boolean)
+        .map((paragraph, index) => (
+          <p key={index}>
+            {paragraph.trim()}
+            {paragraph.endsWith('.') ? '' : '.'}
+          </p>
+        ))}
+    </div>
+  </div>
+</section>
+
+{/* Amenities */}
+<section className="py-12 border-t border-border bg-card">
+  <div className="max-w-5xl mx-auto px-4">
+    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+      Amenities at {villa.name}
+    </h2>
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {villa.amenities.map((amenity, index) => (
+        <div
+          key={index}
+          className="bg-background border border-border rounded-xl px-4 py-3 text-foreground"
+        >
+          ✓ {amenity}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* Nearby Attractions */}
+<section className="py-12 border-t border-border">
+  <div className="max-w-5xl mx-auto px-4">
+    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+      Nearby Attractions
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-5">
+      {villa.nearbyAttractions.map((place, index) => (
+        <div
+          key={index}
+          className="border border-border rounded-2xl p-5 bg-card"
+        >
+          <h3 className="font-semibold text-lg text-foreground">
+            {place.name}
+          </h3>
+
+          <p className="text-muted-foreground mt-2">
+            Distance: {place.distance}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* FAQ Section */}
+<section className="py-12 border-t border-border bg-card">
+  <div className="max-w-5xl mx-auto px-4">
+
+    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+      Frequently Asked Questions
+    </h2>
+
+    <div className="space-y-5">
+      {villa.faqs.map((faq, index) => (
+        <details
+          key={index}
+          className="group border border-border rounded-2xl p-6 bg-background"
+        >
+          <summary className="flex justify-between items-center cursor-pointer list-none">
+            <h3 className="font-semibold text-lg text-foreground pr-5">
+              {faq.q}
+            </h3>
+
+            <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
+              +
+            </span>
+          </summary>
+
+          <p className="mt-5 text-muted-foreground leading-7">
+            {faq.a}
+          </p>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>
 
               {/* Description */}
               <div>
