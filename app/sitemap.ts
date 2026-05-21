@@ -1,6 +1,17 @@
+// app/sitemap.ts
 import { MetadataRoute } from 'next'
 import villas from '@/lib/data/villas.json'
 import blogs from '@/lib/data/blogs.json'
+
+// All 6 programmatic category slugs
+const CATEGORY_SLUGS = [
+  'pool-villas-in-mahabaleshwar',
+  'family-villas-in-mahabaleshwar',
+  'couple-villas-in-mahabaleshwar',
+  'group-villas-in-mahabaleshwar',
+  'valley-view-villas-in-mahabaleshwar',
+  'budget-villas-in-mahabaleshwar',
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.mahabaleshwarvillastays.com'
@@ -52,11 +63,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // ✅ NEW — Programmatic Category Pages (real URLs, not query params)
+  const categoryPages: MetadataRoute.Sitemap = CATEGORY_SLUGS.map((slug) => ({
+    url: `${baseUrl}/villas/category/${slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }))
+
   // Dynamic Villa Pages
   const villaPages: MetadataRoute.Sitemap = villas.map((villa) => ({
     url: `${baseUrl}/villas/${villa.id}`,
     lastModified: now,
-    changeFrequency: 'weekly',
+    changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
 
@@ -64,12 +83,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPages: MetadataRoute.Sitemap = blogs.map((blog) => ({
     url: `${baseUrl}/blogs/${blog.slug}`,
     lastModified: now,
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
   return [
     ...staticPages,
+    ...categoryPages,
     ...villaPages,
     ...blogPages,
   ]
