@@ -29,6 +29,10 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`,
     description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities. Personalized booking and concierge service available.`,
     keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, Mahabaleshwar vacation rentals`,
+    // ✅ FIX 1 — Canonical tag added
+    alternates: {
+      canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
+    },
   };
 }
 
@@ -53,35 +57,35 @@ export default async function VillaDetailPage({ params }: PageProps) {
       {/* Image Gallery */}
       <section className="pt-16 md:pt-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          {/* Main Gallery Grid - 5 Images */}
-          {/* Premium Gallery Grid - 8 Images */}
-<div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 rounded-2xl overflow-hidden shadow-elevated">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 rounded-2xl overflow-hidden shadow-elevated">
 
-  {/* Main Large Image */}
-  <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
-    <Image
-      src={villa.images.listing}
-      alt={`${villa.name} - Main image`}
-      fill
-      className="object-cover hover:scale-105 transition duration-500"
-    />
-  </div>
+            {/* Main Large Image */}
+            <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
+              <Image
+                src={villa.images.listing}
+                // ✅ FIX 2 — Descriptive main image alt text
+                alt={`${villa.name} luxury villa in ${villa.location} Mahabaleshwar`}
+                fill
+                className="object-cover hover:scale-105 transition duration-500"
+              />
+            </div>
 
-  {/* Gallery Images */}
-  {villa.images.gallery.slice(0, 7).map((image, index) => (
-    <div
-      key={index}
-      className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
-    >
-      <Image
-        src={image}
-        alt={`${villa.name} - Gallery image ${index + 1}`}
-        fill
-        className="object-cover hover:scale-105 transition duration-500"
-      />
-    </div>
-  ))}
-</div>
+            {/* Gallery Images */}
+            {villa.images.gallery.slice(0, 7).map((image, index) => (
+              <div
+                key={index}
+                className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
+              >
+                <Image
+                  src={image}
+                  // ✅ FIX 2 — Descriptive gallery alt text
+                  alt={`${villa.name} ${villa.location} Mahabaleshwar - interior view ${index + 1}`}
+                  fill
+                  className="object-cover hover:scale-105 transition duration-500"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -183,7 +187,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
             {/* Sidebar - Booking */}
             <div className="md:col-span-1">
               <div className="bg-card border border-border rounded-lg p-6 md:p-8 md:sticky md:top-24 space-y-8">
-                {/* Header */}
                 <div className="text-center space-y-3">
                   <p className="font-playfair text-2xl md:text-3xl font-bold text-foreground">Plan Your Stay</p>
                   <p className="text-sm text-muted-foreground">Personalized booking experience</p>
@@ -191,7 +194,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 <div className="border-t border-border" />
 
-                {/* Capacity */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -206,8 +208,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 <div className="border-t border-border" />
 
-                {/* Primary CTA - WhatsApp */}
-                <a
+                
                   href={`https://wa.me/9921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -217,8 +218,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   WhatsApp Inquiry
                 </a>
 
-                {/* Secondary CTA - Call */}
-                <a
+                
                   href={`tel:8080557611`}
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
@@ -226,7 +226,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   Call Now
                 </a>
 
-                {/* Trust Message */}
                 <div className="bg-muted/40 rounded-lg p-4 text-center space-y-1">
                   <p className="text-sm font-semibold text-foreground">Premium Service</p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
