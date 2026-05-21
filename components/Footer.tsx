@@ -8,6 +8,7 @@ export function Footer() {
     <footer className="bg-card border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
+
           {/* About */}
           <div className="space-y-3">
             <h3 className="font-playfair text-lg font-bold text-foreground">
@@ -38,61 +39,67 @@ export function Footer() {
           </div>
 
           {/* Contact Info */}
-          // Find the Contact section in your footer and replace with:
+          <div className="space-y-3">
+            <h4 className="font-playfair font-bold text-foreground">Contact</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <a href="tel:8080557611" className="hover:text-foreground transition-colors">
+                  📞 8080557611
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/919921372661" className="hover:text-foreground transition-colors">
+                  💬 WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href="mailto:rajeshgarela0@gmail.com" className="hover:text-foreground transition-colors">
+                  ✉️ rajeshgarela0@gmail.com
+                </a>
+              </li>
+              <li className="leading-snug">
+                📍 Bhilar, Panchgani Mahabaleshwar Road,<br />
+                Poladpur Mahabaleshwar Road,<br />
+                Satara, Maharashtra – 412806
+              </li>
+            </ul>
+          </div>
 
-<div>
-  <h4 className="font-semibold text-sm mb-3">Contact</h4>
-  <ul className="space-y-2 text-sm text-muted-foreground">
-    <li>
-      <a href="tel:8080557611" className="hover:text-foreground transition-colors">
-        📞 8080557611
-      </a>
-    </li>
-    <li>
-      <a href="https://wa.me/919921372661" className="hover:text-foreground transition-colors">
-        💬 WhatsApp
-      </a>
-    </li>
-    <li>
-      <a href="mailto:rajeshgarela0@gmail.com" className="hover:text-foreground transition-colors">
-        ✉️ rajeshgarela0@gmail.com
-      </a>
-    </li>
-    <li className="leading-snug">
-      📍 Bhilar, Panchgani Mahabaleshwar Road,<br />
-      Poladpur Mahabaleshwar Road,<br />
-      Satara, Maharashtra – 412806
-    </li>
-  </ul>
-</div>
+        </div>{/* END grid */}
 
         {/* Divider */}
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm">
-             © {new Date().getFullYear()} Mahabaleshwar Villa Stays. All rights reserved.
+              © {new Date().getFullYear()} Mahabaleshwar Villa Stays. All rights reserved.
             </p>
             <div className="flex gap-4">
-              <Link href="/privacy-policy">Privacy Policy</Link>
-<Link href="/terms-of-service">Terms of Service</Link>
+              <Link href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-of-service" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Developer Credit */}
+        <div className="border-t border-white/10 mt-4 pt-4 text-center">
+          <p className="text-xs text-gray-500">
+            Designed & Developed by{" "}
+            
+              href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
+            >
+              Vivaan Kukreja
+            </a>
+          </p>
+        </div>
+
       </div>
-      {/* Developer Credit */}
-<div className="border-t border-white/10 mt-4 pt-4 text-center">
-  <p className="text-xs text-gray-500">
-    Designed & Developed by{" "}
-    
-    <a  href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
-    >
-      Vivaan Kukreja
-    </a>
-  </p>
-</div>
     </footer>
   );
 }
