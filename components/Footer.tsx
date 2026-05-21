@@ -72,12 +72,8 @@ export function Footer() {
              © {new Date().getFullYear()} Mahabaleshwar Villa Stays. All rights reserved.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                Terms of Service
-              </a>
+              <Link href="/privacy-policy">Privacy Policy</Link>
+<Link href="/terms-of-service">Terms of Service</Link>
             </div>
           </div>
         </div>
