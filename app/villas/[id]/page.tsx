@@ -62,6 +62,9 @@ export default async function VillaDetailPage({ params }: PageProps) {
     Kitchen: <UtensilsCrossed className="w-5 h-5" />,
   };
 
+  // ✅ FIX: safely parse BHK number from strings like "4 BHK", "8 BHK"
+  const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
+
   const vacationRentalSchema = {
     '@context': 'https://schema.org',
     '@type': 'LodgingBusiness',
@@ -79,7 +82,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
       postalCode: '412806',
       addressCountry: 'IN',
     },
-    numberOfRooms: parseInt(villa.bhk),
+    numberOfRooms: bhkNumber,
     amenityFeature: villa.amenities.map((amenity) => ({
       '@type': 'LocationFeatureSpecification',
       name: amenity,
@@ -137,7 +140,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
                 src={villa.images.listing}
-                alt={`${villa.name} luxury villa in ${villa.location} Mahabaleshwar`}
+                alt={`${villa.name} - ${villa.bhk} luxury villa with ${villa.amenities.includes('Valley View') ? 'valley views' : 'premium amenities'} in Mahabaleshwar`}
                 fill
                 className="object-cover hover:scale-105 transition duration-500"
               />
@@ -149,7 +152,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
               >
                 <Image
                   src={image}
-                  alt={`${villa.name} ${villa.location} Mahabaleshwar - interior view ${index + 1}`}
+                  alt={`${villa.name} Mahabaleshwar - ${villa.amenities[index] || 'interior'} view, ${villa.bhk} villa near ${villa.location}`}
                   fill
                   className="object-cover hover:scale-105 transition duration-500"
                 />
@@ -291,7 +294,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 <div className="border-t border-border" />
 
                 
-                  <a href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
+                <a  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
@@ -301,7 +304,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </a>
 
                 
-                  <a href="tel:8080557611"
+                <a  href="tel:8080557611"
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
