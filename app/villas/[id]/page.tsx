@@ -7,6 +7,7 @@ import { Star, MapPin, Users, Wifi, UtensilsCrossed, MessageCircle, Phone } from
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
+import React from 'react';
 
 interface PageProps {
   params: Promise<{
@@ -41,8 +42,10 @@ export async function generateMetadata({ params }: PageProps) {
   index: true,
   follow: true,
 },
+    authors: [{ name: 'Mahabaleshwar Villa Stays' }],
     openGraph: {
-      type: 'article',
+      siteName: 'Mahabaleshwar Villa Stays',
+      type: 'website',
       url: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
       title: `${villa.name} - Luxury Villa in Mahabaleshwar`,
       description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`,
@@ -92,7 +95,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
       postalCode: '412806',
       addressCountry: 'IN',
     },
-    numberOfRooms: bhkNumber,
+    numberOfRooms: villa.capacity,
     amenityFeature: villa.amenities.map((amenity) => ({
       '@type': 'LocationFeatureSpecification',
       name: amenity,
@@ -149,23 +152,32 @@ export default async function VillaDetailPage({ params }: PageProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 rounded-2xl overflow-hidden shadow-elevated">
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
-                src={villa.images.listing}
-                alt={`${villa.name} - ${villa.bhk} luxury villa with ${villa.amenities.includes('Valley View') ? 'valley views' : 'premium amenities'} in Mahabaleshwar`}
-                fill
-                className="object-cover hover:scale-105 transition duration-500"
-              />
+  src={villa.images.listing}
+  alt={`${villa.name} - ${villa.bhk} luxury villa with ${
+    villa.amenities.includes('Valley View')
+      ? 'valley views'
+      : 'premium amenities'
+  } in Mahabaleshwar`}
+  fill
+  priority
+  sizes="(max-width: 768px) 100vw, 50vw"
+  className="object-cover hover:scale-105 transition duration-500"
+/>
             </div>
             {villa.images.gallery.slice(0, 7).map((image, index) => (
               <div
                 key={index}
                 className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
               >
-                <Image
-                  src={image}
-                  alt={`${villa.name} Mahabaleshwar - ${villa.amenities[index] || 'interior'} view, ${villa.bhk} villa near ${villa.location}`}
-                  fill
-                  className="object-cover hover:scale-105 transition duration-500"
-                />
+               <Image
+  src={image}
+  alt={`${villa.name} Mahabaleshwar - ${
+    villa.amenities[index] || 'interior'
+  } view, ${villa.bhk} villa near ${villa.location}`}
+  fill
+  sizes="(max-width: 768px) 50vw, 25vw"
+  className="object-cover hover:scale-105 transition duration-500"
+/>
               </div>
             ))}
           </div>
