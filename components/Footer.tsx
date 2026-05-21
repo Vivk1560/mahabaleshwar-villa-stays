@@ -38,32 +38,33 @@ export function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-3">
-            <h4 className="font-playfair font-bold text-foreground">Contact</h4>
-            <div className="space-y-2 text-sm">
-              <a
-                href={`tel:${contactData.phone}`}
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                {contactData.phone}
-              </a>
-              <a
-                href={`https://wa.me/${contactData.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp
-              </a>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4" />
-                Mahabaleshwar, Maharashtra
-              </div>
-            </div>
-          </div>
-        </div>
+          // Find the Contact section in your footer and replace with:
+
+<div>
+  <h4 className="font-semibold text-sm mb-3">Contact</h4>
+  <ul className="space-y-2 text-sm text-muted-foreground">
+    <li>
+      <a href="tel:8080557611" className="hover:text-foreground transition-colors">
+        📞 8080557611
+      </a>
+    </li>
+    <li>
+      <a href="https://wa.me/919921372661" className="hover:text-foreground transition-colors">
+        💬 WhatsApp
+      </a>
+    </li>
+    <li>
+      <a href="mailto:rajeshgarela0@gmail.com" className="hover:text-foreground transition-colors">
+        ✉️ rajeshgarela0@gmail.com
+      </a>
+    </li>
+    <li className="leading-snug">
+      📍 Bhilar, Panchgani Mahabaleshwar Road,<br />
+      Poladpur Mahabaleshwar Road,<br />
+      Satara, Maharashtra – 412806
+    </li>
+  </ul>
+</div>
 
         {/* Divider */}
         <div className="border-t border-border pt-8">
