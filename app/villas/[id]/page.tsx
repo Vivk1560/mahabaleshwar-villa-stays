@@ -133,9 +133,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
       },
     ],
   };
-
-  return (
-    const faqSchema = {
+ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: villa.faqs.map((faq) => ({
@@ -147,7 +145,14 @@ export default async function VillaDetailPage({ params }: PageProps) {
     },
   })),
 };
+  return (
     <main className="min-h-screen bg-background">
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(faqSchema),
+  }}
+/>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
@@ -281,7 +286,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
     </h2>
 
     <div className="grid md:grid-cols-2 gap-5">
-      {villa.nearbyAttractions.map((place, index) => (
+      {villa.nearbyAttractions?.map((place, index) => (
         <div
           key={index}
           className="border border-border rounded-2xl p-5 bg-card"
@@ -308,7 +313,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
     </h2>
 
     <div className="space-y-5">
-      {villa.faqs.map((faq, index) => (
+      {villa.faqs?.map((faq, index) => (
         <details
           key={index}
           className="group border border-border rounded-2xl p-6 bg-background"
@@ -333,62 +338,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
   </div>
 </section>
 
-              {/* Description */}
-              <div>
-                <h2 className="font-playfair text-2xl font-bold text-foreground mb-3">
-                  About this Villa
-                </h2>
-                <p className="text-lg text-foreground leading-relaxed">{villa.description}</p>
-              </div>
-              {/* Experience Section */}
-<div className="space-y-4">
-  <h2 className="font-playfair text-3xl font-bold text-foreground">
-    Experience Luxury in Mahabaleshwar
-  </h2>
-
-  <p className="text-lg text-muted-foreground leading-relaxed">
-    Wake up to breathtaking views and enjoy a peaceful stay at {villa.name},
-    one of the most premium villas in Mahabaleshwar. Perfect for families,
-    couples, and group stays, this villa offers a blend of comfort, privacy,
-    and nature. Located near popular attractions in {villa.location},
-    guests can enjoy easy access to sightseeing points, local cafes,
-    strawberry farms, and scenic valleys while experiencing luxury amenities
-    and personalized hospitality.
-  </p>
-</div>
-                        {/* Nearby Attractions */}
-          <div className="space-y-4">
-            <h2 className="font-playfair text-3xl font-bold text-foreground">
-              Nearby Attractions
-            </h2>
-          
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Guests staying at {villa.name} can easily explore some of the most popular
-              attractions in Mahabaleshwar including Mapro Garden, Venna Lake,
-              Wilson Point, Lingmala Waterfall, Elephant’s Head Point,
-              and the famous strawberry farms near {villa.location}.
-            </p>
-          </div>
-              {/* Amenities */}
-              <div className="space-y-4">
-                <h2 className="font-playfair text-3xl font-bold text-foreground">
-                  Amenities
-                </h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {villa.amenities.map((amenity, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-4 bg-white border border-border rounded-lg p-5 hover:shadow-sm transition-shadow"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                        {amenityIcons[amenity] || <span className="text-sm font-semibold">✓</span>}
-                      </div>
-                      <span className="text-foreground font-semibold text-base">{amenity}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
+             
               {/* Reviews */}
               {villaReviews.length > 0 && (
                 <div className="space-y-4">
