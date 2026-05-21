@@ -210,13 +210,13 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 
                   href={`https://wa.me/9921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp Inquiry
-                </a>
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
+>
+  <MessageCircle className="w-5 h-5" />
+  WhatsApp Inquiry
+</a>
 
                 
                   href={`tel:8080557611`}
