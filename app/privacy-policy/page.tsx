@@ -241,7 +241,7 @@ export default function PrivacyPolicyPage() {
                     href="mailto:info@mahabaleshwarvillastays.com"
                     className="text-primary hover:underline"
                   >
-                    info@mahabaleshwarvillastays.com
+                    rajeshgarela0@gmail.com
                   </a>
                 </p>
                 <p>
