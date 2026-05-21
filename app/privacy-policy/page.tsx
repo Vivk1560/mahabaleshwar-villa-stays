@@ -238,7 +238,7 @@ export default function PrivacyPolicyPage() {
                 <p>
                   <strong className="text-foreground">Email:</strong>{' '}
                   <a
-                    href="mailto:info@mahabaleshwarvillastays.com"
+                    href="mailto:rajeshgarela0@gmail.com"
                     className="text-primary hover:underline"
                   >
                     rajeshgarela0@gmail.com
