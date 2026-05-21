@@ -1,9 +1,19 @@
+// app/villas/[id]/page.tsx
+// ─────────────────────────────────────────────────────────────────────────────
+// Changes in this version:
+//  1. generateMetadata now uses villa.seoTitle + villa.seoDescription
+//  2. Visible breadcrumb nav added (BreadcrumbList schema was already there)
+//  3. RelatedVillas section added after FAQ
+// ─────────────────────────────────────────────────────────────────────────────
+
 import Image from 'next/image';
+import Link from 'next/link';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ReviewCard } from '@/components/ReviewCard';
-import { Star, MapPin, Users, Wifi, UtensilsCrossed, MessageCircle, Phone } from 'lucide-react';
+import { RelatedVillas } from '@/components/RelatedVillas';
+import { Star, MapPin, Users, Wifi, UtensilsCrossed, MessageCircle, Phone, ChevronRight, Home } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
@@ -25,38 +35,44 @@ export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
   const villa = villas.find((v) => v.id === resolvedParams.id);
   if (!villa) return {};
+
+  // ✅ NOW uses seoTitle + seoDescription from villas.json
+  const title = villa.seoTitle || `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`;
+  const description = villa.seoDescription || `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`;
+
   return {
     metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title: `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`,
-    description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities. Personalized booking and concierge service available.`,
-    keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, Mahabaleshwar vacation rentals`,
+    title,
+    description,
+    keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, ${villa.bhk} villa Mahabaleshwar, Mahabaleshwar vacation rentals, private pool villa Mahabaleshwar`,
     alternates: {
       canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
     },
-    twitter: {
-  card: 'summary_large_image',
-  title: `${villa.name} - Luxury Villa in Mahabaleshwar`,
-  description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`,
-  images: [`https://www.mahabaleshwarvillastays.com${villa.images.listing}`],
-},robots: {
-  index: true,
-  follow: true,
-},
+    robots: {
+      index: true,
+      follow: true,
+    },
     authors: [{ name: 'Mahabaleshwar Villa Stays' }],
     openGraph: {
       siteName: 'Mahabaleshwar Villa Stays',
       type: 'website',
       url: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
-      title: `${villa.name} - Luxury Villa in Mahabaleshwar`,
-      description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`,
+      title,
+      description,
       images: [
         {
           url: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
           width: 1200,
           height: 630,
-          alt: `${villa.name} luxury villa in Mahabaleshwar`,
+          alt: `${villa.name} – ${villa.bhk} luxury villa in Mahabaleshwar`,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`https://www.mahabaleshwarvillastays.com${villa.images.listing}`],
     },
   };
 }
@@ -75,14 +91,15 @@ export default async function VillaDetailPage({ params }: PageProps) {
     Kitchen: <UtensilsCrossed className="w-5 h-5" />,
   };
 
-  // ✅ FIX: safely parse BHK number from strings like "4 BHK", "8 BHK"
+  // ✅ Safely parse BHK number
   const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
 
+  // ── Structured Data ──────────────────────────────────────────────────────
   const vacationRentalSchema = {
     '@context': 'https://schema.org',
     '@type': 'LodgingBusiness',
     name: villa.name,
-    description: villa.description,
+    description: villa.seoDescription || villa.description,
     url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
     image: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
     telephone: '+918080557611',
@@ -95,7 +112,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
       postalCode: '412806',
       addressCountry: 'IN',
     },
-    numberOfRooms: villa.capacity,
+    numberOfRooms: bhkNumber,
     amenityFeature: villa.amenities.map((amenity) => ({
       '@type': 'LocationFeatureSpecification',
       name: amenity,
@@ -133,26 +150,27 @@ export default async function VillaDetailPage({ params }: PageProps) {
       },
     ],
   };
- const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: villa.faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
-  })),
-};
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: villa.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-background">
+      {/* Structured Data */}
       <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify(faqSchema),
-  }}
-/>
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
@@ -161,47 +179,84 @@ export default async function VillaDetailPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+
       <NavBar />
 
-      {/* Image Gallery */}
-      <section className="pt-16 md:pt-20 px-4 bg-background">
+      {/* ── VISIBLE BREADCRUMB NAV ─────────────────────────────────────────── */}
+      {/* Fixes the "80% solved" breadcrumb issue — now fully visible to users & crawlers */}
+      <nav
+        aria-label="Breadcrumb"
+        className="pt-20 pb-2 px-4 bg-background"
+      >
+        <div className="max-w-7xl mx-auto">
+          <ol className="flex items-center flex-wrap gap-1 text-sm text-muted-foreground">
+            <li>
+              <Link
+                href="/"
+                className="flex items-center gap-1 hover:text-primary transition-colors"
+              >
+                <Home className="w-3.5 h-3.5" />
+                <span>Home</span>
+              </Link>
+            </li>
+            <li className="flex items-center gap-1">
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link
+                href="/villas"
+                className="hover:text-primary transition-colors"
+              >
+                Villas
+              </Link>
+            </li>
+            <li className="flex items-center gap-1">
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-foreground font-medium truncate max-w-[200px] sm:max-w-none">
+                {villa.name}
+              </span>
+            </li>
+          </ol>
+        </div>
+      </nav>
+
+      {/* ── Image Gallery ──────────────────────────────────────────────────── */}
+      <section className="pt-4 pb-2 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 rounded-2xl overflow-hidden shadow-elevated">
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
-  src={villa.images.listing}
-  alt={`${villa.name} - ${villa.bhk} luxury villa with ${
-    villa.amenities.includes('Valley View')
-      ? 'valley views'
-      : 'premium amenities'
-  } in Mahabaleshwar`}
-  fill
-  priority
-  sizes="(max-width: 768px) 100vw, 50vw"
-  className="object-cover hover:scale-105 transition duration-500"
-/>
+                src={villa.images.listing}
+                alt={`${villa.name} – ${villa.bhk} luxury villa with ${
+                  villa.amenities.includes('Valley View')
+                    ? 'valley views'
+                    : 'premium amenities'
+                } in Mahabaleshwar`}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition duration-500"
+              />
             </div>
             {villa.images.gallery.slice(0, 7).map((image, index) => (
               <div
                 key={index}
                 className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
               >
-               <Image
-  src={image}
-  alt={`${villa.name} Mahabaleshwar - ${
-    villa.amenities[index] || 'interior'
-  } view, ${villa.bhk} villa near ${villa.location}`}
-  fill
-  sizes="(max-width: 768px) 50vw, 25vw"
-  className="object-cover hover:scale-105 transition duration-500"
-/>
+                <Image
+                  src={image}
+                  alt={`${villa.name} Mahabaleshwar – ${
+                    villa.amenities[index] || 'interior'
+                  } view, ${villa.bhk} villa near ${villa.location}`}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover hover:scale-105 transition duration-500"
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Villa Details */}
+      {/* ── Villa Details ──────────────────────────────────────────────────── */}
       <section className="py-12 md:py-16 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
@@ -237,111 +292,102 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">{villa.address}</p>
               </div>
+
               {/* Long Description */}
-<section className="py-12 border-t border-border">
-  <div className="max-w-5xl mx-auto px-4">
-    <h2 className="font-playfair text-3xl font-bold text-foreground mb-6">
-      About {villa.name}
-    </h2>
+              <section className="py-12 border-t border-border">
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="font-playfair text-3xl font-bold text-foreground mb-6">
+                    About {villa.name}
+                  </h2>
+                  <div className="space-y-5 text-muted-foreground leading-8 text-lg">
+                    {villa.longDescription
+                      .split('. ')
+                      .filter(Boolean)
+                      .map((paragraph, index) => (
+                        <p key={index}>
+                          {paragraph.trim()}
+                          {paragraph.endsWith('.') ? '' : '.'}
+                        </p>
+                      ))}
+                  </div>
+                </div>
+              </section>
 
-    <div className="space-y-5 text-muted-foreground leading-8 text-lg">
-      {villa.longDescription
-        .split('. ')
-        .filter(Boolean)
-        .map((paragraph, index) => (
-          <p key={index}>
-            {paragraph.trim()}
-            {paragraph.endsWith('.') ? '' : '.'}
-          </p>
-        ))}
-    </div>
-  </div>
-</section>
+              {/* Amenities */}
+              <section className="py-12 border-t border-border bg-card">
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+                    Amenities at {villa.name}
+                  </h2>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {villa.amenities.map((amenity, index) => (
+                      <div
+                        key={index}
+                        className="bg-background border border-border rounded-xl px-4 py-3 text-foreground"
+                      >
+                        ✓ {amenity}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
 
-{/* Amenities */}
-<section className="py-12 border-t border-border bg-card">
-  <div className="max-w-5xl mx-auto px-4">
-    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
-      Amenities at {villa.name}
-    </h2>
+              {/* Nearby Attractions */}
+              <section className="py-12 border-t border-border">
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+                    Nearby Attractions
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-5">
+                    {villa.nearbyAttractions?.map((place, index) => (
+                      <div
+                        key={index}
+                        className="border border-border rounded-2xl p-5 bg-card"
+                      >
+                        <h3 className="font-semibold text-lg text-foreground">{place.name}</h3>
+                        <p className="text-muted-foreground mt-2">Distance: {place.distance}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {villa.amenities.map((amenity, index) => (
-        <div
-          key={index}
-          className="bg-background border border-border rounded-xl px-4 py-3 text-foreground"
-        >
-          ✓ {amenity}
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+              {/* FAQ */}
+              <section className="py-12 border-t border-border bg-card">
+                <div className="max-w-5xl mx-auto">
+                  <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="space-y-5">
+                    {villa.faqs?.map((faq, index) => (
+                      <details
+                        key={index}
+                        className="group border border-border rounded-2xl p-6 bg-background"
+                      >
+                        <summary className="flex justify-between items-center cursor-pointer list-none">
+                          <h3 className="font-semibold text-lg text-foreground pr-5">{faq.q}</h3>
+                          <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
+                            +
+                          </span>
+                        </summary>
+                        <p className="mt-5 text-muted-foreground leading-7">{faq.a}</p>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              </section>
 
-{/* Nearby Attractions */}
-<section className="py-12 border-t border-border">
-  <div className="max-w-5xl mx-auto px-4">
-    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
-      Nearby Attractions
-    </h2>
+              {/* ── RELATED VILLAS ─────────────────────────────────────────── */}
+              {/* Resolves Issue #5 — "You Might Also Like" with internal linking */}
+              <RelatedVillas
+                currentId={villa.id}
+                currentCategory={villa.category}
+                currentCapacity={villa.capacity}
+              />
 
-    <div className="grid md:grid-cols-2 gap-5">
-      {villa.nearbyAttractions?.map((place, index) => (
-        <div
-          key={index}
-          className="border border-border rounded-2xl p-5 bg-card"
-        >
-          <h3 className="font-semibold text-lg text-foreground">
-            {place.name}
-          </h3>
-
-          <p className="text-muted-foreground mt-2">
-            Distance: {place.distance}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* FAQ Section */}
-<section className="py-12 border-t border-border bg-card">
-  <div className="max-w-5xl mx-auto px-4">
-
-    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
-      Frequently Asked Questions
-    </h2>
-
-    <div className="space-y-5">
-      {villa.faqs?.map((faq, index) => (
-        <details
-          key={index}
-          className="group border border-border rounded-2xl p-6 bg-background"
-        >
-          <summary className="flex justify-between items-center cursor-pointer list-none">
-            <h3 className="font-semibold text-lg text-foreground pr-5">
-              {faq.q}
-            </h3>
-
-            <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
-              +
-            </span>
-          </summary>
-
-          <p className="mt-5 text-muted-foreground leading-7">
-            {faq.a}
-          </p>
-        </details>
-      ))}
-    </div>
-
-  </div>
-</section>
-
-             
               {/* Reviews */}
               {villaReviews.length > 0 && (
-                <div className="space-y-4">
+                <div className="space-y-4 py-8 border-t border-border">
                   <h2 className="font-playfair text-3xl font-bold text-foreground">
                     Guest Reviews
                   </h2>
@@ -381,11 +427,13 @@ export default async function VillaDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Sidebar - Booking */}
+            {/* Sidebar — Booking */}
             <div className="md:col-span-1">
               <div className="bg-card border border-border rounded-lg p-6 md:p-8 md:sticky md:top-24 space-y-8">
                 <div className="text-center space-y-3">
-                  <p className="font-playfair text-2xl md:text-3xl font-bold text-foreground">Plan Your Stay</p>
+                  <p className="font-playfair text-2xl md:text-3xl font-bold text-foreground">
+                    Plan Your Stay
+                  </p>
                   <p className="text-sm text-muted-foreground">Personalized booking experience</p>
                 </div>
 
@@ -397,16 +445,20 @@ export default async function VillaDetailPage({ params }: PageProps) {
                       <Users className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Guest Capacity</p>
-                      <p className="font-semibold text-foreground text-base mt-0.5">Up to {villa.capacity} guests</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                        Guest Capacity
+                      </p>
+                      <p className="font-semibold text-foreground text-base mt-0.5">
+                        Up to {villa.capacity} guests
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="border-t border-border" />
 
-                
-                <a  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
+                <a
+                  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
@@ -415,8 +467,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   WhatsApp Inquiry
                 </a>
 
-                
-                <a  href="tel:8080557611"
+                <a
+                  href="tel:8080557611"
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
