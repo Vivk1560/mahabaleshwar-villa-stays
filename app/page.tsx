@@ -82,7 +82,36 @@ export default function Home() {
     name: 'Mahabaleshwar Villa Stays',
     url: 'https://www.mahabaleshwarvillastays.com',
   };
-
+    const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How many villas does Mahabaleshwar Villa Stays offer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We offer 25+ premium curated villas including pool villas, family villas, couple villas, group villas, valley view villas, and budget villas across Mahabaleshwar and Panchgani.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I book a villa in Mahabaleshwar?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You can book directly via WhatsApp at +91-9921372661 or call us at 8080557611.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What amenities are available in your Mahabaleshwar villas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our villas include valley views, private pools, WiFi, hot water, parking, power backup, indoor games, BBQ areas, and caretaker availability.',
+      },
+    },
+  ],
+};
   return (
     <main className="min-h-screen bg-background">
 
@@ -99,6 +128,12 @@ export default function Home() {
           __html: JSON.stringify(websiteSchema),
         }}
       />
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(faqSchema),
+  }}
+/>
 
       <NavBar />
 
