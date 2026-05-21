@@ -1,10 +1,3 @@
-// app/blogs/[slug]/page.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-// SERVER COMPONENT — statically generated at build time for all blog slugs.
-// Full SEO: per-blog canonical, OG tags, Twitter cards, Article schema,
-// BreadcrumbList schema, per-blog keywords, and proper meta description.
-// ─────────────────────────────────────────────────────────────────────────────
-
 import Image from 'next/image'
 import Link from 'next/link'
 import { NavBar } from '@/components/NavBar'
@@ -17,9 +10,9 @@ import villas from '@/lib/data/villas.json'
 import { notFound } from 'next/navigation'
 
 interface PageProps {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
 // ── Static params ─────────────────────────────────────────────────────────────
