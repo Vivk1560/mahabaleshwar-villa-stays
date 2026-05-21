@@ -7,10 +7,32 @@ export const metadata = {
   title: 'Contact Us | Mahabaleshwar Villa Stays - WhatsApp Inquiry',
   description: 'Contact Mahabaleshwar Villa Stays. Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
   keywords: 'contact Mahabaleshwar Villa Stays, WhatsApp booking, villa inquiry, concierge service, Mahabaleshwar',
+  alternates: {
+    canonical: 'https://www.mahabaleshwarvillastays.com/contact',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://www.mahabaleshwarvillastays.com/contact',
+    title: 'Contact Us | Mahabaleshwar Villa Stays - WhatsApp Inquiry',
+    description: 'Contact Mahabaleshwar Villa Stays. Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Mahabaleshwar Villa Stays',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Mahabaleshwar Villa Stays',
+    description: 'Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function ContactPage() {
-
   return (
     <main className="min-h-screen bg-background">
       <NavBar />
