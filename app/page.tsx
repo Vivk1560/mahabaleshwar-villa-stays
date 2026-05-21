@@ -13,10 +13,11 @@ import villas from '@/lib/data/villas.json';
 import testimonials from '@/lib/data/testimonials.json';
 
 export const metadata: Metadata = {
-  // ✅ title uses template from layout.tsx → "Home | Mahabaleshwar Villa Stays"
   title: 'Luxury Villas & Vacation Rentals in Mahabaleshwar',
+
   description:
     'Discover 25+ premium luxury villas in Mahabaleshwar with breathtaking valley views. Pool villas, family villas, couple villas & group villas. Direct WhatsApp booking.',
+
   keywords: [
     'Mahabaleshwar villas',
     'luxury villas Mahabaleshwar',
@@ -29,24 +30,76 @@ export const metadata: Metadata = {
     'villa near Mapro Garden',
     'budget villa Mahabaleshwar',
   ],
-  // ✅ Canonical for homepage
+
   alternates: {
     canonical: 'https://www.mahabaleshwarvillastays.com',
   },
+
   openGraph: {
     title: 'Luxury Villas & Vacation Rentals in Mahabaleshwar',
     description:
       'Discover 25+ premium luxury villas in Mahabaleshwar. Pool villas, family villas, couple villas & group villas. Direct WhatsApp booking.',
     type: 'website',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    images: [
+      {
+        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Luxury Villas & Vacation Rentals in Mahabaleshwar',
+    description:
+      'Discover 25+ premium luxury villas in Mahabaleshwar with breathtaking valley views.',
+    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 };
 
 export default function Home() {
   const featuredVillas = villas.slice(0, 3);
 
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Mahabaleshwar Villa Stays',
+    url: 'https://www.mahabaleshwarvillastays.com',
+    logo: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-8080557611',
+      contactType: 'customer service',
+      areaServed: 'IN',
+      availableLanguage: ['English', 'Hindi'],
+    },
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Mahabaleshwar Villa Stays',
+    url: 'https://www.mahabaleshwarvillastays.com',
+  };
+
   return (
     <main className="min-h-screen bg-background">
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+
       <NavBar />
 
       {/* Hero Section */}
@@ -68,9 +121,12 @@ export default function Home() {
               <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
                 Luxury Villas in Mahabaleshwar
               </h1>
+
               <p className="text-sm sm:text-base md:text-lg text-white/95 leading-relaxed max-w-xl">
-                Experience unparalleled comfort with breathtaking valley views and world-class hospitality. 25+ curated villas for your perfect hill station escape.
+                Experience unparalleled comfort with breathtaking valley views and world-class hospitality.
+                25+ curated villas for your perfect hill station escape.
               </p>
+
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
                 <PremiumButton
                   size="lg"
@@ -80,6 +136,7 @@ export default function Home() {
                   Explore Villas
                   <ArrowRight className="w-5 h-5" />
                 </PremiumButton>
+
                 <Link
                   href="/contact"
                   className="px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors inline-flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base whitespace-nowrap"
@@ -92,24 +149,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEO Intro Section */}
+      <section className="py-16 bg-background px-4">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
+
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground">
+            Discover the Best Luxury Villas in Mahabaleshwar
+          </h2>
+
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Escape into the serene hills of Mahabaleshwar with premium private villas
+            designed for unforgettable experiences. Whether you are planning a romantic
+            getaway, a family vacation, a corporate retreat, or a weekend trip with
+            friends, Mahabaleshwar Villa Stays offers handpicked luxury villas with
+            breathtaking valley views, private pools, spacious living areas, and
+            modern amenities.
+          </p>
+
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            Located near popular attractions like Mapro Garden, Venna Lake, Wilson
+            Point, Lingmala Waterfall, and Panchgani, our curated villa stays provide
+            the perfect balance of comfort, privacy, and nature. Enjoy cool mountain
+            weather, scenic sunrise points, strawberry farms, bonfire evenings, and
+            peaceful escapes in the heart of Maharashtra’s most loved hill station.
+          </p>
+
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 md:py-20 bg-secondary/10 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+
             {[
               { icon: '🏠', label: '25+ Curated Villas', color: 'text-primary' },
               { icon: '🌄', label: 'Valley Views', color: 'text-accent' },
               { icon: '⛰️', label: 'Premium Location', color: 'text-secondary' },
               { icon: '✨', label: 'Luxury Amenities', color: 'text-primary' },
             ].map((item, idx) => (
+
               <div
                 key={idx}
                 className="bg-white rounded-lg p-4 md:p-6 text-center hover:shadow-card transition-shadow"
               >
-                <div className={`text-3xl md:text-4xl mb-2 ${item.color}`}>{item.icon}</div>
-                <p className="font-semibold text-foreground text-sm md:text-base">{item.label}</p>
+                <div className={`text-3xl md:text-4xl mb-2 ${item.color}`}>
+                  {item.icon}
+                </div>
+
+                <p className="font-semibold text-foreground text-sm md:text-base">
+                  {item.label}
+                </p>
               </div>
+
             ))}
+
           </div>
         </div>
       </section>
@@ -118,20 +212,31 @@ export default function Home() {
       <section className="py-16 md:py-20 bg-background px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+
             <div className="space-y-6">
               <SectionTitle
                 title="Experience Mahabaleshwar Luxury"
                 subtitle="Where Comfort Meets Nature"
                 centered={false}
               />
+
               <p className="text-foreground text-base md:text-lg leading-relaxed">
-                Mahabaleshwar Villa Stays offers handpicked properties in one of India&apos;s most scenic hill stations. Each villa is curated to provide exceptional comfort while maintaining authentic local charm and hospitality.
+                Mahabaleshwar Villa Stays offers handpicked properties in one of India&apos;s
+                most scenic hill stations. Each villa is curated to provide exceptional
+                comfort while maintaining authentic local charm and hospitality.
               </p>
+
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                Enjoy breathtaking valley sunsets, cool mountain air, and seamless access to local attractions like Mapro Garden, Venna Lake and Wilson Point. Perfect for families, couples, and groups seeking an unforgettable escape.
+                Enjoy breathtaking valley sunsets, cool mountain air, and seamless access
+                to local attractions like Mapro Garden, Venna Lake and Wilson Point.
+                Perfect for families, couples, and groups seeking an unforgettable escape.
               </p>
-              <PremiumButton href="/about">Learn More About Us</PremiumButton>
+
+              <PremiumButton href="/about">
+                Learn More About Us
+              </PremiumButton>
             </div>
+
             <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/villa-listing-2.jpg"
@@ -140,18 +245,22 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Featured Villas Section */}
+      {/* Featured Villas */}
       <section className="py-20 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto px-4">
+
           <SectionTitle
             title="Featured Villas"
             subtitle="Handpicked selections showcasing the best of Mahabaleshwar"
           />
+
           <div className="grid md:grid-cols-3 gap-8 mt-12">
+
             {featuredVillas.map((villa) => (
               <VillaCard
                 key={villa.id}
@@ -163,24 +272,29 @@ export default function Home() {
                 amenities={villa.amenities}
                 image={villa.images.listing}
                 category={villa.category}
-                // ✅ Removed pricePerNight — not in villas.json
               />
             ))}
+
           </div>
+
           <div className="text-center mt-12">
             <PremiumButton size="lg" href="/villas">
               Explore All Villas
               <ArrowRight className="w-5 h-5" />
             </PremiumButton>
           </div>
+
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4">
+
           <SectionTitle title="Why Choose Mahabaleshwar Villa Stays" />
+
           <div className="grid md:grid-cols-4 gap-6 mt-12">
+
             {[
               {
                 number: '25+',
@@ -203,27 +317,41 @@ export default function Home() {
                 description: 'Deep local knowledge and expertise in Mahabaleshwar tourism',
               },
             ].map((item, idx) => (
+
               <div
                 key={idx}
                 className="bg-card border border-border rounded-lg p-6 text-center space-y-3 hover:shadow-card transition-shadow"
               >
-                <div className="text-4xl font-playfair font-bold text-primary">{item.number}</div>
-                <h3 className="font-playfair font-bold text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.description}</p>
+                <div className="text-4xl font-playfair font-bold text-primary">
+                  {item.number}
+                </div>
+
+                <h3 className="font-playfair font-bold text-foreground">
+                  {item.title}
+                </h3>
+
+                <p className="text-muted-foreground text-sm">
+                  {item.description}
+                </p>
               </div>
+
             ))}
+
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials */}
       <section className="py-20 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto px-4">
+
           <SectionTitle
             title="Guest Testimonials"
             subtitle="Hear from our delighted guests"
           />
+
           <div className="grid md:grid-cols-3 gap-8 mt-12">
+
             {testimonials.map((testimonial) => (
               <ReviewCard
                 key={testimonial.id}
@@ -233,18 +361,22 @@ export default function Home() {
                 comment={testimonial.comment}
               />
             ))}
+
           </div>
         </div>
       </section>
 
-      {/* FAQ Section — ✅ NEW: Helps with Google rich results */}
+      {/* FAQ Section */}
       <section className="py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4">
+
           <SectionTitle
             title="Frequently Asked Questions"
             subtitle="Everything you need to know about booking a villa in Mahabaleshwar"
           />
+
           <div className="mt-12 space-y-4">
+
             {[
               {
                 q: 'How many villas does Mahabaleshwar Villa Stays offer?',
@@ -252,21 +384,14 @@ export default function Home() {
               },
               {
                 q: 'How do I book a villa in Mahabaleshwar?',
-                a: 'You can book directly via WhatsApp at +91-9921372661 or call us at 8080557611. We provide personalized booking assistance with 24/7 concierge support and reply within minutes.',
+                a: 'You can book directly via WhatsApp at +91-9921372661 or call us at 8080557611.',
               },
               {
                 q: 'What amenities are available in your Mahabaleshwar villas?',
-                a: 'Our villas include valley views, private pools, WiFi, hot water, parking, power backup, fully AC rooms, indoor games, BBQ areas, professional cook service, and caretaker availability.',
-              },
-              {
-                q: 'Are there villas available for large groups in Mahabaleshwar?',
-                a: 'Yes! Our group villas accommodate up to 25 guests. Valley View Manor (8 BHK, 25 guests), Nature Haven Villa (7 BHK, 25 guests), and Timeless Elegance Estate (7 BHK, 25 guests) are perfect for large groups.',
-              },
-              {
-                q: 'Which is the best location for villas in Mahabaleshwar?',
-                a: 'Most of our villas are located near Mapro Garden — one of the most popular and well-connected areas in Mahabaleshwar with easy access to Venna Lake, Wilson Point, and the famous strawberry farms.',
+                a: 'Our villas include valley views, private pools, WiFi, hot water, parking, power backup, indoor games, BBQ areas, and caretaker availability.',
               },
             ].map((faq, idx) => (
+
               <details
                 key={idx}
                 className="bg-card border border-border rounded-lg p-6 group"
@@ -275,9 +400,14 @@ export default function Home() {
                   {faq.q}
                   <span className="text-primary ml-4 text-xl">+</span>
                 </summary>
-                <p className="mt-4 text-muted-foreground leading-relaxed">{faq.a}</p>
+
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  {faq.a}
+                </p>
               </details>
+
             ))}
+
           </div>
         </div>
       </section>
@@ -285,31 +415,37 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-border">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground">
             Ready to Book Your Dream Villa?
           </h2>
+
           <p className="text-lg text-muted-foreground">
             Contact us today and let us help you plan the perfect getaway to Mahabaleshwar
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
             <PremiumButton size="lg" href="/contact">
               Contact Us Now
             </PremiumButton>
-            {/* ✅ Fixed WhatsApp number with country code 91 */}
-            
-              <a href="https://wa.me/919921372661"
+
+            <a
+              href="https://wa.me/919921372661"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2"
             >
               Chat on WhatsApp
             </a>
+
           </div>
         </div>
       </section>
 
       <Footer />
       <FloatingButtons />
+
     </main>
   );
 }
