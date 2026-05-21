@@ -401,51 +401,88 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-4xl mx-auto px-4">
+     {/* FAQ Section */}
+<section className="py-20 bg-background">
+  <div className="max-w-5xl mx-auto px-4">
 
-          <SectionTitle
-            title="Frequently Asked Questions"
-            subtitle="Everything you need to know about booking a villa in Mahabaleshwar"
-          />
+    <SectionTitle
+      title="Frequently Asked Questions"
+      subtitle="Everything you need to know about booking luxury villas in Mahabaleshwar"
+    />
 
-          <div className="mt-12 space-y-4">
+    <div className="mt-12 space-y-5">
 
-            {[
-              {
-                q: 'How many villas does Mahabaleshwar Villa Stays offer?',
-                a: 'We offer 25+ premium curated villas including pool villas, family villas, couple villas, group villas, valley view villas, and budget villas across Mahabaleshwar and Panchgani.',
-              },
-              {
-                q: 'How do I book a villa in Mahabaleshwar?',
-                a: 'You can book directly via WhatsApp at +91-9921372661 or call us at 8080557611.',
-              },
-              {
-                q: 'What amenities are available in your Mahabaleshwar villas?',
-                a: 'Our villas include valley views, private pools, WiFi, hot water, parking, power backup, indoor games, BBQ areas, and caretaker availability.',
-              },
-            ].map((faq, idx) => (
+      {[
+        {
+          q: 'How many villas does Mahabaleshwar Villa Stays offer?',
+          a: 'We offer 25+ carefully curated luxury villas in Mahabaleshwar and Panchgani including pool villas, family villas, couple villas, group villas, budget villas, and premium valley-view stays.',
+        },
+        {
+          q: 'How do I book a villa in Mahabaleshwar?',
+          a: 'You can directly contact us via WhatsApp or phone call for personalized booking assistance. Our team helps you choose the perfect villa based on your budget, group size, and travel preferences.',
+        },
+        {
+          q: 'Do your villas have private swimming pools?',
+          a: 'Yes, many of our premium villas include private swimming pools with scenic valley views. Pool villa availability depends on the property you choose.',
+        },
+        {
+          q: 'Which are the best areas to stay in Mahabaleshwar?',
+          a: 'Our villas are located near popular areas like Bhilar, Panchgani Road, Mapro Garden, Venna Lake, and scenic valley-facing locations offering peaceful surroundings and easy access to tourist attractions.',
+        },
+        {
+          q: 'Are your villas suitable for family vacations?',
+          a: 'Absolutely. We offer spacious family villas with multiple bedrooms, kitchens, indoor games, gardens, parking, and caretaker services — ideal for family vacations and reunions.',
+        },
+        {
+          q: 'Do you offer villas for large groups and corporate outings?',
+          a: 'Yes, we have multiple large villas suitable for bachelor trips, corporate retreats, birthday celebrations, and group vacations with capacities ranging from small groups to 25+ guests.',
+        },
+        {
+          q: 'What amenities are included in the villas?',
+          a: 'Amenities vary by property but commonly include WiFi, hot water, power backup, private pools, mountain views, parking, BBQ areas, caretaker support, indoor games, kitchens, and spacious living areas.',
+        },
+        {
+          q: 'Are pets allowed in your Mahabaleshwar villas?',
+          a: 'Pet policies depend on the specific villa. Some properties are pet-friendly while others may have restrictions. Please contact us before booking if you plan to bring pets.',
+        },
+        {
+          q: 'What is the best time to visit Mahabaleshwar?',
+          a: 'Mahabaleshwar is beautiful throughout the year. October to June is ideal for sightseeing and pleasant weather, while monsoon season offers lush greenery and misty valley views.',
+        },
+        {
+          q: 'How far are your villas from tourist attractions?',
+          a: 'Most of our villas are conveniently located near major attractions like Mapro Garden, Venna Lake, Wilson Point, Lingmala Waterfall, and local strawberry farms.',
+        },
+      ].map((faq, idx) => (
 
-              <details
-                key={idx}
-                className="bg-card border border-border rounded-lg p-6 group"
-              >
-                <summary className="font-playfair font-bold text-foreground cursor-pointer list-none flex justify-between items-center">
-                  {faq.q}
-                  <span className="text-primary ml-4 text-xl">+</span>
-                </summary>
+        <details
+          key={idx}
+          className="group bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+        >
+          <summary className="flex items-center justify-between cursor-pointer list-none">
 
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  {faq.a}
-                </p>
-              </details>
+            <h3 className="font-playfair text-lg md:text-xl font-bold text-foreground pr-4">
+              {faq.q}
+            </h3>
 
-            ))}
+            <span className="text-primary text-2xl font-bold transition-transform duration-300 group-open:rotate-45">
+              +
+            </span>
 
+          </summary>
+
+          <div className="overflow-hidden transition-all duration-300">
+            <p className="mt-5 text-muted-foreground leading-relaxed text-base">
+              {faq.a}
+            </p>
           </div>
-        </div>
-      </section>
+        </details>
+
+      ))}
+
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-border">
