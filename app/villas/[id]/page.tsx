@@ -25,20 +25,30 @@ export async function generateMetadata({ params }: PageProps) {
   const villa = villas.find((v) => v.id === resolvedParams.id);
   if (!villa) return {};
   return {
+    metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
     title: `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`,
     description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities. Personalized booking and concierge service available.`,
     keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, Mahabaleshwar vacation rentals`,
     alternates: {
       canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
     },
+    twitter: {
+  card: 'summary_large_image',
+  title: `${villa.name} - Luxury Villa in Mahabaleshwar`,
+  description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`,
+  images: [`https://www.mahabaleshwarvillastays.com${villa.images.listing}`],
+},robots: {
+  index: true,
+  follow: true,
+},
     openGraph: {
-      type: 'website',
+      type: 'article',
       url: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
       title: `${villa.name} - Luxury Villa in Mahabaleshwar`,
       description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`,
       images: [
         {
-          url: villa.images.listing,
+          url: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
           width: 1200,
           height: 630,
           alt: `${villa.name} luxury villa in Mahabaleshwar`,
@@ -206,7 +216,35 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </h2>
                 <p className="text-lg text-foreground leading-relaxed">{villa.description}</p>
               </div>
+              {/* Experience Section */}
+<div className="space-y-4">
+  <h2 className="font-playfair text-3xl font-bold text-foreground">
+    Experience Luxury in Mahabaleshwar
+  </h2>
 
+  <p className="text-lg text-muted-foreground leading-relaxed">
+    Wake up to breathtaking views and enjoy a peaceful stay at {villa.name},
+    one of the most premium villas in Mahabaleshwar. Perfect for families,
+    couples, and group stays, this villa offers a blend of comfort, privacy,
+    and nature. Located near popular attractions in {villa.location},
+    guests can enjoy easy access to sightseeing points, local cafes,
+    strawberry farms, and scenic valleys while experiencing luxury amenities
+    and personalized hospitality.
+  </p>
+</div>
+                        {/* Nearby Attractions */}
+          <div className="space-y-4">
+            <h2 className="font-playfair text-3xl font-bold text-foreground">
+              Nearby Attractions
+            </h2>
+          
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Guests staying at {villa.name} can easily explore some of the most popular
+              attractions in Mahabaleshwar including Mapro Garden, Venna Lake,
+              Wilson Point, Lingmala Waterfall, Elephant’s Head Point,
+              and the famous strawberry farms near {villa.location}.
+            </p>
+          </div>
               {/* Amenities */}
               <div className="space-y-4">
                 <h2 className="font-playfair text-3xl font-bold text-foreground">
