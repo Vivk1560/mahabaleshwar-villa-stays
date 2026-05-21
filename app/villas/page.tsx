@@ -20,6 +20,25 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.mahabaleshwarvillastays.com',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Villas',
+      item: 'https://www.mahabaleshwarvillastays.com/villas',
+    },
+  ],
+}
+
 export default function VillasPage({
   searchParams,
 }: {
@@ -27,8 +46,11 @@ export default function VillasPage({
 }) {
   return (
     <main className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <NavBar />
-      {/* ✅ VillasClient gets everything as props — no Suspense, no "Loading..." */}
       <VillasClient
         villas={villas}
         initialCategory={searchParams.category || 'all'}
