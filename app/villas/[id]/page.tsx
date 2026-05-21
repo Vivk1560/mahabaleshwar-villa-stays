@@ -3,7 +3,6 @@ import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ReviewCard } from '@/components/ReviewCard';
-import { PremiumButton } from '@/components/PremiumButton';
 import { Star, MapPin, Users, Wifi, UtensilsCrossed, MessageCircle, Phone } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
@@ -32,6 +31,20 @@ export async function generateMetadata({ params }: PageProps) {
     alternates: {
       canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
     },
+    openGraph: {
+      type: 'website',
+      url: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
+      title: `${villa.name} - Luxury Villa in Mahabaleshwar`,
+      description: `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`,
+      images: [
+        {
+          url: villa.images.listing,
+          width: 1200,
+          height: 630,
+          alt: `${villa.name} luxury villa in Mahabaleshwar`,
+        },
+      ],
+    },
   };
 }
 
@@ -49,16 +62,78 @@ export default async function VillaDetailPage({ params }: PageProps) {
     Kitchen: <UtensilsCrossed className="w-5 h-5" />,
   };
 
+  const vacationRentalSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LodgingBusiness',
+    name: villa.name,
+    description: villa.description,
+    url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
+    image: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
+    telephone: '+918080557611',
+    email: 'rajeshgarela0@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: villa.address,
+      addressLocality: 'Mahabaleshwar',
+      addressRegion: 'Maharashtra',
+      postalCode: '412806',
+      addressCountry: 'IN',
+    },
+    numberOfRooms: parseInt(villa.bhk),
+    amenityFeature: villa.amenities.map((amenity) => ({
+      '@type': 'LocationFeatureSpecification',
+      name: amenity,
+      value: true,
+    })),
+    petsAllowed: false,
+    starRating: {
+      '@type': 'Rating',
+      ratingValue: villa.rating,
+      bestRating: 5,
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.mahabaleshwarvillastays.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Villas',
+        item: 'https://www.mahabaleshwarvillastays.com/villas',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: villa.name,
+        item: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <NavBar />
 
       {/* Image Gallery */}
       <section className="pt-16 md:pt-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 rounded-2xl overflow-hidden shadow-elevated">
-
-            {/* Main Large Image */}
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
                 src={villa.images.listing}
@@ -67,8 +142,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 className="object-cover hover:scale-105 transition duration-500"
               />
             </div>
-
-            {/* Gallery Images */}
             {villa.images.gallery.slice(0, 7).map((image, index) => (
               <div
                 key={index}
@@ -171,15 +244,25 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* Map Placeholder */}
+              {/* Map */}
               <div className="space-y-4">
                 <h2 className="font-playfair text-3xl font-bold text-foreground">Location</h2>
-                <div className="w-full h-80 bg-muted border border-border rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                    <p className="text-muted-foreground font-medium">{villa.location}, Mahabaleshwar</p>
-                  </div>
+                <div className="w-full h-80 rounded-lg overflow-hidden border border-border">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60415.23!2d73.7483!3d17.9241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc23f5b00000001%3A0x1234567890abcdef!2sMahabaleshwar%2C%20Maharashtra%20412806!5e0!3m2!1sen!2sin!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${villa.name} location in Mahabaleshwar`}
+                  />
                 </div>
+                <p className="text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4 inline mr-1" />
+                  {villa.address}, Mahabaleshwar, Maharashtra – 412806
+                </p>
               </div>
             </div>
 
@@ -207,9 +290,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 <div className="border-t border-border" />
 
-                {/* ✅ FIXED — <a tag restored for WhatsApp */}
-                <a
-                  href={`https://wa.me/9921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
+                
+                  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
@@ -218,8 +300,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   WhatsApp Inquiry
                 </a>
 
-                {/* ✅ FIXED — <a tag restored for Call */}
-                <a
+                
                   href="tel:8080557611"
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
