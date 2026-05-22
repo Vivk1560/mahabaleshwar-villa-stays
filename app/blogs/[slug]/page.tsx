@@ -11,9 +11,9 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 interface PageProps {
-  params: Promise<{
+  params: {
     slug: string
-  }>
+  }
 }
 
 export async function generateStaticParams() {
@@ -41,36 +41,46 @@ const BLOG_KEYWORDS: Record<string, string> = {
     'Mahabaleshwar travel guide 2026, how to reach Mahabaleshwar, Mahabaleshwar trip planning, complete guide Mahabaleshwar',
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = params
+
   const blog = blogs.find((b) => b.slug === slug)
-  if (!blog) return {}
+
+  if (!blog) {
+    return {
+      title: 'Blog Not Found',
+    }
+  }
 
   const keywords =
-    BLOG_KEYWORDS[slug] || 'Mahabaleshwar villas, luxury villas Mahabaleshwar'
+    BLOG_KEYWORDS[slug] ||
+    'Mahabaleshwar villas, luxury villas Mahabaleshwar'
 
   const imageUrl = blog.banner.startsWith('http')
     ? blog.banner
     : `https://www.mahabaleshwarvillastays.com${blog.banner}`
 
   return {
-    // ✅ No "| Mahabaleshwar Villa Stays" here — layout template adds it
     title: blog.title,
     description: blog.excerpt,
     keywords,
     authors: [{ name: 'Mahabaleshwar Villa Stays' }],
+
     alternates: {
       canonical: `https://www.mahabaleshwarvillastays.com/blogs/${slug}`,
     },
+
     openGraph: {
       type: 'article',
       url: `https://www.mahabaleshwarvillastays.com/blogs/${slug}`,
       siteName: 'Mahabaleshwar Villa Stays',
-      // ✅ OG title set explicitly — can include brand name once since OG is independent of the template
       title: `${blog.title} | Mahabaleshwar Villa Stays`,
       description: blog.excerpt,
       publishedTime: blog.date,
       modifiedTime: blog.date,
+
       images: [
         {
           url: imageUrl,
@@ -80,6 +90,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         },
       ],
     },
+
     twitter: {
       card: 'summary_large_image',
       title: `${blog.title} | Mahabaleshwar Villa Stays`,
@@ -89,10 +100,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export default async function BlogDetailPage({ params }: PageProps) {
-  const { slug } = await params
+export default async function BlogDetailPage({
+  params,
+}: PageProps) {
+  const { slug } = params
+
   const blog = blogs.find((b) => b.slug === slug)
-  if (!blog) notFound()
+
+  if (!blog) {
+    notFound()
+  }
 
   const relatedVillas = villas.filter((villa) =>
     blog.relatedVillas.includes(villa.id)
@@ -110,19 +127,22 @@ export default async function BlogDetailPage({ params }: PageProps) {
     image: imageUrl,
     datePublished: blog.date,
     dateModified: blog.date,
-    url: `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
+
     author: {
       '@type': 'Organization',
       name: 'Mahabaleshwar Villa Stays',
     },
+
     publisher: {
       '@type': 'Organization',
       name: 'Mahabaleshwar Villa Stays',
+
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
       },
     },
+
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
@@ -132,6 +152,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+
     itemListElement: [
       {
         '@type': 'ListItem',
@@ -153,40 +174,57 @@ export default async function BlogDetailPage({ params }: PageProps) {
       },
     ],
   }
-  const faqSchema = blog.faqs?.length
-  ? {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: blog.faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.q,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: faq.a,
-        },
-      })),
-    }
-  : null
-  const contentBlocks = blog.content.split('\n\n').filter(Boolean)
+
+  const faqSchema =
+    blog.faqs?.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+
+          mainEntity: blog.faqs.map((faq) => ({
+            '@type': 'Question',
+
+            name: faq.q,
+
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.a,
+            },
+          })),
+        }
+      : null
+
+  const contentBlocks = blog.content
+    .split('\n\n')
+    .filter(Boolean)
 
   return (
     <main className="min-h-screen bg-background">
+      {/* Article Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
       />
+
+      {/* Breadcrumb Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
       />
-       {faqSchema && (
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(faqSchema),
-    }}
-  />
-)}
+
+      {/* FAQ Schema */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+      )}
 
       <NavBar />
 
@@ -223,6 +261,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
             <div className="flex items-center gap-2 text-muted-foreground">
               <Calendar className="w-4 h-4" />
+
               <time dateTime={blog.date}>
                 {new Date(blog.date).toLocaleDateString('en-IN', {
                   year: 'numeric',
@@ -237,9 +276,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </p>
           </div>
 
+          {/* Blog Article */}
           <article className="space-y-5 mb-16">
             {contentBlocks.map((block, i) => {
               const trimmed = block.trim()
+
               const isHeading =
                 trimmed.length < 80 &&
                 !trimmed.endsWith('.') &&
@@ -259,8 +300,12 @@ export default async function BlogDetailPage({ params }: PageProps) {
               }
 
               const lines = trimmed.split('\n')
+
               return (
-                <p key={i} className="text-lg text-foreground leading-relaxed">
+                <p
+                  key={i}
+                  className="text-lg text-foreground leading-relaxed"
+                >
                   {lines.map((line, j) => (
                     <span key={j}>
                       {line}
@@ -272,11 +317,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
             })}
           </article>
 
+          {/* Related Villas */}
           {relatedVillas.length > 0 && (
             <div className="mt-12 pt-12 border-t border-border">
               <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
                 Featured Villas from This Article
               </h2>
+
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedVillas.map((villa) => (
                   <VillaCard
@@ -294,37 +341,40 @@ export default async function BlogDetailPage({ params }: PageProps) {
               </div>
             </div>
           )}
+
+          {/* FAQ Section */}
           {blog.faqs?.length > 0 && (
-  <section className="mt-16 pt-12 border-t border-border">
-    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
-      Frequently Asked Questions
-    </h2>
+            <section className="mt-16 pt-12 border-t border-border">
+              <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+                Frequently Asked Questions
+              </h2>
 
-    <div className="space-y-5">
-      {blog.faqs.map((faq, index) => (
-        <details
-          key={index}
-          className="group border border-border rounded-2xl p-6 bg-card"
-        >
-          <summary className="flex justify-between items-center cursor-pointer list-none">
-            <h3 className="font-semibold text-lg text-foreground pr-5">
-              {faq.q}
-            </h3>
+              <div className="space-y-5">
+                {blog.faqs.map((faq, index) => (
+                  <details
+                    key={index}
+                    className="group border border-border rounded-2xl p-6 bg-card"
+                  >
+                    <summary className="flex justify-between items-center cursor-pointer list-none">
+                      <h3 className="font-semibold text-lg text-foreground pr-5">
+                        {faq.q}
+                      </h3>
 
-            <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
-              +
-            </span>
-          </summary>
+                      <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
+                        +
+                      </span>
+                    </summary>
 
-          <p className="mt-5 text-muted-foreground leading-7">
-            {faq.a}
-          </p>
-        </details>
-      ))}
-    </div>
-  </section>
-)}
+                    <p className="mt-5 text-muted-foreground leading-7">
+                      {faq.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
+          {/* Back Button */}
           <div className="mt-16 text-center">
             <Link
               href="/blogs"
