@@ -205,7 +205,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title: config.seoTitle,
+    title: { absolute: config.seoTitle },
     description: config.seoDescription,
     alternates: { canonical: canonicalUrl },
     robots: { index: true, follow: true },
