@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title,
+    title: { absolute: title },
     description,
     keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, ${villa.bhk} villa Mahabaleshwar, Mahabaleshwar vacation rentals, private pool villa Mahabaleshwar`,
     alternates: {
