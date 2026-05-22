@@ -21,9 +21,34 @@
       { "name": "Strawberry Farms", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "Is the pool heated at Mist Haven Villa?", "a": "The pool is not heated but is well-maintained and comfortable from October through May. We recommend checking seasonal conditions before booking if visiting in peak monsoon." },
-      { "q": "Can we arrange a bonfire at Mist Haven Villa?", "a": "Yes, bonfires can be arranged through the caretaker with advance notice. This is especially popular during winter stays from November to February." },
-      { "q": "How far is Mist Haven Villa from Pune?", "a": "The villa is approximately 120 km from Pune — roughly a 3-hour drive via the NH 48 and Panchgani route." }
+      {
+        "q": "Is the pool heated at Mist Haven Villa?",
+        "a": "The pool is not heated but is well-maintained and comfortable from October through May. We recommend checking seasonal conditions before booking if visiting in peak monsoon when temperatures can be cooler."
+      },
+      {
+        "q": "Can we arrange a bonfire at Mist Haven Villa?",
+        "a": "Yes, bonfires can be arranged through the caretaker with advance notice — typically requested by early evening for an 8 PM setup. This is especially popular during winter stays from November to February when evening temperatures in Mahabaleshwar drop significantly."
+      },
+      {
+        "q": "How far is Mist Haven Villa from Pune?",
+        "a": "The villa is approximately 120 km from Pune — roughly a 3-hour drive via NH 48 and the Panchgani route. Friday evening departures from Pune are popular for weekend stays; leaving by 4 PM generally avoids peak traffic."
+      },
+      {
+        "q": "What are the check-in and check-out times at Mist Haven Villa?",
+        "a": "Standard check-in is 12:00 noon and check-out is 11:00 AM. Early check-in or late check-out can be arranged subject to availability — please request in advance when booking."
+      },
+      {
+        "q": "Is Mist Haven Villa good for a birthday celebration?",
+        "a": "Very much so. The private pool, fireplace living room, garden space, and professional cook make it well-suited for birthday dinners and celebrations for up to 15 guests. The caretaker can assist with setup, decoration coordination, and bonfire arrangements."
+      },
+      {
+        "q": "What is the best season to visit Mist Haven Villa?",
+        "a": "Each season has something to offer. Winter (October–February) delivers the fireplace experience and cold mornings with clear valley views. Strawberry season (December–March) means fresh produce just minutes away. Monsoon brings the mist that gives the villa its name — clouds through the trees, waterfalls at full force, and a green landscape that's hard to photograph adequately."
+      },
+      {
+        "q": "Is Mist Haven Villa pet-friendly?",
+        "a": "Pet policies vary by season and group size. Please inform us at the time of booking if you are travelling with pets and we will confirm current arrangements for your dates."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa1/villa1.1.jpeg",
@@ -59,9 +84,34 @@
       { "name": "Elephant's Head Point", "distance": "18 min drive" }
     ],
     "faqs": [
-      { "q": "Is Valley View Manor suitable for corporate team retreats?", "a": "Absolutely. The large central living area, stable WiFi, and spacious outdoor zones make it a popular choice for corporate offsites and team retreats. We can also arrange additional equipment like projectors on request." },
-      { "q": "Can we book Valley View Manor for a wedding function?", "a": "The villa can accommodate pre-wedding functions and small celebrations. For larger events, please contact us in advance to discuss logistics and any additional setup requirements." },
-      { "q": "What is the drive time from Mumbai to Valley View Manor?", "a": "From Mumbai it is approximately 260 km — around 5 hours via the Mumbai-Pune Expressway and then onwards to Mahabaleshwar through Panchgani." }
+      {
+        "q": "Is Valley View Manor suitable for corporate team retreats?",
+        "a": "Absolutely. The large central living area, stable WiFi, spacious outdoor zones, and professional cook make it a popular choice for corporate offsites. Equipment like projectors can be arranged on request through the caretaker."
+      },
+      {
+        "q": "Can we book Valley View Manor for a wedding function?",
+        "a": "The villa accommodates pre-wedding functions and intimate celebrations well. For larger events, contact us in advance to discuss logistics, setup requirements, and any additional arrangements."
+      },
+      {
+        "q": "What is the drive time from Mumbai to Valley View Manor?",
+        "a": "From Mumbai it is approximately 260 km — around 5 hours via the Mumbai–Pune Expressway and then onwards through Panchgani. The Panchgani approach with its valley views makes it the more scenic option for Mumbai guests."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Standard check-in is 12:00 noon and check-out is 11:00 AM. For a group of 25, early check-in coordination is recommended — please request at least 48 hours in advance so the caretaker can confirm."
+      },
+      {
+        "q": "Can we have a BBQ and bonfire at Valley View Manor?",
+        "a": "Yes — the south-facing garden BBQ area is one of the villa's most-used features. The caretaker arranges fuel and setup. Bonfire arrangements can also be made with advance notice for the same evening."
+      },
+      {
+        "q": "Is the pool at Valley View Manor exclusive to the booked group?",
+        "a": "Yes — the pool is entirely private. No other guests or visitors have access during your stay. It is positioned facing the valley for that characteristic horizon effect that the property is known for."
+      },
+      {
+        "q": "Is Valley View Manor suitable for multi-generational family trips?",
+        "a": "It is one of the best options for large multi-generational families — the 8 BHK layout has rooms suited for different family members, the garden is safe and spacious, and the professional cook handles varied dietary preferences without issue."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa2/v1.jpeg",
@@ -98,9 +148,34 @@
       { "name": "Panchgani Table Land", "distance": "20 min drive" }
     ],
     "faqs": [
-      { "q": "Does Sunset Retreat have a bonfire facility?", "a": "Yes, bonfire arrangements can be made through the caretaker. It is one of the most popular evening activities, especially from October through February." },
-      { "q": "Is the pool at Sunset Retreat suitable for children?", "a": "The pool has a shallow section suitable for children with adult supervision. The caretaker is always available to assist." },
-      { "q": "Is Sunset Retreat suitable for large birthday celebrations?", "a": "Yes, the villa and its outdoor spaces are well-suited for birthday dinners, cake-cutting setups, and small celebrations for up to 18 guests." }
+      {
+        "q": "Does Sunset Retreat have a bonfire facility?",
+        "a": "Yes, bonfire arrangements can be made through the caretaker. It is one of the most popular evening activities, especially from October through February when Mahabaleshwar evenings get genuinely cold."
+      },
+      {
+        "q": "Is the pool at Sunset Retreat suitable for children?",
+        "a": "The pool has a shallower section suitable for children with adult supervision. The caretaker is on-site at all times and can assist. The surrounding lawn also gives children a safe open space to play."
+      },
+      {
+        "q": "Is Sunset Retreat suitable for large birthday celebrations?",
+        "a": "Yes — the private compound, outdoor spaces, bonfire area, and fireplace living room make it well-suited for birthday dinners and evening celebrations for up to 18 guests. Cake-cutting setups and decoration arrangements can be coordinated through the caretaker."
+      },
+      {
+        "q": "What is the drive time from Pune to Sunset Retreat?",
+        "a": "Approximately 3 hours from Pune — around 120 km via NH 48 or through the Panchgani scenic route. The caretaker can share specific GPS directions once you confirm the booking."
+      },
+      {
+        "q": "What are the check-in and check-out times at Sunset Retreat?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in can be arranged with advance notice, subject to the previous group's departure."
+      },
+      {
+        "q": "Is the fireplace in working condition year-round?",
+        "a": "The fireplace is operational and used primarily from November through February. During other months it is available but may not be necessary given Mahabaleshwar's mild climate. The caretaker handles firewood supply."
+      },
+      {
+        "q": "Is Sunset Retreat suitable for office group outings?",
+        "a": "Yes — the 7 BHK size for 18 guests, outdoor lawn space, indoor games, bonfire area, and caretaker support make it a consistently popular choice for office trips and team outings from Pune and Mumbai."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa3/V1.jpeg",
@@ -137,9 +212,34 @@
       { "name": "Lingmala Waterfall", "distance": "18 min drive" }
     ],
     "faqs": [
-      { "q": "Why is Mountain Echo called a celebrity villa?", "a": "The property has hosted several notable guests owing to its privacy, premium interiors, and secluded location away from the main tourist areas. Identity of past guests is kept confidential." },
-      { "q": "Is this villa suitable for a couple's anniversary stay?", "a": "Yes — the intimate 4 BHK size, private pool, and secluded garden make it an excellent anniversary or honeymoon villa for couples who prefer privacy over party-sized properties." },
-      { "q": "Is Bhilar Waterfall accessible on foot from the villa?", "a": "Depending on the season and trail condition, the waterfall is reachable by foot on certain routes. The caretaker can advise on the best path and whether conditions are suitable on your dates." }
+      {
+        "q": "Why is Mountain Echo called a celebrity villa?",
+        "a": "The property has hosted several notable guests owing to its privacy, premium interiors, and secluded location away from the main tourist areas. The identity of past guests is kept confidential."
+      },
+      {
+        "q": "Is this villa suitable for a couple's anniversary stay?",
+        "a": "It is one of the best anniversary or honeymoon villa options in the area. The intimate 4 BHK size, private valley-facing pool, and secluded garden make it ideal for couples who prefer privacy and natural surroundings over larger party-sized properties."
+      },
+      {
+        "q": "Is Bhilar Waterfall accessible on foot from the villa?",
+        "a": "Depending on the season and trail condition, the waterfall is reachable by foot via certain routes. The caretaker will advise on the best path and whether conditions are suitable on your specific dates."
+      },
+      {
+        "q": "How far is Mountain Echo Residence from Pune?",
+        "a": "The Bhilar area is approximately 115–120 km from Pune — around 3 hours by car. The Bhilar approach is slightly quieter than the main Mahabaleshwar road and passes through strawberry farm country in the final stretch."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out is at 11:00 AM. Early check-in and late check-out are subject to availability — please request in advance."
+      },
+      {
+        "q": "Is Mountain Echo Residence good for a monsoon visit?",
+        "a": "The property is particularly striking during monsoon (June–September) — the lush green surroundings intensify, the Bhilar Waterfall fills, and the valley views take on a misty, cinematic quality. The pool is cooler during these months but the overall experience is memorable."
+      },
+      {
+        "q": "Is Mountain Echo Villa suitable for a small workation group?",
+        "a": "The compact 4 BHK size for 12 guests, stable WiFi, quiet Bhilar location, and private garden make it a good choice for small teams or solo travellers sharing the villa for a workation."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa4/vv1.jpeg",
@@ -176,9 +276,34 @@
       { "name": "Lingmala Waterfall", "distance": "18 min drive" }
     ],
     "faqs": [
-      { "q": "Is Peaceful Nook Villa good for a family reunion?", "a": "Yes — the 7 BHK layout with 20-person capacity, indoor games room, large pool, and caretaker support make it one of the best setups for multi-family reunions in the area." },
-      { "q": "Are strawberry farms accessible from Bhilar?", "a": "Strawberry farms are extremely close — Bhilar itself is part of Mahabaleshwar's strawberry farming belt. The caretaker can point you to the nearest farms for fresh picking, typically between December and March." },
-      { "q": "Can children use the pool safely?", "a": "The pool is open to children with adult supervision. The caretaker is available on-site at all times to assist." }
+      {
+        "q": "Is Peaceful Nook Villa good for a family reunion?",
+        "a": "Yes — the 7 BHK layout with 20-person capacity, indoor games room, large pool, enclosed garden, and caretaker support make it one of the best setups for multi-family reunions in the Bhilar–Mahabaleshwar area."
+      },
+      {
+        "q": "Are strawberry farms accessible from Bhilar?",
+        "a": "Strawberry farms are extremely close — Bhilar itself is part of Mahabaleshwar's primary strawberry farming belt. The caretaker can direct you to the nearest farms for fresh picking, typically available from December through March."
+      },
+      {
+        "q": "Can children use the pool safely at Peaceful Nook Villa?",
+        "a": "The pool is open to children with adult supervision. The enclosed garden adds an additional safe outdoor play space, and the caretaker is on-site at all times."
+      },
+      {
+        "q": "How far is Peaceful Nook Villa from Pune?",
+        "a": "Bhilar is approximately 115 km from Pune — around 2.5 to 3 hours depending on the route. The approach through Panchgani is slightly longer but significantly more scenic with valley views along the way."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Standard check-in is 12:00 noon and check-out is 11:00 AM. For large family groups of 20, we recommend requesting early check-in at least 48 hours in advance to allow the caretaker to prepare the villa fully."
+      },
+      {
+        "q": "Is Peaceful Nook Villa quiet enough for senior family members?",
+        "a": "The Bhilar location — away from the main Mahabaleshwar market and tourist road — makes this one of the quieter properties in the portfolio. Senior family members tend to specifically appreciate the calm, low-traffic surroundings."
+      },
+      {
+        "q": "Does the cook at Peaceful Nook handle dietary restrictions?",
+        "a": "Yes — the professional cook is experienced with varied dietary requirements. Communicate any restrictions, preferences, or special dietary needs at least a day before arrival for best preparation."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa5/vv1.jpeg",
@@ -200,7 +325,7 @@
     "seoDescription": "Book Garden Palace – a 5 BHK luxury villa with infinity pool and valley views for 18 guests on Satara Mahabaleshwar Road. Premium villa with event space, lush gardens & AC rooms.",
     "category": "valley-view-villas",
     "description": "5 BHK luxury villa on Satara-Mahabaleshwar Road where the infinity pool's horizon merges with the valley below — dedicated event space, lush manicured gardens and highway-easy access for celebrations and reunions of 18.",
-    "longDescription": "Garden Palace sits on the Satara-Mahabaleshwar Road in the Machutar area — a stretch that offers both easy highway access and a surprisingly peaceful environment once you're inside the gates. The infinity pool is the defining feature: positioned at the edge of the garden, the water's horizon merges with the valley below for that quintessential 'floating' visual. The 5 BHK layout with 18-person capacity is a sweet spot for larger families or a mixed group that wants luxury without the sprawl of a 7–8 BHK property. The event space makes Garden Palace a go-to for pre-wedding functions, anniversary dinners, and milestone celebrations where you want a beautiful backdrop without the per-head pricing of a hotel banquet hall. The garden itself is well-maintained and large enough for outdoor setups, lawn games, or simple evening walks. Power backup ensures uninterrupted stays even during monsoon season when outages can be more frequent in the region.",
+    "longDescription": "Garden Palace sits on the Satara-Mahabaleshwar Road in the Machutar area — a stretch that offers both easy highway access and a surprisingly peaceful environment once you're inside the gates. The infinity pool is the defining feature: positioned at the edge of the garden, the water's horizon merges with the valley below for that quintessential floating visual. The 5 BHK layout with 18-person capacity is a sweet spot for larger families or a mixed group that wants the villa experience without the sprawl of a 7–8 BHK property. The event space makes Garden Palace a go-to for pre-wedding functions, anniversary dinners, and milestone celebrations where you want a beautiful backdrop without per-head hotel pricing. The garden itself is well-maintained and large enough for outdoor setups, lawn games, or simple evening walks. Power backup ensures uninterrupted stays even during monsoon season when outages can be more frequent in this region.",
     "location": "Satara Mahabaleshwar Road, Mahabaleshwar",
     "address": "Machutar, Mahabaleshwar",
     "bhk": "5 BHK",
@@ -215,9 +340,34 @@
       { "name": "Lingmala Waterfall", "distance": "20 min drive" }
     ],
     "faqs": [
-      { "q": "Can Garden Palace host a pre-wedding function?", "a": "Yes — the event space and expansive garden make it well-suited for pre-wedding shoots, mehendi functions, and intimate celebrations. Contact us in advance to discuss specific requirements." },
-      { "q": "How far is Garden Palace from Pune?", "a": "The Machutar location on Satara-Mahabaleshwar Road is approximately 105 km from Pune — about 2.5–3 hours depending on traffic and route." },
-      { "q": "Is the infinity pool safe for non-swimmers?", "a": "The infinity pool has clear depth markings and the caretaker is available on-site. Non-swimmers should use the shallower sections and children must be accompanied by adults." }
+      {
+        "q": "Can Garden Palace host a pre-wedding function?",
+        "a": "Yes — the dedicated event space and expansive manicured garden make it well-suited for pre-wedding shoots, mehendi functions, and intimate celebrations. Contact us in advance to discuss specific setup requirements and logistics."
+      },
+      {
+        "q": "How far is Garden Palace from Pune?",
+        "a": "The Machutar location on Satara-Mahabaleshwar Road is approximately 105–115 km from Pune — about 2.5 to 3 hours depending on traffic and route. The Satara road approach is one of the smoother routes to Mahabaleshwar."
+      },
+      {
+        "q": "Is the infinity pool safe for non-swimmers?",
+        "a": "The infinity pool has clear depth markings and the caretaker is available on-site. Non-swimmers should use the shallower sections and children must be accompanied by adults at all times."
+      },
+      {
+        "q": "What are the check-in and check-out times at Garden Palace?",
+        "a": "Check-in is at 12:00 noon and check-out is 11:00 AM. Early check-in and late check-out can be arranged with advance notice and are subject to the property's availability."
+      },
+      {
+        "q": "Is Garden Palace suitable for a workation?",
+        "a": "The Satara-Mahabaleshwar Road location is quieter than the busier Mapro Garden stretch, making it a good environment for a working stay. WiFi is stable, the event space can serve as a meeting area, and the overall calm compound supports focused work alongside leisure."
+      },
+      {
+        "q": "Is Garden Palace good for a monsoon villa stay?",
+        "a": "Yes — the Machutar area on the Satara road offers particularly green and misty surroundings during monsoon. The power inverter backup covers any weather-related outages, and the garden becomes especially lush from June through September."
+      },
+      {
+        "q": "Does Garden Palace include a cook?",
+        "a": "The villa comes with caretaker service included. Cook arrangements are available and recommended for groups of 15 or more — please specify your meal requirements when booking so the caretaker can coordinate in advance."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa6/v1.jpeg",
@@ -254,9 +404,34 @@
       { "name": "Sydney Point Panchgani", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "Is Adventure Lodge the best budget villa in Mahabaleshwar?", "a": "Adventure Lodge is one of the best value-for-money options in the region — full facilities including a private pool and sports area at significantly lower per-person cost than premium villas." },
-      { "q": "What sports equipment is available at Adventure Lodge?", "a": "The activity area includes cricket gear, badminton, volleyball, and various indoor board games. Additional equipment requests can be discussed when booking." },
-      { "q": "Is Adventure Lodge accessible in monsoon?", "a": "Yes, the Panchgani-Mahabaleshwar Road is well-maintained year round. Monsoon (June–September) actually makes the surrounding landscape exceptionally lush and is a popular season for this property." }
+      {
+        "q": "Is Adventure Lodge the best budget villa on Panchgani-Mahabaleshwar Road?",
+        "a": "Adventure Lodge is one of the best value-for-money options in the region — full private villa facilities including a pool and sports area at per-person costs significantly lower than premium villas once split across the group."
+      },
+      {
+        "q": "What sports equipment is available at Adventure Lodge?",
+        "a": "The activity area includes cricket gear, badminton, volleyball, and various indoor board games. Additional equipment requests can be discussed at the time of booking."
+      },
+      {
+        "q": "Is Adventure Lodge accessible in monsoon?",
+        "a": "Yes — the Panchgani-Mahabaleshwar Road is well-maintained year-round. Monsoon (June–September) makes the surrounding landscape exceptionally lush and the activity area and pool remain fully usable."
+      },
+      {
+        "q": "How far is Adventure Lodge from Pune?",
+        "a": "The Panchgani-Mahabaleshwar Road stretch is approximately 110–120 km from Pune — about 2.5 to 3 hours depending on route. Being midway between Panchgani and Mahabaleshwar, you can reach both town centres quickly."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Standard check-in is 12:00 noon and check-out is 11:00 AM. For groups arriving in multiple vehicles, the caretaker can coordinate parking and room allocation in advance."
+      },
+      {
+        "q": "Is Adventure Lodge suitable for a bachelor party or college trip?",
+        "a": "It is consistently one of the most popular bookings for bachelor groups and college trips — the sports equipment, large pool, valley views, and low per-head cost make it the preferred option for active groups of 12–17."
+      },
+      {
+        "q": "Can we visit both Panchgani and Mahabaleshwar from Adventure Lodge?",
+        "a": "Yes — the central location on the Panchgani-Mahabaleshwar Road means Table Land in Panchgani is 10 minutes one way and Mapro Garden in Mahabaleshwar is 12 minutes the other. Both hill stations are fully accessible without backtracking."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa7/v1.jpeg",
@@ -278,7 +453,7 @@
     "seoDescription": "Book Celestial Dreams Villa – a 7 BHK celebrity group villa with pool for 19 guests near Mapro Garden & Kamat Hotel, Mahabaleshwar. Observatory terrace, bonfire area, mountain views & premium amenities.",
     "category": "group-villas",
     "description": "7 BHK stargazing villa near Kamat Hotel — open observatory terrace where the Milky Way is visible on clear October nights, mountain-facing rooms, bonfire garden and private pool for groups of 19.",
-    "longDescription": "Celestial Dreams Villa was designed with night skies in mind. The observatory terrace — an open upper-level deck with unobstructed skyward and valley views — is unlike anything else in the Mahabaleshwar villa inventory. On clear nights between October and February, the Milky Way is visible without a telescope. For a group of 19, this becomes an event in itself: mattresses on the terrace, blankets from the caretaker, and a sky that reminds you how far you are from city light pollution. The villa has hosted celebrities, which explains the attention to interior detail and the security of the compound. The bonfire area on the lower garden level pairs well with the cooler months. Located near Kamat Hotel — a well-known Mahabaleshwar landmark — the property is easy to find and has reliable GPS coordinates. Mapro Garden is about 8 minutes away. The mountain view from the front-facing rooms is framed by the property's own tree line, which adds a layer of privacy. Despite being a luxury property, the pricing is designed to remain accessible — luxury yet budget is how the owners describe it.",
+    "longDescription": "Celestial Dreams Villa was designed with night skies in mind. The observatory terrace — an open upper-level deck with unobstructed skyward and valley views — is unlike anything else in the Mahabaleshwar villa inventory. On clear nights between October and February, the Milky Way is visible without a telescope. For a group of 19, this becomes an event in itself: mattresses on the terrace, blankets from the caretaker, and a sky that reminds you how far you are from city light pollution. The villa has hosted celebrities, which explains the attention to interior detail and the security of the compound. The bonfire area on the lower garden level pairs well with the cooler months. Located near Kamat Hotel — a well-known Mahabaleshwar landmark — the property is easy to find and has reliable GPS coordinates. Mapro Garden is about 8 minutes away. The mountain view from the front-facing rooms is framed by the property's own tree line, which adds a layer of privacy. Despite being a premium property, the pricing is designed to remain accessible for groups.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Mapro Garden Road, Near Kamat Hotel, Mahabaleshwar",
     "bhk": "7 BHK",
@@ -293,9 +468,34 @@
       { "name": "Elephant's Head Point", "distance": "15 min drive" }
     ],
     "faqs": [
-      { "q": "What makes the observatory terrace at Celestial Dreams unique?", "a": "The terrace is an open upper-level deck with minimal surrounding obstruction, offering full skyward and valley views. It is particularly spectacular on clear nights from October to February for stargazing." },
-      { "q": "Can we arrange a bonfire at Celestial Dreams Villa?", "a": "Yes, the bonfire area in the lower garden is a key feature of the property. The caretaker arranges everything with advance notice." },
-      { "q": "Is Celestial Dreams Villa pet-friendly?", "a": "Pet policies vary by season and group size. Please contact us before booking if you are travelling with pets so we can confirm current arrangements." }
+      {
+        "q": "What makes the observatory terrace at Celestial Dreams unique?",
+        "a": "The terrace is an open upper-level deck with minimal surrounding obstruction, offering full skyward and valley views. On clear nights from October to February, stargazing here — including Milky Way visibility — is the experience most guests describe first in their reviews."
+      },
+      {
+        "q": "Can we arrange a bonfire at Celestial Dreams Villa?",
+        "a": "Yes, the bonfire area in the lower garden is a key feature of the property. The caretaker arranges wood, seating, and setup with advance notice — typically requested before 6 PM for an evening fire."
+      },
+      {
+        "q": "Is Celestial Dreams Villa pet-friendly?",
+        "a": "Pet policies vary by season and group size. Please contact us before booking if you are travelling with pets so we can confirm current arrangements for your dates."
+      },
+      {
+        "q": "What is the best time of year for stargazing at Celestial Dreams?",
+        "a": "October through February offers the clearest night skies in Mahabaleshwar. October and November in particular have low humidity post-monsoon, giving the best visibility from the observatory terrace. Monsoon months have more cloud cover."
+      },
+      {
+        "q": "How far is Celestial Dreams Villa from Pune?",
+        "a": "The Mapro Garden area is approximately 120 km from Pune — about 3 hours by car. The villa is near Kamat Hotel, which makes it easy to locate with standard GPS navigation."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. For groups planning evening arrivals, please inform the caretaker in advance so the property can be prepared and lit for your arrival."
+      },
+      {
+        "q": "Is Celestial Dreams Villa suitable for a large group birthday party?",
+        "a": "Yes — the bonfire area, observatory terrace for outdoor gatherings, private pool, and caretaker support make it an excellent venue for milestone birthday celebrations for groups up to 19."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa8/v1.jpeg",
@@ -316,8 +516,8 @@
     "seoTitle": "Luxury Retreat Estate – 7 BHK Private Pool Villa for 20 Guests Near Mapro Garden, Mahabaleshwar",
     "seoDescription": "Book Luxury Retreat Estate – a 7 BHK private pool villa for 20 guests near Mapro Garden & Bhilar Waterfall Point, Mahabaleshwar. Professional cook, caretaker, AC rooms & garden.",
     "category": "pool-villas",
-    "description": "7 BHK luxury estate sitting quietly between Mapro Garden and Bhilar Waterfall — resident professional cook, on-site caretaker, premium-grade interiors across all 7 rooms and private pool for large groups of 20.",
-    "longDescription": "Luxury Retreat Estate occupies a privileged position near both Mapro Garden and the Bhilar Waterfall Point — two of the most visited spots in the Mahabaleshwar area — without actually being on either tourist road, which keeps the surrounding environment quiet. The 7 BHK property for 20 guests is suited for large families or corporate groups who want full luxury without compromise. The private pool is large and well-positioned in the garden. Professional cook and caretaker are both resident on the property during your stay, so meals and logistics are handled from day one without coordination overhead. The estate interiors are premium-grade: quality beds, proper kitchen equipment, and maintained bathrooms across all 7 rooms. The location means you can do a Mapro Garden strawberry pick-up in the morning and a Bhilar Waterfall walk in the afternoon without any significant driving. Power inverter backup covers outages, which can be more frequent in this area during monsoon season.",
+    "description": "7 BHK estate sitting quietly between Mapro Garden and Bhilar Waterfall — resident professional cook, on-site caretaker, well-appointed interiors across all 7 rooms and private pool. Positioned for groups of 20 who want full comfort without the tourist-strip noise.",
+    "longDescription": "Luxury Retreat Estate occupies a privileged position near both Mapro Garden and the Bhilar Waterfall Point — two of the most visited spots in the Mahabaleshwar area — without actually being on either tourist road, which keeps the surrounding environment calm. The 7 BHK property for 20 guests is suited for large families or corporate groups who want full amenities without compromise. The private pool is large and well-positioned in the garden. Professional cook and caretaker are both resident during your stay, which means meals and logistics are handled from the moment you arrive without any coordination overhead. The estate interiors are quality-grade throughout: proper beds and mattresses, functional kitchen equipment, and maintained bathrooms across all 7 rooms. The location means a Mapro Garden strawberry visit in the morning and a Bhilar Waterfall walk in the afternoon are both achievable without significant driving. Power inverter backup covers outages, which can be more frequent in this area during monsoon.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Near Mapro Garden, Mahabaleshwar",
     "bhk": "7 BHK",
@@ -332,9 +532,34 @@
       { "name": "Strawberry Farms Bhilar", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "Does Luxury Retreat Estate include a cook?", "a": "Yes, a professional cook is included in the stay. Meal preferences — vegetarian, non-vegetarian, and dietary restrictions — should be communicated at least a day before arrival for best preparation." },
-      { "q": "Is the Bhilar Waterfall accessible from this villa?", "a": "The Bhilar Waterfall Point is about 10 minutes by car. Access on foot depends on the season and trail condition — the caretaker will advise based on your travel dates." },
-      { "q": "What is the group size ideal for Luxury Retreat Estate?", "a": "The property is ideal for 15–20 guests. Smaller groups also book it when they prefer space and privacy over cost-efficiency." }
+      {
+        "q": "Does Luxury Retreat Estate include a cook?",
+        "a": "Yes, a professional cook is a resident part of your stay at this property. Communicate meal preferences — vegetarian, non-vegetarian, dietary restrictions — at least a day before arrival for the best preparation."
+      },
+      {
+        "q": "Is the Bhilar Waterfall accessible from this villa?",
+        "a": "The Bhilar Waterfall Point is about 10 minutes by car. Foot access depends on the season and trail condition — the caretaker will advise based on your travel dates."
+      },
+      {
+        "q": "What is the ideal group size for Luxury Retreat Estate?",
+        "a": "The property is ideal for 15–20 guests. Smaller groups also book it when they prefer space and privacy. There is no strict minimum, though per-head value improves with larger groups."
+      },
+      {
+        "q": "How far is Luxury Retreat Estate from Pune?",
+        "a": "Approximately 120 km from Pune — around 3 hours. The Bhilar-area location is slightly off the main Mahabaleshwar tourist road, which means the final approach is calmer and less congested even on peak weekends."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in can be arranged by the caretaker with advance notice, subject to the previous booking's departure."
+      },
+      {
+        "q": "Is Luxury Retreat Estate suitable for a corporate group outing?",
+        "a": "Yes — the 7 BHK layout for 20 guests, professional cook, stable WiFi, private pool, and calm location make it a strong choice for corporate retreats that want a premium environment without hotel formality."
+      },
+      {
+        "q": "Is the pool at Luxury Retreat Estate private?",
+        "a": "Completely — the pool is exclusively for your booked group throughout the stay. No other visitors or guests have access to the compound."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa9/v1.jpeg",
@@ -355,7 +580,7 @@
     "seoDescription": "Book Heritage Manor Villa – a charming 5 BHK heritage-style villa with private pool for 15 guests in Panchgani, Mahabaleshwar. Panoramic views, library, family dining & best budget rates.",
     "category": "budget-villas",
     "description": "5 BHK heritage villa in Panchgani with arched doorways, wide verandas and a genuine vintage library — panoramic Table Land views from the upper floor, full family dining hall and private pool for 15 guests.",
-    "longDescription": "Heritage Manor Villa is one of the few properties in the Mahabaleshwar-Panchgani belt that leans into traditional architecture rather than the modern minimalist look that dominates new villa construction. The building itself has character — arched doorways, wide verandas, and a library room that feels genuinely vintage rather than styled. The 5 BHK layout for 15 guests works particularly well for multi-generational families where grandparents appreciate the quieter rooms while younger guests have the pool and garden. Located in Panchgani on the Panchgani-Mahabaleshwar Road, the villa offers panoramic views from the upper veranda — on clear days you can see Table Land to the south and Mahabaleshwar's ridgeline to the north. The family dining setup in the main hall is large enough for a full group meal, which is often where the best memories happen. Budget pricing doesn't mean budget experience here — the pool is well-maintained, AC rooms are properly cooled, and the caretaker is responsive.",
+    "longDescription": "Heritage Manor Villa is one of the few properties in the Mahabaleshwar-Panchgani belt that leans into traditional architecture rather than the modern minimalist look that dominates new villa construction. The building itself has character — arched doorways, wide verandas, and a library room that feels genuinely vintage rather than styled. The 5 BHK layout for 15 guests works particularly well for multi-generational families where grandparents appreciate the quieter rooms while younger guests have the pool and garden. Located in Panchgani on the Panchgani-Mahabaleshwar Road, the villa offers panoramic views from the upper veranda — on clear days you can see Table Land to the south and Mahabaleshwar's ridgeline to the north. The family dining setup in the main hall is large enough for a full group meal, which is often where the best memories happen. Budget pricing doesn't mean budget experience — the pool is well-maintained, AC rooms are properly cooled, and the caretaker is responsive.",
     "location": "Panchgani, Mahabaleshwar",
     "address": "Panchgani Mahabaleshwar Road, Mahabaleshwar",
     "bhk": "5 BHK",
@@ -370,9 +595,34 @@
       { "name": "Wilson Point", "distance": "25 min drive" }
     ],
     "faqs": [
-      { "q": "What is unique about Heritage Manor Villa's architecture?", "a": "The property features traditional design elements including arched doorways, wide covered verandas, and a dedicated library room — a deliberate departure from the modern villa aesthetic popular in the region." },
-      { "q": "Is Heritage Manor Villa close to Panchgani Table Land?", "a": "Yes — Table Land, one of Asia's largest plateaus at volcanic basalt, is about 8 minutes by car from the villa." },
-      { "q": "Is Heritage Manor Villa the best budget option in Panchgani?", "a": "For a private villa with a pool, heritage character, and 15-person capacity, it offers excellent value in the Panchgani segment." }
+      {
+        "q": "What is unique about Heritage Manor Villa's architecture?",
+        "a": "The property features traditional design elements — arched doorways, wide covered verandas, and a dedicated library room with a vintage feel. It is a deliberate departure from the modern minimalist aesthetic that most new villas in the region have adopted."
+      },
+      {
+        "q": "Is Heritage Manor Villa close to Panchgani Table Land?",
+        "a": "Yes — Table Land, one of Asia's largest volcanic basalt plateaus, is about 8 minutes by car. The plateau is best visited in the morning before the midday crowds arrive; horse riding, street food, and strawberry cream stalls are all available there."
+      },
+      {
+        "q": "Is Heritage Manor Villa the best budget option in Panchgani?",
+        "a": "For a private villa with a pool, traditional architecture, library, and 15-person capacity, it offers strong value in the Panchgani segment — particularly for families or groups who value character and local atmosphere over modern minimalism."
+      },
+      {
+        "q": "How far is Heritage Manor Villa from Pune?",
+        "a": "Panchgani is approximately 100–110 km from Pune — about 2.5 hours. It is closer to Pune than Mahabaleshwar's main market, making it accessible for shorter weekend trips."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Standard check-in is 12:00 noon and check-out is 11:00 AM. Early check-in can be arranged with advance notice and subject to availability."
+      },
+      {
+        "q": "Is Heritage Manor Villa suitable for guests who enjoy reading and quiet?",
+        "a": "The villa was built with this in mind — the vintage library room is a particular draw for guests who want to mix sightseeing with quieter, more contemplative downtime. The verandas also provide excellent reading spaces with valley views."
+      },
+      {
+        "q": "Is Heritage Manor Villa good for a monsoon trip?",
+        "a": "Panchgani during monsoon (June–September) is particularly atmospheric — clouds frequently drift across the Table Land plateau and the greenery throughout the area intensifies. The covered verandas at Heritage Manor are ideal for watching the rain."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa10/v1.jpeg",
@@ -394,7 +644,7 @@
     "seoDescription": "Book Modern Essence Villa – a sleek 5 BHK contemporary villa with valley-view pool for 18 guests near Parsi Point, between Panchgani and Mahabaleshwar. Home theater, panoramic views & best budget rates.",
     "category": "couple-villas",
     "description": "5 BHK contemporary villa midway between Panchgani and Mahabaleshwar — open-plan interiors, valley-view pool with dramatic horizon effect, home theater and 10-minute drive to Parsi Point sunsets for groups of 18.",
-    "longDescription": "Modern Essence Villa sits in the stretch between Panchgani and Mahabaleshwar — a location that gets overlooked by most first-time visitors but is actually perfect for people who want to explore both hill stations without committing to either's main tourist zone. The architecture is clean and contemporary: open-plan interiors, large windows, and a pool that aligns with the valley view for that dramatic horizon effect. The home theater room is fully equipped and is particularly popular with groups that like to round off active sightseeing days with a film night. The villa's proximity to Parsi Point — one of Mahabaleshwar's best sunset viewpoints — means you're a 10-minute drive from one of the most photographed locations in the area. Lush green views from the garden and open spaces are the setting for morning yoga, leisure walks, and outdoor meals. Despite fitting 18 guests, the villa is often booked by smaller groups — 8 to 12 people — who simply prefer the extra space. Budget-conscious without being budget-feeling.",
+    "longDescription": "Modern Essence Villa sits in the stretch between Panchgani and Mahabaleshwar — a location that gets overlooked by most first-time visitors but is actually perfect for people who want to explore both hill stations without committing to either's main tourist zone. The architecture is clean and contemporary: open-plan interiors, large windows, and a pool that aligns with the valley view for that dramatic horizon effect. The home theater room is fully equipped and is particularly popular with groups that like to round off active sightseeing days with a film night. The villa's proximity to Parsi Point — one of Mahabaleshwar's best sunset viewpoints — means you're a 10-minute drive from one of the most photographed locations in the area. Lush green views from the garden and open spaces are the setting for morning yoga, leisure walks, and outdoor meals. Despite fitting 18 guests, the villa is often booked by smaller groups — 8 to 12 people — who simply prefer the extra space.",
     "location": "Near Parsi Point, Panchgani–Mahabaleshwar Road",
     "address": "Near Mapro Garden, In Between Panchgani and Mahabaleshwar",
     "bhk": "5 BHK",
@@ -409,9 +659,34 @@
       { "name": "Wilson Point", "distance": "18 min drive" }
     ],
     "faqs": [
-      { "q": "Is Modern Essence Villa good for a couple's getaway?", "a": "Yes — while it accommodates up to 18, the sleek contemporary design, valley-view pool, and proximity to Parsi Point (a famous sunset spot) make it particularly popular with couples and small groups." },
-      { "q": "Does Modern Essence have a home theater?", "a": "Yes, the villa has a fully equipped home theater room — one of the few villas in the Panchgani-Mahabaleshwar area with this feature." },
-      { "q": "Where exactly is Modern Essence Villa located?", "a": "The villa is located on the Panchgani-Mahabaleshwar Road, near Parsi Point — roughly midway between the two hill stations, making both easily accessible." }
+      {
+        "q": "Is Modern Essence Villa good for a couple's getaway?",
+        "a": "Yes — the sleek contemporary design, valley-view pool, proximity to Parsi Point (a famous sunset viewpoint), and professional cook make it a popular choice for couples and small groups who value atmosphere and visual quality alongside comfort."
+      },
+      {
+        "q": "Does Modern Essence have a home theater?",
+        "a": "Yes — the villa has a fully equipped home theater room. It is one of the few villas in the Panchgani-Mahabaleshwar area with this feature and is frequently used by groups on rainy evenings or at the end of long sightseeing days."
+      },
+      {
+        "q": "Where exactly is Modern Essence Villa located?",
+        "a": "The villa is on the Panchgani-Mahabaleshwar Road, near Parsi Point — roughly midway between the two hill stations. This gives guests fast access to both without committing to either tourist zone."
+      },
+      {
+        "q": "How far is Modern Essence Villa from Pune?",
+        "a": "Approximately 105–115 km from Pune — about 2.5 to 3 hours depending on route. The Parsi Point area is slightly before Mahabaleshwar's main market, so it's one of the shorter drives in the portfolio for Pune guests."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in can be arranged with advance notice. The caretaker can confirm timing details before your arrival."
+      },
+      {
+        "q": "Is Modern Essence Villa good for a yoga or wellness retreat?",
+        "a": "The open garden space, lush green surroundings, and quiet location between two hill stations make it well-suited for small wellness groups or individuals who want to combine outdoor yoga, nature walks, and rest time."
+      },
+      {
+        "q": "Can we watch sunsets from Modern Essence Villa?",
+        "a": "Parsi Point — one of Mahabaleshwar's most photographed sunset viewpoints — is a 10-minute drive. The villa's garden and terrace also face west, offering their own view of the evening light across the valley."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa11/v1.jpeg",
@@ -433,7 +708,7 @@
     "seoDescription": "Book Grand Vista Palace – a 4 BHK luxury villa with private pool, panoramic views & guest house for 15 guests near Mapro Garden & Venna Lake, Mahabaleshwar. Best budget luxury villa with professional cook.",
     "category": "budget-villas",
     "description": "4 BHK villa near Mapro Garden with a high-ceilinged Grand Hall for group meals, a separate on-compound guest cottage and panoramic terrace spanning the western Sahyadri valley — professional cook included for 15 guests.",
-    "longDescription": "Grand Vista Palace occupies a prime spot near Mapro Garden and Venna Lake — two of Mahabaleshwar's most visited areas — and manages to sit close to both while maintaining a private, unhurried atmosphere within the compound. The 4 BHK layout works efficiently for a family of 15, with the Grand Hall serving as a central gathering space that earns its name: high ceilings, large windows, and enough furniture to host the whole group comfortably. A separate guest house within the compound adds flexibility — ideal for older relatives who prefer quieter sleeping quarters, or for keeping children and adults in separate spaces after late evenings. The private pool is full-sized and well-maintained. Professional cook and caretaker are included, and both are familiar with the dietary variety that large Indian families typically bring. The panoramic view from the upper terrace spans both the western valley and a section of the Mahabaleshwar plateau. For a luxury experience at a budget-aligned price point, Grand Vista Palace is consistently one of the most enquired-about properties on the platform.",
+    "longDescription": "Grand Vista Palace occupies a prime spot near Mapro Garden and Venna Lake — two of Mahabaleshwar's most visited areas — and manages to sit close to both while maintaining a private, unhurried atmosphere within the compound. The 4 BHK layout works efficiently for a family of 15, with the Grand Hall serving as a central gathering space that earns its name: high ceilings, large windows, and enough furniture to host the whole group comfortably. A separate guest house within the compound adds flexibility — ideal for older relatives who prefer quieter sleeping quarters, or for keeping children and adults in separate spaces after late evenings. The private pool is full-sized and well-maintained. Professional cook and caretaker are included, and both are familiar with the dietary variety that large Indian families typically bring. The panoramic view from the upper terrace spans both the western valley and a section of the Mahabaleshwar plateau. For a quality experience at a budget-conscious price point, Grand Vista Palace is consistently one of the most enquired-about properties on the platform.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Near Mapro Garden, Mahabaleshwar",
     "bhk": "4 BHK",
@@ -448,9 +723,34 @@
       { "name": "Strawberry Farms", "distance": "7 min drive" }
     ],
     "faqs": [
-      { "q": "What is the Grand Hall at Grand Vista Palace?", "a": "The Grand Hall is the central gathering space of the villa — a large, high-ceilinged living and dining area designed to comfortably accommodate all 15 guests for meals and group activities." },
-      { "q": "Is the separate guest house included in the booking?", "a": "Yes, the guest house within the compound is part of the villa booking — no additional charge. It has its own entrance and is ideal for relatives or children who prefer separate sleeping space." },
-      { "q": "Is Grand Vista Palace good value for money?", "a": "Grand Vista Palace is one of the best luxury-to-price ratio villas in the Mapro Garden area — premium amenities, professional cook, panoramic views, and guest house all included at a budget-conscious rate." }
+      {
+        "q": "What is the Grand Hall at Grand Vista Palace?",
+        "a": "The Grand Hall is the central gathering space of the villa — a large, high-ceilinged living and dining area designed to comfortably accommodate all 15 guests for meals and group activities. The proportions are noticeably more generous than typical 4 BHK villa common areas."
+      },
+      {
+        "q": "Is the separate guest house included in the booking?",
+        "a": "Yes — the guest house within the compound is part of the villa booking at no additional charge. It has its own entrance and is ideal for relatives or guests who prefer separate, quieter sleeping arrangements."
+      },
+      {
+        "q": "Is Grand Vista Palace good value for money?",
+        "a": "It is consistently rated as one of the best luxury-to-price ratio villas near Mapro Garden — professional cook, panoramic views, Grand Hall, private pool, and on-compound guest house all included at a budget-conscious rate."
+      },
+      {
+        "q": "How far is Grand Vista Palace from Pune?",
+        "a": "The villa is approximately 120 km from Pune — around 3 hours via NH 48 or through Panchgani. Its location near Mapro Garden means it's easily found and close to Mahabaleshwar's main attractions on arrival."
+      },
+      {
+        "q": "What are the check-in and check-out times at Grand Vista Palace?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. The guest house and main villa are typically prepared simultaneously, so early check-in requests should be made at least 48 hours in advance."
+      },
+      {
+        "q": "Is Grand Vista Palace good for a family with mixed age groups?",
+        "a": "The separate guest house is particularly useful for multi-generational families — grandparents or elderly relatives can have their own quiet space while the main group uses the pool and common areas without disruption."
+      },
+      {
+        "q": "Can we visit strawberry farms from Grand Vista Palace?",
+        "a": "Strawberry farms are within 7 minutes of the villa. The caretaker can direct you to the nearest farms for picking (December–March) and Mapro Garden — where the region's strawberry products are processed and sold — is a 5-minute drive."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa12/v1.jpeg",
@@ -472,7 +772,7 @@
     "seoDescription": "Book Serene Valley Villa – a 3 BHK celebrity pool villa for 15 guests near Panchgani Table Land. Cloud views, meditation area, classic architecture & best budget rates in Panchgani, Mahabaleshwar.",
     "category": "budget-villas",
     "description": "3 BHK Panchgani villa at Table Land elevation — monsoon clouds roll through at eye level from the terrace, stone-accented classic architecture, private meditation garden and full private pool for intimate groups of 15.",
-    "longDescription": "Serene Valley Villa sits near Panchgani Table Land — Asia's second-largest volcanic plateau and one of the most cinematic landscapes in Maharashtra. The 3 BHK size makes this an intimate property, best suited for a single family or a close-knit group of up to 15, though it's frequently booked by groups of 8–10 who want the entire villa to themselves without paying for rooms they won't use. What sets this villa apart is its cloud view — Panchgani sits at an elevation where monsoon clouds frequently roll through at eye level between June and September, creating a 'floating in the clouds' effect from the terrace. The classic architecture is sympathetic to the hill station setting: stone-accented exteriors, covered verandas, and a meditation area in the garden that's shaded and quiet. The private pool is full-sized despite the compact BHK count. Table Land is a 5-minute drive — popular for horse riding, street food, and the famous strawberry cream stalls. This property has hosted celebrity stays, which speaks to its privacy and the quality of its surroundings.",
+    "longDescription": "Serene Valley Villa sits near Panchgani Table Land — Asia's second-largest volcanic plateau and one of the most cinematic landscapes in Maharashtra. The 3 BHK size makes this an intimate property, best suited for a single family or a close-knit group of up to 15, though it's frequently booked by groups of 8–10 who want the entire villa to themselves without paying for rooms they won't use. What sets this villa apart is its cloud view — Panchgani sits at an elevation where monsoon clouds frequently roll through at eye level between June and September, creating a floating effect from the terrace. The classic architecture is sympathetic to the hill station setting: stone-accented exteriors, covered verandas, and a meditation area in the garden that's shaded and quiet. The private pool is full-sized despite the compact BHK count. Table Land is a 5-minute drive — popular for horse riding, street food, and the famous strawberry cream stalls. This property has hosted celebrity stays, which speaks to its privacy and the quality of the surroundings.",
     "location": "Panchgani Table Land, Panchgani",
     "address": "Panchgani Table Land",
     "bhk": "3 BHK",
@@ -487,9 +787,34 @@
       { "name": "Kate's Point", "distance": "12 min drive" }
     ],
     "faqs": [
-      { "q": "What are the cloud views like at Serene Valley Villa?", "a": "During monsoon (June–September) and early post-monsoon, clouds frequently pass through at terrace level — a phenomenon unique to Panchgani's elevation. It's one of the most photographed experiences guests report." },
-      { "q": "Is Table Land accessible from this villa?", "a": "Yes — Panchgani Table Land is about 5 minutes by car. The plateau is open for walking, horse riding, and street food, and is best visited in the morning before midday crowds arrive." },
-      { "q": "Is Serene Valley Villa suitable for meditation and wellness retreats?", "a": "The villa has a dedicated meditation area in the garden and sits in a quiet zone. Small wellness retreats of up to 15 people book it specifically for this purpose." }
+      {
+        "q": "What are the cloud views like at Serene Valley Villa?",
+        "a": "During monsoon (June–September) and early post-monsoon, clouds frequently pass through at terrace level — a phenomenon specific to Panchgani's elevation. It's one of the most photographed experiences guests describe from this property."
+      },
+      {
+        "q": "Is Table Land accessible from this villa?",
+        "a": "Yes — Panchgani Table Land is about 5 minutes by car. The plateau is open for walking, horse riding, and street food and is best visited in the morning before the midday crowds arrive."
+      },
+      {
+        "q": "Is Serene Valley Villa suitable for meditation and wellness retreats?",
+        "a": "The villa has a dedicated meditation area in the garden and sits in a notably quiet zone away from commercial tourist traffic. Small wellness retreats of up to 15 people regularly book it specifically for this purpose."
+      },
+      {
+        "q": "How far is Serene Valley Villa from Pune?",
+        "a": "Panchgani is approximately 100–110 km from Pune — around 2.5 hours, making it one of the more accessible hill station destinations for Pune weekend trips. The drive through Wai and up to Panchgani is particularly scenic."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in and late check-out are subject to availability — please request in advance."
+      },
+      {
+        "q": "Is this villa good for a monsoon getaway?",
+        "a": "Serene Valley Villa is one of the portfolio's best monsoon properties. The cloud-level views from the terrace, lush surrounding greenery, and the proximity to Table Land — which takes on a completely different character in the rains — make it an exceptional monsoon stay."
+      },
+      {
+        "q": "Is Serene Valley Villa pet-friendly?",
+        "a": "Pet policies are assessed per booking. Please inform us at the time of enquiry if you plan to travel with pets so we can confirm current arrangements for your dates."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa13/v1.jpeg",
@@ -511,7 +836,7 @@
     "seoDescription": "Book Royal Abode Estate – a premium 4 BHK celebrity villa with valley-facing pool for 15 guests on Satara Mahabaleshwar Road. Grand staircase, lush green views, panoramic valley views & AC rooms.",
     "category": "pool-villas",
     "description": "4 BHK celebrity estate on the quieter Satara-Mahabaleshwar Road stretch — grand arched entrance staircase, valley-facing pool overlooking the Satara valley drop and lush green surroundings for 15 guests.",
-    "longDescription": "Royal Abode Estate earns its name from an architectural detail that guests notice the moment they enter: a grand staircase that rises through the centre of the property, flanked by arched windows and quality woodwork. It is the kind of entrance that makes you feel like you've stepped into a different era. The 4 BHK layout for 15 guests is intimate for a property of this scale — the common areas are proportionally large, meaning your group has genuine space to spread out without the bedrooms feeling crowded. The valley-facing pool is the outdoor centrepiece: positioned at the estate's southern edge, it looks out over a lush green drop that deepens into the Satara valley. This section of the Satara-Mahabaleshwar Road is quieter than the Mapro Garden stretch, with less tourist traffic — making evening walks outside the gate genuinely pleasant. The villa has hosted celebrity guests, and the interiors reflect that level of curation. Panoramic views are available from both the pool terrace and the upper bedroom balconies.",
+    "longDescription": "Royal Abode Estate earns its name from an architectural detail that guests notice the moment they enter: a grand staircase that rises through the centre of the property, flanked by arched windows and quality woodwork. It is the kind of entrance that makes you feel like you've stepped into a different era. The 4 BHK layout for 15 guests is intimate for a property of this scale — the common areas are proportionally large, meaning your group has genuine space without the bedrooms feeling crowded. The valley-facing pool is the outdoor centrepiece: positioned at the estate's southern edge, it looks out over a lush green drop that deepens into the Satara valley. This section of the Satara-Mahabaleshwar Road is quieter than the Mapro Garden stretch, with less tourist traffic — making evening walks outside the gate genuinely pleasant. The villa has hosted celebrity guests, and the interiors reflect that level of curation. Panoramic views are available from both the pool terrace and the upper bedroom balconies.",
     "location": "Satara Mahabaleshwar Road, Mahabaleshwar",
     "address": "Satara Mahabaleshwar Road, Mahabaleshwar",
     "bhk": "4 BHK",
@@ -526,9 +851,34 @@
       { "name": "Panchgani Table Land", "distance": "25 min drive" }
     ],
     "faqs": [
-      { "q": "What makes Royal Abode Estate special compared to other villas?", "a": "The property's grand staircase, premium interior curation, and celebrity-stay history set it apart. It has an architectural character that most modern villas in the area lack." },
-      { "q": "Is Royal Abode Estate suitable for a photo shoot?", "a": "The grand staircase, valley-facing pool, and lush green surroundings make it highly popular for pre-wedding shoots, fashion photography, and travel content creation." },
-      { "q": "Is this villa on the Satara road accessible from both Pune and Mumbai?", "a": "Yes — the Satara-Mahabaleshwar Road is accessible from both cities. From Pune it's approximately 2.5–3 hours; from Mumbai approximately 5 hours via the expressway." }
+      {
+        "q": "What makes Royal Abode Estate special compared to other villas?",
+        "a": "The grand staircase, carefully curated interior details, and celebrity-stay history set it apart architecturally. It has a character that most modern concrete villas in the area simply cannot replicate."
+      },
+      {
+        "q": "Is Royal Abode Estate suitable for a photo shoot or content creation?",
+        "a": "The grand staircase, valley-facing pool, and lush green surroundings make it consistently popular for pre-wedding shoots, fashion photography, and travel content creation. The property photographs particularly well in morning and golden-hour light."
+      },
+      {
+        "q": "Is the Satara road accessible from both Pune and Mumbai?",
+        "a": "Yes — the Satara-Mahabaleshwar Road is accessible from both cities. From Pune it's approximately 2.5–3 hours; from Mumbai approximately 5 hours via the Expressway and then through Satara."
+      },
+      {
+        "q": "What are the check-in and check-out times at Royal Abode Estate?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in and late check-out can be arranged with advance notice, subject to the property's schedule."
+      },
+      {
+        "q": "Is Royal Abode Estate quiet enough for a peaceful retreat?",
+        "a": "The Satara-Mahabaleshwar Road stretch where the estate sits has noticeably less tourist traffic than the Mapro Garden area. Evening walks outside the gate are a consistent highlight for guests who appreciate walking in a quieter environment."
+      },
+      {
+        "q": "Does Royal Abode Estate have a cook?",
+        "a": "Cook services are available through the caretaker and should be arranged in advance when booking. Specify your meal preferences and dietary requirements at least a day before arrival."
+      },
+      {
+        "q": "Is Royal Abode good for an anniversary or honeymoon stay?",
+        "a": "The property's architectural drama, private valley-facing pool, and relatively quiet location on the Satara road make it a distinctive choice for couples celebrating milestones who want a setting with more character than a standard villa."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa14/v1.jpeg",
@@ -550,7 +900,7 @@
     "seoDescription": "Book Sunset Paradise Villa – a 4 BHK celebrity family villa with valley-facing pool for 15 guests opposite Velocity Park, near Mapro Garden, Mahabaleshwar. Kids area, lush green views & best budget rates.",
     "category": "family-villas",
     "description": "4 BHK family villa opposite Velocity Park — dedicated kids area inside the compound, west-facing sunset terraces and valley-facing pool, with Mahabaleshwar's top amusement zone just 2 minutes on foot for 15 guests.",
-    "longDescription": "Sunset Paradise Villa has a location advantage that few Mahabaleshwar villas can match: it sits opposite Velocity Park, one of the area's most popular family entertainment destinations, and is just minutes from Mapro Garden. For families with children, this means the kids have dedicated amusement options walking distance away while parents can enjoy the villa's pool and terraces in peace. The 4 BHK layout accommodates 15 guests with enough room for a standard Indian joint family setup. Multiple terraces face different directions — the west-facing upper terrace is used almost exclusively for watching sunsets, which are particularly vivid on clear October and November evenings. The valley-facing pool is full-sized and surrounded by lush garden that keeps the temperature around it several degrees cooler than the surrounding road. The property has hosted celebrity guests and the interiors reflect that attention to detail. Despite the premium positioning, the pricing is budget-aligned — ideal for families who want the celebrity villa experience without the premium villa price tag.",
+    "longDescription": "Sunset Paradise Villa has a location advantage that few Mahabaleshwar villas can match: it sits opposite Velocity Park, one of the area's most popular family entertainment destinations, and is just minutes from Mapro Garden. For families with children, this means the kids have dedicated amusement options walking distance away while parents can enjoy the villa's pool and terraces in peace. The 4 BHK layout accommodates 15 guests with enough room for a standard Indian joint family setup. Multiple terraces face different directions — the west-facing upper terrace is used almost exclusively for watching sunsets, which are particularly vivid on clear October and November evenings. The valley-facing pool is full-sized and surrounded by lush garden that keeps the temperature around it several degrees cooler than the surrounding road. The property has hosted celebrity guests and the interiors reflect that attention to detail. Despite the premium positioning, the pricing is budget-aligned — ideal for families who want a quality experience at a realistic price point.",
     "location": "Opp. Velocity Park, Near Mapro Garden, Mahabaleshwar",
     "address": "Opp To Velocity Park, Near Mapro Garden, Mahabaleshwar",
     "bhk": "4 BHK",
@@ -565,9 +915,34 @@
       { "name": "Lingmala Waterfall", "distance": "12 min drive" }
     ],
     "faqs": [
-      { "q": "Is Sunset Paradise Villa good for families with young children?", "a": "It is one of the best family villa options in Mahabaleshwar — Velocity Park is opposite the gate, Mapro Garden is 5 minutes away, and the villa's kids area and large garden give children plenty of space." },
-      { "q": "Can we watch the sunset from the villa?", "a": "Yes — the west-facing upper terrace is designed specifically for sunset watching. October and November evenings offer particularly vivid sunsets over the Sahyadri valley." },
-      { "q": "Is Velocity Park within walking distance?", "a": "Yes — Velocity Park is directly opposite the villa, making it a 2-minute walk for children who want amusement rides, go-karting, or the park's other attractions." }
+      {
+        "q": "Is Sunset Paradise Villa good for families with young children?",
+        "a": "It is one of the best family villa options in Mahabaleshwar — Velocity Park is directly opposite the gate (2-minute walk), Mapro Garden is 5 minutes by car, and the villa's kids area and large garden give children a safe, dedicated outdoor space."
+      },
+      {
+        "q": "Can we watch the sunset from the villa?",
+        "a": "Yes — the west-facing upper terrace is the property's designated sunset viewing area. October and November evenings offer particularly vivid sunsets over the Sahyadri valley from this terrace."
+      },
+      {
+        "q": "Is Velocity Park within walking distance?",
+        "a": "Yes — Velocity Park is directly opposite the villa, making it a 2-minute walk for children. The park offers amusement rides, go-karting, and other activities suitable for various age groups."
+      },
+      {
+        "q": "How far is Sunset Paradise Villa from Pune?",
+        "a": "The Mapro Garden area is approximately 120 km from Pune — about 3 hours by car. The villa's central location near Mapro Garden makes it easy to reach and quickly oriented to the hill station's main attractions."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Standard check-in is 12:00 noon and check-out at 11:00 AM. Early check-in can be arranged with advance notice. For families with young children arriving after long drives, please request early check-in when booking."
+      },
+      {
+        "q": "Does Sunset Paradise Villa include a cook?",
+        "a": "Cook services can be arranged through the caretaker. Specify your group's meal preferences — including children's dietary needs — in advance for the best meal coordination."
+      },
+      {
+        "q": "Is the pool at Sunset Paradise Villa safe for children?",
+        "a": "The valley-facing pool has an accessible shallow section and the caretaker is on-site at all times. The enclosed garden around the pool also provides additional safety for young children."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa15/v1.jpeg",
@@ -589,7 +964,7 @@
     "seoDescription": "Book Zen Retreat Villa – a 3 BHK budget villa with valley-facing pool for 12 guests near Mapro Garden & Venna Lake, Mahabaleshwar. Professional cook, caretaker, AC rooms & wellness amenities.",
     "category": "budget-villas",
     "description": "3 BHK wellness villa near Mapro Garden designed for small groups — west-facing valley pool, yoga-friendly shaded garden zones, professional cook and caretaker for intimate groups of up to 12.",
-    "longDescription": "Zen Retreat Villa is designed around a simple idea: that a smaller group deserves the same quality of experience as a larger one. The 3 BHK layout for 12 guests is intentionally compact — there's no wasted space, and the common areas feel proportionally generous rather than emptily large. The valley-facing pool is the property's centrepiece, positioned to face west so afternoon and evening swims happen in direct view of the valley. The wellness retreat character comes through in the garden: quiet zones, natural planting, and enough open space to lay out yoga mats comfortably. The professional cook handles meals, the caretaker manages logistics, and the proximity to Mapro Garden means fresh strawberry products are always accessible. Venna Lake is about 10 minutes away for boating and lakeside walks. This villa is particularly popular with small groups — office colleagues (8–10 people), couples travelling together, or families with one or two children — who want a genuine private villa experience without booking and paying for more bedrooms than they'll use.",
+    "longDescription": "Zen Retreat Villa is designed around a simple idea: that a smaller group deserves the same quality of experience as a larger one. The 3 BHK layout for 12 guests is intentionally compact — there's no wasted space, and the common areas feel proportionally generous rather than emptily large. The valley-facing pool is the property's centrepiece, positioned to face west so afternoon and evening swims happen in direct view of the valley. The wellness character comes through in the garden: quiet zones, natural planting, and enough open space to lay out yoga mats comfortably. The professional cook handles meals, the caretaker manages logistics, and the proximity to Mapro Garden means fresh strawberry products are always accessible. Venna Lake is about 10 minutes away for boating and lakeside walks. This villa is particularly popular with small groups — office colleagues of 8–10 people, couples travelling together, or families with one or two children — who want a genuine private villa experience without booking more bedrooms than they need.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Near Mapro Hills, Mahabaleshwar",
     "bhk": "3 BHK",
@@ -604,9 +979,34 @@
       { "name": "Strawberry Farms", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "Is Zen Retreat Villa suitable for a small group of friends?", "a": "It is one of the best options for 6–12 people — small enough to feel intimate and personal, large enough for everyone to have their own space." },
-      { "q": "Does Zen Retreat have a wellness or yoga space?", "a": "The garden has quiet, shaded zones that guests regularly use for yoga and morning stretches. The overall calm environment is deliberately maintained to support a wellness atmosphere." },
-      { "q": "What is the minimum group size for booking Zen Retreat Villa?", "a": "There is no strict minimum — the villa is booked by groups as small as 4–6 people who want a full private villa experience. Contact us for pricing on smaller groups." }
+      {
+        "q": "Is Zen Retreat Villa suitable for a small group of friends?",
+        "a": "It is one of the best options for 6–12 people — small enough to feel intimate and personal, large enough for everyone to have their own space. The private villa experience without paying for rooms nobody uses."
+      },
+      {
+        "q": "Does Zen Retreat have a wellness or yoga space?",
+        "a": "The garden has quiet, shaded zones that guests regularly use for yoga and morning stretches. The overall calm environment is deliberately maintained — no music from the road, minimal foot traffic nearby."
+      },
+      {
+        "q": "What is the minimum group size for booking Zen Retreat Villa?",
+        "a": "There is no strict minimum — the villa is booked by groups as small as 4–6 people who want a full private villa experience. Contact us for pricing on smaller groups."
+      },
+      {
+        "q": "How far is Zen Retreat Villa from Pune?",
+        "a": "The Mapro Hills area is approximately 120 km from Pune — around 3 hours. Being near Mapro Garden means you're at the centre of Mahabaleshwar's main attraction zone on arrival."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. For small groups, early check-in is often more easily arranged — please request in advance."
+      },
+      {
+        "q": "Is Zen Retreat Villa good for a workation?",
+        "a": "The quiet location, stable WiFi, compact property size, and professional cook handling meals make it a good workation villa for small teams of 4–8 people. The morning yoga garden and valley-facing pool serve as genuine breaks from screen time."
+      },
+      {
+        "q": "Is Zen Retreat suitable for a couple's anniversary or honeymoon stay?",
+        "a": "Yes — the small size, private pool, wellness garden, and quiet surroundings near Mapro Garden make it an excellent choice for couples who want a romantic hill station stay without a large group villa's scale."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa16/Screenshot 2026-05-18 134858.png",
@@ -626,7 +1026,7 @@
     "seoDescription": "Book Lavish Escape Manor – a 4 BHK luxury pool villa for 18 guests near Mapro Garden, Mahabaleshwar. Luxury decor, private pool, professional cook, caretaker & premium interiors at best rates.",
     "category": "valley-view-villas",
     "description": "4 BHK design-forward villa near Mapro Garden — statement lighting, curated wall art, quality upholstery, private pool and a wine cellar that makes it the most photographed interior in this price bracket, for groups of 18.",
-    "longDescription": "Lavish Escape Manor stands out for its interior design. While most Mahabaleshwar villas opt for safe, neutral interiors, this property made deliberate choices: statement lighting, curated wall art, quality upholstery, and a level of finish that photographs well and holds up even better in person. The 4 BHK layout for 18 guests is spacious — the extra capacity comes from the large common areas and a garden setup that accommodates outdoor sleeping and lounging. The private pool faces the property's best view axis. Mapro Garden proximity means the manor is ideal for guests who want to combine the villa experience with easy access to Mahabaleshwar's most popular attraction. The professional cook and caretaker are permanent features of the stay — you arrive, settle in, and the logistics are handled. The 'luxury yet budget' positioning reflects the owner's philosophy: premium experience, realistic price. This villa is consistently rated highly by guests who prioritise interior quality and attention to detail over BHK count or raw square footage.",
+    "longDescription": "Lavish Escape Manor stands out for its interior design. While most Mahabaleshwar villas opt for safe, neutral interiors, this property made deliberate choices: statement lighting, curated wall art, quality upholstery, and a level of finish that photographs well and holds up even better in person. The 4 BHK layout for 18 guests is spacious — the extra capacity comes from the large common areas and a garden setup that accommodates outdoor lounging and dining. The private pool faces the property's best view axis. Mapro Garden proximity means the manor is ideal for guests who want to combine the villa experience with easy access to Mahabaleshwar's most popular attraction. The professional cook and caretaker are resident features of your stay — you arrive, settle in, and the logistics are handled. This villa is consistently rated highly by guests who prioritise interior quality and attention to detail over BHK count or raw square footage.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Near Mapro Garden, Mahabaleshwar",
     "bhk": "4 BHK",
@@ -641,9 +1041,34 @@
       { "name": "Strawberry Farms", "distance": "7 min drive" }
     ],
     "faqs": [
-      { "q": "What makes Lavish Escape Manor's interiors different?", "a": "The villa features curated interior design — statement lighting, quality upholstery, and selected wall art — rather than the standard white-wall, basic-furniture approach common in the area." },
-      { "q": "Is there a wine cellar at Lavish Escape Manor?", "a": "Yes, the villa has a wine cellar. Guests are welcome to use the space for storage. We do not stock alcohol — guests should bring their own." },
-      { "q": "Is Lavish Escape Manor good for a photoshoot or content creation?", "a": "The villa's premium interiors and pool setting make it popular for lifestyle content creation, travel photography, and social media shoots." }
+      {
+        "q": "What makes Lavish Escape Manor's interiors different from other villas?",
+        "a": "The villa features carefully selected interior design — statement lighting, quality upholstery, and curated wall art — rather than the standard white-wall, basic-furniture approach common in the region. It photographs well and the quality holds up over a multi-day stay."
+      },
+      {
+        "q": "Is there a wine cellar at Lavish Escape Manor?",
+        "a": "Yes, the villa has a wine cellar available for guest use. The cellar is not stocked — guests should bring their own wine and the space is available for storage and presentation."
+      },
+      {
+        "q": "Is Lavish Escape Manor good for photography and content creation?",
+        "a": "The villa's distinctive interiors and pool setting make it consistently popular for lifestyle content creation, travel photography, pre-wedding shoots, and social media content. Please inform us in advance if you're planning a professional shoot."
+      },
+      {
+        "q": "How far is Lavish Escape Manor from Pune?",
+        "a": "Approximately 120 km from Pune — about 3 hours. The Mapro Garden location puts you at Mahabaleshwar's most-visited attraction within minutes of arrival."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Standard check-in is 12:00 noon and check-out at 11:00 AM. Early check-in requests should be submitted at least 48 hours in advance."
+      },
+      {
+        "q": "Does Lavish Escape Manor include a professional cook?",
+        "a": "Yes — a professional cook is a standard inclusion. Dietary preferences and meal requirements should be communicated the day before arrival for best preparation."
+      },
+      {
+        "q": "Is Lavish Escape Manor suitable for a group celebrating a special occasion?",
+        "a": "The distinctive interiors, wine cellar, private pool, and caretaker support make it one of the better choices for anniversary dinners, milestone birthdays, and celebratory group trips where the setting matters as much as the space."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa17/Screenshot 2026-05-18 135824.png",
@@ -665,7 +1090,7 @@
     "seoDescription": "Book Nature Haven Villa – a 7 BHK luxury family villa for 25 guests with panoramic sunset views near Mapro Garden, Mahabaleshwar. Private balconies, large modular kitchen, spacious garden & premium interiors.",
     "category": "family-villas",
     "description": "7 BHK family villa on Sunset Ridge Road where every bedroom has its own west-facing private balcony — one of the best-equipped modular kitchens in Mahabaleshwar, artistic interiors and panoramic sunset views for 25 guests.",
-    "longDescription": "Nature Haven Villa was built with one type of guest in mind: large families who want to be together for a few days without anyone feeling cramped or overlooked. The 7 BHK layout for 25 guests is genuinely spacious — each bedroom has an attached private balcony, which means every member of the family has their own outdoor space without competing for the main terrace. The large modular kitchen is one of the best in the Mahabaleshwar villa inventory: proper counter space, quality appliances, and enough storage for a group that wants to cook some of its own meals. The sunset views from the west-facing balconies are beautiful enough that guests frequently comment on them specifically in reviews. The artistic interior design gives the villa character beyond the standard hospitality aesthetic. The garden and outdoor seating areas are large enough for post-dinner gatherings. Sunset Ridge Road — the address — is named with some irony: the sunsets from this property really are that reliable. Mapro Garden proximity means easy access for the group's strawberry products and the Garden's cafe.",
+    "longDescription": "Nature Haven Villa was built with one type of guest in mind: large families who want to be together for a few days without anyone feeling cramped or overlooked. The 7 BHK layout for 25 guests is genuinely spacious — each bedroom has an attached private balcony, which means every family member has their own outdoor space without competing for the main terrace. The large modular kitchen is one of the best-equipped in the Mahabaleshwar villa inventory: proper counter space, quality appliances, and enough storage for a group that wants to cook some of its own meals. The sunset views from the west-facing balconies are striking enough that guests frequently comment on them specifically in reviews. The artistic interior design gives the villa a character beyond standard hospitality aesthetics. The garden and outdoor seating areas are large enough for post-dinner gatherings. Sunset Ridge Road — the address — earns its name: the sunsets from this property are that reliable. Mapro Garden proximity means easy access for strawberry products and the Garden's café.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Sunset Ridge Road, Near Mapro Garden, Mahabaleshwar",
     "bhk": "7 BHK",
@@ -680,9 +1105,34 @@
       { "name": "Elephant's Head Point", "distance": "16 min drive" }
     ],
     "faqs": [
-      { "q": "Does every bedroom at Nature Haven Villa have a private balcony?", "a": "Yes — each of the 7 bedrooms has an attached private balcony, giving every guest their own outdoor space. The west-facing balconies offer the best sunset views." },
-      { "q": "Is the kitchen at Nature Haven suitable for self-catering?", "a": "The large modular kitchen is one of the best-equipped in the portfolio — ideal for groups that want to cook some meals themselves. Grocery delivery from Mapro Garden and local stores can be arranged through the caretaker." },
-      { "q": "Is Nature Haven Villa good for 25 people?", "a": "It is purpose-built for large groups — 25-person capacity with spacious common areas, multiple balconies, and a large garden means the group can be together without feeling crowded." }
+      {
+        "q": "Does every bedroom at Nature Haven Villa have a private balcony?",
+        "a": "Yes — each of the 7 bedrooms has an attached private balcony. The west-facing balconies offer the best sunset views; upper-floor balconies tend to have the clearest sightlines across the valley."
+      },
+      {
+        "q": "Is the kitchen at Nature Haven suitable for self-catering?",
+        "a": "The large modular kitchen is one of the best-equipped in the portfolio — ideal for groups that want to cook some meals themselves alongside the caretaker's arrangements. Grocery delivery from Mapro Garden and local stores can be coordinated through the caretaker."
+      },
+      {
+        "q": "Is Nature Haven Villa purpose-built for 25 people?",
+        "a": "Yes — the 25-person capacity with genuinely spacious common areas, 7 private balconies, and a large garden means the group can be together or apart without either feeling crowded or disconnected."
+      },
+      {
+        "q": "How far is Nature Haven Villa from Pune?",
+        "a": "Sunset Ridge Road near Mapro Garden is approximately 120 km from Pune — about 3 hours. Given the 25-person capacity, groups often coordinate carpooling from multiple Pune departure points."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. For large family groups of 25, we recommend coordinating check-in timing with the caretaker at least 48 hours in advance."
+      },
+      {
+        "q": "Is Nature Haven Villa suitable for a family reunion spanning 3–4 days?",
+        "a": "It is one of the portfolio's best multi-day family stay properties — the modular kitchen supports self-catering for some meals, every family member has private balcony space, and the garden accommodates outdoor activities for all age groups."
+      },
+      {
+        "q": "Does Nature Haven Villa have a caretaker on-site?",
+        "a": "Yes — the caretaker is resident for the duration of your stay and handles local coordination, grocery runs, transport arrangements, and any requirements the group has during the visit."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa18/v (2).png",
@@ -704,7 +1154,7 @@
     "seoDescription": "Book Cloud Castle Villa – a 7 BHK elevated luxury pool villa for 23 guests with cloud and sunset views near Mapro Garden, Mahabaleshwar. Private terrace, bonfire area, bedroom balconies & family-friendly amenities.",
     "category": "pool-villas",
     "description": "7 BHK elevated villa near Mapro Garden where monsoon clouds drift through at terrace level — private pool on the lower garden level, bonfire area, bedroom balconies and west-facing sunset terrace for 23 guests.",
-    "longDescription": "Cloud Castle Villa gets its name from something guests experience rather than just see: at certain times of year, particularly during early monsoon and late post-monsoon, clouds drift through the property at terrace level — not below you, but around you. The 7 BHK elevated position near Mapro Garden is high enough to experience this phenomenon while being low enough to remain comfortably accessible. For 23 guests, the villa's layout distributes the group well across multiple floors, with each bedroom having its own balcony access. The private pool is on the lower garden level, flanked by an outdoor seating zone and a bonfire area that becomes the social centrepiece on cool evenings. The sunset view from the upper private terrace faces west across the Sahyadri ranges — on clear days the view extends well beyond the immediately surrounding hills. The modern kitchen is fully equipped for group self-catering. The caretaker is on-site for the duration and handles bonfire setup, local transport coordination, and anything else the group needs. Family-friendly by design: kid-safe pool zones, garden space for outdoor games, and proximity to Mapro Garden for easy entertainment.",
+    "longDescription": "Cloud Castle Villa gets its name from something guests experience rather than just see: at certain times of year, particularly during early monsoon and late post-monsoon, clouds drift through the property at terrace level — not below you, but around you. The 7 BHK elevated position near Mapro Garden is high enough to experience this phenomenon while being low enough to remain comfortably accessible. For 23 guests, the villa's layout distributes the group well across multiple floors, with each bedroom having its own balcony access. The private pool is on the lower garden level, flanked by an outdoor seating zone and a bonfire area that becomes the social centrepiece on cool evenings. The sunset view from the upper private terrace faces west across the Sahyadri ranges — on clear days the view extends well beyond the immediately surrounding hills. The modern kitchen is fully equipped for group self-catering. The caretaker is on-site for the duration and handles bonfire setup, local transport coordination, and anything else the group needs. Family-friendly by design: kid-accessible pool zones, garden space for outdoor games, and proximity to Mapro Garden for easy entertainment.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Cloud Castle Heights, Near Mapro Garden, Mahabaleshwar 412806",
     "bhk": "7 BHK",
@@ -719,9 +1169,34 @@
       { "name": "Elephant's Head Point", "distance": "17 min drive" }
     ],
     "faqs": [
-      { "q": "When can you see cloud views at Cloud Castle Villa?", "a": "Cloud-level views are most common from late June through early October and again in December–January mornings when low cloud cover settles over the valley. The exact experience varies by weather — it cannot be guaranteed but is frequent during these periods." },
-      { "q": "Is the pool at Cloud Castle safe for children?", "a": "Yes — the pool has marked shallow and deep sections. Children should be supervised by adults, and the caretaker is on-site at all times." },
-      { "q": "Can we have a bonfire at Cloud Castle Villa?", "a": "Yes — the dedicated bonfire area in the garden is set up by the caretaker with advance notice. It is one of the most popular features during the October–February period." }
+      {
+        "q": "When can you see cloud views at Cloud Castle Villa?",
+        "a": "Cloud-level views are most common from late June through early October and again on December–January mornings when low cloud cover settles over the valley. The exact experience varies with weather and cannot be guaranteed, but is frequent during these periods."
+      },
+      {
+        "q": "Is the pool at Cloud Castle safe for children?",
+        "a": "Yes — the pool has marked shallow and deep sections. Children should be supervised by adults at all times, and the caretaker is on-site throughout your stay."
+      },
+      {
+        "q": "Can we have a bonfire at Cloud Castle Villa?",
+        "a": "Yes — the dedicated bonfire area in the garden is one of the most popular features during October through February. Setup is arranged by the caretaker with advance notice, typically by early evening for a post-dinner fire."
+      },
+      {
+        "q": "How far is Cloud Castle Villa from Pune?",
+        "a": "Approximately 120 km from Pune — around 3 hours. The elevated location near Mapro Garden is easy to navigate and the caretaker provides specific GPS directions on confirmation."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. For groups of 20+, early check-in coordination with the caretaker is recommended — please request at least 48 hours in advance."
+      },
+      {
+        "q": "Is Cloud Castle Villa suitable for a birthday party or group celebration?",
+        "a": "The bonfire area, private pool, upper sunset terrace, and spacious garden make Cloud Castle well-suited for group celebrations. The caretaker can assist with birthday decoration coordination and bonfire arrangements for evening events."
+      },
+      {
+        "q": "Is Cloud Castle Villa good for a monsoon Mahabaleshwar trip?",
+        "a": "It is one of the portfolio's best monsoon properties — the cloud-level phenomenon is at its most dramatic during the rains, the surrounding green landscape intensifies, and Lingmala Waterfall (12 minutes away) is at full force from June through September."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa19/v (3).png",
@@ -743,7 +1218,7 @@
     "seoDescription": "Book Riverside Hideaway – a peaceful 5 BHK couple-friendly villa for 18 guests near Mapro Garden, Mahabaleshwar. Private balcony, bonfire area, garden space, caretaker & family-friendly amenities.",
     "category": "couple-villas",
     "description": "5 BHK riverside villa in a quiet Mapro Garden pocket — natural stream proximity after monsoon, bonfire zone surrounded by natural landscaping, private balcony off the main bedroom for couples travelling together, for 18 guests.",
-    "longDescription": "Riverside Hideaway takes its identity from the natural surroundings rather than from architectural spectacle. The 5 BHK property near Mapro Garden sits in a greener, quieter pocket of the Mahabaleshwar area — not on the main road — with the outdoor seating area and bonfire zone set beside natural landscaping that makes the property feel genuinely embedded in the landscape. For couples travelling together — two or three couples sharing a villa — the private balcony off the main bedroom provides a secluded morning space that's separate from the common areas. The garden zone is large enough for outdoor dining and social evenings. The bonfire area is used most evenings during cooler months and is one of the consistent highlights that returning guests mention. The villa accommodates 18 guests, which also makes it workable for a larger family getaway. The caretaker is on-site and handles local coordination, including transport to Mapro Garden (5 minutes) and Venna Lake (12 minutes). The 'riverside' element refers to the property's proximity to natural water streams that are active during and after monsoon.",
+    "longDescription": "Riverside Hideaway takes its identity from the natural surroundings rather than architectural spectacle. The 5 BHK property near Mapro Garden sits in a greener, quieter pocket of the Mahabaleshwar area — not on the main tourist road — with the outdoor seating area and bonfire zone set beside natural landscaping that makes the property feel genuinely embedded in the landscape. For couples travelling together — two or three couples sharing a villa — the private balcony off the main bedroom provides a secluded morning space separate from the common areas. The garden zone is large enough for outdoor dining and social evenings. The bonfire area is used most evenings during cooler months and is one of the consistent highlights returning guests mention. The villa accommodates 18 guests total, which also makes it workable for a larger family getaway. The caretaker is on-site and handles local coordination, including transport to Mapro Garden (5 minutes) and Venna Lake (12 minutes). The riverside element refers to natural water streams in the surrounding area that are active during and after monsoon.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Riverside Retreat Road, Near Mapro Garden, Mahabaleshwar 412806",
     "bhk": "5 BHK",
@@ -758,9 +1233,34 @@
       { "name": "Strawberry Farms", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "Is Riverside Hideaway suitable for two couples travelling together?", "a": "Yes — the 5 BHK layout with private balconies and distinct common and private areas makes it well-suited for 2–3 couples who want a shared villa experience with personal space." },
-      { "q": "Is the bonfire area set up automatically?", "a": "The caretaker arranges the bonfire with advance notice — typically requested by 5 PM for an 8 PM setup. Wood and seating are provided." },
-      { "q": "Are there natural water streams near Riverside Hideaway?", "a": "Yes — the property is named for natural streams in the surrounding area that are active during and for several weeks after the monsoon season. The caretaker can guide you to accessible spots." }
+      {
+        "q": "Is Riverside Hideaway suitable for two or three couples travelling together?",
+        "a": "Yes — the 5 BHK layout with a private balcony off the main bedroom and distinct common and private areas makes it well-suited for 2–3 couples who want a shared villa experience with personal space preserved."
+      },
+      {
+        "q": "Is the bonfire area set up automatically?",
+        "a": "The caretaker arranges the bonfire with advance notice — typically request by 5 PM for an 8 PM setup. Wood, seating, and arrangement are all handled without guest coordination."
+      },
+      {
+        "q": "Are there natural water streams near Riverside Hideaway?",
+        "a": "Yes — the property is named for natural streams in the surrounding area that are active during and for several weeks after the monsoon season. The caretaker can guide you to accessible spots depending on the season."
+      },
+      {
+        "q": "How far is Riverside Hideaway from Pune?",
+        "a": "Approximately 120 km from Pune — about 3 hours. The Mapro Garden area is easy to reach and the property's location in a quieter lane just off the main road is accessible by standard vehicles."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in and late check-out can be requested in advance and are subject to availability."
+      },
+      {
+        "q": "Is Riverside Hideaway suitable for a workation?",
+        "a": "The quiet location away from the main tourist road, stable WiFi, modern kitchen, and caretaker support make it a solid workation option for small groups of 6–10 who want to combine remote work with hill station access."
+      },
+      {
+        "q": "Is Riverside Hideaway good for a monsoon trip?",
+        "a": "The natural stream proximity and green surroundings make Riverside Hideaway particularly atmospheric during and after monsoon. The streams are most active June through September, and the surrounding landscape is at its most vivid."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa20/v (2).png",
@@ -782,7 +1282,7 @@
     "seoDescription": "Book Timeless Elegance Estate – a 7 BHK premium furnished group villa for 25 guests near Mapro Garden, Mahabaleshwar. Mountain views, indoor seating lounge, private balconies, AC rooms & caretaker.",
     "category": "group-villas",
     "description": "7 BHK premium group estate near Mapro Garden — refined interiors, dedicated indoor seating lounge separate from the main hall, private balconies per room with mountain or garden views and clean valley-to-ridge sightlines for 25 guests.",
-    "longDescription": "Timeless Elegance Estate is built for groups of 20–25 who want premium furnishing without paying premium pricing per head. The 7 BHK layout distributes a group of 25 comfortably, with the indoor seating lounge — a distinct room separate from the main living area — providing a space for quieter conversations away from the main group activity. Every bedroom has its own private balcony, typically facing either the mountain or the garden depending on the floor. The property's architecture leans refined rather than modern: quality materials, considered proportions, and an interior that photographs well but also holds up over a multi-day stay. The mountain view from the upper floor is one of the cleaner valley-to-ridge lines available in this price bracket. The indoor games room keeps larger groups entertained during rain spells, which are common in the monsoon period. Caretaker is on-site for the full duration. WiFi, power backup, and hot water are all included and maintained. Located on the road leading to Mapro Garden, the estate offers the combination of a peaceful private compound with very easy access to Mahabaleshwar's main tourist draw.",
+    "longDescription": "Timeless Elegance Estate is built for groups of 20–25 who want premium furnishing without paying a per-head premium. The 7 BHK layout distributes a group of 25 comfortably, with the indoor seating lounge — a distinct room separate from the main living area — providing space for quieter conversations away from the main group activity. Every bedroom has its own private balcony, typically facing either the mountain or the garden depending on the floor. The property's architecture leans refined rather than modern: quality materials, considered proportions, and an interior that photographs well but also holds up over a multi-day stay. The mountain view from the upper floor is one of the cleaner valley-to-ridge sightlines available in this price bracket. The indoor games room keeps larger groups entertained during rain spells, which are common during monsoon. Caretaker is on-site for the full duration. WiFi, power backup, and hot water are all maintained. Located on the road leading to Mapro Garden, the estate offers a private compound with very easy access to Mahabaleshwar's main tourist draw.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Elegance Estate Road, Near Mapro Garden, Mahabaleshwar 412806",
     "bhk": "7 BHK",
@@ -797,9 +1297,34 @@
       { "name": "Elephant's Head Point", "distance": "17 min drive" }
     ],
     "faqs": [
-      { "q": "Is Timeless Elegance Estate suitable for a corporate retreat?", "a": "Yes — the indoor seating lounge, stable WiFi, mountain view, and 25-person capacity make it well-suited for corporate offsites where the team wants a premium environment without a hotel's formality." },
-      { "q": "Does each bedroom have a private balcony?", "a": "Yes — all 7 bedrooms have private balconies. Depending on the floor, they face either the mountain ridge or the garden. Upper floor balconies offer the best mountain views." },
-      { "q": "What is the indoor seating lounge at Timeless Elegance?", "a": "It is a dedicated room separate from the main living area — used for quieter conversations, reading, or small-group meetings within the larger group stay." }
+      {
+        "q": "Is Timeless Elegance Estate suitable for a corporate retreat?",
+        "a": "Yes — the indoor seating lounge, stable WiFi, mountain view, and 25-person capacity make it well-suited for corporate offsites where the team wants a quality environment without a hotel's formality and pricing structure."
+      },
+      {
+        "q": "Does each bedroom have a private balcony?",
+        "a": "Yes — all 7 bedrooms have private balconies. Depending on the floor, they face either the mountain ridge or the garden. Upper-floor balconies offer the clearest mountain views."
+      },
+      {
+        "q": "What is the indoor seating lounge at Timeless Elegance?",
+        "a": "A dedicated room separate from the main living area — comfortable seating, quieter atmosphere, and suitable for smaller conversations or informal meetings within the larger group stay. It is one of the features that sets this property apart from standard group villas."
+      },
+      {
+        "q": "How far is Timeless Elegance Estate from Pune?",
+        "a": "Approximately 120 km from Pune — around 3 hours. For a group of 25, coordinating multiple vehicles from Pune is typical; the caretaker can assist with staggered arrivals."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. For groups of 25, early check-in coordination 48 hours in advance is strongly recommended."
+      },
+      {
+        "q": "Is Timeless Elegance Estate good for a large family reunion spanning multiple days?",
+        "a": "The 25-person capacity, premium furnishing, individual bedroom balconies, indoor games room, and caretaker support make it one of the stronger multi-day reunion options in the Mapro Garden area."
+      },
+      {
+        "q": "Is the WiFi at Timeless Elegance Estate suitable for a corporate workation?",
+        "a": "WiFi is stable and sufficient for video calls and general work use. For a full corporate team using the connection simultaneously, we recommend confirming bandwidth suitability before arrival — the caretaker can advise on the current service."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa21/v (4).png",
@@ -822,7 +1347,7 @@
     "seoDescription": "Book Exotic Oasis Villa – a 5 BHK luxury tropical pool villa for 18 guests near Mapro Garden, Mahabaleshwar. Tropical garden, sunset views, bedroom balconies, bonfire area & caretaker.",
     "category": "pool-villas",
     "description": "5 BHK tropical villa near Mapro Garden where dense garden planting creates a noticeably cooler microclimate — the temperature drop from the gate is the first thing guests notice. Amphitheatre-style bonfire garden, private pool and sunset terrace for 18 guests.",
-    "longDescription": "Exotic Oasis Villa earns the tropical label through its garden design: dense plantings of tropical species surround the property, creating a microclimate that is visibly cooler and more humid than the surrounding road. For guests arriving from Pune or Mumbai — both hot cities for much of the year — the temperature drop inside the Exotic Oasis compound is the first thing noticed and the last thing forgotten. The 5 BHK layout for 18 guests balances space and intimacy well. Each bedroom has a balcony that overlooks either the garden or the surrounding hillside. The outdoor seating area and bonfire zone are placed in the deepest section of the garden — surrounded by greenery on three sides — which creates an almost amphitheatre feeling for evening gatherings. Beautiful sunset views are accessible from the upper terrace. The modern kitchen is fully equipped. Caretaker is on-site for the full stay. Mapro Garden is close enough for a morning visit before the crowds build up from 10 AM onwards.",
+    "longDescription": "Exotic Oasis Villa earns the tropical label through its garden design: dense plantings of tropical species surround the property, creating a microclimate that is visibly cooler and more humid than the surrounding road. For guests arriving from Pune or Mumbai — both hot cities for much of the year — the temperature drop inside the Exotic Oasis compound is the first thing noticed and the last thing forgotten. The 5 BHK layout for 18 guests balances space and intimacy well. Each bedroom has a balcony overlooking either the garden or the surrounding hillside. The outdoor seating area and bonfire zone are placed in the deepest section of the garden — surrounded by greenery on three sides — creating an almost amphitheatre effect for evening gatherings. Beautiful sunset views are accessible from the upper terrace. The modern kitchen is fully equipped. The caretaker is on-site for the full stay. Mapro Garden is close enough for a morning visit before the crowds build up from 10 AM onwards.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Exotic Oasis Road, Near Mapro Garden, Mahabaleshwar 412806",
     "bhk": "5 BHK",
@@ -837,9 +1362,34 @@
       { "name": "Strawberry Farms", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "What makes the garden at Exotic Oasis Villa different?", "a": "The garden features tropical plantings that create a noticeably cooler, greener environment compared to typical villa compounds. The density of the planting gives the property a secluded, forest-edge feel." },
-      { "q": "Is Exotic Oasis Villa good for nature lovers?", "a": "Yes — the tropical garden, proximity to natural surroundings, and the cooler microclimate make it a favourite with guests who want to spend time outdoors as much as inside." },
-      { "q": "Is the bonfire area sheltered from wind?", "a": "The bonfire zone is in the deepest section of the garden, surrounded by planting on three sides, which provides natural wind shelter and makes it usable even on cooler, breezier evenings." }
+      {
+        "q": "What makes the garden at Exotic Oasis Villa different?",
+        "a": "The garden features tropical plantings that create a noticeably cooler, greener environment compared to typical villa compounds. The density of planting gives the property a secluded, forest-edge feel that guests from warm cities particularly appreciate on arrival."
+      },
+      {
+        "q": "Is Exotic Oasis Villa good for nature lovers?",
+        "a": "Yes — the tropical garden, proximity to natural surroundings, and the cooler microclimate make it a consistent favourite with guests who want to spend meaningful time outdoors rather than just in the pool or living room."
+      },
+      {
+        "q": "Is the bonfire area sheltered from wind?",
+        "a": "The bonfire zone is in the deepest section of the garden, surrounded by plantings on three sides, which provides natural wind shelter. It remains usable even on cooler, breezier December and January evenings."
+      },
+      {
+        "q": "How far is Exotic Oasis Villa from Pune?",
+        "a": "Approximately 120 km from Pune — around 3 hours via NH 48 or through Panchgani. The Mapro Garden location ensures you're close to Mahabaleshwar's main attractions from the moment you arrive."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in can be arranged with advance notice and is subject to the caretaker's confirmation."
+      },
+      {
+        "q": "Is Exotic Oasis Villa good for a monsoon trip?",
+        "a": "The tropical garden becomes particularly lush during monsoon (June–September), and the natural humidity of the plantings intensifies the cooling effect. The bonfire area remains sheltered for use on rain-free evenings."
+      },
+      {
+        "q": "Is Exotic Oasis Villa suitable for a photography or content creation shoot?",
+        "a": "The tropical garden and bedroom balconies offer distinctive backdrops that differ markedly from standard hill station villa aesthetics. The property is available for lifestyle and travel photography shoots — please inform us in advance."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa22/v (6).png",
@@ -861,7 +1411,7 @@
     "seoDescription": "Book Mountain Sanctuary – a 4 BHK family villa with mountain views for 15 guests near Mapro Garden, Mahabaleshwar. Private balcony, bonfire area, indoor games, peaceful location & caretaker.",
     "category": "family-villas",
     "description": "4 BHK family retreat near Mapro Garden where the upper balcony frames the Sahyadri ridgeline through trees — morning-lit garden seating for breakfast, bonfire area essential in December nights and indoor games for monsoon stays, 15 guests.",
-    "longDescription": "Mountain Sanctuary is for families who come to Mahabaleshwar primarily to slow down. The 4 BHK property near Mapro Garden is positioned in a quiet zone with mountain views from the upper balcony that are framed by trees rather than neighbouring buildings. The outdoor seating area is on a section of the garden that catches morning light — a good place for breakfast before the day's sightseeing. The bonfire area in the garden comes into its own in the evenings from October through February, when temperatures in Mahabaleshwar can drop to 8–12°C and a fire becomes a genuine necessity rather than an activity. The indoor games room provides a rainy-day backup — useful during monsoon stays when the region averages significant rainfall. The property comfortably fits 15 guests across 4 bedrooms plus common sleeping areas. The caretaker is on-site for local coordination, and proximity to Mapro Garden (6 minutes) means fresh produce, the Garden's restaurant, and easy access to Venna Lake and Wilson Point. For families who want nature, calm, and convenience without sacrificing comfort, Mountain Sanctuary covers all bases.",
+    "longDescription": "Mountain Sanctuary is for families who come to Mahabaleshwar primarily to slow down. The 4 BHK property near Mapro Garden is positioned in a quiet zone with mountain views from the upper balcony framed by trees rather than neighbouring buildings. The outdoor seating area catches morning light — a good place for breakfast before the day's sightseeing begins. The bonfire area in the garden comes into its own from October through February, when Mahabaleshwar temperatures can drop to 8–12°C and a fire becomes a genuine necessity rather than just an activity. The indoor games room provides a rainy-day backup — useful during monsoon stays when the region averages significant rainfall. The property comfortably fits 15 guests across 4 bedrooms plus common sleeping areas. The caretaker is on-site for local coordination, and proximity to Mapro Garden (6 minutes) means fresh produce, the Garden's restaurant, and easy access to Venna Lake and Wilson Point. For families who want nature, calm, and convenience without sacrificing comfort, Mountain Sanctuary covers all of it without excess.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Mountain Sanctuary Road, Near Mapro Garden, Mahabaleshwar 412806",
     "bhk": "4 BHK",
@@ -876,9 +1426,34 @@
       { "name": "Elephant's Head Point", "distance": "17 min drive" }
     ],
     "faqs": [
-      { "q": "Is Mountain Sanctuary good for a monsoon stay?", "a": "Yes — the mountain views are particularly dramatic during monsoon when clouds roll through the ridgeline. The indoor games room provides a dry-day backup and the surrounding greenery becomes exceptionally lush." },
-      { "q": "What temperatures should we expect in winter at Mountain Sanctuary?", "a": "Mahabaleshwar nights in December–January can drop to 8–12°C. The villa has fully AC rooms that can be used for heating function. The bonfire area is especially popular during this period." },
-      { "q": "Is Mountain Sanctuary suitable for elderly family members?", "a": "The ground floor bedrooms are accessible and the overall layout avoids steep internal staircases. Please mention any specific mobility requirements when booking." }
+      {
+        "q": "Is Mountain Sanctuary good for a monsoon stay?",
+        "a": "Yes — the mountain views are particularly dramatic during monsoon when clouds roll through the ridgeline. The indoor games room provides a dry-day backup and the surrounding greenery becomes exceptionally lush from June through September."
+      },
+      {
+        "q": "What temperatures should we expect in winter at Mountain Sanctuary?",
+        "a": "Mahabaleshwar nights in December and January can drop to 8–12°C. The villa has fully AC rooms with heating capability, and the bonfire area is especially popular during this period. Blankets and warm bedding are provided."
+      },
+      {
+        "q": "Is Mountain Sanctuary suitable for elderly family members?",
+        "a": "Ground-floor bedrooms are accessible and the overall layout avoids steep internal staircases. Please mention any specific mobility requirements when booking and the caretaker will ensure appropriate room allocation."
+      },
+      {
+        "q": "How far is Mountain Sanctuary from Pune?",
+        "a": "Approximately 120 km from Pune — around 3 hours via NH 48. The Mapro Garden area is well-signposted and the caretaker provides specific GPS directions on booking confirmation."
+      },
+      {
+        "q": "What are the check-in and check-out times?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in can be arranged — request at least 24 hours in advance."
+      },
+      {
+        "q": "Does Mountain Sanctuary include a cook?",
+        "a": "Cook arrangements are available through the caretaker. For families with varied dietary requirements, communicate all preferences and restrictions at least a day before arrival."
+      },
+      {
+        "q": "Is Mountain Sanctuary Villa suitable for a family of 15 with children?",
+        "a": "The morning-lit garden, indoor games room, bonfire area, and quiet compound make it well-suited for families with children of all ages. The absence of busy roads nearby is a feature families with young children specifically mention in reviews."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa23/v (2).png",
@@ -900,7 +1475,7 @@
     "seoDescription": "Book Artisan Villa – a stylish 5 BHK couple-friendly luxury villa for 18 guests near Mapro Garden, Mahabaleshwar. Premium furnishing, creative lounge, private balcony, garden & caretaker.",
     "category": "couple-villas",
     "description": "5 BHK design villa near Mapro Garden with hand-selected furnishings, a dedicated creative lounge for reading and quiet conversation, private bedroom balconies and quality mattresses — the villa couples choose when atmosphere matters as much as amenities, for 18 guests.",
-    "longDescription": "Artisan Villa is designed with a different sensibility from the standard Mahabaleshwar property. The interiors reflect genuine creative direction: hand-selected furnishings, considered colour choices, and a dedicated creative lounge area that functions as a reading room, conversation space, or quiet withdrawal from the main group energy. The 5 BHK layout for 18 guests is well-suited for couples travelling together — the private balconies off each bedroom provide personal outdoor space, while the shared garden and outdoor seating areas create communal gathering zones. The modern modular kitchen is fully equipped for self-catering or for use alongside the caretaker's meal coordination service. The premium furnishing is complemented by quality beds and mattresses — a detail that guests in extended stays particularly appreciate. Located near Mapro Garden, the villa is within easy reach of Mahabaleshwar's main tourism belt while sitting in a quieter compound. Couples who want a villa with personality — not just square footage and a pool — consistently choose Artisan Villa for its character.",
+    "longDescription": "Artisan Villa is designed with a different sensibility from the standard Mahabaleshwar property. The interiors reflect genuine creative direction: hand-selected furnishings, considered colour choices, and a dedicated creative lounge area that functions as a reading room, conversation space, or quiet withdrawal from the main group energy. The 5 BHK layout for 18 guests is well-suited for couples travelling together — the private balconies off each bedroom provide personal outdoor space, while the shared garden and outdoor seating areas create communal gathering zones. The modern modular kitchen is fully equipped for self-catering or use alongside caretaker meal coordination. The quality beds and mattresses are a detail that guests in extended stays particularly appreciate. Located near Mapro Garden, the villa is within easy reach of Mahabaleshwar's main tourism belt while sitting in a quieter compound. Couples who want a villa with personality — not just square footage — consistently choose Artisan Villa for its character over the area's more generic options.",
     "location": "Near Mapro Garden, Mahabaleshwar",
     "address": "Artisan Villa Road, Near Mapro Garden, Mahabaleshwar 412806",
     "bhk": "5 BHK",
@@ -915,9 +1490,34 @@
       { "name": "Strawberry Farms", "distance": "8 min drive" }
     ],
     "faqs": [
-      { "q": "What is the creative lounge at Artisan Villa?", "a": "It is a dedicated room separate from the main living area — furnished with comfortable seating, selected reading material, and decor that creates a quieter, more reflective atmosphere compared to the main common spaces." },
-      { "q": "Is Artisan Villa suitable for couples?", "a": "Yes — the creative lounge, private balconies, premium furnishing, and garden seating areas make it particularly suited for couples and small groups who value atmosphere and aesthetic quality." },
-      { "q": "Does Artisan Villa have a caretaker?", "a": "Yes, a caretaker is on-site for the duration of your stay to assist with meal coordination, local transport, and any requirements during your visit." }
+      {
+        "q": "What is the creative lounge at Artisan Villa?",
+        "a": "A dedicated room separate from the main living area — comfortable seating, selected reading material, and decor that creates a quieter, more reflective atmosphere. It functions as a reading room, conversation space, or a place to withdraw from the main group energy."
+      },
+      {
+        "q": "Is Artisan Villa suitable for couples?",
+        "a": "Yes — the creative lounge, private balconies, hand-selected furnishings, and garden seating make it particularly suited for couples and small groups who value atmosphere and aesthetic quality in a villa stay."
+      },
+      {
+        "q": "Does Artisan Villa have a caretaker?",
+        "a": "Yes — a caretaker is on-site for the full duration of your stay to assist with meal coordination, local transport arrangements, and any requirements during your visit."
+      },
+      {
+        "q": "How far is Artisan Villa from Pune?",
+        "a": "Approximately 120 km from Pune — around 3 hours. The Mapro Garden area location means you're in the heart of Mahabaleshwar's main attraction zone within minutes of arrival."
+      },
+      {
+        "q": "What are the check-in and check-out times at Artisan Villa?",
+        "a": "Check-in is at 12:00 noon and check-out at 11:00 AM. Early check-in and late check-out can be arranged with advance notice, subject to the property's availability on your dates."
+      },
+      {
+        "q": "Is Artisan Villa good for a workation stay?",
+        "a": "The creative lounge, private balconies, stable WiFi, and quiet compound make Artisan Villa a thoughtful workation option for individuals or small teams who want a productive work environment alongside genuine hill station access."
+      },
+      {
+        "q": "Is Artisan Villa suitable for an anniversary or honeymoon stay?",
+        "a": "The villa's distinctive character, private balconies, and quieter compound setting make it a strong choice for couples celebrating milestones who want a stay that feels personally considered rather than generically comfortable."
+      }
     ],
     "images": {
       "listing": "/villaImages/villa24/v (7).png",
