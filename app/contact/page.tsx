@@ -77,7 +77,6 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { ContactForm } from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
   title: 'Contact Us — WhatsApp Villa Inquiry',
   description:
     'Contact Mahabaleshwar Villa Stays. Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
@@ -95,7 +94,6 @@ export const metadata: Metadata = {
       'Contact Mahabaleshwar Villa Stays. Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
     images: [
       {
-        // ✅ Absolute URL — relative /og-image.jpg breaks social sharing previews
         url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
         width: 1200,
         height: 630,
@@ -108,7 +106,6 @@ export const metadata: Metadata = {
     title: 'Contact Us | Mahabaleshwar Villa Stays',
     description:
       'Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
-    // ✅ Absolute URL — relative /og-image.jpg breaks Twitter card previews
     images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 };
