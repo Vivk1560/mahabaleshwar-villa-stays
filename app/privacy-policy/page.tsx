@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
+import { FloatingButtons } from '@/components/FloatingButtons'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Mahabaleshwar Villa Stays',
+  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
+  title: 'Privacy Policy',
   description:
     'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.',
   alternates: {
@@ -12,6 +14,30 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  // ✅ OG tags added — were completely missing before
+  openGraph: {
+    type: 'website',
+    url: 'https://www.mahabaleshwarvillastays.com/privacy-policy',
+    siteName: 'Mahabaleshwar Villa Stays',
+    title: 'Privacy Policy | Mahabaleshwar Villa Stays',
+    description:
+      'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.',
+    images: [
+      {
+        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mahabaleshwar Villa Stays — Privacy Policy',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | Mahabaleshwar Villa Stays',
+    description:
+      'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.',
+    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 }
 
@@ -42,8 +68,8 @@ export default function PrivacyPolicyPage() {
                 and operated by <strong>Rajesh Garela</strong> (&quot;we&quot;, &quot;us&quot;, or
                 &quot;our&quot;), collects, uses, and protects the information you provide when you
                 visit our website{' '}
-                <a
-                  href="https://www.mahabaleshwarvillastays.com"
+                
+                 <a href="https://www.mahabaleshwarvillastays.com"
                   className="text-primary hover:underline"
                 >
                   www.mahabaleshwarvillastays.com
@@ -108,8 +134,8 @@ export default function PrivacyPolicyPage() {
                 team for the purpose of handling your booking. WhatsApp&apos;s own privacy
                 policy governs the security and handling of messages on their platform. We
                 recommend reviewing{' '}
-                <a
-                  href="https://www.whatsapp.com/legal/privacy-policy"
+                
+                 <a href="https://www.whatsapp.com/legal/privacy-policy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"
@@ -155,9 +181,7 @@ export default function PrivacyPolicyPage() {
                   With Vercel, our website hosting provider, which processes basic website
                   traffic data
                 </li>
-                <li>
-                  When required by law or legal process
-                </li>
+                <li>When required by law or legal process</li>
               </ul>
             </div>
 
@@ -237,8 +261,8 @@ export default function PrivacyPolicyPage() {
                 </p>
                 <p>
                   <strong className="text-foreground">Email:</strong>{' '}
-                  <a
-                    href="mailto:rajeshgarela0@gmail.com"
+                  
+                   <a href="mailto:rajeshgarela0@gmail.com"
                     className="text-primary hover:underline"
                   >
                     rajeshgarela0@gmail.com
@@ -262,6 +286,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <Footer />
+      <FloatingButtons />
     </main>
   )
 }
