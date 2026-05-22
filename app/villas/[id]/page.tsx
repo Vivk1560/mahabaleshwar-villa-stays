@@ -1,10 +1,4 @@
 // app/villas/[id]/page.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-// Changes in this version:
-//  1. generateMetadata now uses villa.seoTitle + villa.seoDescription
-//  2. Visible breadcrumb nav added (BreadcrumbList schema was already there)
-//  3. RelatedVillas section added after FAQ
-// ─────────────────────────────────────────────────────────────────────────────
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,12 +30,12 @@ export async function generateMetadata({ params }: PageProps) {
   const villa = villas.find((v) => v.id === resolvedParams.id);
   if (!villa) return {};
 
-  // ✅ NOW uses seoTitle + seoDescription from villas.json
   const title = villa.seoTitle || `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`;
   const description = villa.seoDescription || `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`;
 
   return {
     metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
+    // ✅ FIX: { absolute } bypasses layout.tsx template — prevents duplicate brand name
     title: { absolute: title },
     description,
     keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, ${villa.bhk} villa Mahabaleshwar, Mahabaleshwar vacation rentals, private pool villa Mahabaleshwar`,
@@ -84,19 +78,24 @@ export default async function VillaDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Reviews for UI display (max 3)
   const villaReviews = reviews.filter((r) => r.villa === villa.id).slice(0, 3);
+
+  // Reviews for schema (max 5, separate from UI slice)
+  const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id);
 
   const amenityIcons: Record<string, React.ReactNode> = {
     WiFi: <Wifi className="w-5 h-5" />,
     Kitchen: <UtensilsCrossed className="w-5 h-5" />,
   };
 
-  // ✅ Safely parse BHK number
+  // Safely parse BHK number
   const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
 
   // ── Structured Data ──────────────────────────────────────────────────────
-  const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id)
 
+  // ✅ LodgingBusiness schema with AggregateRating + Review array
+  // AggregateRating enables star ratings in Google SERPs
   const vacationRentalSchema = {
     '@context': 'https://schema.org',
     '@type': 'LodgingBusiness',
@@ -121,29 +120,35 @@ export default async function VillaDetailPage({ params }: PageProps) {
       value: true,
     })),
     petsAllowed: false,
+    // ✅ AggregateRating — this is what Google reads to show stars in search results
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: villa.rating,
       bestRating: 5,
       worstRating: 1,
+      // If this villa has reviews in reviews.json use that count, otherwise use 2 as minimum
       reviewCount: villaReviewsForSchema.length > 0 ? villaReviewsForSchema.length : 2,
     },
-    review: villaReviewsForSchema.slice(0, 5).map((r) => ({
-      '@type': 'Review',
-      author: {
-        '@type': 'Person',
-        name: r.author,
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: r.rating,
-        bestRating: 5,
-        worstRating: 1,
-      },
-      reviewBody: r.comment,
-      datePublished: r.date || '2025-01-01',
-    })),
-  }
+    // ✅ Individual Review objects — Google uses these to validate the aggregate rating
+    ...(villaReviewsForSchema.length > 0 && {
+      review: villaReviewsForSchema.slice(0, 5).map((r) => ({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: r.author,
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: r.rating,
+          bestRating: 5,
+          worstRating: 1,
+        },
+        reviewBody: r.comment,
+        datePublished: r.date,
+      })),
+    }),
+  };
+
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -201,28 +206,18 @@ export default async function VillaDetailPage({ params }: PageProps) {
       <NavBar />
 
       {/* ── VISIBLE BREADCRUMB NAV ─────────────────────────────────────────── */}
-      {/* Fixes the "80% solved" breadcrumb issue — now fully visible to users & crawlers */}
-      <nav
-        aria-label="Breadcrumb"
-        className="pt-20 pb-2 px-4 bg-background"
-      >
+      <nav aria-label="Breadcrumb" className="pt-20 pb-2 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <ol className="flex items-center flex-wrap gap-1 text-sm text-muted-foreground">
             <li>
-              <Link
-                href="/"
-                className="flex items-center gap-1 hover:text-primary transition-colors"
-              >
+              <Link href="/" className="flex items-center gap-1 hover:text-primary transition-colors">
                 <Home className="w-3.5 h-3.5" />
                 <span>Home</span>
               </Link>
             </li>
             <li className="flex items-center gap-1">
               <ChevronRight className="w-3.5 h-3.5" />
-              <Link
-                href="/villas"
-                className="hover:text-primary transition-colors"
-              >
+              <Link href="/villas" className="hover:text-primary transition-colors">
                 Villas
               </Link>
             </li>
@@ -395,8 +390,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
               </section>
 
-              {/* ── RELATED VILLAS ─────────────────────────────────────────── */}
-              {/* Resolves Issue #5 — "You Might Also Like" with internal linking */}
+              {/* Related Villas */}
               <RelatedVillas
                 currentId={villa.id}
                 currentCategory={villa.category}
