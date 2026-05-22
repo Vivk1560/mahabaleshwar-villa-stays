@@ -153,7 +153,20 @@ export default async function BlogDetailPage({ params }: PageProps) {
       },
     ],
   }
-
+  const faqSchema = blog.faqs?.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: blog.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    }
+  : null
   const contentBlocks = blog.content.split('\n\n').filter(Boolean)
 
   return (
@@ -166,6 +179,14 @@ export default async function BlogDetailPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+       {faqSchema && (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqSchema),
+    }}
+  />
+)}
 
       <NavBar />
 
@@ -273,6 +294,36 @@ export default async function BlogDetailPage({ params }: PageProps) {
               </div>
             </div>
           )}
+          {blog.faqs?.length > 0 && (
+  <section className="mt-16 pt-12 border-t border-border">
+    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+      Frequently Asked Questions
+    </h2>
+
+    <div className="space-y-5">
+      {blog.faqs.map((faq, index) => (
+        <details
+          key={index}
+          className="group border border-border rounded-2xl p-6 bg-card"
+        >
+          <summary className="flex justify-between items-center cursor-pointer list-none">
+            <h3 className="font-semibold text-lg text-foreground pr-5">
+              {faq.q}
+            </h3>
+
+            <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
+              +
+            </span>
+          </summary>
+
+          <p className="mt-5 text-muted-foreground leading-7">
+            {faq.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </section>
+)}
 
           <div className="mt-16 text-center">
             <Link
