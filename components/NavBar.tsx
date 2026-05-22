@@ -10,14 +10,14 @@ export function NavBar() {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   const categories = [
-  { label: 'All Villas', href: '/villas' },
-  { label: 'Pool Villas', href: '/villas?category=pool-villas' },
-  { label: 'Family Villas', href: '/villas?category=family-villas' },
-  { label: 'Couple Villas', href: '/villas?category=couple-villas' },
-  { label: 'Group Villas', href: '/villas?category=group-villas' },
-  { label: 'Valley View Villas', href: '/villas?category=valley-view-villas' },
-  { label: 'Budget Villas', href: '/villas?category=budget-villas' },
-];
+    { label: 'All Villas', href: '/villas' },
+    { label: 'Pool Villas', href: '/villas/category/pool-villas-in-mahabaleshwar' },
+    { label: 'Family Villas', href: '/villas/category/family-villas-in-mahabaleshwar' },
+    { label: 'Couple Villas', href: '/villas/category/couple-villas-in-mahabaleshwar' },
+    { label: 'Group Villas', href: '/villas/category/group-villas-in-mahabaleshwar' },
+    { label: 'Valley View Villas', href: '/villas/category/valley-view-villas-in-mahabaleshwar' },
+    { label: 'Budget Villas', href: '/villas/category/budget-villas-in-mahabaleshwar' },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-background border-b border-border z-50 shadow-card">
@@ -75,13 +75,13 @@ export function NavBar() {
               Contact Us
             </Link>
             <a
-  href="https://wa.me/919921372661"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-sm ml-4"
->
-  WhatsApp Inquiry
-</a>
+              href="https://wa.me/919921372661"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-sm ml-4"
+            >
+              WhatsApp Inquiry
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -136,13 +136,13 @@ export function NavBar() {
                 Contact Us
               </Link>
               <a
-  href="https://wa.me/919921372661"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-sm ml-4"
->
-  WhatsApp Inquiry
-</a>
+                href="https://wa.me/919921372661"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-sm ml-4"
+              >
+                WhatsApp Inquiry
+              </a>
             </div>
           </div>
         )}
