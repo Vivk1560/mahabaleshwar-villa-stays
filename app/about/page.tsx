@@ -1,3 +1,5 @@
+// app/about/page.tsx
+
 import Image from 'next/image';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
@@ -43,9 +45,95 @@ export const metadata: Metadata = {
   },
 };
 
+// ✅ BreadcrumbList — Home > About
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.mahabaleshwarvillastays.com',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'About',
+      item: 'https://www.mahabaleshwarvillastays.com/about',
+    },
+  ],
+};
+
+// ✅ Person schema for founder — improves E-E-A-T signals
+// Google uses this to verify the real person behind the business
+const founderSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rajesh Garela',
+  jobTitle: 'Founder & CEO',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Mahabaleshwar Villa Stays',
+    url: 'https://www.mahabaleshwarvillastays.com',
+  },
+  email: 'rajeshgarela0@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Mahabaleshwar',
+    addressRegion: 'Maharashtra',
+    addressCountry: 'IN',
+  },
+};
+
+// ✅ Organization schema — reinforces brand identity on the About page
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Mahabaleshwar Villa Stays',
+  url: 'https://www.mahabaleshwarvillastays.com',
+  logo: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
+  foundingDate: '2015',
+  founder: {
+    '@type': 'Person',
+    name: 'Rajesh Garela',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+918080557611',
+    contactType: 'customer service',
+    availableLanguage: ['English', 'Hindi', 'Marathi'],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Bhilar, Panchgani Mahabaleshwar Road',
+    addressLocality: 'Satara',
+    addressRegion: 'Maharashtra',
+    postalCode: '412806',
+    addressCountry: 'IN',
+  },
+  sameAs: [
+    'https://www.mahabaleshwarvillastays.com',
+  ],
+};
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+
       <NavBar />
 
       {/* Header Section */}
