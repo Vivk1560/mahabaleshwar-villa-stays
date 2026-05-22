@@ -92,7 +92,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
                 
-                  href="tel:8080557611"
+               <a   href="tel:8080557611"
                   className="hover:text-primary transition-colors"
                 >
                   📞 8080557611
@@ -100,7 +100,7 @@ export function Footer() {
               </li>
               <li>
                 
-                  href="https://wa.me/919921372661"
+               <a   href="https://wa.me/919921372661"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
@@ -110,7 +110,7 @@ export function Footer() {
               </li>
               <li>
                 
-                  href="mailto:rajeshgarela0@gmail.com"
+               <a   href="mailto:rajeshgarela0@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
                   ✉️ rajeshgarela0@gmail.com
@@ -174,7 +174,7 @@ export function Footer() {
           <p className="text-xs text-gray-500">
             Designed & Developed by{' '}
             
-              href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
+            <a  href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
