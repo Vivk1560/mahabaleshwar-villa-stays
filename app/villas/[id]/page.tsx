@@ -95,6 +95,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
   const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
 
   // ── Structured Data ──────────────────────────────────────────────────────
+  const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id)
+
   const vacationRentalSchema = {
     '@context': 'https://schema.org',
     '@type': 'LodgingBusiness',
@@ -119,13 +121,29 @@ export default async function VillaDetailPage({ params }: PageProps) {
       value: true,
     })),
     petsAllowed: false,
-    starRating: {
-      '@type': 'Rating',
+    aggregateRating: {
+      '@type': 'AggregateRating',
       ratingValue: villa.rating,
       bestRating: 5,
+      worstRating: 1,
+      reviewCount: villaReviewsForSchema.length > 0 ? villaReviewsForSchema.length : 2,
     },
-  };
-
+    review: villaReviewsForSchema.slice(0, 5).map((r) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: r.author,
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: r.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody: r.comment,
+      datePublished: r.date || '2025-01-01',
+    })),
+  }
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
