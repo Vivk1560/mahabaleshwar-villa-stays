@@ -7,33 +7,39 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { Check } from 'lucide-react';
 import aboutData from '@/lib/data/aboutData.json';
 import testimonials from '@/lib/data/testimonials.json';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'About Us | Mahabaleshwar Villa Stays - Premium Villa Collections',
-  description: 'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
-  keywords: 'Mahabaleshwar villas, luxury hospitality, hill station resorts, villa collections, Mahabaleshwar stays',
+export const metadata: Metadata = {
+  title: 'About Us — Premium Villa Collections',
+  description:
+    'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
+  keywords:
+    'Mahabaleshwar villas, luxury hospitality, hill station resorts, villa collections, Mahabaleshwar stays',
   alternates: {
     canonical: 'https://www.mahabaleshwarvillastays.com/about',
   },
   openGraph: {
     type: 'website',
     url: 'https://www.mahabaleshwarvillastays.com/about',
-    title: 'About Us | Mahabaleshwar Villa Stays - Premium Villa Collections',
-    description: 'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
+    siteName: 'Mahabaleshwar Villa Stays',
+    title: 'About Us — Premium Villa Collections | Mahabaleshwar Villa Stays',
+    description:
+      'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'About Mahabaleshwar Villa Stays - Premium Luxury Villas',
+        alt: 'About Mahabaleshwar Villa Stays — Premium Luxury Villas',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Us | Mahabaleshwar Villa Stays',
-    description: 'Meet the team behind Mahabaleshwar Villa Stays. Authentic hospitality and curated luxury villas.',
-    images: ['/og-image.jpg'],
+    description:
+      'Meet the team behind Mahabaleshwar Villa Stays. Authentic hospitality and curated luxury villas.',
+    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 };
 
@@ -127,7 +133,10 @@ export default function AboutPage() {
           />
           <div className="grid md:grid-cols-2 gap-8 mt-12">
             {aboutData.values.map((value, idx) => (
-              <div key={idx} className="bg-card border border-border rounded-lg p-8 space-y-3 hover:shadow-card transition-shadow">
+              <div
+                key={idx}
+                className="bg-card border border-border rounded-lg p-8 space-y-3 hover:shadow-card transition-shadow"
+              >
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1">
                     <Check className="w-6 h-6" />
