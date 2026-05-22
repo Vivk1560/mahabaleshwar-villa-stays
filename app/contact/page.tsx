@@ -1,3 +1,5 @@
+// app/contact/page.tsx
+
 import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
@@ -38,9 +40,85 @@ export const metadata: Metadata = {
   },
 };
 
+// ✅ LocalBusiness JSON-LD — Google reads this to verify NAP consistency
+// with your Google Business Profile. Must match exactly.
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: 'Mahabaleshwar Villa Stays',
+  url: 'https://www.mahabaleshwarvillastays.com',
+  telephone: '+918080557611',
+  email: 'rajeshgarela0@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Bhilar, Panchgani Mahabaleshwar Road',
+    addressLocality: 'Satara',
+    addressRegion: 'Maharashtra',
+    postalCode: '412806',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '17.9241',
+    longitude: '73.7483',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '21:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Sunday'],
+      opens: '10:00',
+      closes: '20:00',
+    },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+918080557611',
+    contactType: 'customer service',
+    availableLanguage: ['English', 'Hindi', 'Marathi'],
+  },
+  priceRange: '₹₹₹',
+  image: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+};
+
+// ✅ BreadcrumbList — Home > Contact
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://www.mahabaleshwarvillastays.com',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Contact',
+      item: 'https://www.mahabaleshwarvillastays.com/contact',
+    },
+  ],
+};
+
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       <NavBar />
 
       {/* Header */}
