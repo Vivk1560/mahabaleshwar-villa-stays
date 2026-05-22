@@ -1,37 +1,45 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ArrowRight, Calendar } from 'lucide-react';
 import blogs from '@/lib/data/blogs.json';
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-  title: 'Travel Guides & Tips | Mahabaleshwar Villa Stays Blog',
-  description: 'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
-  keywords: 'Mahabaleshwar travel guide, hill station tips, travel blog, vacation planning, Mahabaleshwar attractions',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/blogs',
-  },twitter: {
-  card: 'summary_large_image',
-  title: 'Travel Guides & Tips | Mahabaleshwar Villa Stays Blog',
+  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
+  title: 'Travel Guides & Tips — Mahabaleshwar Blog',
   description:
     'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
-  images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-},
+  keywords:
+    'Mahabaleshwar travel guide, hill station tips, travel blog, vacation planning, Mahabaleshwar attractions',
+  alternates: {
+    canonical: 'https://www.mahabaleshwarvillastays.com/blogs',
+  },
   openGraph: {
     type: 'website',
     url: 'https://www.mahabaleshwarvillastays.com/blogs',
-    title: 'Travel Guides & Tips | Mahabaleshwar Villa Stays Blog',
-    description: 'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
+    siteName: 'Mahabaleshwar Villa Stays',
+    title: 'Travel Guides & Tips — Mahabaleshwar Blog | Mahabaleshwar Villa Stays',
+    description:
+      'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
     images: [
-  {
-    url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-    width: 1200,
-    height: 630,
+      {
+        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mahabaleshwar Travel Guides and Tips',
+      },
+    ],
   },
-],
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Travel Guides & Tips — Mahabaleshwar Blog | Mahabaleshwar Villa Stays',
+    description:
+      'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
+    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 };
 
@@ -84,18 +92,18 @@ export default function BlogsPage() {
                 <div className="group cursor-pointer">
                   <div className="relative h-64 rounded-lg overflow-hidden shadow-card hover:shadow-elevated transition-all mb-4">
                     <Image
-  src={blog.banner}
-  alt={`${blog.title} - Mahabaleshwar travel guide`}
-  fill
-  priority={blog.id === 'blog-1'}
-  sizes="(max-width: 768px) 100vw, 50vw"
-  className="object-cover group-hover:scale-110 transition-transform duration-300"
-/>
+                      src={blog.banner}
+                      alt={`${blog.title} - Mahabaleshwar travel guide`}
+                      fill
+                      priority={blog.id === 'blog-1'}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Calendar className="w-4 h-4" />
-                      {new Date(blog.date).toLocaleDateString('en-US', {
+                      {new Date(blog.date).toLocaleDateString('en-IN', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',
