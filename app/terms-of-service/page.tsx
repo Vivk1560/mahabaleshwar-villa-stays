@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
+import { FloatingButtons } from '@/components/FloatingButtons'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Mahabaleshwar Villa Stays',
+  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
+  title: 'Terms of Service',
   description:
     'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.',
   alternates: {
@@ -12,6 +14,30 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  // ✅ OG tags added — were completely missing before
+  openGraph: {
+    type: 'website',
+    url: 'https://www.mahabaleshwarvillastays.com/terms-of-service',
+    siteName: 'Mahabaleshwar Villa Stays',
+    title: 'Terms of Service | Mahabaleshwar Villa Stays',
+    description:
+      'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.',
+    images: [
+      {
+        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mahabaleshwar Villa Stays — Terms of Service',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | Mahabaleshwar Villa Stays',
+    description:
+      'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.',
+    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 }
 
@@ -33,15 +59,14 @@ export default function TermsOfServicePage() {
             </p>
           </div>
 
-          {/* Intro */}
           <div className="space-y-8 text-foreground">
 
             <div className="space-y-3">
               <p className="text-muted-foreground leading-relaxed">
                 Welcome to <strong>Mahabaleshwar Villa Stays</strong>, owned and operated by{' '}
                 <strong>Rajesh Garela</strong>. By accessing our website at{' '}
-                <a
-                  href="https://www.mahabaleshwarvillastays.com"
+                
+                <a  href="https://www.mahabaleshwarvillastays.com"
                   className="text-primary hover:underline"
                 >
                   www.mahabaleshwarvillastays.com
@@ -152,15 +177,9 @@ export default function TermsOfServicePage() {
                 As a guest, you agree to:
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                <li>
-                  Treat the villa and its contents with care and respect.
-                </li>
-                <li>
-                  Not exceed the maximum occupancy stated for each villa.
-                </li>
-                <li>
-                  Not conduct any illegal activities on the premises.
-                </li>
+                <li>Treat the villa and its contents with care and respect.</li>
+                <li>Not exceed the maximum occupancy stated for each villa.</li>
+                <li>Not conduct any illegal activities on the premises.</li>
                 <li>
                   Keep noise levels reasonable, especially between 10:00 PM and 8:00 AM, in
                   respect of neighbors and local community.
@@ -171,9 +190,7 @@ export default function TermsOfServicePage() {
                 <li>
                   Report any damage or issues to the caretaker or our team immediately.
                 </li>
-                <li>
-                  Leave the villa in a reasonably clean condition at check-out.
-                </li>
+                <li>Leave the villa in a reasonably clean condition at check-out.</li>
               </ul>
             </div>
 
@@ -191,9 +208,7 @@ export default function TermsOfServicePage() {
                   Mahabaleshwar Villa Stays is not liable for any loss, theft, injury, or
                   accident that occurs during your stay.
                 </li>
-                <li>
-                  We strongly recommend guests obtain travel insurance for their trip.
-                </li>
+                <li>We strongly recommend guests obtain travel insurance for their trip.</li>
                 <li>
                   Use of amenities such as swimming pools, outdoor areas, and equipment is at
                   the guest&apos;s own risk.
@@ -265,8 +280,8 @@ export default function TermsOfServicePage() {
                 </p>
                 <p>
                   <strong className="text-foreground">Email:</strong>{' '}
-                  <a
-                    href="mailto:rajeshgarela0@gmail.com"
+                  
+                 <a   href="mailto:rajeshgarela0@gmail.com"
                     className="text-primary hover:underline"
                   >
                     rajeshgarela0@gmail.com
@@ -290,6 +305,7 @@ export default function TermsOfServicePage() {
       </section>
 
       <Footer />
+      <FloatingButtons />
     </main>
   )
 }
