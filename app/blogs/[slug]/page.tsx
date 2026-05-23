@@ -10,10 +10,11 @@ import villas from '@/lib/data/villas.json'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
+// ✅ FIXED: params typed as Promise<{slug: string}> — required in Next.js 15 App Router
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -41,10 +42,11 @@ const BLOG_KEYWORDS: Record<string, string> = {
     'Mahabaleshwar travel guide 2026, how to reach Mahabaleshwar, Mahabaleshwar trip planning, complete guide Mahabaleshwar',
 }
 
+// ✅ FIXED: await params before accessing slug
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
 
   const blog = blogs.find((b) => b.slug === slug)
 
@@ -100,10 +102,11 @@ export async function generateMetadata({
   }
 }
 
+// ✅ FIXED: await params before accessing slug
 export default async function BlogDetailPage({
   params,
 }: PageProps) {
-  const { slug } = params
+  const { slug } = await params
 
   const blog = blogs.find((b) => b.slug === slug)
 
@@ -119,6 +122,7 @@ export default async function BlogDetailPage({
     ? blog.banner
     : `https://www.mahabaleshwarvillastays.com${blog.banner}`
 
+  // ✅ Article schema — unique to each blog post
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -149,6 +153,7 @@ export default async function BlogDetailPage({
     },
   }
 
+  // ✅ Single BreadcrumbList — one per page
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -175,8 +180,9 @@ export default async function BlogDetailPage({
     ],
   }
 
+  // ✅ Single FAQPage — only injected when the blog actually has FAQs (non-empty array)
   const faqSchema =
-    blog.faqs?.length > 0
+    blog.faqs && blog.faqs.length > 0
       ? {
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
@@ -200,7 +206,7 @@ export default async function BlogDetailPage({
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Article Schema */}
+      {/* ✅ Article schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -208,7 +214,7 @@ export default async function BlogDetailPage({
         }}
       />
 
-      {/* Breadcrumb Schema */}
+      {/* ✅ Single BreadcrumbList schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -216,7 +222,7 @@ export default async function BlogDetailPage({
         }}
       />
 
-      {/* FAQ Schema */}
+      {/* ✅ FAQPage schema — only rendered when faqs exist */}
       {faqSchema && (
         <script
           type="application/ld+json"
@@ -342,8 +348,8 @@ export default async function BlogDetailPage({
             </div>
           )}
 
-          {/* FAQ Section */}
-          {blog.faqs?.length > 0 && (
+          {/* FAQ Section — UI accordion (schema is injected separately above) */}
+          {blog.faqs && blog.faqs.length > 0 && (
             <section className="mt-16 pt-12 border-t border-border">
               <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
                 Frequently Asked Questions
