@@ -49,11 +49,11 @@ const homepageFaqs = [
   },
   {
     q: 'Which are the best tourist places near your villas in Mahabaleshwar?',
-    a: 'Most villas are located close to famous attractions including Mapro Garden, Venna Lake, Wilson Point, Lingmala Waterfall, Arthur Seat, Kate’s Point, Elephant’s Head Point, Panchgani Table Land, and Old Mahabaleshwar Temple. Depending on the villa location, these attractions are usually within a 5–25 minute drive.',
+    a: 'Most villas are located close to famous attractions including Mapro Garden, Venna Lake, Wilson Point, Lingmala Waterfall, Arthur Seat, Kate\'s Point, Elephant\'s Head Point, Panchgani Table Land, and Old Mahabaleshwar Temple. Depending on the villa location, these attractions are usually within a 5–25 minute drive.',
   },
   {
     q: 'Do you offer villas near Mapro Garden in Mahabaleshwar?',
-    a: 'Yes, many of our villas are located near Mapro Garden which is one of Mahabaleshwar’s most visited attractions. Guests staying nearby enjoy quick access to strawberry cream, sandwiches, pizzas, chocolate products, strawberry farms, and scenic Panchgani Road drives.',
+    a: 'Yes, many of our villas are located near Mapro Garden which is one of Mahabaleshwar\'s most visited attractions. Guests staying nearby enjoy quick access to strawberry cream, sandwiches, pizzas, chocolate products, strawberry farms, and scenic Panchgani Road drives.',
   },
   {
     q: 'Are your villas suitable for large groups and corporate outings?',
@@ -81,7 +81,7 @@ const homepageFaqs = [
   },
   {
     q: 'What makes Mahabaleshwar a popular weekend getaway?',
-    a: 'Mahabaleshwar is one of Maharashtra’s most loved hill stations because of its cool climate, mist-covered valleys, scenic mountain roads, waterfalls, strawberry farms, boating experiences, horse riding, sunrise points, and peaceful nature retreats. Its accessibility from Pune and Mumbai makes it a perfect weekend escape from city life.',
+    a: 'Mahabaleshwar is one of Maharashtra\'s most loved hill stations because of its cool climate, mist-covered valleys, scenic mountain roads, waterfalls, strawberry farms, boating experiences, horse riding, sunrise points, and peaceful nature retreats. Its accessibility from Pune and Mumbai makes it a perfect weekend escape from city life.',
   },
   {
     q: 'Do your villas include parking facilities?',
@@ -309,7 +309,7 @@ export default function Home() {
       </section>
 
       {/* ── SEO Intro Section ────────────────────────────────────────────────── */}
-      <section className="py-16 bg-background px-4">
+      <section className="py-16 md:py-20 bg-background px-4">
         <div className="max-w-5xl mx-auto text-center space-y-6">
 
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-foreground">
@@ -318,18 +318,42 @@ export default function Home() {
 
           <p className="text-muted-foreground text-lg leading-relaxed">
             The difference between a hotel stay and a villa stay in Mahabaleshwar is the difference
-            between seeing the valley and actually living in it for a few days. Our villas put your
-            group in a private compound — your own pool, your own cook, your own schedule — within
+            between seeing the valley and actually living in it for a few days. Our{' '}
+            <Link
+              href="/villas"
+              className="text-primary font-medium hover:underline underline-offset-2 transition-colors"
+            >
+              villas
+            </Link>{' '}
+            put your group in a private compound — your own pool, your own cook, your own schedule — within
             reach of everything that makes this hill station worth the drive: Mapro Garden, Venna Lake,
             Wilson Point, Lingmala Waterfall, and the winding roads that connect them.
           </p>
 
           <p className="text-muted-foreground text-lg leading-relaxed">
-            The portfolio covers a deliberate range. A family of 25 planning a reunion will find an
-            8 BHK estate on the Mapro Garden road with a BBQ lawn and a professional cook. Two couples
-            looking for a quiet weekend escape from Pune will find a 3 BHK with a valley-facing pool
-            and a garden that catches morning light. A college group of 17 on a budget trip will find
-            a full private villa — pool, AC rooms, sports equipment, caretaker — at per-head costs
+            The portfolio covers a deliberate range. A family of 25 planning a reunion will find an{' '}
+            <Link
+              href="/villas/category/family-villas-in-mahabaleshwar"
+              className="text-primary font-medium hover:underline underline-offset-2 transition-colors"
+            >
+              8 BHK family villa
+            </Link>{' '}
+            on the Mapro Garden road with a BBQ lawn and a professional cook. Two couples
+            looking for a quiet weekend escape from Pune will find a{' '}
+            <Link
+              href="/villas/category/couple-villas-in-mahabaleshwar"
+              className="text-primary font-medium hover:underline underline-offset-2 transition-colors"
+            >
+              3 BHK couple villa
+            </Link>{' '}
+            with a valley-facing pool and a garden that catches morning light. A college group of 17 on a budget trip will find a{' '}
+            <Link
+              href="/villas/category/budget-villas-in-mahabaleshwar"
+              className="text-primary font-medium hover:underline underline-offset-2 transition-colors"
+            >
+              full private villa
+            </Link>{' '}
+            — pool, AC rooms, sports equipment, caretaker — at per-head costs
             that split comfortably. Every booking is direct. Every property is personally managed.
           </p>
 
@@ -360,7 +384,7 @@ export default function Home() {
       </section>
 
       {/* ── Why Mahabaleshwar Section ─────────────────────────────────────────── */}
-      <section className="py-20 bg-background px-4">
+      <section className="py-20 md:py-24 bg-background px-4">
         <div className="max-w-7xl mx-auto">
 
           <SectionTitle
@@ -368,10 +392,25 @@ export default function Home() {
             subtitle="A hill station that earns every kilometre of the drive"
           />
 
-          <div className="mt-12 grid md:grid-cols-5 gap-8 md:gap-12 items-start">
+          {/* Image + editorial text row */}
+          <div className="mt-12 md:mt-14 grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-12 md:mb-16">
 
-            {/* Editorial text — 3 cols */}
-            <div className="md:col-span-3 space-y-5 text-muted-foreground text-base md:text-lg leading-8">
+            {/* Atmospheric image */}
+            <div className="relative w-full h-72 sm:h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-2xl order-last md:order-first">
+              <Image
+                src="/images/home/lingmala-waterfall-mahabaleshwar-tourism-entry-fee-timings-holidays-reviews-header.jpg"
+                alt="Misty morning valley views and Sahyadri mountain fog at sunrise near Mahabaleshwar, Maharashtra"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                loading="lazy"
+              />
+              {/* Subtle gradient overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
+
+            {/* Editorial text */}
+            <div className="space-y-5 text-muted-foreground text-base md:text-lg leading-8">
               <p>
                 At 1,353 metres on the edge of the Sahyadri range, Mahabaleshwar occupies a plateau
                 that the Western Ghats seem to have designed specifically for escaping. The elevation
@@ -402,7 +441,14 @@ export default function Home() {
                 supermarket version.
               </p>
               <p>
-                A private villa stay is simply the format that suits Mahabaleshwar best. The hill
+                A{' '}
+                <Link
+                  href="/villas/category/pool-villas-in-mahabaleshwar"
+                  className="text-primary font-medium hover:underline underline-offset-2 transition-colors"
+                >
+                  private pool villa
+                </Link>{' '}
+                is simply the format that suits Mahabaleshwar best. The hill
                 station rewards slowness — a pool at 7 AM before the fog lifts, a cook handling
                 breakfast while you sit with chai watching the mist thin below the terrace, an
                 evening bonfire with no checkout pressure. Guests who&apos;ve stayed in a villa here
@@ -411,28 +457,29 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Geo fact cards — 2 cols */}
-            <div className="md:col-span-2 grid grid-cols-2 gap-4">
-              {[
-                { label: 'Elevation', value: '1,353 m', sub: 'Above sea level' },
-                { label: 'From Pune', value: '~3 hrs', sub: '120 km via NH 48' },
-                { label: 'From Mumbai', value: '~5 hrs', sub: '260 km via Expressway' },
-                { label: 'River Origins', value: '5 Rivers', sub: 'Krishna, Koyna & more' },
-                { label: 'Strawberry Season', value: 'Dec–Mar', sub: 'Peak farm season' },
-                { label: 'Best Monsoon Views', value: 'Jun–Sep', sub: 'Waterfalls at peak' },
-              ].map((fact, idx) => (
-                <div
-                  key={idx}
-                  className="bg-card border border-border rounded-xl p-4 text-center space-y-1"
-                >
-                  <p className="font-playfair text-xl font-bold text-primary">{fact.value}</p>
-                  <p className="font-semibold text-foreground text-sm">{fact.label}</p>
-                  <p className="text-muted-foreground text-xs">{fact.sub}</p>
-                </div>
-              ))}
-            </div>
-
           </div>
+
+          {/* Geo fact cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {[
+              { label: 'Elevation', value: '1,353 m', sub: 'Above sea level' },
+              { label: 'From Pune', value: '~3 hrs', sub: '120 km via NH 48' },
+              { label: 'From Mumbai', value: '~5 hrs', sub: '260 km via Expressway' },
+              { label: 'River Origins', value: '5 Rivers', sub: 'Krishna, Koyna & more' },
+              { label: 'Strawberry Season', value: 'Dec–Mar', sub: 'Peak farm season' },
+              { label: 'Best Monsoon Views', value: 'Jun–Sep', sub: 'Waterfalls at peak' },
+            ].map((fact, idx) => (
+              <div
+                key={idx}
+                className="bg-card border border-border rounded-xl p-4 text-center space-y-1"
+              >
+                <p className="font-playfair text-xl font-bold text-primary">{fact.value}</p>
+                <p className="font-semibold text-foreground text-sm">{fact.label}</p>
+                <p className="text-muted-foreground text-xs">{fact.sub}</p>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -466,6 +513,73 @@ export default function Home() {
               Browse All Villas
               <ArrowRight className="w-5 h-5" />
             </PremiumButton>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Villa Category Quick Links ────────────────────────────────────────── */}
+      <section className="py-14 md:py-16 bg-background px-4 border-b border-border">
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-3 text-center">
+            Browse Villas by Type
+          </h2>
+          <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto text-base">
+            Every group is different. Find the right match — from intimate couple stays to large group estates.
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+            {[
+              {
+                label: 'Pool Villas',
+                sub: 'Private swimming pool',
+                href: '/villas/category/pool-villas-in-mahabaleshwar',
+                emoji: '🏊',
+              },
+              {
+                label: 'Family Villas',
+                sub: '15–25 guests',
+                href: '/villas/category/family-villas-in-mahabaleshwar',
+                emoji: '👨‍👩‍👧‍👦',
+              },
+              {
+                label: 'Couple Villas',
+                sub: 'Romantic & private',
+                href: '/villas/category/couple-villas-in-mahabaleshwar',
+                emoji: '💑',
+              },
+              {
+                label: 'Group Villas',
+                sub: 'Office & reunions',
+                href: '/villas/category/group-villas-in-mahabaleshwar',
+                emoji: '🎉',
+              },
+              {
+                label: 'Valley View',
+                sub: 'Panoramic Sahyadri',
+                href: '/villas/category/valley-view-villas-in-mahabaleshwar',
+                emoji: '🌄',
+              },
+              {
+                label: 'Budget Villas',
+                sub: 'Best-value rates',
+                href: '/villas/category/budget-villas-in-mahabaleshwar',
+                emoji: '✅',
+              },
+            ].map((cat) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className="group flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-4 md:p-5 text-center hover:border-primary hover:shadow-md hover:bg-primary/5 transition-all duration-200"
+              >
+                <span className="text-2xl md:text-3xl">{cat.emoji}</span>
+                <span className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-tight">
+                  {cat.label}
+                </span>
+                <span className="text-xs text-muted-foreground leading-tight">{cat.sub}</span>
+              </Link>
+            ))}
           </div>
 
         </div>
@@ -527,8 +641,14 @@ export default function Home() {
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                 Every villa in the portfolio has been personally visited and evaluated. Amenity lists
                 are accurate. Distance claims to Mapro Garden and other attractions are verified.
-                When you WhatsApp us to ask which pool villa is best for a group of 18 in January,
-                we give you a specific answer — not a list of all pool villas.
+                When you WhatsApp us to ask which{' '}
+                <Link
+                  href="/villas/category/pool-villas-in-mahabaleshwar"
+                  className="text-primary font-medium hover:underline underline-offset-2 transition-colors"
+                >
+                  pool villa
+                </Link>{' '}
+                is best for a group of 18 in January, we give you a specific answer — not a list of all pool villas.
               </p>
 
               <PremiumButton href="/about">
@@ -620,6 +740,72 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Blog Teaser ──────────────────────────────────────────────────────── */}
+      <section className="py-14 md:py-16 bg-background px-4 border-b border-border">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+              <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground">
+                Travel Guides &amp; Local Insights
+              </h2>
+              <p className="text-muted-foreground mt-1 text-base">
+                Everything you need to plan the perfect Mahabaleshwar trip.
+              </p>
+            </div>
+            <Link
+              href="/blogs"
+              className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all duration-200 shrink-0"
+            >
+              All guides
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            {[
+              {
+                title: 'Best Time to Visit Mahabaleshwar',
+                excerpt: 'A month-by-month breakdown of weather, crowds, strawberry season, and what each season actually feels like on the ground.',
+                href: '/blogs/best-time-visit-mahabaleshwar',
+                tag: 'Season Guide',
+              },
+              {
+                title: 'Top Tourist Places in Mahabaleshwar',
+                excerpt: 'Wilson Point, Mapro Garden, Venna Lake, Pratapgad Fort — every must-visit spot with distances from your villa.',
+                href: '/blogs/mahabaleshwar-tourist-places',
+                tag: 'Sightseeing',
+              },
+              {
+                title: 'Complete Mahabaleshwar Travel Guide 2026',
+                excerpt: 'How to reach, where to stay, what to eat, and what to do — the one guide that covers everything before you pack.',
+                href: '/blogs/mahabaleshwar-complete-travel-guide',
+                tag: 'Travel Guide',
+              },
+            ].map((post) => (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="group block bg-card border border-border rounded-2xl p-5 md:p-6 hover:border-primary/40 hover:shadow-card transition-all duration-300"
+              >
+                <span className="inline-block text-xs font-semibold text-primary bg-primary/10 rounded-full px-3 py-1 mb-3">
+                  {post.tag}
+                </span>
+                <h3 className="font-playfair text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-snug mb-2">
+                  {post.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {post.excerpt}
+                </p>
+                <div className="flex items-center gap-1.5 mt-4 text-primary text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
+                  Read guide
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ Section ───────────────────────────────────────────────────────── */}
       <section className="py-20 bg-background">
         <div className="max-w-5xl mx-auto px-4">
@@ -629,24 +815,35 @@ export default function Home() {
             subtitle="Everything you need to know before booking a villa in Mahabaleshwar"
           />
 
-          <div className="mt-12 space-y-5">
+          <div className="mt-12 space-y-4">
             {homepageFaqs.map((faq, idx) => (
               <details
                 key={idx}
-                className="group bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+                className="group bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <h3 className="font-playfair text-lg md:text-xl font-bold text-foreground pr-4">
+                <summary className="flex items-center justify-between cursor-pointer list-none px-6 py-5 select-none">
+                  <h3 className="font-playfair text-base md:text-lg font-bold text-foreground pr-4 leading-snug">
                     {faq.q}
                   </h3>
-                  <span className="text-primary text-2xl font-bold transition-transform duration-300 group-open:rotate-45 flex-shrink-0">
+                  {/* Animated chevron icon — pure CSS, no JS, accessible */}
+                  <span
+                    aria-hidden="true"
+                    className="flex-shrink-0 w-7 h-7 rounded-full border border-border bg-background flex items-center justify-center text-primary font-bold text-lg transition-transform duration-300 ease-in-out group-open:rotate-45"
+                  >
                     +
                   </span>
                 </summary>
-                <div className="overflow-hidden transition-all duration-300">
-                  <p className="mt-5 text-muted-foreground leading-relaxed text-base">
-                    {faq.a}
-                  </p>
+                {/*
+                  Smooth height animation using CSS grid trick.
+                  grid-rows transitions from 0fr (collapsed) to 1fr (open)
+                  without JS and without fixed heights.
+                */}
+                <div className="grid transition-all duration-300 ease-in-out grid-rows-[0fr] group-open:grid-rows-[1fr]">
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-5 pt-1 text-muted-foreground leading-relaxed text-base">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
               </details>
             ))}
@@ -673,8 +870,8 @@ export default function Home() {
               Get in Touch
             </PremiumButton>
 
-            
-            <a  href="https://wa.me/919921372661"
+            <a
+              href="https://wa.me/919921372661"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2"
