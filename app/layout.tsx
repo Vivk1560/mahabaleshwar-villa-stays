@@ -17,7 +17,8 @@ const _lato = Lato({
   variable: '--font-lato',
 })
 
-// ✅ LocalBusiness JSON-LD — important for Local SEO
+// ✅ LocalBusiness JSON-LD — represents the overall business entity
+// Placed in <body> (not <head>) to avoid React hydration mismatches
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
@@ -186,17 +187,15 @@ export default function RootLayout({
       lang="en"
       className={`${_playfairDisplay.variable} ${_lato.variable} bg-background`}
     >
-      <head>
-        {/* ✅ ONLY LocalBusiness schema globally */}
+      <body className="font-lato antialiased">
+        {/* ✅ LocalBusiness schema — placed at the top of <body> to avoid hydration mismatches */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
           }}
         />
-      </head>
 
-      <body className="font-lato antialiased">
         {children}
 
         {process.env.NODE_ENV === 'production' && <Analytics />}
