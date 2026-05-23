@@ -7,11 +7,10 @@ import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ReviewCard } from '@/components/ReviewCard';
 import { RelatedVillas } from '@/components/RelatedVillas';
-import { Star, MapPin, Users, Wifi, UtensilsCrossed, MessageCircle, Phone, ChevronRight, Home } from 'lucide-react';
+import { Star, MapPin, Users, MessageCircle, Phone, ChevronRight, Home } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
-import React from 'react';
 
 interface PageProps {
   params: Promise<{
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return {
     metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    // ✅ FIX: { absolute } bypasses layout.tsx template — prevents duplicate brand name
+    // ✅ { absolute } bypasses layout.tsx template — prevents duplicate brand name in title
     title: { absolute: title },
     description,
     keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, ${villa.bhk} villa Mahabaleshwar, Mahabaleshwar vacation rentals, private pool villa Mahabaleshwar`,
@@ -84,21 +83,17 @@ export default async function VillaDetailPage({ params }: PageProps) {
   // Reviews for schema (max 5, separate from UI slice)
   const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id);
 
-  const amenityIcons: Record<string, React.ReactNode> = {
-    WiFi: <Wifi className="w-5 h-5" />,
-    Kitchen: <UtensilsCrossed className="w-5 h-5" />,
-  };
-
   // Safely parse BHK number
   const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
 
   // ── Structured Data ──────────────────────────────────────────────────────
 
-  // ✅ LodgingBusiness schema with AggregateRating + Review array
-  // AggregateRating enables star ratings in Google SERPs
+  // ✅ FIXED: @type changed to VacationRental to avoid duplicate LodgingBusiness
+  // with the global business schema in layout.tsx.
+  // VacationRental extends LodgingBusiness and retains full AggregateRating support.
   const vacationRentalSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LodgingBusiness',
+    '@type': 'VacationRental',
     name: villa.name,
     description: villa.seoDescription || villa.description,
     url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
@@ -120,13 +115,12 @@ export default async function VillaDetailPage({ params }: PageProps) {
       value: true,
     })),
     petsAllowed: false,
-    // ✅ AggregateRating — this is what Google reads to show stars in search results
+    // ✅ AggregateRating — enables star ratings in Google SERPs
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: villa.rating,
       bestRating: 5,
       worstRating: 1,
-      // If this villa has reviews in reviews.json use that count, otherwise use 2 as minimum
       reviewCount: villaReviewsForSchema.length > 0 ? villaReviewsForSchema.length : 2,
     },
     // ✅ Individual Review objects — Google uses these to validate the aggregate rating
@@ -149,6 +143,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
     }),
   };
 
+  // ✅ Single BreadcrumbList — one per page
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -174,34 +169,45 @@ export default async function VillaDetailPage({ params }: PageProps) {
     ],
   };
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: villa.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  };
+  // ✅ FIXED: FAQPage only injected when villa.faqs is non-empty
+  // An empty mainEntity array is invalid JSON-LD and errors in Rich Results Test
+  const faqSchema =
+    villa.faqs && villa.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: villa.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.a,
+            },
+          })),
+        }
+      : null;
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {/* ✅ VacationRental schema (individual property — distinct from layout LodgingBusiness) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
       />
+
+      {/* ✅ Single BreadcrumbList schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+
+      {/* ✅ FAQPage schema — only rendered when villa.faqs is non-empty */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <NavBar />
 
@@ -365,30 +371,32 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
               </section>
 
-              {/* FAQ */}
-              <section className="py-12 border-t border-border bg-card">
-                <div className="max-w-5xl mx-auto">
-                  <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
-                    Frequently Asked Questions
-                  </h2>
-                  <div className="space-y-5">
-                    {villa.faqs?.map((faq, index) => (
-                      <details
-                        key={index}
-                        className="group border border-border rounded-2xl p-6 bg-background"
-                      >
-                        <summary className="flex justify-between items-center cursor-pointer list-none">
-                          <h3 className="font-semibold text-lg text-foreground pr-5">{faq.q}</h3>
-                          <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
-                            +
-                          </span>
-                        </summary>
-                        <p className="mt-5 text-muted-foreground leading-7">{faq.a}</p>
-                      </details>
-                    ))}
+              {/* FAQ — UI accordion (schema injected separately above) */}
+              {villa.faqs && villa.faqs.length > 0 && (
+                <section className="py-12 border-t border-border bg-card">
+                  <div className="max-w-5xl mx-auto">
+                    <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+                      Frequently Asked Questions
+                    </h2>
+                    <div className="space-y-5">
+                      {villa.faqs.map((faq, index) => (
+                        <details
+                          key={index}
+                          className="group border border-border rounded-2xl p-6 bg-background"
+                        >
+                          <summary className="flex justify-between items-center cursor-pointer list-none">
+                            <h3 className="font-semibold text-lg text-foreground pr-5">{faq.q}</h3>
+                            <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
+                              +
+                            </span>
+                          </summary>
+                          <p className="mt-5 text-muted-foreground leading-7">{faq.a}</p>
+                        </details>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </section>
+                </section>
+              )}
 
               {/* Related Villas */}
               <RelatedVillas
@@ -469,8 +477,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 <div className="border-t border-border" />
 
-                <a
-                  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
+                
+                <a  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
@@ -479,8 +487,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   WhatsApp Inquiry
                 </a>
 
-                <a
-                  href="tel:8080557611"
+                
+                <a  href="tel:8080557611"
                   className="w-full px-5 md:px-6 py-3 md:py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300 text-center text-sm md:text-base flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
