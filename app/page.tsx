@@ -16,84 +16,84 @@ import testimonials from '@/lib/data/testimonials.json';
 
 const homepageFaqs = [
   {
+    q: 'Which are the best luxury villas in Mahabaleshwar for family stays?',
+    a: 'Families visiting Mahabaleshwar usually prefer spacious private villas near Mapro Garden, Bhilar, and Panchgani Road because these areas offer peaceful surroundings with quick access to sightseeing points. Our family villas include large lawns, indoor games, caretaker support, private pools, BBQ areas, and multiple bedrooms suitable for children, parents, and senior citizens travelling together.',
+  },
+  {
+    q: 'Do you offer private pool villas in Mahabaleshwar?',
+    a: 'Yes, Mahabaleshwar Villa Stays offers multiple private pool villas across Mahabaleshwar and Panchgani including infinity pools, valley-facing pools, heated pools, and large outdoor swimming pools for group stays. These villas are popular for birthdays, weekend parties, bachelor trips, family vacations, and romantic couple stays in the Sahyadri hills.',
+  },
+  {
+    q: 'Which location is best to stay in Mahabaleshwar?',
+    a: 'Different travellers prefer different areas depending on their travel style. Villas near Mapro Garden are ideal for sightseeing access and family vacations. Bhilar is quieter and surrounded by strawberry farms and forest landscapes. Panchgani–Mahabaleshwar Road gives access to both hill stations during one trip. Old Mahabaleshwar is preferred by guests who enjoy temples, sunrise points, and nature-focused experiences.',
+  },
+  {
     q: 'How many villas does Mahabaleshwar Villa Stays offer?',
-    a: 'We manage 25+ handpicked private villas across Mahabaleshwar, Panchgani, and Bhilar — covering pool villas, family estates, couple-friendly stays, large group properties, valley-view retreats, and budget-conscious options. Every property is directly managed, with no third-party platform in between.',
+    a: 'Mahabaleshwar Villa Stays manages 25+ carefully selected villas across Mahabaleshwar, Panchgani, Bhilar, and nearby mountain regions. Our collection includes luxury pool villas, couple-friendly stays, budget group villas, large 8 BHK properties, valley-view homes, forest-facing villas, and peaceful nature retreats suitable for all travel styles and budgets.',
   },
   {
     q: 'How do I book a villa in Mahabaleshwar?',
-    a: 'Booking is direct and personal. WhatsApp or call us with your travel dates, group size, and preferences — pool, view direction, proximity to Mapro Garden, or budget. We\'ll shortlist the best available properties and share details within the hour. No hidden fees, no platform markups.',
-  },
-  {
-    q: 'Do your villas have private swimming pools?',
-    a: 'Many properties include private pools — valley-facing, infinity-edge, or standard full-sized pools depending on the villa. Pool availability is listed on each villa\'s page. The pool is exclusively for your group during the stay — no shared access.',
+    a: 'Booking is direct and simple. You can WhatsApp or call us with your travel dates, guest count, budget, and preferences like pool villa, valley view, bonfire setup, or villa near Mapro Garden. Our team personally recommends suitable villas and shares photos, pricing, amenities, and location details without hidden platform charges.',
   },
   {
     q: 'What is the best time to visit Mahabaleshwar?',
-    a: 'Each season has its own character. October through January brings cool, clear weather — ideal for sightseeing, bonfires, and sharp valley views. February through May is warm and pleasant. Monsoon (June–September) transforms the region entirely: waterfalls fill, the plateau turns vivid green, and the misty atmosphere is unlike any other time. December through March is strawberry season.',
+    a: 'Mahabaleshwar remains beautiful throughout the year. Winter from October to February offers cold weather, bonfire evenings, strawberry season, and clear sunrise views from Wilson Point. Summer stays pleasant because of the hill station climate. Monsoon between June and September transforms the Sahyadri mountains into lush green valleys filled with waterfalls, misty mornings, and cloud-covered roads.',
   },
   {
     q: 'How far is Mahabaleshwar from Pune?',
-    a: 'Approximately 120 km — around 3 hours depending on traffic. Most guests from Pune travel via NH 48 through Satara, or take the more scenic Panchgani route which adds valley views to the drive. Friday afternoon departures are common for weekend stays; an early start helps avoid the mountain road congestion.',
+    a: 'Mahabaleshwar is approximately 120 km from Pune and usually takes around 3 to 4 hours by road. Most Pune travellers prefer weekend road trips via NH48 through Satara and Wai before entering the scenic mountain roads of Panchgani and Mahabaleshwar.',
   },
   {
     q: 'How far is Mahabaleshwar from Mumbai?',
-    a: 'Around 260 km — typically 5 hours via the Mumbai–Pune Expressway and then through Satara or Panchgani. The Panchgani approach, with its hairpin bends and valley views opening on both sides, is the more scenic route. Most guests from Mumbai book for 2–3 nights to make the drive worthwhile.',
+    a: 'Mahabaleshwar is around 260 km from Mumbai and takes approximately 5 to 6 hours by road via the Mumbai–Pune Expressway and Satara route. Guests from Mumbai usually prefer 2-night or 3-night stays to enjoy sightseeing points, local food, boating at Venna Lake, and peaceful villa experiences in the hills.',
   },
   {
-    q: 'Are your villas suitable for family vacations?',
-    a: 'Several properties are purpose-built for multi-generational families: spacious BHK layouts, enclosed gardens, children\'s activity areas, indoor games, professional cooks who handle varied dietary preferences, and resident caretakers. Villas near Velocity Park and Mapro Garden are especially popular with families travelling with young children.',
+    q: 'Which are the best tourist places near your villas in Mahabaleshwar?',
+    a: 'Most villas are located close to famous attractions including Mapro Garden, Venna Lake, Wilson Point, Lingmala Waterfall, Arthur Seat, Kate’s Point, Elephant’s Head Point, Panchgani Table Land, and Old Mahabaleshwar Temple. Depending on the villa location, these attractions are usually within a 5–25 minute drive.',
   },
   {
-    q: 'Do you offer villas for large groups and corporate outings?',
-    a: 'Yes — we have multiple 7–8 BHK properties with 20–25 person capacities, suited for corporate retreats, college trips, bachelor parties, and extended family reunions. Large common areas, stable WiFi, BBQ setups, and caretaker coordination make group logistics manageable without a hotel\'s formality.',
+    q: 'Do you offer villas near Mapro Garden in Mahabaleshwar?',
+    a: 'Yes, many of our villas are located near Mapro Garden which is one of Mahabaleshwar’s most visited attractions. Guests staying nearby enjoy quick access to strawberry cream, sandwiches, pizzas, chocolate products, strawberry farms, and scenic Panchgani Road drives.',
   },
   {
-    q: 'Can we arrange a cook at the villa?',
-    a: 'Most of our villas include a professional cook as part of the booking. For properties where it\'s an optional add-on, the caretaker coordinates meal arrangements. Share dietary preferences — vegetarian, non-vegetarian, regional cuisine, or specific restrictions — at least a day before arrival for the best preparation.',
+    q: 'Are your villas suitable for large groups and corporate outings?',
+    a: 'Yes, we offer multiple large villas in Mahabaleshwar with capacities ranging from 15 to 30 guests. These villas are ideal for corporate retreats, college trips, birthdays, anniversaries, bachelor parties, and extended family gatherings. Many include lawns, bonfire spaces, BBQ areas, caretaker support, parking, and indoor entertainment zones.',
   },
   {
-    q: 'Can we have a bonfire at the villa?',
-    a: 'Yes, most properties have a dedicated bonfire area, and the caretaker arranges setup with advance notice — typically request by late afternoon for an evening fire. October through February, when Mahabaleshwar temperatures drop to 8–12°C after dark, is when the bonfire becomes genuinely essential rather than optional.',
+    q: 'Can we arrange bonfire and BBQ nights at the villa?',
+    a: 'Yes, bonfire evenings are among the most popular experiences during winter and monsoon stays in Mahabaleshwar. Many villas include dedicated bonfire setups, valley-facing seating areas, open lawns, BBQ counters, and outdoor dining spaces where guests enjoy the cool mountain weather late into the night.',
   },
   {
-    q: 'Are your villas available to book during monsoon season?',
-    a: 'Yes, and monsoon is genuinely one of the most rewarding times to visit. Lingmala and other waterfalls are at their most dramatic. The plateau turns deep green. Clouds drift through the valleys at viewpoint level. Some of our properties are particularly well-suited for monsoon stays — ask us to recommend based on your specific dates.',
+    q: 'Are your villas suitable for couples and honeymoon trips?',
+    a: 'Absolutely. Several villas are specially preferred by couples because of their peaceful surroundings, private pools, misty valley views, candlelight dinner setups, sunrise decks, and forest-facing balconies. Monsoon fog and winter evenings make Mahabaleshwar especially romantic for honeymoon stays and anniversaries.',
   },
   {
-    q: 'Are pets allowed at your villas?',
-    a: 'Pet policies vary by property. Some villas are pet-friendly; others have restrictions depending on the season or compound setup. Please mention your pets at the time of enquiry so we can match you with a suitable property and confirm current arrangements.',
+    q: 'Do your villas provide WiFi and workation facilities?',
+    a: 'Yes, all villas provide WiFi connectivity and many properties are suitable for workations and long stays. Guests looking for remote work setups usually prefer quieter villas in Bhilar and Panchgani areas because of the calm environment, scenic surroundings, and peaceful mountain atmosphere.',
   },
   {
-    q: 'Are the villas suitable for birthday and anniversary celebrations?',
-    a: 'Several of our villas are regularly booked for milestone celebrations — significant birthdays, anniversaries, pre-wedding functions, and reunion dinners. The private compound, outdoor spaces, bonfire areas, and proximity to scenic viewpoints create the kind of setting that a hotel banquet hall simply cannot replicate.',
+    q: 'Can we visit strawberry farms near the villas?',
+    a: 'Yes, many villas are surrounded by strawberry farms in Bhilar, Panchgani, and Old Mahabaleshwar. During strawberry season from December to March, guests can enjoy fresh strawberry picking, mulberry cream, farm visits, homemade jams, syrups, and local fruit experiences unique to the region.',
   },
   {
-    q: 'How is WiFi and mobile connectivity at your villas?',
-    a: 'WiFi is available at all properties and is stable enough for streaming and video calls at most villas. Mobile coverage varies across Mahabaleshwar — Jio and Airtel generally perform best in the region. If connectivity is a priority for a workation stay, mention it when enquiring and we\'ll recommend accordingly.',
+    q: 'What local food is famous in Mahabaleshwar?',
+    a: 'Mahabaleshwar is famous for strawberry with cream, mulberry cream, hot corn patties, makka frankies, cheese sandwiches from Mapro Garden, fresh carrot sticks, local jams, malai gola, sweet corn snacks, and hot tea sold at sunrise and sunset viewpoints. Venna Lake and Wilson Point are especially popular for local street food experiences.',
   },
   {
-    q: 'Is parking available at the villas?',
-    a: 'Yes — all properties have dedicated parking within the compound. For large groups arriving in multiple vehicles, the caretaker coordinates parking arrangements in advance. Overflow parking near the gate is available at most properties.',
+    q: 'What makes Mahabaleshwar a popular weekend getaway?',
+    a: 'Mahabaleshwar is one of Maharashtra’s most loved hill stations because of its cool climate, mist-covered valleys, scenic mountain roads, waterfalls, strawberry farms, boating experiences, horse riding, sunrise points, and peaceful nature retreats. Its accessibility from Pune and Mumbai makes it a perfect weekend escape from city life.',
   },
   {
-    q: 'What are the standard check-in and check-out times?',
-    a: 'Standard check-in is 12:00 noon and check-out is 11:00 AM. Early check-in and late check-out are subject to availability and should be requested in advance. The caretaker confirms timing details before your arrival date.',
+    q: 'Do your villas include parking facilities?',
+    a: 'Yes, all villas include private parking facilities within or near the property compound. Large group villas are designed to accommodate multiple vehicles comfortably, and caretakers help coordinate parking arrangements during busy weekends and festive periods.',
   },
   {
-    q: 'Which areas of Mahabaleshwar are best to stay in?',
-    a: 'It depends on your priorities. The Mapro Garden belt offers easy access to the hill station\'s most popular attraction — ideal for families. The Panchgani–Mahabaleshwar Road puts you within reach of both hill stations. Bhilar is quieter and more residential, surrounded by strawberry farms. The Satara–Mahabaleshwar Road is scenic and unhurried, with less tourist traffic.',
+    q: 'Are pets allowed at your villas in Mahabaleshwar?',
+    a: 'Some villas are pet-friendly while others have restrictions depending on the property layout and owner policies. Guests travelling with pets should mention it during enquiry so we can recommend suitable villas with garden spaces and safer open areas for pets.',
   },
   {
-    q: 'Can we visit strawberry farms near the villa?',
-    a: 'Yes — Mahabaleshwar and Bhilar are Maharashtra\'s primary strawberry-growing areas, and fresh picking is available from December through March at farms near most of our properties. The caretaker can direct you to the nearest farms. Mapro Garden, which processes the region\'s strawberry products, is accessible from virtually all our villas within 5–20 minutes.',
-  },
-  {
-    q: 'How far are your villas from tourist attractions?',
-    a: 'Most properties are within 5–20 minutes of Mapro Garden, 10–22 minutes from Venna Lake, 12–25 minutes from Wilson Point, and within 15 minutes of Lingmala Waterfall. Panchgani Table Land is 15–30 minutes from Mahabaleshwar-area villas and 5–8 minutes from our Panchgani properties.',
-  },
-  {
-    q: 'What amenities can we expect at your villas?',
-    a: 'The standard amenity set across our portfolio includes WiFi, hot water, power inverter backup, fully AC rooms, parking, indoor games, and a resident caretaker. Higher-end properties add private pools, professional cooks, modular kitchens, bonfire areas, BBQ setups, private terraces, and valley views. Full amenity details are listed on each villa\'s individual page.',
+    q: 'Why choose a private villa instead of a hotel in Mahabaleshwar?',
+    a: 'Private villas offer a much more relaxed and personal experience compared to hotels. Guests enjoy complete privacy, private swimming pools, bonfire evenings, open lawns, scenic terraces, mountain views, group-friendly spaces, and peaceful stays without crowded hotel environments. Villas are especially preferred for family bonding, celebrations, and nature-focused vacations.',
   },
 ];
 
@@ -206,6 +206,7 @@ export const metadata: Metadata = {
 export default function Home() {
   const featuredVillas = villas.slice(0, 3);
 
+  // ✅ Organization + WebSite schemas (page-specific, non-duplicate with layout LodgingBusiness)
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -228,6 +229,7 @@ export default function Home() {
     url: 'https://www.mahabaleshwarvillastays.com',
   };
 
+  // ✅ Single FAQPage schema — one per page, no duplicates
   const homepageFaqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
