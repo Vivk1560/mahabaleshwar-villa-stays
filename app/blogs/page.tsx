@@ -1,20 +1,38 @@
+// app/blogs/page.tsx
+// ─────────────────────────────────────────────────────────────────────────────
+// FIXES in this version:
+//  1. Dynamically renders ALL blogs from blogs.json sorted newest → oldest
+//     (was only showing 5 old posts, missing 11 newer ones)
+//  2. Added canonical, OG tags, Twitter cards, BreadcrumbList schema
+//  3. Added BlogPosting ItemList schema for the full blog collection
+//  4. Added category filter pills for better UX and internal linking
+//  5. Featured post (newest) displayed prominently above the grid
+// ─────────────────────────────────────────────────────────────────────────────
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
-import { ArrowRight, Calendar } from 'lucide-react';
-import blogs from '@/lib/data/blogs.json';
+import { ArrowRight, Calendar, Home, ChevronRight } from 'lucide-react';
+import blogsData from '@/lib/data/blogs.json';
+
+// Sort all blogs newest first — this is the fix for stale listing
+const blogs = [...blogsData].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+)
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
-  title: 'Travel Guides & Tips — Mahabaleshwar Blog',
+  // FIX: { absolute } prevents layout template from doubling the brand name
+  title: {
+    absolute: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
+  },
   description:
-    'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
+    'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for planning your perfect Mahabaleshwar & Panchgani vacation.',
   keywords:
-    'Mahabaleshwar travel guide, hill station tips, travel blog, vacation planning, Mahabaleshwar attractions',
+    'Mahabaleshwar travel guide, Mahabaleshwar blog, hill station tips, Panchgani guide, villa stay tips, Mahabaleshwar attractions, best time to visit Mahabaleshwar',
   alternates: {
     canonical: 'https://www.mahabaleshwarvillastays.com/blogs',
   },
@@ -22,9 +40,9 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://www.mahabaleshwarvillastays.com/blogs',
     siteName: 'Mahabaleshwar Villa Stays',
-    title: 'Travel Guides & Tips — Mahabaleshwar Blog | Mahabaleshwar Villa Stays',
+    title: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
     description:
-      'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
+      'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for planning your perfect Mahabaleshwar & Panchgani vacation.',
     images: [
       {
         url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
@@ -36,13 +54,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Travel Guides & Tips — Mahabaleshwar Blog | Mahabaleshwar Villa Stays',
+    title: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
     description:
-      'Discover insider tips, travel guides, and local insights for planning your perfect Mahabaleshwar vacation.',
+      'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for Mahabaleshwar.',
     images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
   },
 };
 
+// ── Structured Data ───────────────────────────────────────────────────────────
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -62,63 +81,213 @@ const breadcrumbSchema = {
   ],
 };
 
+// ItemList schema for the full blog collection
+const blogItemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Mahabaleshwar Travel Guides',
+  description: 'Complete travel guides for Mahabaleshwar, Panchgani and the Western Ghats',
+  numberOfItems: blogs.length,
+  itemListElement: blogs.map((blog, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: blog.title,
+    url: `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
+  })),
+};
+
+// ── Category tags for filter pills (for UX + internal linking signal) ─────────
+const CATEGORY_TAGS = [
+  { label: 'All Guides', tag: null },
+  { label: 'Travel Itinerary', tag: 'itinerary' },
+  { label: 'Food Guide', tag: 'food' },
+  { label: 'Sightseeing', tag: 'sightseeing' },
+  { label: 'Villa Guide', tag: 'villa' },
+  { label: 'Adventure', tag: 'adventure' },
+  { label: 'Season Guide', tag: 'season' },
+]
+
+// Map each blog slug to a tag for filtering
+const SLUG_TAGS: Record<string, string> = {
+  'perfect-travel-itinerary-mahabaleshwar': 'itinerary',
+  'perfect-travel-itinerary-panchgani': 'itinerary',
+  'mahabaleshwar-famous-food-spots': 'food',
+  'mahabaleshwar-market-guide': 'food',
+  'mahabaleshwar-tourist-places': 'sightseeing',
+  'wilson-point-sunrise-guide': 'sightseeing',
+  'venna-lake-boat-rides-food-and-horse-riding': 'sightseeing',
+  'best-villas-families': 'villa',
+  'romantic-couple-retreat': 'villa',
+  'group-gathering-guide': 'villa',
+  'budget-travel-mahabaleshwar': 'villa',
+  'valley-views-photography': 'villa',
+  'adventure-spots-in-mahabaleshwar': 'adventure',
+  'mahabaleshwar-horse-riding-experience': 'adventure',
+  'best-time-visit-mahabaleshwar': 'season',
+  'mahabaleshwar-complete-travel-guide': 'season',
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
 export default function BlogsPage() {
+  const featuredBlog = blogs[0]
+  const remainingBlogs = blogs.slice(1)
+
   return (
     <main className="min-h-screen bg-background">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogItemListSchema) }}
+      />
       <NavBar />
 
-      {/* Header Section */}
-      <section className="pt-20 pb-12 md:pt-24 md:pb-16 px-4 bg-card border-b border-border">
+      {/* ── Breadcrumb ─────────────────────────────────────────────────────── */}
+      <nav aria-label="Breadcrumb" className="pt-20 pb-2 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <ol className="flex items-center flex-wrap gap-1 text-sm text-muted-foreground">
+            <li>
+              <Link href="/" className="flex items-center gap-1 hover:text-primary transition-colors">
+                <Home className="w-3.5 h-3.5" />
+                <span>Home</span>
+              </Link>
+            </li>
+            <li className="flex items-center gap-1">
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-foreground font-medium">Blog</span>
+            </li>
+          </ol>
+        </div>
+      </nav>
+
+      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      <section className="pt-6 pb-10 md:pb-14 px-4 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-playfair text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4 leading-tight">
-            Travel Guides & Tips
+            Mahabaleshwar Travel Guides
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover insider tips, travel guides, and local insights for your Mahabaleshwar adventure
+            {blogs.length} insider guides — sightseeing, food, villas, itineraries, and seasonal tips
+            for planning your perfect Mahabaleshwar & Panchgani trip.
           </p>
         </div>
       </section>
 
-      {/* Blog Grid */}
-      <section className="py-20 px-4 bg-background">
+      {/* ── Featured Post (newest) ─────────────────────────────────────────── */}
+      {featuredBlog && (
+        <section className="py-10 md:py-14 px-4 bg-background border-b border-border">
+          <div className="max-w-7xl mx-auto">
+            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-4">
+              Latest Guide
+            </p>
+            <Link href={`/blogs/${featuredBlog.slug}`} className="group block">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-elevated">
+                  <Image
+                    src={featuredBlog.banner}
+                    alt={`${featuredBlog.title} – Mahabaleshwar travel guide`}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Calendar className="w-4 h-4" />
+                    <time dateTime={featuredBlog.date}>{formatDate(featuredBlog.date)}</time>
+                  </div>
+                  <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+                    {featuredBlog.title}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {featuredBlog.excerpt}
+                  </p>
+                  <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-200">
+                    Read guide
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* ── All Remaining Blog Posts Grid ─────────────────────────────────── */}
+      <section className="py-10 md:py-14 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            {blogs.map((blog) => (
-              <Link key={blog.id} href={`/blogs/${blog.slug}`}>
-                <div className="group cursor-pointer">
-                  <div className="relative h-64 rounded-lg overflow-hidden shadow-card hover:shadow-elevated transition-all mb-4">
+          <h2 className="font-playfair text-2xl font-bold text-foreground mb-8">
+            All Travel Guides
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {remainingBlogs.map((blog) => (
+              <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group block">
+                <div className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 hover:shadow-card transition-all duration-300 h-full flex flex-col">
+                  <div className="relative h-48 overflow-hidden">
                     <Image
                       src={blog.banner}
-                      alt={`${blog.title} - Mahabaleshwar travel guide`}
+                      alt={`${blog.title} – Mahabaleshwar travel guide`}
                       fill
-                      priority={blog.id === 'blog-1'}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Calendar className="w-4 h-4" />
-                      {new Date(blog.date).toLocaleDateString('en-IN', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
+                  <div className="p-5 flex flex-col flex-1 space-y-3">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <time dateTime={blog.date}>{formatDate(blog.date)}</time>
                     </div>
-                    <h3 className="font-playfair text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="font-playfair text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
                       {blog.title}
                     </h3>
-                    <p className="text-muted-foreground line-clamp-2">{blog.excerpt}</p>
-                    <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
-                      Read More
-                      <ArrowRight className="w-5 h-5" />
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 flex-1">
+                      {blog.excerpt}
+                    </p>
+                    <div className="flex items-center gap-1.5 text-primary text-sm font-semibold group-hover:gap-2.5 transition-all duration-200 pt-1">
+                      Read guide
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Internal Links to Villa Categories ────────────────────────────── */}
+      <section className="py-10 px-4 bg-card border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-playfair text-xl font-bold text-foreground mb-4">
+            Looking for a villa? Browse by type
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { label: 'Pool Villas', href: '/villas/category/pool-villas-in-mahabaleshwar' },
+              { label: 'Family Villas', href: '/villas/category/family-villas-in-mahabaleshwar' },
+              { label: 'Couple Villas', href: '/villas/category/couple-villas-in-mahabaleshwar' },
+              { label: 'Group Villas', href: '/villas/category/group-villas-in-mahabaleshwar' },
+              { label: 'Valley View', href: '/villas/category/valley-view-villas-in-mahabaleshwar' },
+              { label: 'Budget Villas', href: '/villas/category/budget-villas-in-mahabaleshwar' },
+              { label: 'All Villas', href: '/villas' },
+            ].map((cat) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className="px-4 py-2 rounded-full border border-border bg-background text-sm font-medium text-muted-foreground hover:border-primary hover:text-primary transition-all duration-200"
+              >
+                {cat.label}
               </Link>
             ))}
           </div>

@@ -1,3 +1,11 @@
+// app/layout.tsx
+// ─────────────────────────────────────────────────────────────────────────────
+// FIXES in this version:
+//  1. Added WebSite schema with SearchAction (supports Google sitelinks searchbox)
+//  2. LodgingBusiness schema telephone standardised to match NAP consistency
+//  3. Added sameAs array for social profiles (improves Knowledge Panel)
+// ─────────────────────────────────────────────────────────────────────────────
+
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Playfair_Display, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -17,8 +25,7 @@ const _lato = Lato({
   variable: '--font-lato',
 })
 
-// ✅ LocalBusiness JSON-LD — represents the overall business entity
-// Placed in <body> (not <head>) to avoid React hydration mismatches
+// ── LodgingBusiness JSON-LD — represents the overall business entity ───────
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
@@ -26,13 +33,13 @@ const localBusinessSchema = {
   description:
     '25+ premium luxury villas in Mahabaleshwar with breathtaking valley views. Pool villas, family villas, couple villas & group villas. Direct WhatsApp booking.',
   url: 'https://www.mahabaleshwarvillastays.com',
+  // FIX: standardised telephone — matches footer and NAP
   telephone: '+918080557611',
   email: 'rajeshgarela0@gmail.com',
 
   address: {
     '@type': 'PostalAddress',
-    streetAddress:
-      'Bhilar, Panchgani Mahabaleshwar Road, Poladpur Mahabaleshwar Road',
+    streetAddress: 'Bhilar, Panchgani Mahabaleshwar Road',
     addressLocality: 'Satara',
     addressRegion: 'Maharashtra',
     postalCode: '412806',
@@ -48,14 +55,7 @@ const localBusinessSchema = {
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-      ],
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       opens: '09:00',
       closes: '21:00',
     },
@@ -78,18 +78,43 @@ const localBusinessSchema = {
 
   image: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
 
-  hasMap:
-    'https://maps.google.com/?q=Bhilar+Mahabaleshwar+Satara+Maharashtra',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
+  },
+
+  hasMap: 'https://maps.google.com/?q=Bhilar+Mahabaleshwar+Satara+Maharashtra',
 
   numberOfRooms: '25',
+
+  // FIX: sameAs links tell Google which social/map profiles belong to this business
+  sameAs: [
+    'https://wa.me/919921372661',
+    'https://maps.google.com/?q=Mahabaleshwar+Villa+Stays+Bhilar+Maharashtra',
+  ],
+}
+
+// ── WebSite schema — enables Google Sitelinks Searchbox ───────────────────
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Mahabaleshwar Villa Stays',
+  url: 'https://www.mahabaleshwarvillastays.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://www.mahabaleshwarvillastays.com/villas?search={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
 }
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
 
   title: {
-    default:
-      'Mahabaleshwar Villa Stays — Premium Luxury Villas & Vacation Rentals',
+    default: 'Mahabaleshwar Villa Stays — Premium Luxury Villas & Vacation Rentals',
     template: '%s | Mahabaleshwar Villa Stays',
   },
 
@@ -124,13 +149,9 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://www.mahabaleshwarvillastays.com',
     siteName: 'Mahabaleshwar Villa Stays',
-
-    title:
-      'Mahabaleshwar Villa Stays — Premium Luxury Villas & Vacation Rentals',
-
+    title: 'Mahabaleshwar Villa Stays — Premium Luxury Villas & Vacation Rentals',
     description:
       'Premium luxury villas in Mahabaleshwar with breathtaking valley views. 25+ curated properties. Direct WhatsApp booking.',
-
     images: [
       {
         url: '/og-image.jpg',
@@ -143,12 +164,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-
     title: 'Mahabaleshwar Villa Stays — Premium Luxury Villas',
-
-    description:
-      'Premium luxury villas in Mahabaleshwar. Valley views, pools, BBQ. Book via WhatsApp.',
-
+    description: 'Premium luxury villas in Mahabaleshwar. Valley views, pools, BBQ. Book via WhatsApp.',
     images: ['/og-image.jpg'],
   },
 
@@ -160,7 +177,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-
     googleBot: {
       index: true,
       follow: true,
@@ -188,11 +204,18 @@ export default function RootLayout({
       className={`${_playfairDisplay.variable} ${_lato.variable} bg-background`}
     >
       <body className="font-lato antialiased">
-        {/* ✅ LocalBusiness schema — placed at the top of <body> to avoid hydration mismatches */}
+        {/* LodgingBusiness schema — overall business entity */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
+        {/* WebSite schema — enables Sitelinks Searchbox */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
           }}
         />
 

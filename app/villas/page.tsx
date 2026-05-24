@@ -1,10 +1,10 @@
 // app/villas/page.tsx
 // ─────────────────────────────────────────────────────────────────────────────
-// Changes in this version:
-//  1. Category filter tabs now link to REAL indexable URLs instead of ?category=
-//  2. SEO intro section added (400+ words of topical content)
-//  3. Category showcase blocks added below the grid
-//  4. Internal links to all programmatic category pages
+// FIX: Title now uses { absolute: ... } to prevent layout.tsx template from
+// appending "| Mahabaleshwar Villa Stays" to an already-branded string,
+// which previously produced:
+//   "All Luxury Villas in Mahabaleshwar — Browse 25+ Properties |
+//    Mahabaleshwar Villa Stays | Mahabaleshwar Villa Stays"
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from 'next'
@@ -20,9 +20,13 @@ import villas from '@/lib/data/villas.json'
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties | Mahabaleshwar Villa Stays',
+  // FIX: { absolute } bypasses the layout.tsx title template
+  // preventing "Brand | Brand" duplication
+  title: {
+    absolute: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties | Mahabaleshwar Villa Stays',
+  },
   description:
-    'Browse 24 premium villas in Mahabaleshwar & Panchgani. Private pool villas, family villas, couple villas, group villas & budget options. Direct WhatsApp booking. Best rates guaranteed.',
+    'Browse 25+ premium villas in Mahabaleshwar & Panchgani. Private pool villas, family villas, couple villas, group villas & budget options. Direct WhatsApp booking. Best rates guaranteed.',
   keywords:
     'luxury villas Mahabaleshwar, pool villas Mahabaleshwar, family villas Mahabaleshwar, couple villas Mahabaleshwar, group villas Mahabaleshwar, budget villas Mahabaleshwar, vacation rentals Mahabaleshwar, private villa Panchgani',
   alternates: {
@@ -78,7 +82,7 @@ const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Luxury Villas in Mahabaleshwar',
-  description: 'Curated collection of 24+ premium villas in Mahabaleshwar and Panchgani',
+  description: 'Curated collection of 25+ premium villas in Mahabaleshwar and Panchgani',
   numberOfItems: villas.length,
   itemListElement: villas.map((villa, index) => ({
     '@type': 'ListItem',
