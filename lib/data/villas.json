@@ -1008,16 +1008,16 @@
         "a": "Yes — the small size, private pool, wellness garden, and quiet surroundings near Mapro Garden make it an excellent choice for couples who want a romantic hill station stay without a large group villa's scale."
       }
     ],
-    "images": {
-      "listing": "/villaImages/villa16/Screenshot 2026-05-18 134858.png",
-      "gallery": [
-        "/villaImages/villa16/Screenshot 2026-05-18 135012.png",
-        "/villaImages/villa16/Screenshot 2026-05-18 135021.png",
-        "/villaImages/villa16/Screenshot 2026-05-18 135029.png",
-        "/villaImages/villa16/Screenshot 2026-05-18 135048.png",
-        "/villaImages/villa16/Screenshot 2026-05-18 135101.png"
-      ]
-    }
+   "images": {
+  "listing": "/villaImages/villa16/v1.png",
+  "gallery": [
+    "/villaImages/villa16/v2.png",
+    "/villaImages/villa16/v3.png",
+    "/villaImages/villa16/v4.png",
+    "/villaImages/villa16/v5.png",
+    "/villaImages/villa16/v6.png"
+  ]
+}
   },
   {
     "id": "lavish-escape",
@@ -1071,17 +1071,17 @@
       }
     ],
     "images": {
-      "listing": "/villaImages/villa17/Screenshot 2026-05-18 135824.png",
-      "gallery": [
-        "/villaImages/villa17/Screenshot 2026-05-18 135833.png",
-        "/villaImages/villa17/Screenshot 2026-05-18 135845.png",
-        "/villaImages/villa17/Screenshot 2026-05-18 135854.png",
-        "/villaImages/villa17/Screenshot 2026-05-18 135905.png",
-        "/villaImages/villa17/Screenshot 2026-05-18 135912.png",
-        "/villaImages/villa17/Screenshot 2026-05-18 135927.png",
-        "/villaImages/villa17/Screenshot 2026-05-18 135937.png"
-      ]
-    }
+  "listing": "/villaImages/villa17/v1.png",
+  "gallery": [
+    "/villaImages/villa17/v2.png",
+    "/villaImages/villa17/v3.png",
+    "/villaImages/villa17/v4.png",
+    "/villaImages/villa17/v5.png",
+    "/villaImages/villa17/v6.png",
+    "/villaImages/villa17/v7.png",
+    "/villaImages/villa17/v8.png"
+  ]
+}
   },
   {
     "id": "nature-haven",
