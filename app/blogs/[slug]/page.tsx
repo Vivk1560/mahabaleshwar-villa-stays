@@ -273,65 +273,65 @@ function slugify(text: string): string {
     .replace(/\s+/g, '-')
 }
 
-// ── Content block renderer ────────────────────────────────────────────────────
-
 function renderContentBlocks(content: string) {
-  const rawBlocks = content.split('\n\n').filter(Boolean)
-  const blocks: React.ReactNode[] = []
-
-  // Collect ToC entries for rendering
+  // Split into lines first, then group into paragraph blocks
+  // This ensures TOC_START / TOC_END are always detected even when
+  // they appear inside the same \n\n-delimited chunk
+  const lines = content.split('\n')
   const tocEntries: { level: 2 | 3; text: string; id: string }[] = []
 
-  // First pass: collect all headings for ToC
+  // First pass: collect all headings (skip lines inside TOC markers)
   let inToc = false
-  for (const block of rawBlocks) {
-    const trimmed = block.trim()
-    if (trimmed === 'TOC_START') { inToc = true; continue }
-    if (trimmed === 'TOC_END') { inToc = false; continue }
+  for (const line of lines) {
+    const t = line.trim()
+    if (t === 'TOC_START') { inToc = true; continue }
+    if (t === 'TOC_END')   { inToc = false; continue }
     if (inToc) continue
-    if (trimmed.startsWith('## ')) {
-      const text = trimmed.slice(3).trim()
-      tocEntries.push({ level: 2, text, id: slugify(text) })
-    } else if (trimmed.startsWith('### ')) {
-      const text = trimmed.slice(4).trim()
-      tocEntries.push({ level: 3, text, id: slugify(text) })
-    }
+    if (t.startsWith('## '))  tocEntries.push({ level: 2, text: t.slice(3).trim(),  id: slugify(t.slice(3).trim()) })
+    if (t.startsWith('### ')) tocEntries.push({ level: 3, text: t.slice(4).trim(), id: slugify(t.slice(4).trim()) })
   }
 
-  // Second pass: render blocks
+  // Re-group lines into paragraph blocks, but treat every sentinel line
+  // as its own single-line block so matching is reliable
+  const blocks: string[] = []
+  let current: string[] = []
+  for (const line of lines) {
+    const t = line.trim()
+    if (t === 'TOC_START' || t === 'TOC_END') {
+      if (current.length) { blocks.push(current.join('\n')); current = [] }
+      blocks.push(t)
+    } else if (t === '') {
+      if (current.length) { blocks.push(current.join('\n')); current = [] }
+    } else {
+      current.push(line)
+    }
+  }
+  if (current.length) blocks.push(current.join('\n'))
+
+  // Second pass: render
+  const rendered: React.ReactNode[] = []
   let tocRendered = false
   inToc = false
 
-  for (let i = 0; i < rawBlocks.length; i++) {
-    const trimmed = rawBlocks[i].trim()
+  for (let i = 0; i < blocks.length; i++) {
+    const trimmed = blocks[i].trim()
+    if (!trimmed) continue
 
-    // ToC sentinel
     if (trimmed === 'TOC_START') {
       inToc = true
       if (!tocRendered && tocEntries.length > 0) {
         tocRendered = true
-        blocks.push(
-          <nav
-            key="toc"
-            className="my-8 p-6 bg-card border border-border rounded-2xl"
-            aria-label="Table of contents"
-          >
-            <h2 className="font-playfair text-xl font-bold text-foreground mb-4">
-              Table of Contents
-            </h2>
+        rendered.push(
+          <nav key="toc" className="my-8 p-6 bg-card border border-border rounded-2xl" aria-label="Table of contents">
+            <h2 className="font-playfair text-xl font-bold text-foreground mb-4">Table of Contents</h2>
             <ol className="space-y-2">
-              {tocEntries
-                .filter((e) => e.level === 2)
-                .map((entry, idx) => (
-                  <li key={idx}>
-                    
-                    <a  href={`#${entry.id}`}
-                      className="text-primary hover:underline text-sm font-medium"
-                    >
-                      {entry.text}
-                    </a>
-                  </li>
-                ))}
+              {tocEntries.filter((e) => e.level === 2).map((entry, idx) => (
+                <li key={idx}>
+                  <a href={`#${entry.id}`} className="text-primary hover:underline text-sm font-medium">
+                    {entry.text}
+                  </a>
+                </li>
+              ))}
             </ol>
           </nav>
         )
@@ -339,76 +339,50 @@ function renderContentBlocks(content: string) {
       continue
     }
 
-    if (trimmed === 'TOC_END') {
-      inToc = false
-      continue
-    }
-
+    if (trimmed === 'TOC_END') { inToc = false; continue }
     if (inToc) continue
 
-    // H2
     if (trimmed.startsWith('## ')) {
       const text = trimmed.slice(3).trim()
-      const id = slugify(text)
-      blocks.push(
-        <h2
-          key={i}
-          id={id}
-          className="font-playfair text-2xl md:text-3xl font-bold text-foreground mt-12 mb-4 scroll-mt-24"
-        >
+      rendered.push(
+        <h2 key={i} id={slugify(text)} className="font-playfair text-2xl md:text-3xl font-bold text-foreground mt-12 mb-4 scroll-mt-24">
           {text}
         </h2>
       )
       continue
     }
 
-    // H3
     if (trimmed.startsWith('### ')) {
       const text = trimmed.slice(4).trim()
-      const id = slugify(text)
-      blocks.push(
-        <h3
-          key={i}
-          id={id}
-          className="font-playfair text-xl md:text-2xl font-bold text-foreground mt-8 mb-3 scroll-mt-24"
-        >
+      rendered.push(
+        <h3 key={i} id={slugify(text)} className="font-playfair text-xl md:text-2xl font-bold text-foreground mt-8 mb-3 scroll-mt-24">
           {text}
         </h3>
       )
       continue
     }
 
-    // CTA block
     if (trimmed.startsWith('CTA: ')) {
-      const text = trimmed.slice(5).trim()
-      blocks.push(
-        <div
-          key={i}
-          className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl text-center"
-        >
-          <p className="text-foreground font-medium">{text}</p>
+      rendered.push(
+        <div key={i} className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl text-center">
+          <p className="text-foreground font-medium">{trimmed.slice(5).trim()}</p>
         </div>
       )
       continue
     }
 
-    // Regular paragraph
-    const lines = trimmed.split('\n')
-    blocks.push(
+    const linesPara = trimmed.split('\n')
+    rendered.push(
       <p key={i} className="text-lg text-foreground leading-relaxed">
-        {lines.map((line, j) => (
-          <span key={j}>
-            {line}
-            {j < lines.length - 1 && <br />}
-          </span>
+        {linesPara.map((line, j) => (
+          <span key={j}>{line}{j < linesPara.length - 1 && <br />}</span>
         ))}
       </p>
     )
   }
 
-  return blocks
+  return rendered
 }
-
 // ── Page Component ────────────────────────────────────────────────────────────
 
 export default async function BlogDetailPage({ params }: PageProps) {
