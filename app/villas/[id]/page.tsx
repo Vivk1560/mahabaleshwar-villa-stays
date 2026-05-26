@@ -89,13 +89,19 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
   // ── Structured Data ──────────────────────────────────────────────────────
 
-  const vacationRentalSchema = {
+const vacationRentalSchema = {
     '@context': 'https://schema.org',
     '@type': 'VacationRental',
+    identifier: villa.id,
     name: villa.name,
     description: villa.seoDescription || villa.description,
     url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-    image: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
+    image: [
+      `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
+      ...villa.images.gallery.map(
+        (img) => `https://www.mahabaleshwarvillastays.com${img}`
+      ),
+    ],
     telephone: '+918080557611',
     email: 'rajeshgarela0@gmail.com',
     address: {
@@ -106,6 +112,13 @@ export default async function VillaDetailPage({ params }: PageProps) {
       postalCode: '412806',
       addressCountry: 'IN',
     },
+    ...(villa.geo && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: villa.geo.latitude,
+        longitude: villa.geo.longitude,
+      },
+    }),
     numberOfRooms: bhkNumber,
     amenityFeature: villa.amenities.map((amenity) => ({
       '@type': 'LocationFeatureSpecification',
