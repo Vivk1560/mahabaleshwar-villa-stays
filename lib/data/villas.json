@@ -18,6 +18,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9307, "lng": 73.6477 },
+    "geo": {
+    "latitude": "17.9307",
+    "longitude": "73.6477"
+  },
     "googleMapsEmbedHint": "Near Mapro Garden, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "strawberry-season", "monsoon-mist", "post-monsoon"],
     "bestFor": ["families", "budget-groups", "couples", "small-friend-groups", "workation"],
@@ -140,6 +144,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9298, "lng": 73.6459 },
+    "geo": {
+    "latitude": "17.9298",
+    "longitude": "73.6459"
+  },
     "googleMapsEmbedHint": "Mapro Garden Road, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "strawberry-season", "post-monsoon", "peak-season"],
     "bestFor": ["large-families", "corporate-retreats", "group-trips", "birthday-celebrations", "reunions"],
@@ -263,6 +271,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9315, "lng": 73.6488 },
+    "geo": {
+    "latitude": "17.9315",
+    "longitude": "73.6488"
+  }
     "googleMapsEmbedHint": "Near Mapro Garden, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "post-monsoon", "strawberry-season", "peak-season"],
     "bestFor": ["office-groups", "friend-groups", "family-reunion", "birthday-trips", "bachelor-groups"],
@@ -378,6 +390,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9182, "lng": 73.6521 },
+    "geo": {
+    "latitude": "17.9182",
+    "longitude": "73.6521"
+  },
     "googleMapsEmbedHint": "Near Bhilar Waterfall Point, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["monsoon-stay", "strawberry-season", "post-monsoon", "winter-stay"],
     "bestFor": ["couples", "small-families", "intimate-groups", "honeymoon", "anniversary", "workation"],
@@ -493,6 +509,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9168, "lng": 73.6498 },
+    "geo": {
+    "latitude": "17.9168",
+    "longitude": "73.6498"
+  },
     "googleMapsEmbedHint": "Bhilar Village, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["strawberry-season", "winter-stay", "post-monsoon", "family-season"],
     "bestFor": ["multi-generational-families", "family-reunion", "children-friendly", "quiet-getaway", "strawberry-season-visit"],
@@ -608,6 +628,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9095, "lng": 73.6312 },
+    "geo": {
+    "latitude": "17.9095",
+    "longitude": "73.6312"
+  },
     "googleMapsEmbedHint": "Machutar, Satara Mahabaleshwar Road, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "post-monsoon", "event-season", "peak-season"],
     "bestFor": ["celebrations", "pre-wedding-functions", "corporate-retreat", "workation", "family-reunion"],
@@ -723,6 +747,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9185, "lng": 73.6415 },
+    "geo": {
+    "latitude": "17.9185",
+    "longitude": "73.6415"
+  },
     "googleMapsEmbedHint": "Panchgani Mahabaleshwar Road, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["monsoon-stay", "winter-stay", "post-monsoon", "peak-season"],
     "bestFor": ["college-groups", "bachelor-groups", "office-outings", "budget-trips", "active-travel"],
@@ -846,6 +874,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9278, "lng": 73.6492 },
+    "geo": {
+    "latitude": "17.9278",
+    "longitude": "73.6492"
+  },
     "googleMapsEmbedHint": "Near Kamat Hotel, Mapro Garden Road, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "post-monsoon", "stargazing-season", "peak-season"],
     "bestFor": ["large-friend-groups", "birthday-celebrations", "corporate-retreats", "stargazing-trips", "office-outings"],
@@ -965,6 +997,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9232, "lng": 73.6508 },
+    "geo": {
+    "latitude": "17.9232",
+    "longitude": "73.6508"
+  },
     "googleMapsEmbedHint": "Near Mapro Garden, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "strawberry-season", "post-monsoon", "corporate-season"],
     "bestFor": ["large-families", "corporate-retreats", "group-trips", "multi-generational-families", "workation"],
@@ -1083,6 +1119,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9248, "lng": 73.6644 },
+     "geo": {
+    "latitude": "17.9248",
+    "longitude": "73.6644"
+  },
     "googleMapsEmbedHint": "Panchgani Mahabaleshwar Road, Panchgani, Maharashtra 412805",
     "seasonTags": ["monsoon-stay", "winter-stay", "post-monsoon", "strawberry-season"],
     "bestFor": ["multi-generational-families", "heritage-lovers", "quiet-getaway", "budget-family-trips", "literature-readers"],
@@ -1202,6 +1242,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9198, "lng": 73.6534 },
+    "geo": {
+    "latitude": "17.9198",
+    "longitude": "73.6534"
+  },
     "googleMapsEmbedHint": "Near Parsi Point, Panchgani Mahabaleshwar Road, Maharashtra 412806",
     "seasonTags": ["winter-stay", "post-monsoon", "sunset-season", "couple-season"],
     "bestFor": ["couples", "small-friend-groups", "design-conscious-guests", "sunset-chasers", "home-theater-evenings"],
@@ -1317,6 +1361,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9302, "lng": 73.6463 },
+    "geo": {
+    "latitude": "17.9302",
+    "longitude": "73.6463"
+  },
     "googleMapsEmbedHint": "Near Mapro Garden, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["winter-stay", "strawberry-season", "post-monsoon", "family-season"],
     "bestFor": ["multi-generational-families", "budget-luxury", "family-reunion", "strawberry-season-visit", "joint-family"],
@@ -1432,6 +1480,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9268, "lng": 73.6659 },
+    "geo": {
+    "latitude": "17.9268",
+    "longitude": "73.6659"
+  },
     "googleMapsEmbedHint": "Near Panchgani Table Land, Panchgani, Maharashtra 412805",
     "seasonTags": ["monsoon-stay", "post-monsoon", "cloud-views", "meditation-retreat"],
     "bestFor": ["intimate-groups", "meditation-retreats", "monsoon-travelers", "couples", "families-of-10"],
@@ -1547,6 +1599,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9108, "lng": 73.6325 },
+    "geo": {
+    "latitude": "17.9108",
+    "longitude": "73.6325"
+  },
     "googleMapsEmbedHint": "Satara Mahabaleshwar Road, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["post-monsoon", "winter-stay", "content-creation-season", "couple-season"],
     "bestFor": ["couples", "anniversary-trips", "content-creators", "pre-wedding-shoots", "celebrity-privacy"],
@@ -1662,6 +1718,10 @@
     "checkin": "12:00 PM",
     "checkout": "11:00 AM",
     "coordinates": { "lat": 17.9308, "lng": 73.6474 },
+  "geo": {
+    "latitude": "17.9308",
+    "longitude": "73.6474"
+  },
     "googleMapsEmbedHint": "Opposite Velocity Park, Near Mapro Garden, Mahabaleshwar, Maharashtra 412806",
     "seasonTags": ["family-season", "winter-stay", "strawberry-season", "school-holiday"],
     "bestFor": ["families-with-children", "joint-family-trips", "school-holiday-groups", "multi-generational-families", "budget-family-stays"],
