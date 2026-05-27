@@ -8,7 +8,7 @@ import { Calendar, ArrowLeft } from 'lucide-react'
 import blogs from '@/lib/data/blogs.json'
 import villas from '@/lib/data/villas.json'
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -214,12 +214,12 @@ const BLOG_KEYWORDS: Record<string, string> = {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: PageProps) {
   const { slug } = await params
   const blog = blogs.find((b) => b.slug === slug)
 
   if (!blog) {
-    return { title: 'Blog Not Found' }
+    return {}
   }
 
   const keywords =
@@ -227,40 +227,23 @@ export async function generateMetadata({
 
   const imageUrl = blog.banner.startsWith('http')
     ? blog.banner
-    : `https://www.mahabaleshwarvillastays.com${blog.banner}`
+    : blog.banner
 
-  return {
+  return buildMetadata({
     title: blog.title,
     description: blog.excerpt,
-    keywords,
+    path: `/blogs/${slug}`,
+    type: 'article',
+    image: imageUrl,
+    imageAlt: blog.title,
     authors: [{ name: 'Mahabaleshwar Villa Stays' }],
-    alternates: {
-      canonical: `https://www.mahabaleshwarvillastays.com/blogs/${slug}`,
-    },
-    openGraph: {
-      type: 'article',
-      url: `https://www.mahabaleshwarvillastays.com/blogs/${slug}`,
-      siteName: 'Mahabaleshwar Villa Stays',
-      title: `${blog.title} | Mahabaleshwar Villa Stays`,
-      description: blog.excerpt,
-      publishedTime: blog.date,
-      modifiedTime: blog.date,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${blog.title} | Mahabaleshwar Villa Stays`,
-      description: blog.excerpt,
-      images: [imageUrl],
-    },
-  }
+    publishedTime: blog.date,
+    modifiedTime: blog.date,
+    keywords: dedupeKeywords(
+      keywords.split(',').map((keyword) => keyword.trim()),
+      ['Mahabaleshwar travel guide', 'Mahabaleshwar villa stay', 'Panchgani travel']
+    ),
+  })
 }
 
 // ── Heading helpers ───────────────────────────────────────────────────────────

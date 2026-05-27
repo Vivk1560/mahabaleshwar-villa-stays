@@ -18,6 +18,7 @@ import { Star, MapPin, Users, MessageCircle, Phone, ChevronRight, Home } from 'l
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 
 interface PageProps {
   params: Promise<{
@@ -36,44 +37,32 @@ export async function generateMetadata({ params }: PageProps) {
   const villa = villas.find((v) => v.id === resolvedParams.id);
   if (!villa) return {};
 
-  const title = villa.seoTitle || `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`;
-  const description = villa.seoDescription || `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`;
+  const title =
+    villa.seoTitle || `${villa.name} - Luxury Villa in Mahabaleshwar`
+  const description =
+    villa.seoDescription ||
+    `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`
 
-  return {
-    metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title: { absolute: title },
+  return buildMetadata({
+    title,
     description,
-    keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, ${villa.bhk} villa Mahabaleshwar, Mahabaleshwar vacation rentals, private pool villa Mahabaleshwar`,
-    alternates: {
-      canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-    authors: [{ name: 'Mahabaleshwar Villa Stays' }],
-    openGraph: {
-      siteName: 'Mahabaleshwar Villa Stays',
-      type: 'website',
-      url: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
-      title,
-      description,
-      images: [
-        {
-          url: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
-          width: 1200,
-          height: 630,
-          alt: `${villa.name} – ${villa.bhk} luxury villa in Mahabaleshwar`,
-        },
+    path: `/villas/${resolvedParams.id}`,
+    image: villa.images.listing,
+    imageAlt: `${villa.name} - ${villa.bhk} luxury villa in Mahabaleshwar`,
+    keywords: dedupeKeywords(
+      [
+        villa.name,
+        'Mahabaleshwar villa',
+        'luxury stay',
+        villa.location,
       ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [`https://www.mahabaleshwarvillastays.com${villa.images.listing}`],
-    },
-  };
+      [
+        `${villa.bhk} villa Mahabaleshwar`,
+        'Mahabaleshwar vacation rentals',
+        'private pool villa Mahabaleshwar',
+      ]
+    ),
+  });
 }
 
 export default async function VillaDetailPage({ params }: PageProps) {

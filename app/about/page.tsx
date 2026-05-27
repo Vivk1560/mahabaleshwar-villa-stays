@@ -9,41 +9,29 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { Check } from 'lucide-react';
 import aboutData from '@/lib/data/aboutData.json';
 import testimonials from '@/lib/data/testimonials.json';
-import type { Metadata } from 'next';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
-  title: 'About Us — Premium Villa Collections',
-  description:
-    'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
-  keywords:
-    'Mahabaleshwar villas, luxury hospitality, hill station resorts, villa collections, Mahabaleshwar stays',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/about',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/about',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'About Us — Premium Villa Collections | Mahabaleshwar Villa Stays',
-    description:
-      'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'About Mahabaleshwar Villa Stays — Premium Luxury Villas',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Us | Mahabaleshwar Villa Stays',
-    description:
-      'Meet the team behind Mahabaleshwar Villa Stays. Authentic hospitality and curated luxury villas.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+export function generateMetadata() {
+  const title = 'About Mahabaleshwar Villa Stays'
+  const description =
+    'Meet the Mahabaleshwar Villa Stays team and learn how we curate authentic hospitality, valley-view stays, and villa experiences in Mahabaleshwar.'
+
+  return buildMetadata({
+    title,
+    description,
+    path: '/about',
+    image: '/images/Founder-RajeshGarela.jpeg',
+    imageAlt: 'Founder Rajesh Garela - Mahabaleshwar Villa Stays',
+    keywords: dedupeKeywords(
+      [
+        'Mahabaleshwar villas',
+        'luxury hospitality',
+        'hill station resorts',
+      ],
+      ['villa collections', 'Mahabaleshwar stays']
+    ),
+  })
+}
 
 // ✅ BreadcrumbList — Home > About
 const breadcrumbSchema = {

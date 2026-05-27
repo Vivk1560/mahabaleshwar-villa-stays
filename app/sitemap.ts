@@ -2,6 +2,7 @@
 import { MetadataRoute } from 'next'
 import villas from '@/lib/data/villas.json'
 import blogs from '@/lib/data/blogs.json'
+import { SITE } from '@/lib/seo/metadata'
 
 // All 6 programmatic category slugs
 const CATEGORY_SLUGS = [
@@ -14,7 +15,7 @@ const CATEGORY_SLUGS = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.mahabaleshwarvillastays.com'
+  const baseUrl = SITE.url
   const now = new Date()
 
   // Static Pages

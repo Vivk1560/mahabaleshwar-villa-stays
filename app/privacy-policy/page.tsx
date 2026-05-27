@@ -1,44 +1,24 @@
-import type { Metadata } from 'next'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { FloatingButtons } from '@/components/FloatingButtons'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
-  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
-  title: 'Privacy Policy',
-  description:
-    'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/privacy-policy',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  // ✅ OG tags added — were completely missing before
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/privacy-policy',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'Privacy Policy | Mahabaleshwar Villa Stays',
-    description:
-      'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Mahabaleshwar Villa Stays — Privacy Policy',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Privacy Policy | Mahabaleshwar Villa Stays',
-    description:
-      'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
+export function generateMetadata() {
+  const title = 'Privacy Policy'
+  const description =
+    'Privacy Policy for Mahabaleshwar Villa Stays. Learn how we collect, use, and protect your personal information.'
+
+  return buildMetadata({
+    title,
+    description,
+    path: '/privacy-policy',
+    image: '/images/hero-bg.jpg',
+    imageAlt: 'Mahabaleshwar Villa Stays privacy policy',
+    keywords: dedupeKeywords(['privacy policy', 'Mahabaleshwar Villa Stays'], [
+      'villa booking privacy',
+      'guest data protection',
+    ]),
+  })
 }
 
 export default function PrivacyPolicyPage() {

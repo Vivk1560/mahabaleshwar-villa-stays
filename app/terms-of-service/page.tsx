@@ -1,44 +1,24 @@
-import type { Metadata } from 'next'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { FloatingButtons } from '@/components/FloatingButtons'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
-  // ✅ No "| Mahabaleshwar Villa Stays" — layout template adds it
-  title: 'Terms of Service',
-  description:
-    'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/terms-of-service',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  // ✅ OG tags added — were completely missing before
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/terms-of-service',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'Terms of Service | Mahabaleshwar Villa Stays',
-    description:
-      'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Mahabaleshwar Villa Stays — Terms of Service',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Terms of Service | Mahabaleshwar Villa Stays',
-    description:
-      'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
+export function generateMetadata() {
+  const title = 'Terms of Service'
+  const description =
+    'Terms of Service for Mahabaleshwar Villa Stays. Read our booking conditions, cancellation policy, and guest responsibilities.'
+
+  return buildMetadata({
+    title,
+    description,
+    path: '/terms-of-service',
+    image: '/images/hero-bg.jpg',
+    imageAlt: 'Mahabaleshwar Villa Stays terms of service',
+    keywords: dedupeKeywords(['terms of service', 'Mahabaleshwar Villa Stays'], [
+      'villa booking terms',
+      'guest responsibilities',
+    ]),
+  })
 }
 
 export default function TermsOfServicePage() {

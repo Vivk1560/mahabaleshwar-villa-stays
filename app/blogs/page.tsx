@@ -11,55 +11,44 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ArrowRight, Calendar, Home, ChevronRight } from 'lucide-react';
 import blogsData from '@/lib/data/blogs.json';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 
 // Sort all blogs newest first — this is the fix for stale listing
 const blogs = [...blogsData].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 )
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-  // FIX: { absolute } prevents layout template from doubling the brand name
-  title: {
-    absolute: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
-  },
-  description:
-    'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for planning your perfect Mahabaleshwar & Panchgani vacation.',
-  keywords:
-    'Mahabaleshwar travel guide, Mahabaleshwar blog, hill station tips, Panchgani guide, villa stay tips, Mahabaleshwar attractions, best time to visit Mahabaleshwar',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/blogs',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/blogs',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
-    description:
-      'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for planning your perfect Mahabaleshwar & Panchgani vacation.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Mahabaleshwar Travel Guides and Tips',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
-    description:
-      'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for Mahabaleshwar.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+export function generateMetadata() {
+  const title = 'Mahabaleshwar Travel Guides'
+  const description =
+    'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal planning advice for Mahabaleshwar and Panchgani.'
+
+  return buildMetadata({
+    title,
+    description,
+    path: '/blogs',
+    image: '/images/blogs/image.png',
+    imageAlt: 'Mahabaleshwar travel guides and tips',
+    keywords: dedupeKeywords(
+      [
+        'Mahabaleshwar travel guide',
+        'Mahabaleshwar blog',
+        'hill station tips',
+        'Panchgani guide',
+      ],
+      [
+        'villa stay tips',
+        'Mahabaleshwar attractions',
+        'best time to visit Mahabaleshwar',
+      ]
+    ),
+  })
+}
 
 // ── Structured Data ───────────────────────────────────────────────────────────
 const breadcrumbSchema = {

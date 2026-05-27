@@ -7,7 +7,6 @@
 //    Mahabaleshwar Villa Stays | Mahabaleshwar Villa Stays"
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MessageCircle, ChevronRight, Home } from 'lucide-react'
 
@@ -17,45 +16,35 @@ import { FloatingButtons } from '@/components/FloatingButtons'
 import { VillaCard } from '@/components/VillaCard'
 
 import villas from '@/lib/data/villas.json'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
-export const metadata: Metadata = {
-  // FIX: { absolute } bypasses the layout.tsx title template
-  // preventing "Brand | Brand" duplication
-  title: {
-    absolute: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties | Mahabaleshwar Villa Stays',
-  },
-  description:
-    'Browse 25+ premium villas in Mahabaleshwar & Panchgani. Private pool villas, family villas, couple villas, group villas & budget options. Direct WhatsApp booking. Best rates guaranteed.',
-  keywords:
-    'luxury villas Mahabaleshwar, pool villas Mahabaleshwar, family villas Mahabaleshwar, couple villas Mahabaleshwar, group villas Mahabaleshwar, budget villas Mahabaleshwar, vacation rentals Mahabaleshwar, private villa Panchgani',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/villas',
-  },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/villas',
-    title: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties',
-    description:
-      'Browse premium pool villas, family villas, couple villas & group villas in Mahabaleshwar. Direct WhatsApp booking.',
-    siteName: 'Mahabaleshwar Villa Stays',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Luxury villas in Mahabaleshwar',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties',
-    description:
-      'Pool villas, family villas, couple villas & group villas in Mahabaleshwar. Book via WhatsApp.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
+export function generateMetadata() {
+  const title = 'All Luxury Villas in Mahabaleshwar'
+  const description =
+    'Browse 25+ premium villas in Mahabaleshwar and Panchgani. Private pool villas, family villas, couple villas, group villas, and budget options with direct WhatsApp booking.'
+
+  return buildMetadata({
+    title,
+    description,
+    path: '/villas',
+    image: '/images/villa-listing-1.jpg',
+    imageAlt: 'Luxury villas in Mahabaleshwar',
+    keywords: dedupeKeywords(
+      [
+        'luxury villas Mahabaleshwar',
+        'pool villas Mahabaleshwar',
+        'family villas Mahabaleshwar',
+        'couple villas Mahabaleshwar',
+      ],
+      [
+        'group villas Mahabaleshwar',
+        'budget villas Mahabaleshwar',
+        'vacation rentals Mahabaleshwar',
+        'private villa Panchgani',
+      ]
+    ),
+  })
 }
 
 // ── Structured Data ───────────────────────────────────────────────────────────

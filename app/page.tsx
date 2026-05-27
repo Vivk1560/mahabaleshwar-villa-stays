@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
@@ -11,6 +10,7 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { ArrowRight } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import testimonials from '@/lib/data/testimonials.json';
+import { buildMetadata, dedupeKeywords, SITE } from '@/lib/seo/metadata';
 
 // ── Module-level data (shared by schema + JSX) ────────────────────────────────
 
@@ -151,55 +151,39 @@ const attractions = [
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
-  title: 'Luxury Villas in Mahabaleshwar | Private Pool, Valley View & Family Stays',
+export function generateMetadata() {
+  const title = 'Luxury Villas in Mahabaleshwar'
+  const description =
+    'Book 25+ handpicked private villas in Mahabaleshwar and Panchgani. Pool villas, family stays, couple retreats, and group escapes near Mapro Garden with direct WhatsApp booking.'
 
-  description:
-    'Book 25+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family stays, couple retreats & group escapes near Mapro Garden. Direct WhatsApp booking, best rates guaranteed.',
-
-  keywords: [
-    'Mahabaleshwar villas',
-    'luxury villas Mahabaleshwar',
-    'villa stay Mahabaleshwar',
-    'family villas Mahabaleshwar',
-    'couple villa Mahabaleshwar',
-    'pool villas Mahabaleshwar',
-    'group stay Mahabaleshwar',
-    'hill station villa Maharashtra',
-    'villa near Mapro Garden',
-    'Panchgani villa stay',
-    'weekend trip from Pune villa',
-    'Mahabaleshwar weekend getaway',
-    'Western Ghats villa rental',
-    'private villa Mahabaleshwar',
-  ],
-
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com',
-  },
-
-  openGraph: {
-    title: 'Luxury Villas in Mahabaleshwar | Private Pool, Valley View & Family Stays',
-    description:
-      'Book 25+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family stays, couple retreats & group escapes near Mapro Garden. Direct WhatsApp booking.',
-    type: 'website',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Luxury Villas in Mahabaleshwar | Private Pool & Valley View Stays',
-    description:
-      'Book 25+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family stays, couple retreats & group escapes near Mapro Garden.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+  return buildMetadata({
+    title,
+    description,
+    path: '/',
+    image: '/images/villa-listing-1.jpg',
+    imageAlt: 'Luxury villa stays in Mahabaleshwar',
+    keywords: dedupeKeywords(
+      [
+        'Mahabaleshwar villas',
+        'luxury villas Mahabaleshwar',
+        'villa stay Mahabaleshwar',
+        'family villas Mahabaleshwar',
+        'couple villa Mahabaleshwar',
+        'pool villas Mahabaleshwar',
+        'group stay Mahabaleshwar',
+      ],
+      [
+        'hill station villa Maharashtra',
+        'villa near Mapro Garden',
+        'Panchgani villa stay',
+        'weekend trip from Pune villa',
+        'Mahabaleshwar weekend getaway',
+        'Western Ghats villa rental',
+        'private villa Mahabaleshwar',
+      ]
+    ),
+  })
+}
 
 // ── Page Component ────────────────────────────────────────────────────────────
 
@@ -210,12 +194,12 @@ export default function Home() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Mahabaleshwar Villa Stays',
-    url: 'https://www.mahabaleshwarvillastays.com',
-    logo: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
+    name: SITE.name,
+    url: SITE.url,
+    logo: SITE.logoPath.startsWith('http') ? SITE.logoPath : `${SITE.url}${SITE.logoPath}`,
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+91-8080557611',
+      telephone: SITE.contact.phone,
       contactType: 'customer service',
       areaServed: 'IN',
       availableLanguage: ['English', 'Hindi'],
@@ -225,8 +209,8 @@ export default function Home() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Mahabaleshwar Villa Stays',
-    url: 'https://www.mahabaleshwarvillastays.com',
+    name: SITE.name,
+    url: SITE.url,
   };
 
   // ✅ Single FAQPage schema — one per page, no duplicates

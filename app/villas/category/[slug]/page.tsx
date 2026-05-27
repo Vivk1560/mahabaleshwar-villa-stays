@@ -21,6 +21,7 @@ import { FloatingButtons } from '@/components/FloatingButtons'
 import { VillaCard } from '@/components/VillaCard'
 
 import villas from '@/lib/data/villas.json'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 
 // ── Category config — single source of truth ─────────────────────────────────
 export const CATEGORY_CONFIG: Record<
@@ -201,36 +202,24 @@ export async function generateMetadata({
   const config = CATEGORY_CONFIG[slug]
   if (!config) return {}
 
-  const canonicalUrl = `https://www.mahabaleshwarvillastays.com/villas/category/${slug}`
-
-  return {
-    metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title: { absolute: config.seoTitle },
+  return buildMetadata({
+    title: config.seoTitle,
     description: config.seoDescription,
-    alternates: { canonical: canonicalUrl },
-    robots: { index: true, follow: true },
-    openGraph: {
-      type: 'website',
-      url: canonicalUrl,
-      title: config.seoTitle,
-      description: config.seoDescription,
-      siteName: 'Mahabaleshwar Villa Stays',
-      images: [
-        {
-          url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: config.h1,
-        },
+    path: `/villas/category/${slug}`,
+    image: '/images/villa-listing-2.jpg',
+    imageAlt: config.h1,
+    keywords: dedupeKeywords(
+      [
+        `${config.label.toLowerCase()} Mahabaleshwar`,
+        `Mahabaleshwar ${config.label.toLowerCase()}`,
       ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: config.seoTitle,
-      description: config.seoDescription,
-      images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-    },
-  }
+      [
+        'Mahabaleshwar villa stay',
+        'Panchgani villa stay',
+        'private villa booking',
+      ]
+    ),
+  })
 }
 
 // ── Page Component ────────────────────────────────────────────────────────────

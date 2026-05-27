@@ -1,61 +1,45 @@
 // app/contact/page.tsx
 
-import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ContactForm } from '@/components/ContactForm';
+import { buildMetadata, dedupeKeywords, SITE, absoluteUrl } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
-  title: 'Contact Us — WhatsApp Villa Inquiry',
-  description:
-    'Contact Mahabaleshwar Villa Stays. Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
-  keywords:
-    'contact Mahabaleshwar Villa Stays, WhatsApp booking, villa inquiry, concierge service, Mahabaleshwar',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/contact',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/contact',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'Contact Us | Mahabaleshwar Villa Stays',
-    description:
-      'Contact Mahabaleshwar Villa Stays. Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Contact Mahabaleshwar Villa Stays',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact Us | Mahabaleshwar Villa Stays',
-    description:
-      'Reach us via WhatsApp, call, or email for villa inquiries. 24/7 concierge support available.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+export function generateMetadata() {
+  const title = 'Contact Mahabaleshwar Villa Stays'
+  const description =
+    'Contact Mahabaleshwar Villa Stays via WhatsApp, call, or email for villa inquiries, availability, and concierge support.'
+
+  return buildMetadata({
+    title,
+    description,
+    path: '/contact',
+    image: '/images/villa-listing-2.jpg',
+    imageAlt: 'Contact Mahabaleshwar Villa Stays',
+    keywords: dedupeKeywords(
+      ['contact Mahabaleshwar Villa Stays', 'WhatsApp booking', 'villa inquiry'],
+      ['concierge service', 'Mahabaleshwar']
+    ),
+  })
+}
 
 // ✅ LocalBusiness JSON-LD — Google reads this to verify NAP consistency
 // with your Google Business Profile. Must match exactly.
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
-  name: 'Mahabaleshwar Villa Stays',
-  url: 'https://www.mahabaleshwarvillastays.com',
-  telephone: '+918080557611',
-  email: 'rajeshgarela0@gmail.com',
+  name: SITE.name,
+  url: SITE.url,
+  telephone: SITE.contact.phone,
+  email: SITE.contact.email,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Bhilar, Panchgani Mahabaleshwar Road',
-    addressLocality: 'Satara',
-    addressRegion: 'Maharashtra',
-    postalCode: '412806',
-    addressCountry: 'IN',
+    streetAddress: SITE.address.streetAddress,
+    addressLocality: SITE.address.addressLocality,
+    addressRegion: SITE.address.addressRegion,
+    postalCode: SITE.address.postalCode,
+    addressCountry: SITE.address.addressCountry,
   },
   geo: {
     '@type': 'GeoCoordinates',
@@ -78,12 +62,12 @@ const localBusinessSchema = {
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+918080557611',
+    telephone: SITE.contact.phone,
     contactType: 'customer service',
     availableLanguage: ['English', 'Hindi', 'Marathi'],
   },
   priceRange: '₹₹₹',
-  image: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
+  image: absoluteUrl(SITE.defaultImage),
 };
 
 // ✅ BreadcrumbList — Home > Contact
@@ -95,13 +79,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
+      item: SITE.url,
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Contact',
-      item: 'https://www.mahabaleshwarvillastays.com/contact',
+      item: `${SITE.url}/contact`,
     },
   ],
 };
