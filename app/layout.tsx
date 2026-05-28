@@ -11,6 +11,8 @@ import { Geist, Geist_Mono, Playfair_Display, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { SITE, absoluteUrl } from '@/lib/seo/metadata'
+import { JsonLd } from '@/components/seo/json-ld'
+import { buildLodgingBusinessSchema, buildWebsiteSchema } from '@/lib/seo/schema'
 
 const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
@@ -25,87 +27,6 @@ const _lato = Lato({
   weight: ['400', '700'],
   variable: '--font-lato',
 })
-
-// ── LodgingBusiness JSON-LD — represents the overall business entity ───────
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LodgingBusiness',
-  name: SITE.name,
-  description:
-    'Premium luxury villas in Mahabaleshwar with valley views, private pools, family stays, and direct WhatsApp booking.',
-  url: SITE.url,
-  telephone: SITE.contact.phone,
-  email: SITE.contact.email,
-
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: SITE.address.streetAddress,
-    addressLocality: SITE.address.addressLocality,
-    addressRegion: SITE.address.addressRegion,
-    postalCode: SITE.address.postalCode,
-    addressCountry: SITE.address.addressCountry,
-  },
-
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '17.9241',
-    longitude: '73.7483',
-  },
-
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '09:00',
-      closes: '21:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Sunday'],
-      opens: '10:00',
-      closes: '20:00',
-    },
-  ],
-
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: SITE.contact.phone,
-    contactType: 'customer service',
-    availableLanguage: ['English', 'Hindi', 'Marathi'],
-  },
-
-  priceRange: '₹₹₹',
-
-  image: absoluteUrl(SITE.defaultImage),
-
-  logo: {
-    '@type': 'ImageObject',
-    url: absoluteUrl(SITE.logoPath),
-  },
-
-  hasMap: 'https://maps.google.com/?q=Bhilar+Mahabaleshwar+Satara+Maharashtra',
-
-  numberOfRooms: '25',
-
-  // FIX: sameAs links tell Google which social/map profiles belong to this business
-  sameAs: [...SITE.socialProfiles],
-}
-
-// ── WebSite schema — enables Google Sitelinks Searchbox ───────────────────
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE.name,
-  url: SITE.url,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${SITE.url}/villas?search={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
-}
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -189,20 +110,8 @@ export default function RootLayout({
       className={`${_playfairDisplay.variable} ${_lato.variable} bg-background`}
     >
       <body className="font-lato antialiased">
-        {/* LodgingBusiness schema — overall business entity */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema),
-          }}
-        />
-        {/* WebSite schema — enables Sitelinks Searchbox */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
-          }}
-        />
+        <JsonLd data={buildLodgingBusinessSchema()} />
+        <JsonLd data={buildWebsiteSchema()} />
 
         {children}
 

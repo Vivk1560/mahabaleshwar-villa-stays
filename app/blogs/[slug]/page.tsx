@@ -9,6 +9,8 @@ import blogs from '@/lib/data/blogs.json'
 import villas from '@/lib/data/villas.json'
 import { notFound } from 'next/navigation'
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import { JsonLd } from '@/components/seo/json-ld'
+import { buildBlogPostingSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -386,90 +388,26 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   // ── Structured Data ──────────────────────────────────────────────────────
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: blog.title,
-    description: blog.excerpt,
-    image: imageUrl,
-    datePublished: blog.date,
-    dateModified: blog.date,
-    author: {
-      '@type': 'Organization',
-      name: 'Mahabaleshwar Villa Stays',
-      url: 'https://www.mahabaleshwarvillastays.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Mahabaleshwar Villa Stays',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.mahabaleshwarvillastays.com',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Blogs',
-        item: 'https://www.mahabaleshwarvillastays.com/blogs',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: blog.title,
-        item: `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
-      },
-    ],
-  }
-
-  const faqSchema =
-    pageFaqs.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: pageFaqs.map((faq) => ({
-            '@type': 'Question',
-            name: faq.q,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: faq.a,
-            },
-          })),
-        }
-      : null
-
   return (
     <main className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      <JsonLd
+        data={buildBlogPostingSchema({
+          slug: blog.slug,
+          title: blog.title,
+          excerpt: blog.excerpt,
+          banner: imageUrl,
+          date: blog.date,
+          author: blog.author,
+        })}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Blogs', item: '/blogs' },
+          { name: blog.title, item: `/blogs/${blog.slug}` },
+        ])}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
+      {pageFaqs.length > 0 && <JsonLd data={buildFaqSchema(pageFaqs)} />}
 
       <NavBar />
 

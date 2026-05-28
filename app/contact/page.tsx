@@ -4,7 +4,9 @@ import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ContactForm } from '@/components/ContactForm';
-import { buildMetadata, dedupeKeywords, SITE, absoluteUrl } from '@/lib/seo/metadata';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildBreadcrumbSchema, buildLocalBusinessSchema } from '@/lib/seo/schema';
 
 export function generateMetadata() {
   const title = 'Contact Mahabaleshwar Villa Stays'
@@ -24,83 +26,16 @@ export function generateMetadata() {
   })
 }
 
-// ✅ LocalBusiness JSON-LD — Google reads this to verify NAP consistency
-// with your Google Business Profile. Must match exactly.
-const localBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LodgingBusiness',
-  name: SITE.name,
-  url: SITE.url,
-  telephone: SITE.contact.phone,
-  email: SITE.contact.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: SITE.address.streetAddress,
-    addressLocality: SITE.address.addressLocality,
-    addressRegion: SITE.address.addressRegion,
-    postalCode: SITE.address.postalCode,
-    addressCountry: SITE.address.addressCountry,
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '17.9241',
-    longitude: '73.7483',
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '09:00',
-      closes: '21:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Sunday'],
-      opens: '10:00',
-      closes: '20:00',
-    },
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: SITE.contact.phone,
-    contactType: 'customer service',
-    availableLanguage: ['English', 'Hindi', 'Marathi'],
-  },
-  priceRange: '₹₹₹',
-  image: absoluteUrl(SITE.defaultImage),
-};
-
-// ✅ BreadcrumbList — Home > Contact
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: SITE.url,
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Contact',
-      item: `${SITE.url}/contact`,
-    },
-  ],
-};
-
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd data={buildLocalBusinessSchema()} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Contact', item: '/contact' },
+        ])}
       />
 
       <NavBar />

@@ -19,6 +19,8 @@ import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildBreadcrumbSchema, buildFaqSchema, buildVacationRentalSchema } from '@/lib/seo/schema';
 
 interface PageProps {
   params: Promise<{
@@ -74,119 +76,11 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
   const villaReviews = reviews.filter((r) => r.villa === villa.id).slice(0, 3);
   const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id);
-  const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
-
-  // ── Structured Data ──────────────────────────────────────────────────────
-
-const vacationRentalSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'VacationRental',
-    identifier: villa.id,
-    name: villa.name,
-    description: villa.seoDescription || villa.description,
-    url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-    image: [
-      `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
-      ...villa.images.gallery.map(
-        (img) => `https://www.mahabaleshwarvillastays.com${img}`
-      ),
-    ],
-    telephone: '+918080557611',
-    email: 'rajeshgarela0@gmail.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: villa.address,
-      addressLocality: 'Mahabaleshwar',
-      addressRegion: 'Maharashtra',
-      postalCode: '412806',
-      addressCountry: 'IN',
-    },
-    ...(villa.geo && {
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: villa.geo.latitude,
-        longitude: villa.geo.longitude,
-      },
-    }),
-    numberOfRooms: bhkNumber,
-    amenityFeature: villa.amenities.map((amenity) => ({
-      '@type': 'LocationFeatureSpecification',
-      name: amenity,
-      value: true,
-    })),
-    petsAllowed: false,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: villa.rating,
-      bestRating: 5,
-      worstRating: 1,
-      reviewCount: villaReviewsForSchema.length > 0 ? villaReviewsForSchema.length : 2,
-    },
-    ...(villaReviewsForSchema.length > 0 && {
-      review: villaReviewsForSchema.slice(0, 5).map((r) => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: r.author,
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: r.rating,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        reviewBody: r.comment,
-        datePublished: r.date,
-      })),
-    }),
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.mahabaleshwarvillastays.com',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Villas',
-        item: 'https://www.mahabaleshwarvillastays.com/villas',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: villa.name,
-        item: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-      },
-    ],
-  };
-
-  const faqSchema =
-    villa.faqs && villa.faqs.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: villa.faqs.map((faq) => ({
-            '@type': 'Question',
-            name: faq.q,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: faq.a,
-            },
-          })),
-        }
-      : null;
 
   // ── FIX: Build a per-villa Maps embed URL using the villa's actual address ──
   // Encodes the address string so it works in the Maps embed query param.
   // This replaces the previous hardcoded generic Mahabaleshwar center coords.
   const mapsAddress = encodeURIComponent(`${villa.address}, Mahabaleshwar, Maharashtra 412806`);
-  const mapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=${mapsAddress}`;
 
   // Fallback: if no Maps API key is available, use a search-based embed
   // that still shows the correct location without a key:
@@ -194,19 +88,33 @@ const vacationRentalSchema = {
 
   return (
     <main className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
+      <JsonLd
+        data={buildVacationRentalSchema({
+          id: villa.id,
+          name: villa.name,
+          description: villa.seoDescription || villa.description,
+          address: villa.address,
+          location: villa.location,
+          priceRange: villa.priceRange,
+          bhk: villa.bhk,
+          capacity: villa.capacity,
+          rating: villa.rating,
+          geo: villa.geo,
+          listingImage: villa.images.listing,
+          galleryImages: villa.images.gallery,
+          amenities: villa.amenities,
+          reviews: villaReviewsForSchema,
+        })}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Villas', item: '/villas' },
+          { name: villa.name, item: `/villas/${villa.id}` },
+        ])}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
+      {villa.faqs && villa.faqs.length > 0 && (
+        <JsonLd data={buildFaqSchema(villa.faqs)} />
       )}
 
       <NavBar />

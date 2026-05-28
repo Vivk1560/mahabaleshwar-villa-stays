@@ -17,6 +17,8 @@ import { VillaCard } from '@/components/VillaCard'
 
 import villas from '@/lib/data/villas.json'
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import { JsonLd } from '@/components/seo/json-ld'
+import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema'
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
 export function generateMetadata() {
@@ -45,40 +47,6 @@ export function generateMetadata() {
       ]
     ),
   })
-}
-
-// ── Structured Data ───────────────────────────────────────────────────────────
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Villas',
-      item: 'https://www.mahabaleshwarvillastays.com/villas',
-    },
-  ],
-}
-
-const itemListSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Luxury Villas in Mahabaleshwar',
-  description: 'Curated collection of 25+ premium villas in Mahabaleshwar and Panchgani',
-  numberOfItems: villas.length,
-  itemListElement: villas.map((villa, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: villa.name,
-    url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-  })),
 }
 
 // ── Category config for real URL links ───────────────────────────────────────
@@ -126,13 +94,21 @@ export default function VillasPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Villas', item: '/villas' },
+        ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      <JsonLd
+        data={buildItemListSchema({
+          name: 'Luxury Villas in Mahabaleshwar',
+          description: 'Curated collection of 25+ premium villas in Mahabaleshwar and Panchgani',
+          items: villas.map((villa) => ({
+            name: villa.name,
+            url: `/villas/${villa.id}`,
+          })),
+        })}
       />
 
       <NavBar />

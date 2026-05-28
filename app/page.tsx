@@ -10,7 +10,9 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { ArrowRight } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import testimonials from '@/lib/data/testimonials.json';
-import { buildMetadata, dedupeKeywords, SITE } from '@/lib/seo/metadata';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildFaqSchema, buildOrganizationSchema } from '@/lib/seo/schema';
 
 // ── Module-level data (shared by schema + JSX) ────────────────────────────────
 
@@ -190,58 +192,10 @@ export function generateMetadata() {
 export default function Home() {
   const featuredVillas = villas.slice(0, 3);
 
-  // ✅ Organization + WebSite schemas (page-specific, non-duplicate with layout LodgingBusiness)
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE.name,
-    url: SITE.url,
-    logo: SITE.logoPath.startsWith('http') ? SITE.logoPath : `${SITE.url}${SITE.logoPath}`,
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: SITE.contact.phone,
-      contactType: 'customer service',
-      areaServed: 'IN',
-      availableLanguage: ['English', 'Hindi'],
-    },
-  };
-
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE.name,
-    url: SITE.url,
-  };
-
-  // ✅ Single FAQPage schema — one per page, no duplicates
-  const homepageFaqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: homepageFaqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  };
-
   return (
     <main className="min-h-screen bg-background">
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
-      />
+      <JsonLd data={buildOrganizationSchema()} />
+      <JsonLd data={buildFaqSchema(homepageFaqs)} />
 
       <NavBar />
 

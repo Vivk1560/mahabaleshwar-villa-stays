@@ -17,6 +17,8 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { ArrowRight, Calendar, Home, ChevronRight } from 'lucide-react';
 import blogsData from '@/lib/data/blogs.json';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema';
 
 // Sort all blogs newest first — this is the fix for stale listing
 const blogs = [...blogsData].sort(
@@ -49,41 +51,6 @@ export function generateMetadata() {
     ),
   })
 }
-
-// ── Structured Data ───────────────────────────────────────────────────────────
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Blog',
-      item: 'https://www.mahabaleshwarvillastays.com/blogs',
-    },
-  ],
-};
-
-// ItemList schema for the full blog collection
-const blogItemListSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Mahabaleshwar Travel Guides',
-  description: 'Complete travel guides for Mahabaleshwar, Panchgani and the Western Ghats',
-  numberOfItems: blogs.length,
-  itemListElement: blogs.map((blog, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: blog.title,
-    url: `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
-  })),
-};
 
 // ── Category tags for filter pills (for UX + internal linking signal) ─────────
 const CATEGORY_TAGS = [
@@ -130,13 +97,21 @@ export default function BlogsPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Blog', item: '/blogs' },
+        ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogItemListSchema) }}
+      <JsonLd
+        data={buildItemListSchema({
+          name: 'Mahabaleshwar Travel Guides',
+          description: 'Complete travel guides for Mahabaleshwar, Panchgani and the Western Ghats',
+          items: blogs.map((blog) => ({
+            name: blog.title,
+            url: `/blogs/${blog.slug}`,
+          })),
+        })}
       />
       <NavBar />
 

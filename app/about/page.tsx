@@ -10,6 +10,8 @@ import { Check } from 'lucide-react';
 import aboutData from '@/lib/data/aboutData.json';
 import testimonials from '@/lib/data/testimonials.json';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildBreadcrumbSchema } from '@/lib/seo/schema';
 
 export function generateMetadata() {
   const title = 'About Mahabaleshwar Villa Stays'
@@ -33,26 +35,6 @@ export function generateMetadata() {
   })
 }
 
-// ✅ BreadcrumbList — Home > About
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'About',
-      item: 'https://www.mahabaleshwarvillastays.com/about',
-    },
-  ],
-};
-
 // ✅ Person schema for founder — improves E-E-A-T signals
 // Google uses this to verify the real person behind the business
 const founderSchema = {
@@ -74,53 +56,17 @@ const founderSchema = {
   },
 };
 
-// ✅ Organization schema — reinforces brand identity on the About page
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Mahabaleshwar Villa Stays',
-  url: 'https://www.mahabaleshwarvillastays.com',
-  logo: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
-  foundingDate: '2015',
-  founder: {
-    '@type': 'Person',
-    name: 'Rajesh Garela',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+918080557611',
-    contactType: 'customer service',
-    availableLanguage: ['English', 'Hindi', 'Marathi'],
-  },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Bhilar, Panchgani Mahabaleshwar Road',
-    addressLocality: 'Satara',
-    addressRegion: 'Maharashtra',
-    postalCode: '412806',
-    addressCountry: 'IN',
-  },
-  sameAs: [
-    'https://www.mahabaleshwarvillastays.com',
-  ],
-};
-
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'About', item: '/about' },
+        ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
+      <JsonLd data={founderSchema} />
 
       <NavBar />
 
