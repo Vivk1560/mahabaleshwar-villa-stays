@@ -1,10 +1,14 @@
 // app/villas/[id]/page.tsx
 // ─────────────────────────────────────────────────────────────────────────────
 // FIXES in this version:
-//  1. Google Maps embed now uses villa.address in the q= param (not hardcoded coords)
-//  2. startingPrice field displayed in booking sidebar when present in villa data
-//  3. WhatsApp number standardised to 919921372661 throughout
-//  4. VacationRental + BreadcrumbList + FAQPage schemas preserved from original
+//  1. longDescription now splits on \n\n (paragraph breaks) not '. ' (sentences)
+//     which was breaking paragraphs mid-sentence at abbreviations and numbers
+//  2. villa.slugKeywords now used as primary keyword source in generateMetadata
+//     so per-villa keyword relevance is correctly passed to the metadata layer
+//  3. Google Maps embed uses per-villa address in q= param (not generic coords)
+//  4. startingPrice field displayed in booking sidebar when present
+//  5. WhatsApp number standardised to 919921372661 throughout
+//  6. VacationRental + BreadcrumbList + FAQPage schemas preserved
 // ─────────────────────────────────────────────────────────────────────────────
 
 import Image from 'next/image';
@@ -49,6 +53,11 @@ export async function generateMetadata({ params }: PageProps) {
     villa.seoDescription ||
     `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`
 
+  // FIX: slugKeywords from villas.json used as the primary keyword source.
+  // Previously only generic fallback strings were used; per-villa keyword
+  // arrays were being ignored despite containing high-value long-tail terms.
+  const villaKeywords = (villa.slugKeywords as string[] | undefined) ?? []
+
   return buildMetadata({
     title,
     description,
@@ -56,13 +65,12 @@ export async function generateMetadata({ params }: PageProps) {
     image: villa.images.listing,
     imageAlt: `${villa.name} - ${villa.bhk} luxury villa in Mahabaleshwar`,
     keywords: dedupeKeywords(
+      villaKeywords,
       [
         villa.name,
         'Mahabaleshwar villa',
         'luxury stay',
         villa.location,
-      ],
-      [
         `${villa.bhk} villa Mahabaleshwar`,
         'Mahabaleshwar vacation rentals',
         'private pool villa Mahabaleshwar',
@@ -82,13 +90,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
   const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id);
   const bookingMessage = `Hi, I am interested in booking ${villa.name} in Mahabaleshwar. Please share availability, best rate, and any current offers for my dates.`;
 
-  // ── FIX: Build a per-villa Maps embed URL using the villa's actual address ──
-  // Encodes the address string so it works in the Maps embed query param.
-  // This replaces the previous hardcoded generic Mahabaleshwar center coords.
+  // Build Maps embed URL using the villa's actual address.
   const mapsAddress = encodeURIComponent(`${villa.address}, Mahabaleshwar, Maharashtra 412806`);
-
-  // Fallback: if no Maps API key is available, use a search-based embed
-  // that still shows the correct location without a key:
   const mapsEmbedFallback = `https://maps.google.com/maps?q=${mapsAddress}&output=embed&z=15`;
 
   return (
@@ -177,22 +180,22 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 key={index}
                 className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
               >
-              <Image
-                src={image}
-                alt={buildImageAltText({
-                  subject: villa.name,
-                  context: 'gallery image',
-                  feature: villa.amenities[index] || 'interior view',
-                  location: villa.location,
-                })}
-                fill
-                sizes={getImageSizes('thumbnail')}
-                className="object-cover hover:scale-105 transition duration-500"
-                loading="lazy"
-                quality={72}
-              />
-            </div>
-          ))}
+                <Image
+                  src={image}
+                  alt={buildImageAltText({
+                    subject: villa.name,
+                    context: 'gallery image',
+                    feature: villa.amenities[index] || `${villa.name} interior view`,
+                    location: villa.location,
+                  })}
+                  fill
+                  sizes={getImageSizes('thumbnail')}
+                  className="object-cover hover:scale-105 transition duration-500"
+                  loading="lazy"
+                  quality={72}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -263,7 +266,13 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 />
               </div>
 
-              {/* Long Description */}
+              {/* ── Long Description ───────────────────────────────────────────
+                FIX: Previously split on '. ' which broke paragraphs mid-sentence
+                at abbreviations, decimal numbers, and initials. The longDescription
+                field in villas.json uses \n\n as paragraph separators — splitting
+                on that produces the correct paragraph structure the content was
+                authored with. This affects all 24 villa pages.
+              ─────────────────────────────────────────────────────────────── */}
               <section className="py-12 border-t border-border">
                 <div className="max-w-5xl mx-auto">
                   <h2 className="font-playfair text-3xl font-bold text-foreground mb-6">
@@ -271,12 +280,11 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   </h2>
                   <div className="space-y-5 text-muted-foreground leading-8 text-lg">
                     {villa.longDescription
-                      .split('. ')
-                      .filter(Boolean)
+                      .split('\n\n')
+                      .filter((paragraph) => paragraph.trim().length > 0)
                       .map((paragraph, index) => (
                         <p key={index}>
                           {paragraph.trim()}
-                          {paragraph.endsWith('.') ? '' : '.'}
                         </p>
                       ))}
                   </div>
@@ -382,7 +390,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* ── FIX: Map now uses per-villa address instead of generic coords ── */}
+              {/* Location Map */}
               <div className="space-y-4">
                 <h2 className="font-playfair text-3xl font-bold text-foreground">Location</h2>
                 <div className="w-full h-80 rounded-lg overflow-hidden border border-border">
@@ -431,7 +439,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                     </div>
                   </div>
 
-                  {/* ── FIX: Show starting price if present in villa data ── */}
+                  {/* Starting price display */}
                   {'startingPrice' in villa && villa.startingPrice && (
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary font-bold text-lg">
