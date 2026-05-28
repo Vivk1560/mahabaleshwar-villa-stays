@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
@@ -8,9 +7,14 @@ import { PremiumButton } from '@/components/PremiumButton';
 import { SectionTitle } from '@/components/SectionTitle';
 import { VillaCard } from '@/components/VillaCard';
 import { ReviewCard } from '@/components/ReviewCard';
+import { TrustBadges } from '@/components/TrustBadges';
 import { ArrowRight } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import testimonials from '@/lib/data/testimonials.json';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildFaqSchema, buildOrganizationSchema } from '@/lib/seo/schema';
 
 // ── Module-level data (shared by schema + JSX) ────────────────────────────────
 
@@ -151,113 +155,49 @@ const attractions = [
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
-  title: 'Luxury Villas in Mahabaleshwar | Private Pool, Valley View & Family Stays',
+export function generateMetadata() {
+  const title = 'Luxury Villas in Mahabaleshwar'
+  const description =
+    'Book 25+ handpicked private villas in Mahabaleshwar and Panchgani. Pool villas, family stays, couple retreats, and group escapes near Mapro Garden with direct WhatsApp booking.'
 
-  description:
-    'Book 25+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family stays, couple retreats & group escapes near Mapro Garden. Direct WhatsApp booking, best rates guaranteed.',
-
-  keywords: [
-    'Mahabaleshwar villas',
-    'luxury villas Mahabaleshwar',
-    'villa stay Mahabaleshwar',
-    'family villas Mahabaleshwar',
-    'couple villa Mahabaleshwar',
-    'pool villas Mahabaleshwar',
-    'group stay Mahabaleshwar',
-    'hill station villa Maharashtra',
-    'villa near Mapro Garden',
-    'Panchgani villa stay',
-    'weekend trip from Pune villa',
-    'Mahabaleshwar weekend getaway',
-    'Western Ghats villa rental',
-    'private villa Mahabaleshwar',
-  ],
-
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com',
-  },
-
-  openGraph: {
-    title: 'Luxury Villas in Mahabaleshwar | Private Pool, Valley View & Family Stays',
-    description:
-      'Book 25+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family stays, couple retreats & group escapes near Mapro Garden. Direct WhatsApp booking.',
-    type: 'website',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Luxury Villas in Mahabaleshwar | Private Pool & Valley View Stays',
-    description:
-      'Book 25+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family stays, couple retreats & group escapes near Mapro Garden.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+  return buildMetadata({
+    title,
+    description,
+    path: '/',
+    image: '/images/villa-listing-1.jpg',
+    imageAlt: 'Luxury villa stays in Mahabaleshwar',
+    keywords: dedupeKeywords(
+      [
+        'Mahabaleshwar villas',
+        'luxury villas Mahabaleshwar',
+        'villa stay Mahabaleshwar',
+        'family villas Mahabaleshwar',
+        'couple villa Mahabaleshwar',
+        'pool villas Mahabaleshwar',
+        'group stay Mahabaleshwar',
+      ],
+      [
+        'hill station villa Maharashtra',
+        'villa near Mapro Garden',
+        'Panchgani villa stay',
+        'weekend trip from Pune villa',
+        'Mahabaleshwar weekend getaway',
+        'Western Ghats villa rental',
+        'private villa Mahabaleshwar',
+      ]
+    ),
+  })
+}
 
 // ── Page Component ────────────────────────────────────────────────────────────
 
 export default function Home() {
   const featuredVillas = villas.slice(0, 3);
 
-  // ✅ Organization + WebSite schemas (page-specific, non-duplicate with layout LodgingBusiness)
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Mahabaleshwar Villa Stays',
-    url: 'https://www.mahabaleshwarvillastays.com',
-    logo: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+91-8080557611',
-      contactType: 'customer service',
-      areaServed: 'IN',
-      availableLanguage: ['English', 'Hindi'],
-    },
-  };
-
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Mahabaleshwar Villa Stays',
-    url: 'https://www.mahabaleshwarvillastays.com',
-  };
-
-  // ✅ Single FAQPage schema — one per page, no duplicates
-  const homepageFaqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: homepageFaqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  };
-
   return (
     <main className="min-h-screen bg-background">
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
-      />
+      <JsonLd data={buildOrganizationSchema()} />
+      <JsonLd data={buildFaqSchema(homepageFaqs)} />
 
       <NavBar />
 
@@ -266,10 +206,17 @@ export default function Home() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-bg.jpg"
-            alt="Private luxury villa with valley views in Mahabaleshwar, Maharashtra"
+            alt={buildImageAltText({
+              subject: 'Private luxury villa',
+              context: 'hero image',
+              feature: 'with valley views',
+              location: 'Mahabaleshwar, Maharashtra',
+            })}
             fill
             className="object-cover"
             priority
+            sizes={getImageSizes('hero')}
+            quality={85}
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
@@ -303,6 +250,17 @@ export default function Home() {
                   Contact Us
                 </Link>
               </div>
+
+              <TrustBadges
+                title="Trusted booking signals"
+                badges={[
+                  '25+ handpicked villas',
+                  'Direct WhatsApp booking',
+                  'Local concierge support',
+                  'Family, couple & group stays',
+                ]}
+                className="pt-2"
+              />
             </div>
           </div>
         </div>
@@ -399,11 +357,17 @@ export default function Home() {
             <div className="relative w-full h-72 sm:h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-2xl order-last md:order-first">
               <Image
                 src="/images/home/lingmala-waterfall-mahabaleshwar-tourism-entry-fee-timings-holidays-reviews-header.jpg"
-                alt="Misty morning valley views and Sahyadri mountain fog at sunrise near Mahabaleshwar, Maharashtra"
+                alt={buildImageAltText({
+                  subject: 'Misty morning valley views',
+                  context: 'waterfall landscape',
+                  feature: 'with Sahyadri mountain fog at sunrise',
+                  location: 'Mahabaleshwar, Maharashtra',
+                })}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={getImageSizes('gallery')}
                 className="object-cover"
                 loading="lazy"
+                quality={78}
               />
               {/* Subtle gradient overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
@@ -659,9 +623,17 @@ export default function Home() {
             <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/villa-listing-2.jpg"
-                alt="Interior of a luxury private villa in Mahabaleshwar with valley view"
+                alt={buildImageAltText({
+                  subject: 'Luxury private villa interior',
+                  context: 'editorial image',
+                  feature: 'with valley view',
+                  location: 'Mahabaleshwar',
+                })}
                 fill
                 className="object-cover"
+                sizes={getImageSizes('gallery')}
+                loading="lazy"
+                quality={78}
               />
             </div>
 
@@ -764,15 +736,15 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {[
               {
-                title: 'Best Time to Visit Mahabaleshwar',
-                excerpt: 'A month-by-month breakdown of weather, crowds, strawberry season, and what each season actually feels like on the ground.',
-                href: '/blogs/best-time-visit-mahabaleshwar',
+                title: 'Monsoon in Mahabaleshwar',
+                excerpt: 'What the hill station actually feels like during the rainiest months, plus what changes for villa guests and sightseeing.',
+                href: '/blogs/monsoon-in-mahabaleshwar',
                 tag: 'Season Guide',
               },
               {
-                title: 'Top Tourist Places in Mahabaleshwar',
-                excerpt: 'Wilson Point, Mapro Garden, Venna Lake, Pratapgad Fort — every must-visit spot with distances from your villa.',
-                href: '/blogs/mahabaleshwar-tourist-places',
+                title: 'Wilson Point Sunrise Guide',
+                excerpt: 'When to leave, what to expect, and how to make the early-morning trip worth the alarm.',
+                href: '/blogs/wilson-point-sunrise-guide',
                 tag: 'Sightseeing',
               },
               {

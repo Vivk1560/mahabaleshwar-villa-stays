@@ -11,90 +11,48 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ArrowRight, Calendar, Home, ChevronRight } from 'lucide-react';
 import blogsData from '@/lib/data/blogs.json';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
+import { estimateReadingTime, getBlogAuthorProfile } from '@/lib/blogs';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema';
 
 // Sort all blogs newest first — this is the fix for stale listing
 const blogs = [...blogsData].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 )
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-  // FIX: { absolute } prevents layout template from doubling the brand name
-  title: {
-    absolute: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
-  },
-  description:
-    'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for planning your perfect Mahabaleshwar & Panchgani vacation.',
-  keywords:
-    'Mahabaleshwar travel guide, Mahabaleshwar blog, hill station tips, Panchgani guide, villa stay tips, Mahabaleshwar attractions, best time to visit Mahabaleshwar',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/blogs',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/blogs',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
-    description:
-      'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for planning your perfect Mahabaleshwar & Panchgani vacation.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Mahabaleshwar Travel Guides and Tips',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Mahabaleshwar Travel Guides & Blog | Mahabaleshwar Villa Stays',
-    description:
-      'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal guides for Mahabaleshwar.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+export function generateMetadata() {
+  const title = 'Mahabaleshwar Travel Guides'
+  const description =
+    'Insider travel guides, villa recommendations, local food, sightseeing tips, and seasonal planning advice for Mahabaleshwar and Panchgani.'
 
-// ── Structured Data ───────────────────────────────────────────────────────────
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Blog',
-      item: 'https://www.mahabaleshwarvillastays.com/blogs',
-    },
-  ],
-};
-
-// ItemList schema for the full blog collection
-const blogItemListSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Mahabaleshwar Travel Guides',
-  description: 'Complete travel guides for Mahabaleshwar, Panchgani and the Western Ghats',
-  numberOfItems: blogs.length,
-  itemListElement: blogs.map((blog, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: blog.title,
-    url: `https://www.mahabaleshwarvillastays.com/blogs/${blog.slug}`,
-  })),
-};
+  return buildMetadata({
+    title,
+    description,
+    path: '/blogs',
+    image: '/images/blogs/image.png',
+    imageAlt: 'Mahabaleshwar travel guides and tips',
+    keywords: dedupeKeywords(
+      [
+        'Mahabaleshwar travel guide',
+        'Mahabaleshwar blog',
+        'hill station tips',
+        'Panchgani guide',
+      ],
+      [
+        'villa stay tips',
+        'Mahabaleshwar attractions',
+        'best time to visit Mahabaleshwar',
+      ]
+    ),
+  })
+}
 
 // ── Category tags for filter pills (for UX + internal linking signal) ─────────
 const CATEGORY_TAGS = [
@@ -141,13 +99,21 @@ export default function BlogsPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Blog', item: '/blogs' },
+        ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogItemListSchema) }}
+      <JsonLd
+        data={buildItemListSchema({
+          name: 'Mahabaleshwar Travel Guides',
+          description: 'Complete travel guides for Mahabaleshwar, Panchgani and the Western Ghats',
+          items: blogs.map((blog) => ({
+            name: blog.title,
+            url: `/blogs/${blog.slug}`,
+          })),
+        })}
       />
       <NavBar />
 
@@ -194,21 +160,31 @@ export default function BlogsPage() {
                 <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-elevated">
                   <Image
                     src={featuredBlog.banner}
-                    alt={`${featuredBlog.title} – Mahabaleshwar travel guide`}
+                    alt={buildImageAltText({
+                      subject: featuredBlog.title,
+                      context: 'featured travel guide cover',
+                      location: 'Mahabaleshwar',
+                    })}
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes={getImageSizes('gallery')}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    quality={85}
                   />
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     <time dateTime={featuredBlog.date}>{formatDate(featuredBlog.date)}</time>
+                    <span aria-hidden="true">•</span>
+                    <span>{estimateReadingTime(featuredBlog.content)} min read</span>
                   </div>
                   <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
                     {featuredBlog.title}
                   </h2>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {getBlogAuthorProfile(featuredBlog.author).name} · {getBlogAuthorProfile(featuredBlog.author).role}
+                  </p>
                   <p className="text-muted-foreground leading-relaxed">
                     {featuredBlog.excerpt}
                   </p>
@@ -231,26 +207,41 @@ export default function BlogsPage() {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {remainingBlogs.map((blog) => (
+            {remainingBlogs.map((blog) => {
+              const author = getBlogAuthorProfile(blog.author)
+              const readingTime = estimateReadingTime(blog.content)
+
+              return (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group block">
                 <div className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 hover:shadow-card transition-all duration-300 h-full flex flex-col">
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={blog.banner}
-                      alt={`${blog.title} – Mahabaleshwar travel guide`}
+                      alt={buildImageAltText({
+                        subject: blog.title,
+                        context: 'travel guide cover',
+                        location: 'Mahabaleshwar',
+                      })}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes={getImageSizes('card')}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      quality={75}
                     />
                   </div>
                   <div className="p-5 flex flex-col flex-1 space-y-3">
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Calendar className="w-3.5 h-3.5" />
                       <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+                      <span aria-hidden="true">•</span>
+                      <span>{readingTime} min read</span>
                     </div>
                     <h3 className="font-playfair text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
                       {blog.title}
                     </h3>
+                    <p className="text-xs font-medium text-muted-foreground">
+                      {author.name} · {author.role}
+                    </p>
                     <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 flex-1">
                       {blog.excerpt}
                     </p>
@@ -261,7 +252,8 @@ export default function BlogsPage() {
                   </div>
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

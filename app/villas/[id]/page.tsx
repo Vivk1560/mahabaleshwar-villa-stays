@@ -11,13 +11,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
-import { FloatingButtons } from '@/components/FloatingButtons';
 import { ReviewCard } from '@/components/ReviewCard';
 import { RelatedVillas } from '@/components/RelatedVillas';
+import { TrustBadges } from '@/components/TrustBadges';
+import { StickyInquiryBar } from '@/components/StickyInquiryBar';
 import { Star, MapPin, Users, MessageCircle, Phone, ChevronRight, Home } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
+import { getVillaGuideLinks } from '@/lib/internal-links';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
+import { JsonLd } from '@/components/seo/json-ld';
+import { RelatedLinks } from '@/components/seo/RelatedLinks';
+import { buildBreadcrumbSchema, buildFaqSchema, buildVacationRentalSchema } from '@/lib/seo/schema';
 
 interface PageProps {
   params: Promise<{
@@ -36,44 +43,32 @@ export async function generateMetadata({ params }: PageProps) {
   const villa = villas.find((v) => v.id === resolvedParams.id);
   if (!villa) return {};
 
-  const title = villa.seoTitle || `${villa.name} - Luxury Villa in Mahabaleshwar | Mahabaleshwar Villa Stays`;
-  const description = villa.seoDescription || `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`;
+  const title =
+    villa.seoTitle || `${villa.name} - Luxury Villa in Mahabaleshwar`
+  const description =
+    villa.seoDescription ||
+    `${villa.description} Experience luxury at ${villa.name} with valley views and premium amenities.`
 
-  return {
-    metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title: { absolute: title },
+  return buildMetadata({
+    title,
     description,
-    keywords: `${villa.name}, Mahabaleshwar villa, luxury stay, ${villa.location}, ${villa.bhk} villa Mahabaleshwar, Mahabaleshwar vacation rentals, private pool villa Mahabaleshwar`,
-    alternates: {
-      canonical: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-    authors: [{ name: 'Mahabaleshwar Villa Stays' }],
-    openGraph: {
-      siteName: 'Mahabaleshwar Villa Stays',
-      type: 'website',
-      url: `https://www.mahabaleshwarvillastays.com/villas/${resolvedParams.id}`,
-      title,
-      description,
-      images: [
-        {
-          url: `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
-          width: 1200,
-          height: 630,
-          alt: `${villa.name} – ${villa.bhk} luxury villa in Mahabaleshwar`,
-        },
+    path: `/villas/${resolvedParams.id}`,
+    image: villa.images.listing,
+    imageAlt: `${villa.name} - ${villa.bhk} luxury villa in Mahabaleshwar`,
+    keywords: dedupeKeywords(
+      [
+        villa.name,
+        'Mahabaleshwar villa',
+        'luxury stay',
+        villa.location,
       ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [`https://www.mahabaleshwarvillastays.com${villa.images.listing}`],
-    },
-  };
+      [
+        `${villa.bhk} villa Mahabaleshwar`,
+        'Mahabaleshwar vacation rentals',
+        'private pool villa Mahabaleshwar',
+      ]
+    ),
+  });
 }
 
 export default async function VillaDetailPage({ params }: PageProps) {
@@ -85,119 +80,12 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
   const villaReviews = reviews.filter((r) => r.villa === villa.id).slice(0, 3);
   const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id);
-  const bhkNumber = parseInt(villa.bhk.toString().replace(/\D/g, '')) || 1;
-
-  // ── Structured Data ──────────────────────────────────────────────────────
-
-const vacationRentalSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'VacationRental',
-    identifier: villa.id,
-    name: villa.name,
-    description: villa.seoDescription || villa.description,
-    url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-    image: [
-      `https://www.mahabaleshwarvillastays.com${villa.images.listing}`,
-      ...villa.images.gallery.map(
-        (img) => `https://www.mahabaleshwarvillastays.com${img}`
-      ),
-    ],
-    telephone: '+918080557611',
-    email: 'rajeshgarela0@gmail.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: villa.address,
-      addressLocality: 'Mahabaleshwar',
-      addressRegion: 'Maharashtra',
-      postalCode: '412806',
-      addressCountry: 'IN',
-    },
-    ...(villa.geo && {
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: villa.geo.latitude,
-        longitude: villa.geo.longitude,
-      },
-    }),
-    numberOfRooms: bhkNumber,
-    amenityFeature: villa.amenities.map((amenity) => ({
-      '@type': 'LocationFeatureSpecification',
-      name: amenity,
-      value: true,
-    })),
-    petsAllowed: false,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: villa.rating,
-      bestRating: 5,
-      worstRating: 1,
-      reviewCount: villaReviewsForSchema.length > 0 ? villaReviewsForSchema.length : 2,
-    },
-    ...(villaReviewsForSchema.length > 0 && {
-      review: villaReviewsForSchema.slice(0, 5).map((r) => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: r.author,
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: r.rating,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        reviewBody: r.comment,
-        datePublished: r.date,
-      })),
-    }),
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.mahabaleshwarvillastays.com',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Villas',
-        item: 'https://www.mahabaleshwarvillastays.com/villas',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: villa.name,
-        item: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-      },
-    ],
-  };
-
-  const faqSchema =
-    villa.faqs && villa.faqs.length > 0
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: villa.faqs.map((faq) => ({
-            '@type': 'Question',
-            name: faq.q,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: faq.a,
-            },
-          })),
-        }
-      : null;
+  const bookingMessage = `Hi, I am interested in booking ${villa.name} in Mahabaleshwar. Please share availability, best rate, and any current offers for my dates.`;
 
   // ── FIX: Build a per-villa Maps embed URL using the villa's actual address ──
   // Encodes the address string so it works in the Maps embed query param.
   // This replaces the previous hardcoded generic Mahabaleshwar center coords.
   const mapsAddress = encodeURIComponent(`${villa.address}, Mahabaleshwar, Maharashtra 412806`);
-  const mapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=${mapsAddress}`;
 
   // Fallback: if no Maps API key is available, use a search-based embed
   // that still shows the correct location without a key:
@@ -205,19 +93,33 @@ const vacationRentalSchema = {
 
   return (
     <main className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }}
+      <JsonLd
+        data={buildVacationRentalSchema({
+          id: villa.id,
+          name: villa.name,
+          description: villa.seoDescription || villa.description,
+          address: villa.address,
+          location: villa.location,
+          priceRange: villa.priceRange,
+          bhk: villa.bhk,
+          capacity: villa.capacity,
+          rating: villa.rating,
+          geo: villa.geo,
+          listingImage: villa.images.listing,
+          galleryImages: villa.images.gallery,
+          amenities: villa.amenities,
+          reviews: villaReviewsForSchema,
+        })}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Villas', item: '/villas' },
+          { name: villa.name, item: `/villas/${villa.id}` },
+        ])}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
+      {villa.faqs && villa.faqs.length > 0 && (
+        <JsonLd data={buildFaqSchema(villa.faqs)} />
       )}
 
       <NavBar />
@@ -255,15 +157,19 @@ const vacationRentalSchema = {
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
                 src={villa.images.listing}
-                alt={`${villa.name} – ${villa.bhk} luxury villa with ${
-                  villa.amenities.includes('Valley View')
-                    ? 'valley views'
-                    : 'premium amenities'
-                } in Mahabaleshwar`}
+                alt={buildImageAltText({
+                  subject: villa.name,
+                  context: 'luxury villa hero image',
+                  feature: villa.amenities.includes('Valley View')
+                    ? 'with valley views'
+                    : 'with premium amenities',
+                  location: 'Mahabaleshwar',
+                })}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={getImageSizes('gallery')}
                 className="object-cover hover:scale-105 transition duration-500"
+                quality={85}
               />
             </div>
             {villa.images.gallery.slice(0, 7).map((image, index) => (
@@ -271,17 +177,22 @@ const vacationRentalSchema = {
                 key={index}
                 className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
               >
-                <Image
-                  src={image}
-                  alt={`${villa.name} Mahabaleshwar – ${
-                    villa.amenities[index] || 'interior'
-                  } view, ${villa.bhk} villa near ${villa.location}`}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover hover:scale-105 transition duration-500"
-                />
-              </div>
-            ))}
+              <Image
+                src={image}
+                alt={buildImageAltText({
+                  subject: villa.name,
+                  context: 'gallery image',
+                  feature: villa.amenities[index] || 'interior view',
+                  location: villa.location,
+                })}
+                fill
+                sizes={getImageSizes('thumbnail')}
+                className="object-cover hover:scale-105 transition duration-500"
+                loading="lazy"
+                quality={72}
+              />
+            </div>
+          ))}
           </div>
         </div>
       </section>
@@ -321,6 +232,35 @@ const vacationRentalSchema = {
                   </div>
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">{villa.address}</p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={`https://wa.me/919921372661?text=${encodeURIComponent(bookingMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground shadow-md hover:bg-primary/90 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Check availability
+                  </a>
+                  <a
+                    href="tel:8080557611"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-primary px-5 py-3 font-semibold text-primary hover:bg-primary/5 transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call now
+                  </a>
+                </div>
+
+                <TrustBadges
+                  title="Why guests book this villa"
+                  badges={[
+                    'Direct local support',
+                    'Private stay for your group',
+                    'Fast WhatsApp response',
+                    'Trusted by real guests',
+                  ]}
+                />
               </div>
 
               {/* Long Description */}
@@ -416,6 +356,12 @@ const vacationRentalSchema = {
                 currentCapacity={villa.capacity}
               />
 
+              <RelatedLinks
+                title="Helpful guides for this stay"
+                description={`These guides connect ${villa.name} with the right travel planning topics and strengthen the category path for ${villa.category.replace(/-/g, ' ')}.`}
+                links={getVillaGuideLinks(villa.category)}
+              />
+
               {/* Reviews */}
               {villaReviews.length > 0 && (
                 <div className="space-y-4 py-8 border-t border-border">
@@ -509,9 +455,16 @@ const vacationRentalSchema = {
 
                 <div className="border-t border-border" />
 
-                {/* FIX: Standardised WhatsApp number */}
+                <TrustBadges
+                  badges={[
+                    'Direct booking with local support',
+                    'Private villa for your group',
+                    'Fast WhatsApp response',
+                  ]}
+                />
+
                 <a
-                  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
+                  href={`https://wa.me/919921372661?text=${encodeURIComponent(bookingMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
@@ -542,7 +495,7 @@ const vacationRentalSchema = {
       </section>
 
       <Footer />
-      <FloatingButtons />
+      <StickyInquiryBar villaName={villa.name} />
     </main>
   );
 }

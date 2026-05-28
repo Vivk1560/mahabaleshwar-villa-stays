@@ -21,6 +21,11 @@ import { FloatingButtons } from '@/components/FloatingButtons'
 import { VillaCard } from '@/components/VillaCard'
 
 import villas from '@/lib/data/villas.json'
+import { getCategoryGuideLinks } from '@/lib/internal-links'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import { JsonLd } from '@/components/seo/json-ld'
+import { RelatedLinks } from '@/components/seo/RelatedLinks'
+import { buildBreadcrumbSchema, buildFaqSchema, buildItemListSchema } from '@/lib/seo/schema'
 
 // ── Category config — single source of truth ─────────────────────────────────
 export const CATEGORY_CONFIG: Record<
@@ -201,36 +206,24 @@ export async function generateMetadata({
   const config = CATEGORY_CONFIG[slug]
   if (!config) return {}
 
-  const canonicalUrl = `https://www.mahabaleshwarvillastays.com/villas/category/${slug}`
-
-  return {
-    metadataBase: new URL('https://www.mahabaleshwarvillastays.com'),
-    title: { absolute: config.seoTitle },
+  return buildMetadata({
+    title: config.seoTitle,
     description: config.seoDescription,
-    alternates: { canonical: canonicalUrl },
-    robots: { index: true, follow: true },
-    openGraph: {
-      type: 'website',
-      url: canonicalUrl,
-      title: config.seoTitle,
-      description: config.seoDescription,
-      siteName: 'Mahabaleshwar Villa Stays',
-      images: [
-        {
-          url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: config.h1,
-        },
+    path: `/villas/category/${slug}`,
+    image: '/images/villa-listing-2.jpg',
+    imageAlt: config.h1,
+    keywords: dedupeKeywords(
+      [
+        `${config.label.toLowerCase()} Mahabaleshwar`,
+        `Mahabaleshwar ${config.label.toLowerCase()}`,
       ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: config.seoTitle,
-      description: config.seoDescription,
-      images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-    },
-  }
+      [
+        'Mahabaleshwar villa stay',
+        'Panchgani villa stay',
+        'private villa booking',
+      ]
+    ),
+  })
 }
 
 // ── Page Component ────────────────────────────────────────────────────────────
@@ -243,50 +236,30 @@ export default async function CategoryPage({
   const config = CATEGORY_CONFIG[slug]
   if (!config) notFound()
 
-  const canonicalUrl = `https://www.mahabaleshwarvillastays.com/villas/category/${slug}`
   const filteredVillas = villas.filter((v) => v.category === config.villaKey)
 
   // ── Structured Data ────────────────────────────────────────────────────────
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.mahabaleshwarvillastays.com' },
-      { '@type': 'ListItem', position: 2, name: 'Villas', item: 'https://www.mahabaleshwarvillastays.com/villas' },
-      { '@type': 'ListItem', position: 3, name: config.label, item: canonicalUrl },
-    ],
-  }
-
-  const itemListSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: config.h1,
-    description: config.seoDescription,
-    numberOfItems: filteredVillas.length,
-    itemListElement: filteredVillas.map((villa, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: villa.name,
-      url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-    })),
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: config.faqItems.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: { '@type': 'Answer', text: faq.a },
-    })),
-  }
-
   return (
     <main className="min-h-screen bg-background">
       {/* Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Villas', item: '/villas' },
+          { name: config.label, item: `/villas/category/${slug}` },
+        ])}
+      />
+      <JsonLd
+        data={buildItemListSchema({
+          name: config.h1,
+          description: config.seoDescription,
+          items: filteredVillas.map((villa) => ({
+            name: villa.name,
+            url: `/villas/${villa.id}`,
+          })),
+        })}
+      />
+      <JsonLd data={buildFaqSchema(config.faqItems)} />
 
       <NavBar />
 
@@ -335,6 +308,12 @@ export default async function CategoryPage({
           </div>
         </div>
       </section>
+
+      <RelatedLinks
+        title={`Helpful guides for ${config.label.toLowerCase()} planning`}
+        description="These articles support the category page and help search engines understand which trips and villa types belong together."
+        links={getCategoryGuideLinks(slug)}
+      />
 
       {/* ── Villa Grid ─────────────────────────────────────────────────────── */}
       <section className="py-8 px-4 bg-background">

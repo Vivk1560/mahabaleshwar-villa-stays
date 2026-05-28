@@ -7,7 +7,6 @@
 //    Mahabaleshwar Villa Stays | Mahabaleshwar Villa Stays"
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MessageCircle, ChevronRight, Home } from 'lucide-react'
 
@@ -17,79 +16,37 @@ import { FloatingButtons } from '@/components/FloatingButtons'
 import { VillaCard } from '@/components/VillaCard'
 
 import villas from '@/lib/data/villas.json'
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import { JsonLd } from '@/components/seo/json-ld'
+import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema'
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
-export const metadata: Metadata = {
-  // FIX: { absolute } bypasses the layout.tsx title template
-  // preventing "Brand | Brand" duplication
-  title: {
-    absolute: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties | Mahabaleshwar Villa Stays',
-  },
-  description:
-    'Browse 25+ premium villas in Mahabaleshwar & Panchgani. Private pool villas, family villas, couple villas, group villas & budget options. Direct WhatsApp booking. Best rates guaranteed.',
-  keywords:
-    'luxury villas Mahabaleshwar, pool villas Mahabaleshwar, family villas Mahabaleshwar, couple villas Mahabaleshwar, group villas Mahabaleshwar, budget villas Mahabaleshwar, vacation rentals Mahabaleshwar, private villa Panchgani',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/villas',
-  },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/villas',
-    title: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties',
-    description:
-      'Browse premium pool villas, family villas, couple villas & group villas in Mahabaleshwar. Direct WhatsApp booking.',
-    siteName: 'Mahabaleshwar Villa Stays',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Luxury villas in Mahabaleshwar',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'All Luxury Villas in Mahabaleshwar — Browse 25+ Properties',
-    description:
-      'Pool villas, family villas, couple villas & group villas in Mahabaleshwar. Book via WhatsApp.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-}
+export function generateMetadata() {
+  const title = 'All Luxury Villas in Mahabaleshwar'
+  const description =
+    'Browse 25+ premium villas in Mahabaleshwar and Panchgani. Private pool villas, family villas, couple villas, group villas, and budget options with direct WhatsApp booking.'
 
-// ── Structured Data ───────────────────────────────────────────────────────────
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Villas',
-      item: 'https://www.mahabaleshwarvillastays.com/villas',
-    },
-  ],
-}
-
-const itemListSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'Luxury Villas in Mahabaleshwar',
-  description: 'Curated collection of 25+ premium villas in Mahabaleshwar and Panchgani',
-  numberOfItems: villas.length,
-  itemListElement: villas.map((villa, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: villa.name,
-    url: `https://www.mahabaleshwarvillastays.com/villas/${villa.id}`,
-  })),
+  return buildMetadata({
+    title,
+    description,
+    path: '/villas',
+    image: '/images/villa-listing-1.jpg',
+    imageAlt: 'Luxury villas in Mahabaleshwar',
+    keywords: dedupeKeywords(
+      [
+        'luxury villas Mahabaleshwar',
+        'pool villas Mahabaleshwar',
+        'family villas Mahabaleshwar',
+        'couple villas Mahabaleshwar',
+      ],
+      [
+        'group villas Mahabaleshwar',
+        'budget villas Mahabaleshwar',
+        'vacation rentals Mahabaleshwar',
+        'private villa Panchgani',
+      ]
+    ),
+  })
 }
 
 // ── Category config for real URL links ───────────────────────────────────────
@@ -137,13 +94,21 @@ export default function VillasPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'Villas', item: '/villas' },
+        ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      <JsonLd
+        data={buildItemListSchema({
+          name: 'Luxury Villas in Mahabaleshwar',
+          description: 'Curated collection of 25+ premium villas in Mahabaleshwar and Panchgani',
+          items: villas.map((villa) => ({
+            name: villa.name,
+            url: `/villas/${villa.id}`,
+          })),
+        })}
       />
 
       <NavBar />
@@ -249,6 +214,66 @@ export default function VillasPage() {
                 image={villa.images.listing}
                 category={villa.category}
               />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Intent Landing Pages ─────────────────────────────────────────── */}
+      <section className="pb-10 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-playfair text-2xl font-bold text-foreground mb-4">
+            Search by Travel Intent
+          </h2>
+          <p className="text-muted-foreground mb-6 text-base leading-7 max-w-4xl">
+            These focused landing pages help you reach the right villa set faster when the search
+            intent is specific. They are built from the same villa data as the main listing pages.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {[
+              {
+                href: '/villas/private-pool-villas-in-mahabaleshwar',
+                title: 'Private pool villas',
+                description: 'Exclusive pools for families, couples, and group stays.',
+              },
+              {
+                href: '/villas/luxury-villas-in-mahabaleshwar',
+                title: 'Luxury villas',
+                description: 'Premium villas with stronger view lines and service setup.',
+              },
+              {
+                href: '/villas/villas-for-family-in-mahabaleshwar',
+                title: 'Family villas',
+                description: 'Practical layouts for joint families and multi-generational trips.',
+              },
+              {
+                href: '/villas/villas-near-mapro-garden',
+                title: 'Villas near Mapro Garden',
+                description: 'Convenient stays close to the main sightseeing and food corridor.',
+              },
+              {
+                href: '/villas/pet-friendly-villas-in-mahabaleshwar',
+                title: 'Pet-friendly villas',
+                description: 'A careful shortlist and policy guidance before you book with pets.',
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-card transition-all duration-300"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="space-y-2">
+                    <h3 className="font-playfair text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>

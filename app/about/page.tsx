@@ -9,61 +9,32 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { Check } from 'lucide-react';
 import aboutData from '@/lib/data/aboutData.json';
 import testimonials from '@/lib/data/testimonials.json';
-import type { Metadata } from 'next';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
+import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { JsonLd } from '@/components/seo/json-ld';
+import { buildBreadcrumbSchema } from '@/lib/seo/schema';
 
-export const metadata: Metadata = {
-  title: 'About Us — Premium Villa Collections',
-  description:
-    'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
-  keywords:
-    'Mahabaleshwar villas, luxury hospitality, hill station resorts, villa collections, Mahabaleshwar stays',
-  alternates: {
-    canonical: 'https://www.mahabaleshwarvillastays.com/about',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://www.mahabaleshwarvillastays.com/about',
-    siteName: 'Mahabaleshwar Villa Stays',
-    title: 'About Us — Premium Villa Collections | Mahabaleshwar Villa Stays',
-    description:
-      'Meet the Mahabaleshwar Villa Stays team. Experience authentic hospitality and curated villas in Mahabaleshwar, Maharashtra.',
-    images: [
-      {
-        url: 'https://www.mahabaleshwarvillastays.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'About Mahabaleshwar Villa Stays — Premium Luxury Villas',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Us | Mahabaleshwar Villa Stays',
-    description:
-      'Meet the team behind Mahabaleshwar Villa Stays. Authentic hospitality and curated luxury villas.',
-    images: ['https://www.mahabaleshwarvillastays.com/og-image.jpg'],
-  },
-};
+export function generateMetadata() {
+  const title = 'About Mahabaleshwar Villa Stays'
+  const description =
+    'Meet the Mahabaleshwar Villa Stays team and learn how we curate authentic hospitality, valley-view stays, and villa experiences in Mahabaleshwar.'
 
-// ✅ BreadcrumbList — Home > About
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://www.mahabaleshwarvillastays.com',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'About',
-      item: 'https://www.mahabaleshwarvillastays.com/about',
-    },
-  ],
-};
+  return buildMetadata({
+    title,
+    description,
+    path: '/about',
+    image: '/images/Founder-RajeshGarela.jpeg',
+    imageAlt: 'Founder Rajesh Garela - Mahabaleshwar Villa Stays',
+    keywords: dedupeKeywords(
+      [
+        'Mahabaleshwar villas',
+        'luxury hospitality',
+        'hill station resorts',
+      ],
+      ['villa collections', 'Mahabaleshwar stays']
+    ),
+  })
+}
 
 // ✅ Person schema for founder — improves E-E-A-T signals
 // Google uses this to verify the real person behind the business
@@ -86,53 +57,17 @@ const founderSchema = {
   },
 };
 
-// ✅ Organization schema — reinforces brand identity on the About page
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Mahabaleshwar Villa Stays',
-  url: 'https://www.mahabaleshwarvillastays.com',
-  logo: 'https://www.mahabaleshwarvillastays.com/logo.jpeg',
-  foundingDate: '2015',
-  founder: {
-    '@type': 'Person',
-    name: 'Rajesh Garela',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+918080557611',
-    contactType: 'customer service',
-    availableLanguage: ['English', 'Hindi', 'Marathi'],
-  },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Bhilar, Panchgani Mahabaleshwar Road',
-    addressLocality: 'Satara',
-    addressRegion: 'Maharashtra',
-    postalCode: '412806',
-    addressCountry: 'IN',
-  },
-  sameAs: [
-    'https://www.mahabaleshwarvillastays.com',
-  ],
-};
-
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: 'Home', item: '/' },
+          { name: 'About', item: '/about' },
+        ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
+      <JsonLd data={founderSchema} />
 
       <NavBar />
 
@@ -173,9 +108,16 @@ export default function AboutPage() {
             <div className="relative h-96 rounded-lg overflow-hidden shadow-elevated">
               <Image
                 src="/images/villa-listing-1.jpg"
-                alt="Mahabaleshwar Villas"
+                alt={buildImageAltText({
+                  subject: 'Mahabaleshwar villas',
+                  context: 'about page image',
+                  feature: 'private stay collection',
+                })}
                 fill
                 className="object-cover"
+                sizes={getImageSizes('gallery')}
+                loading="lazy"
+                quality={78}
               />
             </div>
           </div>
@@ -190,9 +132,16 @@ export default function AboutPage() {
             <div className="relative h-80 rounded-lg overflow-hidden shadow-elevated">
               <Image
                 src={aboutData.founder.image}
-                alt={aboutData.founder.name}
+                alt={buildImageAltText({
+                  subject: aboutData.founder.name,
+                  context: 'founder portrait',
+                  location: 'Mahabaleshwar Villa Stays',
+                })}
                 fill
                 className="object-cover"
+                sizes={getImageSizes('card')}
+                loading="lazy"
+                quality={78}
               />
             </div>
             <div className="md:col-span-2 space-y-4">

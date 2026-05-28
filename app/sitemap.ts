@@ -2,6 +2,8 @@
 import { MetadataRoute } from 'next'
 import villas from '@/lib/data/villas.json'
 import blogs from '@/lib/data/blogs.json'
+import { PROGRAMMATIC_LANDING_PAGE_SLUGS } from '@/lib/programmatic-seo'
+import { SITE } from '@/lib/seo/metadata'
 
 // All 6 programmatic category slugs
 const CATEGORY_SLUGS = [
@@ -13,8 +15,10 @@ const CATEGORY_SLUGS = [
   'budget-villas-in-mahabaleshwar',
 ]
 
+const PROGRAMMATIC_LANDING_PAGES = [...PROGRAMMATIC_LANDING_PAGE_SLUGS]
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.mahabaleshwarvillastays.com'
+  const baseUrl = SITE.url
   const now = new Date()
 
   // Static Pages
@@ -71,6 +75,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }))
 
+  const landingPages: MetadataRoute.Sitemap = PROGRAMMATIC_LANDING_PAGES.map((slug) => ({
+    url: `${baseUrl}/villas/${slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.82,
+  }))
+
   // Dynamic Villa Pages
   const villaPages: MetadataRoute.Sitemap = villas.map((villa) => ({
     url: `${baseUrl}/villas/${villa.id}`,
@@ -90,6 +101,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages,
     ...categoryPages,
+    ...landingPages,
     ...villaPages,
     ...blogPages,
   ]
