@@ -11,9 +11,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
-import { FloatingButtons } from '@/components/FloatingButtons';
 import { ReviewCard } from '@/components/ReviewCard';
 import { RelatedVillas } from '@/components/RelatedVillas';
+import { TrustBadges } from '@/components/TrustBadges';
+import { StickyInquiryBar } from '@/components/StickyInquiryBar';
 import { Star, MapPin, Users, MessageCircle, Phone, ChevronRight, Home } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
@@ -79,6 +80,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
   const villaReviews = reviews.filter((r) => r.villa === villa.id).slice(0, 3);
   const villaReviewsForSchema = reviews.filter((r) => r.villa === villa.id);
+  const bookingMessage = `Hi, I am interested in booking ${villa.name} in Mahabaleshwar. Please share availability, best rate, and any current offers for my dates.`;
 
   // ── FIX: Build a per-villa Maps embed URL using the villa's actual address ──
   // Encodes the address string so it works in the Maps embed query param.
@@ -230,6 +232,35 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   </div>
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">{villa.address}</p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={`https://wa.me/919921372661?text=${encodeURIComponent(bookingMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 font-semibold text-primary-foreground shadow-md hover:bg-primary/90 transition-colors"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Check availability
+                  </a>
+                  <a
+                    href="tel:8080557611"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-primary px-5 py-3 font-semibold text-primary hover:bg-primary/5 transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call now
+                  </a>
+                </div>
+
+                <TrustBadges
+                  title="Why guests book this villa"
+                  badges={[
+                    'Direct local support',
+                    'Private stay for your group',
+                    'Fast WhatsApp response',
+                    'Trusted by real guests',
+                  ]}
+                />
               </div>
 
               {/* Long Description */}
@@ -424,9 +455,16 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
                 <div className="border-t border-border" />
 
-                {/* FIX: Standardised WhatsApp number */}
+                <TrustBadges
+                  badges={[
+                    'Direct booking with local support',
+                    'Private villa for your group',
+                    'Fast WhatsApp response',
+                  ]}
+                />
+
                 <a
-                  href={`https://wa.me/919921372661?text=I am interested in booking ${villa.name}. Please share details and availability.`}
+                  href={`https://wa.me/919921372661?text=${encodeURIComponent(bookingMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-5 md:px-6 py-4 md:py-5 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg text-center text-base md:text-lg flex items-center justify-center gap-2"
@@ -457,7 +495,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
       </section>
 
       <Footer />
-      <FloatingButtons />
+      <StickyInquiryBar villaName={villa.name} />
     </main>
   );
 }

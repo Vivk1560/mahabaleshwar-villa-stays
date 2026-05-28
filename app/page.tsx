@@ -7,6 +7,7 @@ import { PremiumButton } from '@/components/PremiumButton';
 import { SectionTitle } from '@/components/SectionTitle';
 import { VillaCard } from '@/components/VillaCard';
 import { ReviewCard } from '@/components/ReviewCard';
+import { TrustBadges } from '@/components/TrustBadges';
 import { ArrowRight } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import testimonials from '@/lib/data/testimonials.json';
@@ -249,6 +250,17 @@ export default function Home() {
                   Contact Us
                 </Link>
               </div>
+
+              <TrustBadges
+                title="Trusted booking signals"
+                badges={[
+                  '25+ handpicked villas',
+                  'Direct WhatsApp booking',
+                  'Local concierge support',
+                  'Family, couple & group stays',
+                ]}
+                className="pt-2"
+              />
             </div>
           </div>
         </div>

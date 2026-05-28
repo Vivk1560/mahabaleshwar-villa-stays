@@ -4,6 +4,7 @@ import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ContactFormLazy } from '@/components/ContactFormLazy'
+import { TrustBadges } from '@/components/TrustBadges';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 import { JsonLd } from '@/components/seo/json-ld';
 import { buildBreadcrumbSchema, buildLocalBusinessSchema } from '@/lib/seo/schema';
@@ -56,6 +57,17 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="py-12 md:py-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
+          <div className="mb-8 md:mb-10">
+            <TrustBadges
+              title="What you get when you enquire"
+              badges={[
+                'Direct WhatsApp response',
+                'Local Mahabaleshwar support',
+                'Best-match villa suggestions',
+                'No platform fees',
+              ]}
+            />
+          </div>
           <ContactFormLazy />
         </div>
       </section>
