@@ -9,6 +9,7 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { Check } from 'lucide-react';
 import aboutData from '@/lib/data/aboutData.json';
 import testimonials from '@/lib/data/testimonials.json';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 import { JsonLd } from '@/components/seo/json-ld';
 import { buildBreadcrumbSchema } from '@/lib/seo/schema';
@@ -107,9 +108,16 @@ export default function AboutPage() {
             <div className="relative h-96 rounded-lg overflow-hidden shadow-elevated">
               <Image
                 src="/images/villa-listing-1.jpg"
-                alt="Mahabaleshwar Villas"
+                alt={buildImageAltText({
+                  subject: 'Mahabaleshwar villas',
+                  context: 'about page image',
+                  feature: 'private stay collection',
+                })}
                 fill
                 className="object-cover"
+                sizes={getImageSizes('gallery')}
+                loading="lazy"
+                quality={78}
               />
             </div>
           </div>
@@ -124,9 +132,16 @@ export default function AboutPage() {
             <div className="relative h-80 rounded-lg overflow-hidden shadow-elevated">
               <Image
                 src={aboutData.founder.image}
-                alt={aboutData.founder.name}
+                alt={buildImageAltText({
+                  subject: aboutData.founder.name,
+                  context: 'founder portrait',
+                  location: 'Mahabaleshwar Villa Stays',
+                })}
                 fill
                 className="object-cover"
+                sizes={getImageSizes('card')}
+                loading="lazy"
+                quality={78}
               />
             </div>
             <div className="md:col-span-2 space-y-4">

@@ -8,8 +8,11 @@ import { Calendar, ArrowLeft } from 'lucide-react'
 import blogs from '@/lib/data/blogs.json'
 import villas from '@/lib/data/villas.json'
 import { notFound } from 'next/navigation'
-import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import { absoluteUrl, buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import { getBlogCategoryLinks, getBlogRelatedLinks } from '@/lib/internal-links'
+import { buildImageAltText, getImageSizes } from '@/lib/images'
 import { JsonLd } from '@/components/seo/json-ld'
+import { RelatedLinks } from '@/components/seo/RelatedLinks'
 import { buildBlogPostingSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -227,9 +230,7 @@ export async function generateMetadata({
   const keywords =
     BLOG_KEYWORDS[slug] || 'Mahabaleshwar villas, luxury villas Mahabaleshwar'
 
-  const imageUrl = blog.banner.startsWith('http')
-    ? blog.banner
-    : blog.banner
+  const imageUrl = absoluteUrl(blog.banner)
 
   return buildMetadata({
     title: blog.title,
@@ -380,9 +381,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
     blog.relatedVillas.includes(villa.id)
   )
 
-  const imageUrl = blog.banner.startsWith('http')
-    ? blog.banner
-    : `https://www.mahabaleshwarvillastays.com${blog.banner}`
+  const imageUrl = absoluteUrl(blog.banner)
 
   const pageFaqs: FaqItem[] = BLOG_FAQ_MAP[slug] ?? []
 
@@ -417,10 +416,16 @@ export default async function BlogDetailPage({ params }: PageProps) {
           <div className="relative h-96 rounded-2xl overflow-hidden shadow-elevated mb-8">
             <Image
               src={blog.banner}
-              alt={blog.title}
+              alt={buildImageAltText({
+                subject: blog.title,
+                context: 'blog hero image',
+                location: 'Mahabaleshwar',
+              })}
               fill
               priority
+              sizes={getImageSizes('detailHero')}
               className="object-cover"
+              quality={85}
             />
           </div>
         </div>
@@ -463,6 +468,12 @@ export default async function BlogDetailPage({ params }: PageProps) {
             {renderContentBlocks(blog.content)}
           </article>
 
+          <RelatedLinks
+            title="More planning guides"
+            description="Use these related articles to move the reader deeper into the site without forcing unrelated links into the article body."
+            links={getBlogRelatedLinks(slug)}
+          />
+
           {/* Related Villas */}
           {relatedVillas.length > 0 && (
             <div className="mt-12 pt-12 border-t border-border">
@@ -485,6 +496,25 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
+          )}
+
+          {getBlogCategoryLinks(slug).length > 0 && (
+            <section className="mt-12 pt-12 border-t border-border">
+              <h2 className="font-playfair text-3xl font-bold text-foreground mb-6">
+                Explore matching villa categories
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {getBlogCategoryLinks(slug).map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </section>
           )}
 
           {/* FAQ Section */}

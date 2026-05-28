@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star, MapPin } from 'lucide-react';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 
 interface VillaCardProps {
   id: string;
@@ -33,10 +34,16 @@ export function VillaCard({
         <div className="relative h-40 sm:h-48 w-full overflow-hidden bg-muted">
           <Image
             src={image}
-            alt={name}
+            alt={buildImageAltText({
+              subject: name,
+              context: 'villa card image',
+              location,
+            })}
             fill
             className="object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes={getImageSizes('card')}
+            loading="lazy"
+            quality={75}
           />
           {/* Category Badge */}
           <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-primary text-primary-foreground px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-semibold capitalize">

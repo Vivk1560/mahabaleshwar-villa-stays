@@ -21,8 +21,10 @@ import { FloatingButtons } from '@/components/FloatingButtons'
 import { VillaCard } from '@/components/VillaCard'
 
 import villas from '@/lib/data/villas.json'
+import { getCategoryGuideLinks } from '@/lib/internal-links'
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/seo/json-ld'
+import { RelatedLinks } from '@/components/seo/RelatedLinks'
 import { buildBreadcrumbSchema, buildFaqSchema, buildItemListSchema } from '@/lib/seo/schema'
 
 // ── Category config — single source of truth ─────────────────────────────────
@@ -306,6 +308,12 @@ export default async function CategoryPage({
           </div>
         </div>
       </section>
+
+      <RelatedLinks
+        title={`Helpful guides for ${config.label.toLowerCase()} planning`}
+        description="These articles support the category page and help search engines understand which trips and villa types belong together."
+        links={getCategoryGuideLinks(slug)}
+      />
 
       {/* ── Villa Grid ─────────────────────────────────────────────────────── */}
       <section className="py-8 px-4 bg-background">

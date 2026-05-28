@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,11 +29,15 @@ export function NavBar() {
             <div className="w-12 md:w-14 h-12 md:h-14 flex-shrink-0 rounded-lg overflow-hidden border border-primary/10 shadow-sm">
               <Image
                 src="/logo.jpeg"
-                alt="Mahabaleshwar Villa Stays"
+                alt={buildImageAltText({
+                  subject: 'Mahabaleshwar Villa Stays',
+                  context: 'logo',
+                })}
                 width={56}
                 height={56}
                 className="w-full h-full object-cover"
                 priority
+                sizes={getImageSizes('logo')}
               />
             </div>
             <span className="hidden sm:inline font-playfair font-bold text-base md:text-lg text-primary whitespace-nowrap overflow-hidden text-ellipsis">

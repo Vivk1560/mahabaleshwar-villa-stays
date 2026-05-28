@@ -18,8 +18,11 @@ import { Star, MapPin, Users, MessageCircle, Phone, ChevronRight, Home } from 'l
 import villas from '@/lib/data/villas.json';
 import reviews from '@/lib/data/reviews.json';
 import { notFound } from 'next/navigation';
+import { getVillaGuideLinks } from '@/lib/internal-links';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 import { JsonLd } from '@/components/seo/json-ld';
+import { RelatedLinks } from '@/components/seo/RelatedLinks';
 import { buildBreadcrumbSchema, buildFaqSchema, buildVacationRentalSchema } from '@/lib/seo/schema';
 
 interface PageProps {
@@ -152,15 +155,19 @@ export default async function VillaDetailPage({ params }: PageProps) {
             <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden bg-muted min-h-[320px] md:min-h-[620px]">
               <Image
                 src={villa.images.listing}
-                alt={`${villa.name} – ${villa.bhk} luxury villa with ${
-                  villa.amenities.includes('Valley View')
-                    ? 'valley views'
-                    : 'premium amenities'
-                } in Mahabaleshwar`}
+                alt={buildImageAltText({
+                  subject: villa.name,
+                  context: 'luxury villa hero image',
+                  feature: villa.amenities.includes('Valley View')
+                    ? 'with valley views'
+                    : 'with premium amenities',
+                  location: 'Mahabaleshwar',
+                })}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={getImageSizes('gallery')}
                 className="object-cover hover:scale-105 transition duration-500"
+                quality={85}
               />
             </div>
             {villa.images.gallery.slice(0, 7).map((image, index) => (
@@ -168,17 +175,22 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 key={index}
                 className="relative rounded-2xl overflow-hidden bg-muted min-h-[150px] md:min-h-[300px]"
               >
-                <Image
-                  src={image}
-                  alt={`${villa.name} Mahabaleshwar – ${
-                    villa.amenities[index] || 'interior'
-                  } view, ${villa.bhk} villa near ${villa.location}`}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover hover:scale-105 transition duration-500"
-                />
-              </div>
-            ))}
+              <Image
+                src={image}
+                alt={buildImageAltText({
+                  subject: villa.name,
+                  context: 'gallery image',
+                  feature: villa.amenities[index] || 'interior view',
+                  location: villa.location,
+                })}
+                fill
+                sizes={getImageSizes('thumbnail')}
+                className="object-cover hover:scale-105 transition duration-500"
+                loading="lazy"
+                quality={72}
+              />
+            </div>
+          ))}
           </div>
         </div>
       </section>
@@ -311,6 +323,12 @@ export default async function VillaDetailPage({ params }: PageProps) {
                 currentId={villa.id}
                 currentCategory={villa.category}
                 currentCapacity={villa.capacity}
+              />
+
+              <RelatedLinks
+                title="Helpful guides for this stay"
+                description={`These guides connect ${villa.name} with the right travel planning topics and strengthen the category path for ${villa.category.replace(/-/g, ' ')}.`}
+                links={getVillaGuideLinks(villa.category)}
               />
 
               {/* Reviews */}

@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Star, MapPin, Users } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 
 interface RelatedVillasProps {
   currentId: string;
@@ -59,10 +60,16 @@ export function RelatedVillas({
               <div className="relative h-44 w-full overflow-hidden bg-muted">
                 <Image
                   src={villa.images.listing}
-                  alt={`${villa.name} – ${villa.bhk} villa in Mahabaleshwar`}
+                  alt={buildImageAltText({
+                    subject: villa.name,
+                    context: 'related villa card image',
+                    location: villa.location,
+                  })}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes={getImageSizes('card')}
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  quality={72}
                 />
                 {/* Category badge */}
                 <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-semibold px-2.5 py-1 rounded-full capitalize">

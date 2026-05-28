@@ -57,6 +57,17 @@ const {
   buildLocalBusinessSchema,
   buildVacationRentalSchema,
 } = loadTsModule('lib/seo/schema.ts')
+const {
+  auditImageFilename,
+  getImageSizes,
+  isSeoFriendlyImageFilename,
+} = loadTsModule('lib/images.ts')
+const {
+  getBlogCategoryLinks,
+  getBlogRelatedLinks,
+  getCategoryGuideLinks,
+  getVillaGuideLinks,
+} = loadTsModule('lib/internal-links.ts')
 
 assert.equal(absoluteUrl('/contact'), `${SITE.url}/contact`)
 assert.equal(absoluteUrl('https://example.com/x'), 'https://example.com/x')
@@ -126,6 +137,20 @@ assert.equal(blogSchema.mainEntityOfPage['@id'], `${SITE.url}/blogs/test-post`)
 const localBusiness = buildLocalBusinessSchema()
 assert.equal(localBusiness['@type'], 'LocalBusiness')
 assert.equal(localBusiness.address.addressCountry, 'IN')
+
+assert.equal(getImageSizes('detailHero'), '(max-width: 1024px) 100vw, 896px')
+assert.equal(isSeoFriendlyImageFilename('villa1-1.jpeg'), true)
+assert.equal(isSeoFriendlyImageFilename('villa1.1.jpeg'), false)
+
+const audit = auditImageFilename('Founder-RajeshGarela.jpeg')
+assert.equal(audit.isSeoFriendly, false)
+assert.ok(audit.issues.includes('contains uppercase letters'))
+assert.equal(audit.suggestion, 'founder-rajeshgarela.jpeg')
+
+assert.equal(getCategoryGuideLinks('family-villas-in-mahabaleshwar').length, 2)
+assert.equal(getVillaGuideLinks('family-villas').length, 2)
+assert.equal(getBlogCategoryLinks('romantic-couple-retreat')[0].href, '/villas/category/couple-villas-in-mahabaleshwar')
+assert.equal(getBlogRelatedLinks('romantic-couple-retreat').length, 2)
 
 const rental = buildVacationRentalSchema({
   id: 'villa-1',

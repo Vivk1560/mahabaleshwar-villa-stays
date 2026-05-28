@@ -16,6 +16,7 @@ import { Footer } from '@/components/Footer';
 import { FloatingButtons } from '@/components/FloatingButtons';
 import { ArrowRight, Calendar, Home, ChevronRight } from 'lucide-react';
 import blogsData from '@/lib/data/blogs.json';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 import { JsonLd } from '@/components/seo/json-ld';
 import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema';
@@ -158,11 +159,16 @@ export default function BlogsPage() {
                 <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-elevated">
                   <Image
                     src={featuredBlog.banner}
-                    alt={`${featuredBlog.title} – Mahabaleshwar travel guide`}
+                    alt={buildImageAltText({
+                      subject: featuredBlog.title,
+                      context: 'featured travel guide cover',
+                      location: 'Mahabaleshwar',
+                    })}
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes={getImageSizes('gallery')}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    quality={85}
                   />
                 </div>
                 <div className="space-y-4">
@@ -201,10 +207,16 @@ export default function BlogsPage() {
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={blog.banner}
-                      alt={`${blog.title} – Mahabaleshwar travel guide`}
+                      alt={buildImageAltText({
+                        subject: blog.title,
+                        context: 'travel guide cover',
+                        location: 'Mahabaleshwar',
+                      })}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes={getImageSizes('card')}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      quality={75}
                     />
                   </div>
                   <div className="p-5 flex flex-col flex-1 space-y-3">

@@ -10,6 +10,7 @@ import { ReviewCard } from '@/components/ReviewCard';
 import { ArrowRight } from 'lucide-react';
 import villas from '@/lib/data/villas.json';
 import testimonials from '@/lib/data/testimonials.json';
+import { buildImageAltText, getImageSizes } from '@/lib/images';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 import { JsonLd } from '@/components/seo/json-ld';
 import { buildFaqSchema, buildOrganizationSchema } from '@/lib/seo/schema';
@@ -204,10 +205,17 @@ export default function Home() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-bg.jpg"
-            alt="Private luxury villa with valley views in Mahabaleshwar, Maharashtra"
+            alt={buildImageAltText({
+              subject: 'Private luxury villa',
+              context: 'hero image',
+              feature: 'with valley views',
+              location: 'Mahabaleshwar, Maharashtra',
+            })}
             fill
             className="object-cover"
             priority
+            sizes={getImageSizes('hero')}
+            quality={85}
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
@@ -337,11 +345,17 @@ export default function Home() {
             <div className="relative w-full h-72 sm:h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-2xl order-last md:order-first">
               <Image
                 src="/images/home/lingmala-waterfall-mahabaleshwar-tourism-entry-fee-timings-holidays-reviews-header.jpg"
-                alt="Misty morning valley views and Sahyadri mountain fog at sunrise near Mahabaleshwar, Maharashtra"
+                alt={buildImageAltText({
+                  subject: 'Misty morning valley views',
+                  context: 'waterfall landscape',
+                  feature: 'with Sahyadri mountain fog at sunrise',
+                  location: 'Mahabaleshwar, Maharashtra',
+                })}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={getImageSizes('gallery')}
                 className="object-cover"
                 loading="lazy"
+                quality={78}
               />
               {/* Subtle gradient overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
@@ -597,9 +611,17 @@ export default function Home() {
             <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/villa-listing-2.jpg"
-                alt="Interior of a luxury private villa in Mahabaleshwar with valley view"
+                alt={buildImageAltText({
+                  subject: 'Luxury private villa interior',
+                  context: 'editorial image',
+                  feature: 'with valley view',
+                  location: 'Mahabaleshwar',
+                })}
                 fill
                 className="object-cover"
+                sizes={getImageSizes('gallery')}
+                loading="lazy"
+                quality={78}
               />
             </div>
 
@@ -702,15 +724,15 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {[
               {
-                title: 'Best Time to Visit Mahabaleshwar',
-                excerpt: 'A month-by-month breakdown of weather, crowds, strawberry season, and what each season actually feels like on the ground.',
-                href: '/blogs/best-time-visit-mahabaleshwar',
+                title: 'Monsoon in Mahabaleshwar',
+                excerpt: 'What the hill station actually feels like during the rainiest months, plus what changes for villa guests and sightseeing.',
+                href: '/blogs/monsoon-in-mahabaleshwar',
                 tag: 'Season Guide',
               },
               {
-                title: 'Top Tourist Places in Mahabaleshwar',
-                excerpt: 'Wilson Point, Mapro Garden, Venna Lake, Pratapgad Fort — every must-visit spot with distances from your villa.',
-                href: '/blogs/mahabaleshwar-tourist-places',
+                title: 'Wilson Point Sunrise Guide',
+                excerpt: 'When to leave, what to expect, and how to make the early-morning trip worth the alarm.',
+                href: '/blogs/wilson-point-sunrise-guide',
                 tag: 'Sightseeing',
               },
               {
