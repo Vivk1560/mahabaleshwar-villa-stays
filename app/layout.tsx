@@ -7,15 +7,12 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Playfair_Display, Lato } from 'next/font/google'
+import { Playfair_Display, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { SITE, absoluteUrl } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/seo/json-ld'
 import { buildLodgingBusinessSchema, buildWebsiteSchema } from '@/lib/seo/schema'
-
-const _geist = Geist({ subsets: ['latin'] })
-const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 const _playfairDisplay = Playfair_Display({
   subsets: ['latin'],
