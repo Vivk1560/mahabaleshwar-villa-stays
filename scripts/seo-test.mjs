@@ -35,6 +35,9 @@ function loadTsModule(relativePath) {
     if (request === '@/lib/programmatic-seo') {
       return loadTsModule('lib/programmatic-seo.ts')
     }
+    if (request === '@/lib/blogs') {
+      return loadTsModule('lib/blogs.ts')
+    }
     if (request === '@/lib/data/villas.json') {
       return require('./../lib/data/villas.json')
     }
@@ -81,6 +84,11 @@ const {
   PROGRAMMATIC_LANDING_PAGE_SLUGS,
   getProgrammaticLandingPageData,
 } = loadTsModule('lib/programmatic-seo.ts')
+const {
+  buildBlogOutline,
+  estimateReadingTime,
+  getBlogAuthorProfile,
+} = loadTsModule('lib/blogs.ts')
 
 assert.equal(absoluteUrl('/contact'), `${SITE.url}/contact`)
 assert.equal(absoluteUrl('https://example.com/x'), 'https://example.com/x')
@@ -173,6 +181,9 @@ assert.equal(
 assert.ok(getProgrammaticLandingPageData('luxury-villas-in-mahabaleshwar').featuredVillas.length > 0)
 assert.ok(getProgrammaticLandingPageData('villas-near-mapro-garden').featuredVillas.length > 0)
 assert.ok(getProgrammaticLandingPageData('pet-friendly-villas-in-mahabaleshwar').faqItems.length >= 3)
+assert.equal(estimateReadingTime('This is a short article with a few words.'), 1)
+assert.equal(getBlogAuthorProfile('Rohan Deshmukh').role, 'Family travel writer')
+assert.ok(buildBlogOutline('TOC_START\nTOC_END\n## Heading\n### Subheading').length >= 2)
 
 const rental = buildVacationRentalSchema({
   id: 'villa-1',

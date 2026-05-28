@@ -11,6 +11,7 @@ import { notFound } from 'next/navigation'
 import { absoluteUrl, buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import { getBlogCategoryLinks, getBlogRelatedLinks } from '@/lib/internal-links'
 import { buildImageAltText, getImageSizes } from '@/lib/images'
+import { buildBlogOutline, estimateReadingTime, getBlogAuthorProfile } from '@/lib/blogs'
 import { JsonLd } from '@/components/seo/json-ld'
 import { RelatedLinks } from '@/components/seo/RelatedLinks'
 import { buildBlogPostingSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
@@ -259,24 +260,14 @@ function slugify(text: string): string {
     .replace(/\s+/g, '-')
 }
 
-function renderContentBlocks(content: string) {
+function renderContentBlocks(
+  content: string,
+  tocEntries: { level: 2 | 3; text: string; id: string }[]
+) {
   // Split into lines first, then group into paragraph blocks
   // This ensures TOC_START / TOC_END are always detected even when
   // they appear inside the same \n\n-delimited chunk
   const lines = content.split('\n')
-  const tocEntries: { level: 2 | 3; text: string; id: string }[] = []
-
-  // First pass: collect all headings (skip lines inside TOC markers)
-  let inToc = false
-  for (const line of lines) {
-    const t = line.trim()
-    if (t === 'TOC_START') { inToc = true; continue }
-    if (t === 'TOC_END')   { inToc = false; continue }
-    if (inToc) continue
-    if (t.startsWith('## '))  tocEntries.push({ level: 2, text: t.slice(3).trim(),  id: slugify(t.slice(3).trim()) })
-    if (t.startsWith('### ')) tocEntries.push({ level: 3, text: t.slice(4).trim(), id: slugify(t.slice(4).trim()) })
-  }
-
   // Re-group lines into paragraph blocks, but treat every sentinel line
   // as its own single-line block so matching is reliable
   const blocks: string[] = []
@@ -297,7 +288,7 @@ function renderContentBlocks(content: string) {
   // Second pass: render
   const rendered: React.ReactNode[] = []
   let tocRendered = false
-  inToc = false
+  let inToc = false
 
   for (let i = 0; i < blocks.length; i++) {
     const trimmed = blocks[i].trim()
@@ -311,9 +302,12 @@ function renderContentBlocks(content: string) {
           <nav key="toc" className="my-8 p-6 bg-card border border-border rounded-2xl" aria-label="Table of contents">
             <h2 className="font-playfair text-xl font-bold text-foreground mb-4">Table of Contents</h2>
             <ol className="space-y-2">
-              {tocEntries.filter((e) => e.level === 2).map((entry, idx) => (
-                <li key={idx}>
-                  <a href={`#${entry.id}`} className="text-primary hover:underline text-sm font-medium">
+              {tocEntries.map((entry, idx) => (
+                <li
+                  key={idx}
+                  className={entry.level === 3 ? 'pl-4 ml-2 border-l border-border' : ''}
+                >
+                  <a href={`#${entry.id}`} className="text-primary hover:underline text-sm font-medium leading-snug">
                     {entry.text}
                   </a>
                 </li>
@@ -382,10 +376,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
   )
 
   const imageUrl = absoluteUrl(blog.banner)
+  const readingTime = estimateReadingTime(blog.content)
+  const author = getBlogAuthorProfile(blog.author)
+  const tocEntries = buildBlogOutline(blog.content)
 
   const pageFaqs: FaqItem[] = BLOG_FAQ_MAP[slug] ?? []
-
-  // ── Structured Data ──────────────────────────────────────────────────────
 
   return (
     <main className="min-h-screen bg-background">
@@ -410,76 +405,185 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
       <NavBar />
 
-      {/* Banner */}
       <section className="pt-20 px-4 bg-background">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative h-96 rounded-2xl overflow-hidden shadow-elevated mb-8">
-            <Image
-              src={blog.banner}
-              alt={buildImageAltText({
-                subject: blog.title,
-                context: 'blog hero image',
-                location: 'Mahabaleshwar',
-              })}
-              fill
-              priority
-              sizes={getImageSizes('detailHero')}
-              className="object-cover"
-              quality={85}
-            />
-          </div>
-        </div>
-      </section>
+        <div className="max-w-6xl mx-auto">
+          <article className="grid lg:grid-cols-[1.6fr_0.7fr] gap-10">
+            <div className="space-y-10">
+              <header className="space-y-5">
+                <Link
+                  href="/blogs"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back to Blogs
+                </Link>
 
-      {/* Content */}
-      <section className="py-12 px-4 bg-background">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-10 space-y-4">
-            <Link
-              href="/blogs"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Blogs
-            </Link>
+                <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-elevated">
+                  <Image
+                    src={blog.banner}
+                    alt={buildImageAltText({
+                      subject: blog.title,
+                      context: 'blog hero image',
+                      location: 'Mahabaleshwar',
+                    })}
+                    fill
+                    priority
+                    sizes={getImageSizes('detailHero')}
+                    className="object-cover"
+                    quality={85}
+                  />
+                </div>
 
-            <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground leading-tight">
-              {blog.title}
-            </h1>
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <time dateTime={blog.date}>
+                        {new Date(blog.date).toLocaleDateString('en-IN', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    </span>
+                    <span aria-hidden="true">•</span>
+                    <span>{readingTime} min read</span>
+                  </div>
 
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="w-4 h-4" />
-              <time dateTime={blog.date}>
-                {new Date(blog.date).toLocaleDateString('en-IN', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
+                  <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground leading-tight text-balance">
+                    {blog.title}
+                  </h1>
+
+                  <p className="text-xl text-muted-foreground leading-relaxed border-l-4 border-primary pl-4">
+                    {blog.excerpt}
+                  </p>
+                </div>
+              </header>
+
+              <section className="grid gap-5 rounded-2xl border border-border bg-card p-6 md:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 font-playfair text-lg font-bold text-primary">
+                    {author.name
+                      .split(' ')
+                      .map((part) => part[0])
+                      .slice(0, 2)
+                      .join('')}
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                      About the author
+                    </p>
+                    <h2 className="font-playfair text-2xl font-bold text-foreground">
+                      {author.name}
+                    </h2>
+                    <p className="text-sm text-muted-foreground">
+                      {author.role}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {author.bio}
+                </p>
+              </section>
+
+              <section className="rounded-2xl border border-border bg-card p-6 md:p-8">
+                <h2 className="font-playfair text-2xl font-bold text-foreground mb-3">
+                  Quick take
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  This guide is written for travelers planning a Mahabaleshwar trip around villas,
+                  food, viewpoints, and seasonal timing. Use the table of contents to jump between
+                  the sections that matter most.
+                </p>
+              </section>
+
+              <section aria-label="Blog content" className="space-y-5">
+                {renderContentBlocks(blog.content, tocEntries)}
+              </section>
+
+              <section className="rounded-2xl border border-primary/20 bg-primary/5 p-6 md:p-8">
+                <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground">
+                  Need a villa base for this trip?
+                </h2>
+                <p className="mt-3 text-muted-foreground leading-relaxed">
+                  The best travel blogs work when they point to a real booking decision. If this
+                  article helped you plan the route, match it with the right villa category before
+                  you finalize dates.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {getBlogCategoryLinks(slug).map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </section>
             </div>
 
-            <p className="text-xl text-muted-foreground leading-relaxed border-l-4 border-primary pl-4">
-              {blog.excerpt}
-            </p>
-          </div>
+            <aside className="space-y-8 lg:sticky lg:top-24 self-start">
+              {tocEntries.length > 0 && (
+                <nav
+                  aria-label="Table of contents"
+                  className="rounded-2xl border border-border bg-card p-6 shadow-sm"
+                >
+                  <h2 className="font-playfair text-xl font-bold text-foreground mb-4">
+                    Table of Contents
+                  </h2>
+                  <ol className="space-y-2">
+                    {tocEntries.map((entry) => (
+                      <li
+                        key={entry.id}
+                        className={entry.level === 3 ? 'ml-3 border-l border-border pl-3' : ''}
+                      >
+                        <a
+                          href={`#${entry.id}`}
+                          className="text-sm font-medium text-primary hover:underline leading-snug"
+                        >
+                          {entry.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              )}
 
-          {/* Blog Article */}
-          <article className="space-y-5 mb-16">
-            {renderContentBlocks(blog.content)}
+              <RelatedLinks
+                title="Related articles"
+                description="Keep reading to move deeper into the same travel topic cluster."
+                links={getBlogRelatedLinks(slug)}
+              />
+
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h2 className="font-playfair text-xl font-bold text-foreground mb-3">
+                  Quick links
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/blogs"
+                    className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-colors"
+                  >
+                    All blogs
+                  </Link>
+                  <Link
+                    href="/villas"
+                    className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-colors"
+                  >
+                    Villas
+                  </Link>
+                </div>
+              </div>
+            </aside>
           </article>
 
-          <RelatedLinks
-            title="More planning guides"
-            description="Use these related articles to move the reader deeper into the site without forcing unrelated links into the article body."
-            links={getBlogRelatedLinks(slug)}
-          />
-
-          {/* Related Villas */}
-          {relatedVillas.length > 0 && (
-            <div className="mt-12 pt-12 border-t border-border">
-              <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
-                Featured Villas from This Article
-              </h2>
+          <section className="mt-14 pt-14 border-t border-border">
+            <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
+              Featured Villas from This Article
+            </h2>
+            {relatedVillas.length > 0 ? (
               <div className="grid md:grid-cols-3 gap-6">
                 {relatedVillas.map((villa) => (
                   <VillaCard
@@ -495,29 +599,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
                   />
                 ))}
               </div>
-            </div>
-          )}
+            ) : (
+              <p className="text-muted-foreground leading-relaxed">
+                No related villas are mapped for this article yet.
+              </p>
+            )}
+          </section>
 
-          {getBlogCategoryLinks(slug).length > 0 && (
-            <section className="mt-12 pt-12 border-t border-border">
-              <h2 className="font-playfair text-3xl font-bold text-foreground mb-6">
-                Explore matching villa categories
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {getBlogCategoryLinks(slug).map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* FAQ Section */}
           {pageFaqs.length > 0 && (
             <section className="mt-16 pt-12 border-t border-border">
               <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
@@ -546,7 +634,32 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Back Button */}
+          <section className="mt-16 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-border p-6 md:p-8">
+            <div className="max-w-3xl">
+              <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground">
+                Ready to book the right villa for this itinerary?
+              </h2>
+              <p className="mt-3 text-muted-foreground leading-relaxed">
+                Match the route with the stay early so the trip planning stays simple. Use the
+                category links above or go straight to the villa listings.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href="/villas"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  Browse villas
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5 transition-colors"
+                >
+                  Ask for help
+                </Link>
+              </div>
+            </div>
+          </section>
+
           <div className="mt-16 text-center">
             <Link
               href="/blogs"

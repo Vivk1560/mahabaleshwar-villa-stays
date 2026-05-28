@@ -17,6 +17,7 @@ import { FloatingButtons } from '@/components/FloatingButtons';
 import { ArrowRight, Calendar, Home, ChevronRight } from 'lucide-react';
 import blogsData from '@/lib/data/blogs.json';
 import { buildImageAltText, getImageSizes } from '@/lib/images';
+import { estimateReadingTime, getBlogAuthorProfile } from '@/lib/blogs';
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata';
 import { JsonLd } from '@/components/seo/json-ld';
 import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema';
@@ -172,13 +173,18 @@ export default function BlogsPage() {
                   />
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="w-4 h-4" />
                     <time dateTime={featuredBlog.date}>{formatDate(featuredBlog.date)}</time>
+                    <span aria-hidden="true">•</span>
+                    <span>{estimateReadingTime(featuredBlog.content)} min read</span>
                   </div>
                   <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
                     {featuredBlog.title}
                   </h2>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {getBlogAuthorProfile(featuredBlog.author).name} · {getBlogAuthorProfile(featuredBlog.author).role}
+                  </p>
                   <p className="text-muted-foreground leading-relaxed">
                     {featuredBlog.excerpt}
                   </p>
@@ -201,7 +207,11 @@ export default function BlogsPage() {
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {remainingBlogs.map((blog) => (
+            {remainingBlogs.map((blog) => {
+              const author = getBlogAuthorProfile(blog.author)
+              const readingTime = estimateReadingTime(blog.content)
+
+              return (
               <Link key={blog.id} href={`/blogs/${blog.slug}`} className="group block">
                 <div className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 hover:shadow-card transition-all duration-300 h-full flex flex-col">
                   <div className="relative h-48 overflow-hidden">
@@ -223,10 +233,15 @@ export default function BlogsPage() {
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Calendar className="w-3.5 h-3.5" />
                       <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+                      <span aria-hidden="true">•</span>
+                      <span>{readingTime} min read</span>
                     </div>
                     <h3 className="font-playfair text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
                       {blog.title}
                     </h3>
+                    <p className="text-xs font-medium text-muted-foreground">
+                      {author.name} · {author.role}
+                    </p>
                     <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 flex-1">
                       {blog.excerpt}
                     </p>
@@ -237,7 +252,8 @@ export default function BlogsPage() {
                   </div>
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

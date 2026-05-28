@@ -239,7 +239,7 @@ export function buildBlogPostingSchema({
     datePublished: date,
     dateModified: date,
     author: {
-      '@type': 'Organization',
+      '@type': 'Person',
       name: author,
       url: SITE.url,
     },
