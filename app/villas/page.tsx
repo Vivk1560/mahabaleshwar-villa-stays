@@ -219,6 +219,66 @@ export default function VillasPage() {
         </div>
       </section>
 
+      {/* ── Intent Landing Pages ─────────────────────────────────────────── */}
+      <section className="pb-10 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-playfair text-2xl font-bold text-foreground mb-4">
+            Search by Travel Intent
+          </h2>
+          <p className="text-muted-foreground mb-6 text-base leading-7 max-w-4xl">
+            These focused landing pages help you reach the right villa set faster when the search
+            intent is specific. They are built from the same villa data as the main listing pages.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {[
+              {
+                href: '/villas/private-pool-villas-in-mahabaleshwar',
+                title: 'Private pool villas',
+                description: 'Exclusive pools for families, couples, and group stays.',
+              },
+              {
+                href: '/villas/luxury-villas-in-mahabaleshwar',
+                title: 'Luxury villas',
+                description: 'Premium villas with stronger view lines and service setup.',
+              },
+              {
+                href: '/villas/villas-for-family-in-mahabaleshwar',
+                title: 'Family villas',
+                description: 'Practical layouts for joint families and multi-generational trips.',
+              },
+              {
+                href: '/villas/villas-near-mapro-garden',
+                title: 'Villas near Mapro Garden',
+                description: 'Convenient stays close to the main sightseeing and food corridor.',
+              },
+              {
+                href: '/villas/pet-friendly-villas-in-mahabaleshwar',
+                title: 'Pet-friendly villas',
+                description: 'A careful shortlist and policy guidance before you book with pets.',
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group rounded-2xl border border-border bg-card p-5 hover:border-primary/40 hover:shadow-card transition-all duration-300"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="space-y-2">
+                    <h3 className="font-playfair text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Category Deep Links (SEO internal linking block) ───────────────── */}
       <section className="py-12 px-4 bg-card border-t border-border">
         <div className="max-w-7xl mx-auto">

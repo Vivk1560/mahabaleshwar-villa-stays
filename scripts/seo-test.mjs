@@ -29,6 +29,15 @@ function loadTsModule(relativePath) {
     if (request === '@/lib/seo/metadata') {
       return loadTsModule('lib/seo/metadata.ts')
     }
+    if (request === '@/lib/internal-links') {
+      return loadTsModule('lib/internal-links.ts')
+    }
+    if (request === '@/lib/programmatic-seo') {
+      return loadTsModule('lib/programmatic-seo.ts')
+    }
+    if (request === '@/lib/data/villas.json') {
+      return require('./../lib/data/villas.json')
+    }
 
     return require(request)
   }
@@ -68,6 +77,10 @@ const {
   getCategoryGuideLinks,
   getVillaGuideLinks,
 } = loadTsModule('lib/internal-links.ts')
+const {
+  PROGRAMMATIC_LANDING_PAGE_SLUGS,
+  getProgrammaticLandingPageData,
+} = loadTsModule('lib/programmatic-seo.ts')
 
 assert.equal(absoluteUrl('/contact'), `${SITE.url}/contact`)
 assert.equal(absoluteUrl('https://example.com/x'), 'https://example.com/x')
@@ -151,6 +164,15 @@ assert.equal(getCategoryGuideLinks('family-villas-in-mahabaleshwar').length, 2)
 assert.equal(getVillaGuideLinks('family-villas').length, 2)
 assert.equal(getBlogCategoryLinks('romantic-couple-retreat')[0].href, '/villas/category/couple-villas-in-mahabaleshwar')
 assert.equal(getBlogRelatedLinks('romantic-couple-retreat').length, 2)
+
+assert.equal(PROGRAMMATIC_LANDING_PAGE_SLUGS.length, 5)
+assert.equal(
+  getProgrammaticLandingPageData('private-pool-villas-in-mahabaleshwar').path,
+  '/villas/private-pool-villas-in-mahabaleshwar'
+)
+assert.ok(getProgrammaticLandingPageData('luxury-villas-in-mahabaleshwar').featuredVillas.length > 0)
+assert.ok(getProgrammaticLandingPageData('villas-near-mapro-garden').featuredVillas.length > 0)
+assert.ok(getProgrammaticLandingPageData('pet-friendly-villas-in-mahabaleshwar').faqItems.length >= 3)
 
 const rental = buildVacationRentalSchema({
   id: 'villa-1',
