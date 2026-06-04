@@ -6,11 +6,11 @@ export function Footer() {
     <footer className="bg-card border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
 
-        {/* Top Grid */}
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+        {/* Top Grid — 5 columns on large screens, stacked on mobile */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
 
-          {/* Brand */}
-          <div className="space-y-4">
+          {/* ── Col 1: Brand ───────────────────────────────────────────────── */}
+          <div className="space-y-4 lg:col-span-1">
             <h3 className="font-playfair text-2xl font-bold text-foreground">
               Mahabaleshwar Villa Stays
             </h3>
@@ -25,7 +25,7 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Villa Categories */}
+          {/* ── Col 2: Explore Villas (category pages) ─────────────────────── */}
           <div className="space-y-4">
             <h4 className="font-playfair text-lg font-bold text-foreground">
               Explore Villas
@@ -70,7 +70,50 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Nearby Attractions */}
+          {/* ── Col 3: Popular Villa Collections (root-route SEO links) ────────
+              These point to the canonical root-level commercial landing pages.
+              This section passes footer authority to the highest-priority SEO
+              targets on every page across the site.
+          ─────────────────────────────────────────────────────────────────── */}
+          <div className="space-y-4">
+            <h4 className="font-playfair text-lg font-bold text-foreground">
+              Popular Collections
+            </h4>
+            <div className="space-y-2 text-sm">
+              <Link
+                href="/luxury-villas-in-mahabaleshwar"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Luxury Villas in Mahabaleshwar
+              </Link>
+              <Link
+                href="/private-pool-villas-in-mahabaleshwar"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Private Pool Villas
+              </Link>
+              <Link
+                href="/villas-for-family-in-mahabaleshwar"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Family Villas in Mahabaleshwar
+              </Link>
+              <Link
+                href="/villas-near-mapro-garden"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Villas Near Mapro Garden
+              </Link>
+              <Link
+                href="/villas/pet-friendly-villas-in-mahabaleshwar"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Pet-Friendly Villas
+              </Link>
+            </div>
+          </div>
+
+          {/* ── Col 4: Nearby Attractions ───────────────────────────────────── */}
           <div className="space-y-4">
             <h4 className="font-playfair text-lg font-bold text-foreground">
               Nearby Attractions
@@ -84,23 +127,23 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Contact */}
+          {/* ── Col 5: Contact ──────────────────────────────────────────────── */}
           <div className="space-y-4">
             <h4 className="font-playfair text-lg font-bold text-foreground">
               Contact
             </h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                
-               <a   href="tel:8080557611"
+                <a
+                  href="tel:8080557611"
                   className="hover:text-primary transition-colors"
                 >
                   📞 8080557611
                 </a>
               </li>
               <li>
-                
-               <a   href="https://wa.me/919921372661"
+                <a
+                  href="https://wa.me/919921372661"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
@@ -109,8 +152,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                
-               <a   href="mailto:rajeshgarela0@gmail.com"
+                <a
+                  href="mailto:rajeshgarela0@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
                   ✉️ rajeshgarela0@gmail.com
@@ -126,18 +169,30 @@ export function Footer() {
 
         </div>
 
-        {/* SEO Content Strip */}
+        {/* ── SEO Content Strip ───────────────────────────────────────────────── */}
         <div className="border-t border-border pt-8 pb-8">
           <p className="text-sm text-muted-foreground leading-relaxed text-center max-w-5xl mx-auto">
-            Looking for the best luxury villas in Mahabaleshwar? Explore curated
-            private villas with swimming pools, valley views, family-friendly
-            amenities, romantic stays for couples, and spacious group villas near
-            top attractions like Mapro Garden, Venna Lake, Wilson Point, and
-            Panchgani.
+            Looking for the best{' '}
+            <Link href="/luxury-villas-in-mahabaleshwar" className="hover:text-primary transition-colors underline-offset-2 hover:underline">
+              luxury villas in Mahabaleshwar
+            </Link>
+            ? Explore curated{' '}
+            <Link href="/private-pool-villas-in-mahabaleshwar" className="hover:text-primary transition-colors underline-offset-2 hover:underline">
+              private pool villas
+            </Link>
+            , valley views,{' '}
+            <Link href="/villas-for-family-in-mahabaleshwar" className="hover:text-primary transition-colors underline-offset-2 hover:underline">
+              family-friendly villas
+            </Link>
+            , romantic stays for couples, and spacious group villas near top attractions like{' '}
+            <Link href="/villas-near-mapro-garden" className="hover:text-primary transition-colors underline-offset-2 hover:underline">
+              Mapro Garden
+            </Link>
+            , Venna Lake, Wilson Point, and Panchgani.
           </p>
         </div>
 
-        {/* Bottom */}
+        {/* ── Bottom Nav ──────────────────────────────────────────────────────── */}
         <div className="border-t border-border pt-6">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-5">
             <p className="text-muted-foreground text-sm text-center lg:text-left">
@@ -169,12 +224,12 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Developer Credit */}
+        {/* ── Developer Credit ─────────────────────────────────────────────────── */}
         <div className="border-t border-white/10 mt-6 pt-6 text-center">
           <p className="text-xs text-gray-500">
             Designed & Developed by{' '}
-            
-            <a  href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
+            <a
+              href="https://wa.me/917972767203?text=Hi%20Vivaan!%20I%20saw%20your%20work%20on%20Mahabaleshwar%20Villa%20Stays.%20I%27d%20like%20a%20similar%20website."
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors duration-200 font-medium"
