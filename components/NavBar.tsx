@@ -18,6 +18,8 @@ export function NavBar() {
     <nav className="fixed top-0 left-0 right-0 bg-background border-b border-border z-50 shadow-card">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
+
+          {/* ── Logo ───────────────────────────────────────────────────────── */}
           <Link href="/" className="flex items-center gap-3.5 flex-shrink-0 min-w-0">
             <div className="w-12 md:w-14 h-12 md:h-14 flex-shrink-0 rounded-lg overflow-hidden border border-primary/10 shadow-sm">
               <Image
@@ -38,6 +40,7 @@ export function NavBar() {
             </span>
           </Link>
 
+          {/* ── Desktop Nav ─────────────────────────────────────────────────── */}
           <div className="hidden md:flex items-center gap-1 lg:gap-8">
             <Link
               href="/"
@@ -95,15 +98,27 @@ export function NavBar() {
             </a>
           </div>
 
-          <details className="group md:hidden relative">
+          {/* ── Mobile Hamburger ────────────────────────────────────────────── */}
+          {/*
+            FIX: The outer <details> uses group/menu so that the hamburger
+            Menu/X icon swap works correctly. The inner <details> for "Villas"
+            uses a separate group/villas name so its ChevronDown rotation responds
+            only to its own open state — NOT the outer hamburger open state.
+            Previously both used the generic "group" class, causing the inner
+            chevron to incorrectly read the outer details open state.
+          */}
+          <details className="group/menu md:hidden relative">
             <summary className="list-none cursor-pointer p-2 hover:bg-muted rounded-lg transition-colors flex items-center justify-center">
               <span className="sr-only">Open menu</span>
-              <Menu className="w-6 h-6 group-open:hidden" />
-              <X className="w-6 h-6 hidden group-open:block" />
+              {/* Hamburger — visible when menu closed */}
+              <Menu className="w-6 h-6 group-open/menu:hidden" />
+              {/* X — visible when menu open */}
+              <X className="w-6 h-6 hidden group-open/menu:block" />
             </summary>
 
             <div className="absolute right-0 top-full mt-3 w-[min(92vw,22rem)] rounded-2xl border border-border bg-card shadow-elevated overflow-hidden">
               <div className="px-3 sm:px-4 py-5 space-y-3">
+
                 <Link
                   href="/"
                   className="block px-3 py-2.5 text-sm text-foreground hover:text-primary transition-colors font-medium"
@@ -111,10 +126,20 @@ export function NavBar() {
                   Home
                 </Link>
 
-                <details className="group">
+                {/*
+                  FIX: group/villas is a named group scoped only to this inner
+                  <details>. The ChevronDown now reads group-open/villas instead
+                  of group-open, so it only rotates when THIS details is open —
+                  not when the outer hamburger details opens.
+                  
+                  Result:
+                    Collapsed → Villas ▼
+                    Expanded  → Villas ▲
+                */}
+                <details className="group/villas">
                   <summary className="flex items-center justify-between px-3 py-2.5 text-sm text-foreground hover:text-primary transition-colors font-medium cursor-pointer list-none">
                     <span>Villas</span>
-                    <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+                    <ChevronDown className="w-4 h-4 transition-transform duration-200 group-open/villas:rotate-180" />
                   </summary>
                   <div className="mt-2 pl-6 space-y-2">
                     {CATEGORIES.map((category) => (
@@ -155,9 +180,11 @@ export function NavBar() {
                 >
                   WhatsApp Inquiry
                 </a>
+
               </div>
             </div>
           </details>
+
         </div>
       </div>
     </nav>
