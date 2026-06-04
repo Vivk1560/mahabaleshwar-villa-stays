@@ -219,7 +219,7 @@ export default function VillasPage() {
         </div>
       </section>
 
-      {/* ── Intent Landing Pages ─────────────────────────────────────────── */}
+    {/* ── Intent Landing Pages ─────────────────────────────────────────── */}
       <section className="pb-10 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-playfair text-2xl font-bold text-foreground mb-4">
@@ -232,22 +232,22 @@ export default function VillasPage() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {[
               {
-                href: '/villas/private-pool-villas-in-mahabaleshwar',
+                href: '/private-pool-villas-in-mahabaleshwar',
                 title: 'Private pool villas',
                 description: 'Exclusive pools for families, couples, and group stays.',
               },
               {
-                href: '/villas/luxury-villas-in-mahabaleshwar',
+                href: '/luxury-villas-in-mahabaleshwar',
                 title: 'Luxury villas',
                 description: 'Premium villas with stronger view lines and service setup.',
               },
               {
-                href: '/villas/villas-for-family-in-mahabaleshwar',
+                href: '/villas-for-family-in-mahabaleshwar',
                 title: 'Family villas',
                 description: 'Practical layouts for joint families and multi-generational trips.',
               },
               {
-                href: '/villas/villas-near-mapro-garden',
+                href: '/villas-near-mapro-garden',
                 title: 'Villas near Mapro Garden',
                 description: 'Convenient stays close to the main sightseeing and food corridor.',
               },
