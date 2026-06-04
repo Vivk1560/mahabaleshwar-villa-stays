@@ -592,7 +592,7 @@ export default function Home() {
             Curated collections for every type of Mahabaleshwar stay — browse by what matters most to your group.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {[
               {
                 label: 'Luxury Villas in Mahabaleshwar',
@@ -617,6 +617,18 @@ export default function Home() {
                 sub: 'Stay minutes from Mahabaleshwar\'s most visited spot',
                 href: '/villas-near-mapro-garden',
                 emoji: '🍓',
+              },
+              {
+                label: '3 BHK Villas in Mahabaleshwar',
+                sub: 'Private 3-bedroom villas for groups of 6–10',
+                href: '/3-bhk-villas-in-mahabaleshwar',
+                emoji: '🛏️',
+              },
+              {
+                label: '4 BHK Villas in Mahabaleshwar',
+                sub: 'Private 4-bedroom villas for groups of 8–12',
+                href: '/4-bhk-villas-in-mahabaleshwar',
+                emoji: '🏘️',
               },
             ].map((col) => (
               <Link
