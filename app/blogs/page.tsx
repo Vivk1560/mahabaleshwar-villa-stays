@@ -258,9 +258,51 @@ export default function BlogsPage() {
         </div>
       </section>
 
-      {/* ── Internal Links to Villa Categories ────────────────────────────── */}
-      <section className="py-10 px-4 bg-card border-t border-border">
+     {/* ── Popular Villa Collections (root-route SEO links) ──────────────── */}
+      <section className="py-10 px-4 bg-secondary/10 border-t border-border">
         <div className="max-w-7xl mx-auto">
+          <h2 className="font-playfair text-xl font-bold text-foreground mb-2">
+            Popular Villa Collections
+          </h2>
+          <p className="text-muted-foreground text-sm mb-5">
+            Browse the most searched villa types in Mahabaleshwar before you finalise your dates.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+            {[
+              {
+                label: 'Luxury Villas in Mahabaleshwar',
+                href: '/luxury-villas-in-mahabaleshwar',
+                emoji: '🏡',
+              },
+              {
+                label: 'Private Pool Villas',
+                href: '/private-pool-villas-in-mahabaleshwar',
+                emoji: '🏊',
+              },
+              {
+                label: 'Family Villas in Mahabaleshwar',
+                href: '/villas-for-family-in-mahabaleshwar',
+                emoji: '👨‍👩‍👧‍👦',
+              },
+              {
+                label: 'Villas Near Mapro Garden',
+                href: '/villas-near-mapro-garden',
+                emoji: '🍓',
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 hover:border-primary hover:bg-primary/5 transition-all duration-200"
+              >
+                <span className="text-xl">{item.emoji}</span>
+                <span className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-snug">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+
           <h2 className="font-playfair text-xl font-bold text-foreground mb-4">
             Looking for a villa? Browse by type
           </h2>
