@@ -581,6 +581,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Explore Villa Collections (SEO Internal Linking) ─────────────── */}
+      <section className="py-14 md:py-16 bg-card border-y border-border px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-3 text-center">
+            Explore Villa Collections
+          </h2>
+          <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto text-base">
+            Curated collections for every type of Mahabaleshwar stay — browse by what matters most to your group.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              {
+                label: 'Luxury Villas in Mahabaleshwar',
+                sub: 'Premium properties with top-tier views and service',
+                href: '/luxury-villas-in-mahabaleshwar',
+                emoji: '🏡',
+              },
+              {
+                label: 'Private Pool Villas',
+                sub: 'Exclusive pool for your group — no sharing, no schedule',
+                href: '/private-pool-villas-in-mahabaleshwar',
+                emoji: '🏊',
+              },
+              {
+                label: 'Family Villas',
+                sub: 'Spacious multi-room stays for 15–25 guests',
+                href: '/villas-for-family-in-mahabaleshwar',
+                emoji: '👨‍👩‍👧‍👦',
+              },
+              {
+                label: 'Villas Near Mapro Garden',
+                sub: 'Stay minutes from Mahabaleshwar\'s most visited spot',
+                href: '/villas-near-mapro-garden',
+                emoji: '🍓',
+              },
+            ].map((col) => (
+              <Link
+                key={col.href}
+                href={col.href}
+                className="group flex flex-col gap-3 rounded-2xl border border-border bg-background p-5 md:p-6 hover:border-primary hover:shadow-card hover:bg-primary/5 transition-all duration-200"
+              >
+                <span className="text-3xl">{col.emoji}</span>
+                <span className="font-playfair font-bold text-base md:text-lg text-foreground group-hover:text-primary transition-colors leading-snug">
+                  {col.label}
+                </span>
+                <span className="text-sm text-muted-foreground leading-relaxed">
+                  {col.sub}
+                </span>
+                <span className="mt-auto text-xs font-semibold text-primary flex items-center gap-1">
+                  Browse collection
+                  <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* ── About Section ─────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-20 bg-secondary/10 px-4">
         <div className="max-w-7xl mx-auto">
