@@ -417,7 +417,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
           <p className="text-muted-foreground">
             Share your group size, travel dates, and preferences on WhatsApp — we will recommend the best available property the same day.
           </p>
-          
+          <a
             href="https://wa.me/919921372661?text=Hi%2C%20I%20am%20looking%20for%20a%204%20BHK%20villa%20in%20Mahabaleshwar.%20Can%20you%20help%20me%20find%20the%20right%20one%3F"
             target="_blank"
             rel="noopener noreferrer"
