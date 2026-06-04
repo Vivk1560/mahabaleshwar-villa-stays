@@ -21,6 +21,8 @@ const ROOT_LANDING_PAGES = [
   '/private-pool-villas-in-mahabaleshwar',
   '/villas-for-family-in-mahabaleshwar',
   '/villas-near-mapro-garden',
+  '/3-bhk-villas-in-mahabaleshwar',
+  '/4-bhk-villas-in-mahabaleshwar',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
