@@ -1,6 +1,4 @@
 // app/4-bhk-villas-in-mahabaleshwar/page.tsx
-// Root-level SEO landing page — "4 BHK Villas in Mahabaleshwar"
-// URL: https://www.mahabaleshwarvillastays.com/4-bhk-villas-in-mahabaleshwar
 
 import Link from 'next/link'
 import { NavBar } from '@/components/NavBar'
@@ -17,10 +15,9 @@ import { buildBreadcrumbSchema, buildFaqSchema, buildItemListSchema } from '@/li
 
 const PAGE_PATH = '/4-bhk-villas-in-mahabaleshwar'
 
-const SEO_TITLE =
-  '4 BHK Villas in Mahabaleshwar | Private Villa for 8–12 Guests'
+const SEO_TITLE = '4 BHK Villas in Mahabaleshwar | Private Villa for 8–18 Guests'
 const SEO_DESCRIPTION =
-  'Book 4 BHK villas in Mahabaleshwar for 8–12 guests. Private pools, professional cook, caretaker, valley views, and direct WhatsApp booking — no platform fees.'
+  'Book 4 BHK villas in Mahabaleshwar with private pools, professional cook, caretaker, valley views, and direct WhatsApp booking — no platform fees.'
 
 const KEYWORDS = [
   '4 BHK villas in Mahabaleshwar',
@@ -29,8 +26,8 @@ const KEYWORDS = [
   'family villa Mahabaleshwar',
   'group villa Mahabaleshwar',
   'pool villa Mahabaleshwar',
-  'villa for 8 guests Mahabaleshwar',
   'villa for 10 guests Mahabaleshwar',
+  'villa for 12 guests Mahabaleshwar',
   'weekend villa Mahabaleshwar',
   'private villa stay Mahabaleshwar',
   'family vacation villa Mahabaleshwar',
@@ -38,39 +35,28 @@ const KEYWORDS = [
 ]
 
 // ── Villa selection ───────────────────────────────────────────────────────────
-// Select villas: capacity 8–16, prefer pool-villas / family-villas / valley-view-villas,
-// exclude obvious budget 3 BHK properties, sorted by rating then capacity.
+// Filter strictly by villa.bhk === '4 BHK'. No capacity filtering. No category filtering.
 
-function select4BhkVillas() {
-  return villas
-    .filter((v) => {
-      const cap = v.capacity ?? 0
-      const bhkNum = Number((v.bhk ?? '').replace(/[^0-9]/g, '')) || 0
-      // Target 4 BHK range — capacity 8–16, BHK 3–5 (villas.json may store 4 or nearby)
-      const capacityOk = cap >= 8 && cap <= 16
-      const bhkOk = bhkNum >= 3 && bhkNum <= 5
-      const notBudget = v.category !== 'budget-villas'
-      return capacityOk && (bhkOk || notBudget)
-    })
-    .sort((a, b) => {
-      if (b.rating !== a.rating) return b.rating - a.rating
-      return b.capacity - a.capacity
-    })
-    .slice(0, 6)
-}
-
-const featuredVillas = select4BhkVillas()
+const featuredVillas = villas
+  .filter((v) => {
+    const bhkNum = Number((v.bhk ?? '').replace(/[^0-9]/g, ''))
+    return bhkNum === 4
+  })
+  .sort((a, b) => {
+    if (b.rating !== a.rating) return b.rating - a.rating
+    return b.capacity - a.capacity
+  })
 
 // ── FAQs ──────────────────────────────────────────────────────────────────────
 
 const PAGE_FAQS = [
   {
     q: 'Are 4 BHK villas in Mahabaleshwar good for family trips?',
-    a: 'Yes — 4 BHK villas are one of the most practical choices for family trips. With four separate bedrooms, you can comfortably accommodate a joint family of 8 to 12 people, keeping grandparents, parents, and children under one roof without anyone feeling crowded. Most 4 BHK properties in Mahabaleshwar include large common areas, a garden or lawn, and a private pool that the whole family shares exclusively.',
+    a: 'Yes — 4 BHK villas are one of the most practical choices for family trips. With four separate bedrooms, you can comfortably accommodate a joint family of 8 to 18 people, keeping grandparents, parents, and children under one roof without anyone feeling crowded. Most 4 BHK properties in Mahabaleshwar include large common areas, a garden or lawn, and a private pool that the whole family shares exclusively.',
   },
   {
     q: 'How many guests can stay in a 4 BHK villa in Mahabaleshwar?',
-    a: 'Most 4 BHK villas in Mahabaleshwar comfortably accommodate between 8 and 12 guests. Properties with sofa beds or additional sleeping areas in the living room can sometimes accommodate 14 to 16 guests. The exact capacity is listed on each villa page — contact us on WhatsApp and we will match you to the right property for your group size.',
+    a: 'Most 4 BHK villas in Mahabaleshwar comfortably accommodate between 10 and 18 guests depending on bedding arrangements. The exact capacity is listed on each villa page — contact us on WhatsApp and we will match you to the right property for your group size.',
   },
   {
     q: 'Do 4 BHK villas in Mahabaleshwar have a private pool?',
@@ -94,7 +80,7 @@ const PAGE_FAQS = [
   },
   {
     q: 'Is a 4 BHK villa a good choice for a weekend trip from Pune?',
-    a: 'Absolutely. Mahabaleshwar is approximately 120 km from Pune — around 3 hours by road — making it a natural weekend destination. A 4 BHK villa for a group of 8 to 12 splits the per-person cost to levels that compare favourably with mid-range hotel rooms, while giving your group complete privacy, a pool, and a cook.',
+    a: 'Absolutely. Mahabaleshwar is approximately 120 km from Pune — around 3 hours by road — making it a natural weekend destination. A 4 BHK villa for a group of 10 to 15 splits the per-person cost to levels that compare favourably with mid-range hotel rooms, while giving your group complete privacy, a pool, and a cook.',
   },
   {
     q: 'Can we arrange a bonfire at a 4 BHK villa in Mahabaleshwar?',
@@ -114,7 +100,7 @@ const PAGE_FAQS = [
   },
   {
     q: 'What are the advantages of a 4 BHK villa over a hotel in Mahabaleshwar?',
-    a: 'A 4 BHK villa gives your group complete privacy — no shared corridors, no strangers at breakfast, no lobby crowding. You get a private pool, a cook for all meals, a dedicated caretaker, an open garden or terrace, and the freedom to stay up late around a bonfire without noise complaints. For groups of 8 to 12, the per-person cost of a private villa frequently undercuts equivalent hotel rooms once you factor in meal savings.',
+    a: 'A 4 BHK villa gives your group complete privacy — no shared corridors, no strangers at breakfast, no lobby crowding. You get a private pool, a cook for all meals, a dedicated caretaker, an open garden or terrace, and the freedom to stay up late around a bonfire without noise complaints. For groups of 10 to 15, the per-person cost of a private villa frequently undercuts equivalent hotel rooms once you factor in meal savings.',
   },
   {
     q: 'Do 4 BHK villas in Mahabaleshwar have WiFi?',
@@ -151,7 +137,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
         <JsonLd
           data={buildItemListSchema({
             name: '4 BHK Villas in Mahabaleshwar',
-            description: 'Private 4 BHK villa stays for 8–12 guests in Mahabaleshwar and Panchgani',
+            description: 'Private 4 BHK villa stays in Mahabaleshwar and Panchgani',
             items: featuredVillas.map((villa) => ({
               name: villa.name,
               url: `/villas/${villa.id}`,
@@ -192,7 +178,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
             4 BHK Villas in Mahabaleshwar
           </h1>
           <p className="text-muted-foreground text-lg max-w-3xl leading-relaxed">
-            Private 4-bedroom villas for groups of 8 to 12 — with exclusive pools, professional cook service, and direct booking across Mahabaleshwar, Panchgani, and Bhilar.
+            Private 4-bedroom villas across Mahabaleshwar, Panchgani, and Bhilar — with exclusive pools, professional cook service, and direct booking. No platform fees.
           </p>
         </div>
       </section>
@@ -202,7 +188,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
         <div className="max-w-7xl mx-auto">
           <div className="bg-card border border-border rounded-2xl p-6 md:p-10 space-y-5 text-muted-foreground leading-8 text-base md:text-lg">
             <p>
-              A 4 BHK villa is one of the most practical formats for Mahabaleshwar travel. Four separate bedrooms accommodate groups of 8 to 12 people comfortably — enough for a joint family, two or three couples sharing a weekend trip, or a core group of friends who want their own rooms without splitting across different hotel bookings. The math changes too: split across 10 people, a 4 BHK villa with a private pool and a professional cook frequently costs less per head than a mid-range hotel room that offers none of those things.
+              A 4 BHK villa is one of the most practical formats for Mahabaleshwar travel. Four separate bedrooms accommodate groups of 10 to 18 people comfortably — enough for a joint family, two or three couples sharing a weekend trip, or a core group of friends who want their own rooms without splitting across different hotel bookings. The math changes too: split across 12 people, a 4 BHK villa with a private pool and a professional cook frequently costs less per head than a mid-range hotel room that offers none of those things.
             </p>
             <p>
               Most 4 BHK villas in Mahabaleshwar are positioned on elevated plots along the Panchgani–Mahabaleshwar Road, near Mapro Garden, or on quieter stretches in Bhilar — all of which give the property either a valley view, a garden that feels genuinely spacious, or both. The Sahyadri range at 1,353 metres does something particular to the air: it stays noticeably cooler than the plains below it even in April, and the mornings carry a mist that clears slowly enough to watch from a terrace. A 4 BHK villa puts your group inside that landscape rather than passing through it.
@@ -224,11 +210,11 @@ export default function FourBhkVillasMahabaleshwarPage() {
             {[
               {
                 title: 'Right size for most groups',
-                body: 'A group of 8 to 12 people is the sweet spot for a 4 BHK villa. Large enough to need four bedrooms, small enough that a single villa keeps everyone together without the property feeling crowded.',
+                body: 'A group of 10 to 15 people is the sweet spot for a 4 BHK villa. Large enough to need four bedrooms, manageable enough that a single villa keeps everyone together without the property feeling crowded.',
               },
               {
                 title: 'Private pool at a shareable cost',
-                body: 'Many 4 BHK properties include an exclusive pool. Split the villa cost across 10 guests and the per-person figure is comparable to a budget hotel — but you get a private pool, cook, and caretaker.',
+                body: 'Many 4 BHK properties include an exclusive pool. Split the villa cost across 12 guests and the per-person figure is comparable to a budget hotel — but you get a private pool, cook, and caretaker.',
               },
               {
                 title: 'The right base for sightseeing',
@@ -251,10 +237,10 @@ export default function FourBhkVillasMahabaleshwarPage() {
       <section className="py-10 px-4 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-3">
-            4 BHK Villas to Consider
+            4 BHK Villas in Mahabaleshwar
           </h2>
           <p className="text-muted-foreground mb-8 text-base">
-            Villas from the current portfolio sorted by rating and capacity — all bookable directly via WhatsApp.
+            All 4 bedroom private villas in the current portfolio — bookable directly via WhatsApp.
           </p>
 
           {featuredVillas.length > 0 ? (
@@ -275,7 +261,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
             </div>
           ) : (
             <p className="text-muted-foreground text-center py-10">
-              No villas matched the current filter.{' '}
+              No 4 BHK villas found.{' '}
               <Link href="/villas" className="text-primary underline">
                 Browse all villas
               </Link>
@@ -334,7 +320,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
             {[
               {
                 label: '3 BHK Villas in Mahabaleshwar',
-                description: 'Ideal for smaller groups of 6 to 10 guests.',
+                description: 'Ideal for smaller groups of 6 to 12 guests.',
                 href: '/3-bhk-villas-in-mahabaleshwar',
               },
               {
@@ -354,7 +340,7 @@ export default function FourBhkVillasMahabaleshwarPage() {
               },
               {
                 label: 'Villas Near Mapro Garden',
-                description: 'Stay close to Mahabaleshwar\'s most visited food and sightseeing spot.',
+                description: "Stay close to Mahabaleshwar's most visited food and sightseeing spot.",
                 href: '/villas-near-mapro-garden',
               },
               {
