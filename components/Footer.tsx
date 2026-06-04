@@ -122,6 +122,8 @@ export function Footer() {
               >
                 4 BHK Villas in Mahabaleshwar
               </Link>
+              </div>
+              </div>
 
           {/* ── Col 4: Nearby Attractions ───────────────────────────────────── */}
           <div className="space-y-4">
