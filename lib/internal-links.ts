@@ -4,6 +4,22 @@ export interface InternalLink {
   description: string
 }
 
+// ─── Root commercial landing page URLs ────────────────────────────────────────
+// These are the canonical root-level SEO URLs.
+// All links pointing to these pages must use the root form.
+const LUXURY_VILLAS_URL = '/luxury-villas-in-mahabaleshwar'
+const POOL_VILLAS_URL = '/private-pool-villas-in-mahabaleshwar'
+const FAMILY_VILLAS_URL = '/villas-for-family-in-mahabaleshwar'
+const MAPRO_VILLAS_URL = '/villas-near-mapro-garden'
+
+// ─── Category page URLs (these remain under /villas/category/) ────────────────
+const CAT_POOL = '/villas/category/pool-villas-in-mahabaleshwar'
+const CAT_FAMILY = '/villas/category/family-villas-in-mahabaleshwar'
+const CAT_COUPLE = '/villas/category/couple-villas-in-mahabaleshwar'
+const CAT_GROUP = '/villas/category/group-villas-in-mahabaleshwar'
+const CAT_VALLEY = '/villas/category/valley-view-villas-in-mahabaleshwar'
+const CAT_BUDGET = '/villas/category/budget-villas-in-mahabaleshwar'
+
 const CATEGORY_GUIDES: Record<string, InternalLink[]> = {
   'pool-villas-in-mahabaleshwar': [
     {
@@ -79,209 +95,260 @@ const CATEGORY_GUIDES: Record<string, InternalLink[]> = {
   ],
 }
 
+// ─── Blog → Commercial landing page links (root routes) ───────────────────────
+// These appear in the "Need a villa base for this trip?" section on each blog.
+// All hrefs must use root-level commercial URLs.
 const BLOG_CATEGORY_LINKS: Record<string, InternalLink[]> = {
   'best-villas-families': [
     {
       label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'Browse villas designed for joint-family trips and shared meals.',
     },
     {
-      label: 'Pool villas in Mahabaleshwar',
-      href: '/villas/category/pool-villas-in-mahabaleshwar',
+      label: 'Private pool villas in Mahabaleshwar',
+      href: POOL_VILLAS_URL,
       description: 'Compare family-friendly villas with private pools and outdoor space.',
     },
   ],
   'romantic-couple-retreat': [
     {
       label: 'Couple villas in Mahabaleshwar',
-      href: '/villas/category/couple-villas-in-mahabaleshwar',
+      href: CAT_COUPLE,
       description: 'Find private villas that suit honeymoons and anniversary escapes.',
     },
     {
       label: 'Valley view villas in Mahabaleshwar',
-      href: '/villas/category/valley-view-villas-in-mahabaleshwar',
+      href: CAT_VALLEY,
       description: 'Use this if the view matters as much as the stay itself.',
     },
   ],
   'group-gathering-guide': [
     {
       label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      href: CAT_GROUP,
       description: 'Good for corporate retreats, reunions, and birthday trips.',
     },
     {
       label: 'Budget villas in Mahabaleshwar',
-      href: '/villas/category/budget-villas-in-mahabaleshwar',
+      href: CAT_BUDGET,
       description: 'A practical option if the group wants lower per-head cost.',
     },
   ],
   'budget-travel-mahabaleshwar': [
     {
       label: 'Budget villas in Mahabaleshwar',
-      href: '/villas/category/budget-villas-in-mahabaleshwar',
+      href: CAT_BUDGET,
       description: 'See the current low-cost private villa options first.',
     },
     {
       label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      href: CAT_GROUP,
       description: 'Useful if you want to spread cost across more guests.',
     },
   ],
   'valley-views-photography': [
     {
       label: 'Valley view villas in Mahabaleshwar',
-      href: '/villas/category/valley-view-villas-in-mahabaleshwar',
+      href: CAT_VALLEY,
       description: 'Find villas positioned for sunrise, mist, and ridgeline views.',
     },
     {
-      label: 'Pool villas in Mahabaleshwar',
-      href: '/villas/category/pool-villas-in-mahabaleshwar',
+      label: 'Private pool villas in Mahabaleshwar',
+      href: POOL_VILLAS_URL,
       description: 'Look for properties where the pool also faces the valley.',
     },
   ],
   'perfect-travel-itinerary-mahabaleshwar': [
     {
       label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'A sensible base if the itinerary is built around family travel.',
     },
     {
       label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      href: CAT_GROUP,
       description: 'Best if the itinerary is for a larger party or reunion.',
     },
   ],
   'wilson-point-sunrise-guide': [
     {
       label: 'Valley view villas in Mahabaleshwar',
-      href: '/villas/category/valley-view-villas-in-mahabaleshwar',
+      href: CAT_VALLEY,
       description: 'Stays that make early sunrise departures easier and more rewarding.',
     },
     {
       label: 'Couple villas in Mahabaleshwar',
-      href: '/villas/category/couple-villas-in-mahabaleshwar',
+      href: CAT_COUPLE,
       description: 'A strong fit for guests planning quiet sunrise trips together.',
     },
   ],
   'mahabaleshwar-market-guide': [
     {
-      label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
-      description: 'Useful when the market trip is part of a wider family stay.',
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
+      description: 'Stay close to Mapro Garden — the heart of the market area.',
     },
     {
-      label: 'Budget villas in Mahabaleshwar',
-      href: '/villas/category/budget-villas-in-mahabaleshwar',
-      description: 'Practical if you want to stay close to the market on a lower budget.',
+      label: 'Family villas in Mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
+      description: 'Useful when the market trip is part of a wider family stay.',
     },
   ],
   'mahabaleshwar-famous-food-spots': [
     {
-      label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
-      description: 'A good base if the trip is built around shared meals and local food.',
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
+      description: 'Stay within minutes of Mahabaleshwar\'s most famous food destination.',
     },
     {
-      label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
-      description: 'Useful for food-focused trips with a larger group.',
+      label: 'Family villas in Mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
+      description: 'A good base if the trip is built around shared meals and local food.',
     },
   ],
   'monsoon-in-mahabaleshwar': [
     {
       label: 'Valley view villas in Mahabaleshwar',
-      href: '/villas/category/valley-view-villas-in-mahabaleshwar',
+      href: CAT_VALLEY,
       description: 'The best category if mist and ridgeline views matter most.',
     },
     {
-      label: 'Pool villas in Mahabaleshwar',
-      href: '/villas/category/pool-villas-in-mahabaleshwar',
+      label: 'Private pool villas in Mahabaleshwar',
+      href: POOL_VILLAS_URL,
       description: 'Great for rain-heavy stays where the villa itself matters more.',
     },
   ],
   'strawberry-season-guide': [
     {
       label: 'Couple villas in Mahabaleshwar',
-      href: '/villas/category/couple-villas-in-mahabaleshwar',
+      href: CAT_COUPLE,
       description: 'Works well for romantic winter and strawberry-season stays.',
     },
     {
       label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'Ideal if strawberry season is part of a larger family holiday.',
     },
   ],
   'mahabaleshwar-real-food-guide': [
     {
-      label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
       description: 'A sensible base for longer stays built around food outings.',
     },
     {
-      label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      label: 'Family villas in Mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'Useful when the whole trip is planned around eating together.',
     },
   ],
   'adventure-activities-mahabaleshwar-guide': [
     {
       label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      href: CAT_GROUP,
       description: 'Good for active groups that need space and shared common areas.',
     },
     {
       label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'Useful when the adventure itinerary includes children and elders.',
     },
   ],
   'wilson-point-complete-guide': [
     {
       label: 'Valley view villas in Mahabaleshwar',
-      href: '/villas/category/valley-view-villas-in-mahabaleshwar',
+      href: CAT_VALLEY,
       description: 'Choose a stay that makes sunrise and ridge views easier to enjoy.',
     },
     {
       label: 'Couple villas in Mahabaleshwar',
-      href: '/villas/category/couple-villas-in-mahabaleshwar',
+      href: CAT_COUPLE,
       description: 'A natural fit for quiet dawn visits and smaller bookings.',
     },
   ],
   'mahabaleshwar-horse-riding-experience': [
     {
       label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'A practical choice when horse riding is part of a wider family trip.',
     },
     {
       label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      href: CAT_GROUP,
       description: 'Useful for larger groups planning lakeside activities together.',
     },
   ],
   'venna-lake-boat-rides-food-and-horse-riding': [
     {
-      label: 'Family villas in Mahabaleshwar',
-      href: '/villas/category/family-villas-in-mahabaleshwar',
-      description: 'A good base for a family itinerary around Venna Lake and nearby spots.',
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
+      description: 'Conveniently located for Venna Lake and Mapro Garden in one trip.',
     },
     {
-      label: 'Budget villas in Mahabaleshwar',
-      href: '/villas/category/budget-villas-in-mahabaleshwar',
-      description: 'Useful if the lake day is part of a value-focused trip.',
+      label: 'Family villas in Mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
+      description: 'A good base for a family itinerary around Venna Lake and nearby spots.',
     },
   ],
   'mahabaleshwar-complete-travel-guide': [
     {
-      label: 'All villas in Mahabaleshwar',
-      href: '/villas',
+      label: 'Luxury villas in Mahabaleshwar',
+      href: LUXURY_VILLAS_URL,
       description: 'Start here if you want to match the guide with the right stay.',
     },
     {
-      label: 'Group villas in Mahabaleshwar',
-      href: '/villas/category/group-villas-in-mahabaleshwar',
+      label: 'Family villas in Mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
       description: 'Best for larger trips that need a proper base in the hills.',
+    },
+  ],
+  'adventure-spots-in-mahabaleshwar': [
+    {
+      label: 'Group villas in Mahabaleshwar',
+      href: CAT_GROUP,
+      description: 'Good for active groups that need space and shared common areas.',
+    },
+    {
+      label: 'Private pool villas in Mahabaleshwar',
+      href: POOL_VILLAS_URL,
+      description: 'Perfect for adventure groups who want a pool to return to.',
+    },
+  ],
+  'best-time-visit-mahabaleshwar': [
+    {
+      label: 'Luxury villas in Mahabaleshwar',
+      href: LUXURY_VILLAS_URL,
+      description: 'Browse available villas once you have picked your season.',
+    },
+    {
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
+      description: 'Conveniently placed for any season of visit.',
+    },
+  ],
+  'mahabaleshwar-tourist-places': [
+    {
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
+      description: 'The closest villa base to the main tourist corridor.',
+    },
+    {
+      label: 'Luxury villas in Mahabaleshwar',
+      href: LUXURY_VILLAS_URL,
+      description: 'Premium stays that make sightseeing a more relaxed experience.',
+    },
+  ],
+  'perfect-travel-itinerary-panchgani': [
+    {
+      label: 'Family villas in Mahabaleshwar',
+      href: FAMILY_VILLAS_URL,
+      description: 'A practical base for families covering both Panchgani and Mahabaleshwar.',
+    },
+    {
+      label: 'Villas near Mapro Garden',
+      href: MAPRO_VILLAS_URL,
+      description: 'Convenient for guests exploring Panchgani and Mapro in one trip.',
     },
   ],
 }
@@ -489,6 +556,54 @@ const BLOG_RELATED_BLOGS: Record<string, InternalLink[]> = {
       label: 'Valley views and photography guide',
       href: '/blogs/valley-views-photography',
       description: 'Useful if your trip also prioritizes photography.',
+    },
+  ],
+  'adventure-spots-in-mahabaleshwar': [
+    {
+      label: 'Mahabaleshwar itinerary guide',
+      href: '/blogs/perfect-travel-itinerary-mahabaleshwar',
+      description: 'Shows where adventure fits into the full trip.',
+    },
+    {
+      label: 'Complete Mahabaleshwar travel guide',
+      href: '/blogs/mahabaleshwar-complete-travel-guide',
+      description: 'The master reference for planning any Mahabaleshwar trip.',
+    },
+  ],
+  'best-time-visit-mahabaleshwar': [
+    {
+      label: 'Complete Mahabaleshwar travel guide',
+      href: '/blogs/mahabaleshwar-complete-travel-guide',
+      description: 'The broader planning context once you have picked a season.',
+    },
+    {
+      label: 'Monsoon in Mahabaleshwar guide',
+      href: '/blogs/monsoon-in-mahabaleshwar',
+      description: 'Useful if you are specifically considering a monsoon trip.',
+    },
+  ],
+  'mahabaleshwar-tourist-places': [
+    {
+      label: 'Perfect Mahabaleshwar itinerary',
+      href: '/blogs/perfect-travel-itinerary-mahabaleshwar',
+      description: 'Puts the tourist places into a day-by-day trip structure.',
+    },
+    {
+      label: 'Wilson Point sunrise guide',
+      href: '/blogs/wilson-point-sunrise-guide',
+      description: 'Expands on the most iconic sightseeing stop.',
+    },
+  ],
+  'perfect-travel-itinerary-panchgani': [
+    {
+      label: 'Perfect Mahabaleshwar itinerary',
+      href: '/blogs/perfect-travel-itinerary-mahabaleshwar',
+      description: 'The companion guide covering Mahabaleshwar side of the same trip.',
+    },
+    {
+      label: 'Complete Mahabaleshwar travel guide',
+      href: '/blogs/mahabaleshwar-complete-travel-guide',
+      description: 'Broadens the scope beyond Panchgani alone.',
     },
   ],
 }
