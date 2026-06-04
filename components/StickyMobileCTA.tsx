@@ -39,7 +39,7 @@ export function StickyMobileCTA() {
         <div className="flex items-stretch gap-0 px-0">
 
           {/* WhatsApp */}
-          
+          <a
             href={`https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -62,7 +62,7 @@ export function StickyMobileCTA() {
           <div className="w-px bg-white/20 self-stretch" aria-hidden="true" />
 
           {/* Call Now */}
-          
+          <a
             href={`tel:${PHONE_NUMBER}`}
             className="
               flex-1 flex flex-col items-center justify-center gap-1
