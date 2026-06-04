@@ -12,6 +12,7 @@ import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { FloatingButtons } from '@/components/FloatingButtons'
 import { JsonLd } from '@/components/seo/json-ld'
+import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import {
   buildBreadcrumbSchema,
