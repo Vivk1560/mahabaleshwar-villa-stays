@@ -110,8 +110,18 @@ export function Footer() {
               >
                 Pet-Friendly Villas
               </Link>
-            </div>
-          </div>
+              <Link
+                href="/3-bhk-villas-in-mahabaleshwar"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                3 BHK Villas in Mahabaleshwar
+              </Link>
+              <Link
+                href="/4-bhk-villas-in-mahabaleshwar"
+                className="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                4 BHK Villas in Mahabaleshwar
+              </Link>
 
           {/* ── Col 4: Nearby Attractions ───────────────────────────────────── */}
           <div className="space-y-4">
