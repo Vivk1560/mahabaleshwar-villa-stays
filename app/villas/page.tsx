@@ -310,7 +310,48 @@ export default function VillasPage() {
           </div>
         </div>
       </section>
-
+{/* ── Popular Villa Collections (root-route links) ───────────────────── */}
+      <section className="py-12 px-4 bg-secondary/10 border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-playfair text-2xl font-bold text-foreground mb-3">
+            Popular Villa Collections
+          </h2>
+          <p className="text-muted-foreground mb-6 text-sm leading-6">
+            High-intent pages covering the most searched villa types in Mahabaleshwar.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              {
+                label: 'Luxury Villas in Mahabaleshwar',
+                href: '/luxury-villas-in-mahabaleshwar',
+              },
+              {
+                label: 'Private Pool Villas',
+                href: '/private-pool-villas-in-mahabaleshwar',
+              },
+              {
+                label: 'Family Villas in Mahabaleshwar',
+                href: '/villas-for-family-in-mahabaleshwar',
+              },
+              {
+                label: 'Villas Near Mapro Garden',
+                href: '/villas-near-mapro-garden',
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex items-center justify-between gap-2 rounded-xl border border-border bg-card px-4 py-3 hover:border-primary hover:bg-primary/5 transition-all duration-200"
+              >
+                <span className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
+                  {item.label}
+                </span>
+                <ChevronRight className="w-4 h-4 text-primary flex-shrink-0" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* ── CTA ────────────────────────────────────────────────────────────── */}
       <section className="py-12 px-4 bg-background border-t border-border">
         <div className="max-w-2xl mx-auto text-center space-y-4">
