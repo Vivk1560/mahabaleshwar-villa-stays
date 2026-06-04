@@ -1,3 +1,7 @@
+// app/villas/luxury-villas-in-mahabaleshwar/page.tsx
+// This page continues to exist for backward compatibility but its canonical
+// points to the root route /luxury-villas-in-mahabaleshwar
+
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/seo/json-ld'
 import { ProgrammaticLandingPage } from '@/components/seo/ProgrammaticLandingPage'
@@ -10,7 +14,8 @@ export function generateMetadata() {
   return buildMetadata({
     title: data.seoTitle,
     description: data.seoDescription,
-    path: data.path,
+    // Canonical points to root — tells Google the root is the primary URL
+    path: '/luxury-villas-in-mahabaleshwar',
     image: data.metaImage,
     imageAlt: data.metaImageAlt,
     keywords: dedupeKeywords(data.keywords, ['Mahabaleshwar luxury stay']),
