@@ -1,3 +1,6 @@
+// app/villas/private-pool-villas-in-mahabaleshwar/page.tsx
+// Canonical → /private-pool-villas-in-mahabaleshwar (root route)
+
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/seo/json-ld'
 import { ProgrammaticLandingPage } from '@/components/seo/ProgrammaticLandingPage'
@@ -10,7 +13,7 @@ export function generateMetadata() {
   return buildMetadata({
     title: data.seoTitle,
     description: data.seoDescription,
-    path: data.path,
+    path: '/private-pool-villas-in-mahabaleshwar',
     image: data.metaImage,
     imageAlt: data.metaImageAlt,
     keywords: dedupeKeywords(data.keywords, ['Mahabaleshwar villa booking']),
