@@ -1,3 +1,6 @@
+// app/villas/villas-for-family-in-mahabaleshwar/page.tsx
+// Canonical → /villas-for-family-in-mahabaleshwar (root route)
+
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import { JsonLd } from '@/components/seo/json-ld'
 import { ProgrammaticLandingPage } from '@/components/seo/ProgrammaticLandingPage'
@@ -10,7 +13,7 @@ export function generateMetadata() {
   return buildMetadata({
     title: data.seoTitle,
     description: data.seoDescription,
-    path: data.path,
+    path: '/villas-for-family-in-mahabaleshwar',
     image: data.metaImage,
     imageAlt: data.metaImageAlt,
     keywords: dedupeKeywords(data.keywords, ['Mahabaleshwar family villa']),
