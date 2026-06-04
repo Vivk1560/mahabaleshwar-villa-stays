@@ -58,11 +58,11 @@ const BLOG_FAQ_MAP: Record<string, FaqItem[]> = {
   'romantic-couple-retreat': [
     {
       q: 'Which villas in Mahabaleshwar are best for couples?',
-      a: 'Modern Essence Villa (near Parsi Point, valley-view pool), Artisan Villa (creative lounge, private balconies), and Riverside Hideaway (private bonfire garden) are the most popular couple-friendly properties in the Mahabaleshwar Villa Stays collection.',
+      a: "Modern Essence Villa (near Parsi Point, valley-view pool), Artisan Villa (creative lounge, private balconies), and Riverside Hideaway (private bonfire garden) are the most popular couple-friendly properties in the Mahabaleshwar Villa Stays collection.",
     },
     {
       q: 'Is Mahabaleshwar good for a honeymoon?',
-      a: 'Mahabaleshwar is one of Maharashtra\'s most popular honeymoon destinations. The cool climate, misty valleys, private pool villas, strawberry farms, and sunset viewpoints like Parsi Point create a naturally romantic setting throughout the year.',
+      a: "Mahabaleshwar is one of Maharashtra's most popular honeymoon destinations. The cool climate, misty valleys, private pool villas, strawberry farms, and sunset viewpoints like Parsi Point create a naturally romantic setting throughout the year.",
     },
     {
       q: 'What romantic experiences can couples enjoy near Mahabaleshwar villas?',
@@ -74,7 +74,7 @@ const BLOG_FAQ_MAP: Record<string, FaqItem[]> = {
     },
     {
       q: 'Can we book a couple villa in Mahabaleshwar for just 2 people?',
-      a: 'Yes — while villas have higher technical capacities, smaller groups including just 2 people can book. Contact us via WhatsApp for pricing on smaller occupancy bookings.',
+      a: 'Yes — while villas have higher technical capacities, smaller groups including just 2 people can book. Contact us for pricing on smaller occupancy bookings.',
     },
   ],
 
@@ -112,11 +112,11 @@ const BLOG_FAQ_MAP: Record<string, FaqItem[]> = {
     },
     {
       q: 'How can I reduce costs on a Mahabaleshwar villa trip?',
-      a: 'Travel in a group of 12–15 to maximise the per-person value split, use the professional cook for meals instead of dining out, book on weekdays rather than weekends when rates are lower, and book directly via WhatsApp to avoid third-party platform fees.',
+      a: 'Travel in a group of 12–15 to maximise the per-person value split, use the professional cook for meals instead of dining out, book on weekdays rather than weekends when rates are lower, and book directly to avoid third-party platform fees.',
     },
     {
       q: 'What free or low-cost things can I do in Mahabaleshwar?',
-      a: 'Wilson Point sunrise (small entry fee), Arthur\'s Seat and Elephant\'s Head Point viewpoints (minimal entry), forest walks, the Panchganga Temple in Old Mahabaleshwar, and walking the Venna Lake perimeter path are all low-cost or free experiences.',
+      a: "Wilson Point sunrise (small entry fee), Arthur's Seat and Elephant's Head Point viewpoints (minimal entry), forest walks, the Panchganga Temple in Old Mahabaleshwar, and walking the Venna Lake perimeter path are all low-cost or free experiences.",
     },
     {
       q: 'Are budget villas near Mapro Garden in Mahabaleshwar?',
@@ -135,7 +135,7 @@ const BLOG_FAQ_MAP: Record<string, FaqItem[]> = {
     },
     {
       q: 'Which are the most photogenic viewpoints in Mahabaleshwar?',
-      a: 'Wilson Point (sunrise panorama), Arthur\'s Seat (sheer cliff drop), Elephant\'s Head Point (unique rock formation), and Kate\'s Point (broad valley panorama) are the four most photographed viewpoints. Each is best in early morning light.',
+      a: "Wilson Point (sunrise panorama), Arthur's Seat (sheer cliff drop), Elephant's Head Point (unique rock formation), and Kate's Point (broad valley panorama) are the four most photographed viewpoints. Each is best in early morning light.",
     },
     {
       q: 'How do I photograph the valley fog at Mahabaleshwar villas?',
@@ -150,14 +150,14 @@ const BLOG_FAQ_MAP: Record<string, FaqItem[]> = {
   'perfect-travel-itinerary-mahabaleshwar': [
     {
       q: 'How many days are enough for a Mahabaleshwar trip?',
-      a: 'A minimum of 2 days is needed to cover the key viewpoints and attractions. 3 days allows a more relaxed experience with time for Pratapgad Fort, Panchgani Table Land, and proper enjoyment of your villa\'s pool and bonfire. Anything more reveals the quieter, less-visited side of the hill station.',
+      a: "A minimum of 2 days is needed to cover the key viewpoints and attractions. 3 days allows a more relaxed experience with time for Pratapgad Fort, Panchgani Table Land, and proper enjoyment of your villa's pool and bonfire. Anything more reveals the quieter, less-visited side of the hill station.",
     },
     {
       q: 'What time should I reach Wilson Point for sunrise?',
       a: 'Arrive at least 30 minutes before sunrise — in most seasons this means being at the point by 6:00 AM. In December and January, sunrise is around 6:45–7:00 AM; arrive by 6:15 AM. The pre-sunrise sky transition is worth being there for.',
     },
     {
-      q: 'Is Nana\'s Chana in Old Mahabaleshwar easy to find?',
+      q: "Is Nana's Chana in Old Mahabaleshwar easy to find?",
       a: 'The stall is near the Old Mahabaleshwar bus stand area and is best found by asking locals. It opens early in the morning and sells out before 11 AM. Arrive before 9 AM for the best experience and full availability.',
     },
     {
@@ -211,16 +211,14 @@ const BLOG_KEYWORDS: Record<string, string> = {
   'wilson-point-sunrise-guide':
     'Wilson Point sunrise Mahabaleshwar, Wilson Point timing, jamun shots Wilson Point, sunrise point Mahabaleshwar guide',
   'mahabaleshwar-horse-riding-experience':
-    'horse riding Mahabaleshwar, Venna Lake horse riding price, horse riding Kate\'s Point, Mahabaleshwar horse riding guide',
+    "horse riding Mahabaleshwar, Venna Lake horse riding price, horse riding Kate's Point, Mahabaleshwar horse riding guide",
   'venna-lake-boat-rides-food-and-horse-riding':
     'Venna Lake boating price, Venna Lake Mahabaleshwar, boat rides Venna Lake, Venna Lake food horse riding guide',
 }
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
-export async function generateMetadata({
-  params,
-}: PageProps) {
+export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params
   const blog = blogs.find((b) => b.slug === slug)
 
@@ -260,18 +258,74 @@ function slugify(text: string): string {
     .replace(/\s+/g, '-')
 }
 
+// ── Inline markdown link parser ───────────────────────────────────────────────
+// Converts [text](/url) patterns into Next.js <Link> or <a> elements.
+// External links (http/https) open in a new tab with rel="noopener noreferrer".
+// All surrounding text is returned as plain string nodes.
+// This function is intentionally kept simple: it handles only [text](url) syntax
+// because that is the only inline markdown used in the blog content.
+
+function parseInlineMarkdown(text: string, keyPrefix: string): React.ReactNode[] {
+  const parts: React.ReactNode[] = []
+  const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+
+  while ((match = linkRe.exec(text)) !== null) {
+    // Push any plain text before this match
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index))
+    }
+
+    const [, linkText, href] = match
+    const isExternal = href.startsWith('http')
+
+    parts.push(
+      isExternal ? (
+        <a
+          key={`${keyPrefix}-lnk-${match.index}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
+        >
+          {linkText}
+        </a>
+      ) : (
+        <Link
+          key={`${keyPrefix}-lnk-${match.index}`}
+          href={href}
+          className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
+        >
+          {linkText}
+        </Link>
+      )
+    )
+
+    lastIndex = match.index + match[0].length
+  }
+
+  // Push any remaining plain text after the last match
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex))
+  }
+
+  return parts.length > 0 ? parts : [text]
+}
+
+// ── Content block renderer ────────────────────────────────────────────────────
+
 function renderContentBlocks(
   content: string,
   tocEntries: { level: 2 | 3; text: string; id: string }[]
 ) {
-  // Split into lines first, then group into paragraph blocks
-  // This ensures TOC_START / TOC_END are always detected even when
-  // they appear inside the same \n\n-delimited chunk
+  // Split into lines first, then group into paragraph blocks.
+  // TOC_START / TOC_END are treated as their own single-line blocks
+  // so they are always detected even when adjacent to other content.
   const lines = content.split('\n')
-  // Re-group lines into paragraph blocks, but treat every sentinel line
-  // as its own single-line block so matching is reliable
   const blocks: string[] = []
   let current: string[] = []
+
   for (const line of lines) {
     const t = line.trim()
     if (t === 'TOC_START' || t === 'TOC_END') {
@@ -285,7 +339,7 @@ function renderContentBlocks(
   }
   if (current.length) blocks.push(current.join('\n'))
 
-  // Second pass: render
+  // Second pass: render each block
   const rendered: React.ReactNode[] = []
   let tocRendered = false
   let inToc = false
@@ -294,20 +348,30 @@ function renderContentBlocks(
     const trimmed = blocks[i].trim()
     if (!trimmed) continue
 
+    // ── TOC sentinel handling ──────────────────────────────────────────────
     if (trimmed === 'TOC_START') {
       inToc = true
       if (!tocRendered && tocEntries.length > 0) {
         tocRendered = true
         rendered.push(
-          <nav key="toc" className="my-8 p-6 bg-card border border-border rounded-2xl" aria-label="Table of contents">
-            <h2 className="font-playfair text-xl font-bold text-foreground mb-4">Table of Contents</h2>
+          <nav
+            key="toc"
+            className="my-8 p-6 bg-card border border-border rounded-2xl"
+            aria-label="Table of contents"
+          >
+            <h2 className="font-playfair text-xl font-bold text-foreground mb-4">
+              Table of Contents
+            </h2>
             <ol className="space-y-2">
               {tocEntries.map((entry, idx) => (
                 <li
                   key={idx}
                   className={entry.level === 3 ? 'pl-4 ml-2 border-l border-border' : ''}
                 >
-                  <a href={`#${entry.id}`} className="text-primary hover:underline text-sm font-medium leading-snug">
+                  <a
+                    href={`#${entry.id}`}
+                    className="text-primary hover:underline text-sm font-medium leading-snug"
+                  >
                     {entry.text}
                   </a>
                 </li>
@@ -322,40 +386,62 @@ function renderContentBlocks(
     if (trimmed === 'TOC_END') { inToc = false; continue }
     if (inToc) continue
 
+    // ── H2 heading ────────────────────────────────────────────────────────
     if (trimmed.startsWith('## ')) {
       const text = trimmed.slice(3).trim()
       rendered.push(
-        <h2 key={i} id={slugify(text)} className="font-playfair text-2xl md:text-3xl font-bold text-foreground mt-12 mb-4 scroll-mt-24">
+        <h2
+          key={i}
+          id={slugify(text)}
+          className="font-playfair text-2xl md:text-3xl font-bold text-foreground mt-12 mb-4 scroll-mt-24"
+        >
           {text}
         </h2>
       )
       continue
     }
 
+    // ── H3 heading ────────────────────────────────────────────────────────
     if (trimmed.startsWith('### ')) {
       const text = trimmed.slice(4).trim()
       rendered.push(
-        <h3 key={i} id={slugify(text)} className="font-playfair text-xl md:text-2xl font-bold text-foreground mt-8 mb-3 scroll-mt-24">
+        <h3
+          key={i}
+          id={slugify(text)}
+          className="font-playfair text-xl md:text-2xl font-bold text-foreground mt-8 mb-3 scroll-mt-24"
+        >
           {text}
         </h3>
       )
       continue
     }
 
+    // ── CTA block ─────────────────────────────────────────────────────────
+    // parseInlineMarkdown is called here so links inside CTAs also render
     if (trimmed.startsWith('CTA: ')) {
       rendered.push(
-        <div key={i} className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl text-center">
-          <p className="text-foreground font-medium">{trimmed.slice(5).trim()}</p>
+        <div
+          key={i}
+          className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl text-center"
+        >
+          <p className="text-foreground font-medium">
+            {parseInlineMarkdown(trimmed.slice(5).trim(), `cta-${i}`)}
+          </p>
         </div>
       )
       continue
     }
 
+    // ── Plain paragraph ───────────────────────────────────────────────────
+    // Each line within the paragraph is parsed for inline markdown links.
     const linesPara = trimmed.split('\n')
     rendered.push(
       <p key={i} className="text-lg text-foreground leading-relaxed">
         {linesPara.map((line, j) => (
-          <span key={j}>{line}{j < linesPara.length - 1 && <br />}</span>
+          <span key={j}>
+            {parseInlineMarkdown(line, `p-${i}-${j}`)}
+            {j < linesPara.length - 1 && <br />}
+          </span>
         ))}
       </p>
     )
@@ -363,6 +449,7 @@ function renderContentBlocks(
 
   return rendered
 }
+
 // ── Page Component ────────────────────────────────────────────────────────────
 
 export default async function BlogDetailPage({ params }: PageProps) {
@@ -409,6 +496,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
         <div className="max-w-6xl mx-auto">
           <article className="grid lg:grid-cols-[1.6fr_0.7fr] gap-10">
             <div className="space-y-10">
+              {/* ── Header ─────────────────────────────────────────────── */}
               <header className="space-y-5">
                 <Link
                   href="/blogs"
@@ -460,6 +548,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 </div>
               </header>
 
+              {/* ── Author card ─────────────────────────────────────────── */}
               <section className="grid gap-5 rounded-2xl border border-border bg-card p-6 md:p-8">
                 <div className="flex items-start gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 font-playfair text-lg font-bold text-primary">
@@ -476,16 +565,13 @@ export default async function BlogDetailPage({ params }: PageProps) {
                     <h2 className="font-playfair text-2xl font-bold text-foreground">
                       {author.name}
                     </h2>
-                    <p className="text-sm text-muted-foreground">
-                      {author.role}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{author.role}</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {author.bio}
-                </p>
+                <p className="text-muted-foreground leading-relaxed">{author.bio}</p>
               </section>
 
+              {/* ── Quick take ──────────────────────────────────────────── */}
               <section className="rounded-2xl border border-border bg-card p-6 md:p-8">
                 <h2 className="font-playfair text-2xl font-bold text-foreground mb-3">
                   Quick take
@@ -497,10 +583,12 @@ export default async function BlogDetailPage({ params }: PageProps) {
                 </p>
               </section>
 
+              {/* ── Blog content ────────────────────────────────────────── */}
               <section aria-label="Blog content" className="space-y-5">
                 {renderContentBlocks(blog.content, tocEntries)}
               </section>
 
+              {/* ── Villa category links ────────────────────────────────── */}
               <section className="rounded-2xl border border-primary/20 bg-primary/5 p-6 md:p-8">
                 <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground">
                   Need a villa base for this trip?
@@ -524,6 +612,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
               </section>
             </div>
 
+            {/* ── Sidebar ──────────────────────────────────────────────── */}
             <aside className="space-y-8 lg:sticky lg:top-24 self-start">
               {tocEntries.length > 0 && (
                 <nav
@@ -579,6 +668,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </aside>
           </article>
 
+          {/* ── Related villas ──────────────────────────────────────────── */}
           <section className="mt-14 pt-14 border-t border-border">
             <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
               Featured Villas from This Article
@@ -606,6 +696,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             )}
           </section>
 
+          {/* ── FAQ section ──────────────────────────────────────────────── */}
           {pageFaqs.length > 0 && (
             <section className="mt-16 pt-12 border-t border-border">
               <h2 className="font-playfair text-3xl font-bold text-foreground mb-8">
@@ -618,22 +709,19 @@ export default async function BlogDetailPage({ params }: PageProps) {
                     className="group border border-border rounded-2xl p-6 bg-card"
                   >
                     <summary className="flex justify-between items-center cursor-pointer list-none">
-                      <h3 className="font-semibold text-lg text-foreground pr-5">
-                        {faq.q}
-                      </h3>
+                      <h3 className="font-semibold text-lg text-foreground pr-5">{faq.q}</h3>
                       <span className="text-primary text-2xl font-bold group-open:rotate-45 transition-transform">
                         +
                       </span>
                     </summary>
-                    <p className="mt-5 text-muted-foreground leading-7">
-                      {faq.a}
-                    </p>
+                    <p className="mt-5 text-muted-foreground leading-7">{faq.a}</p>
                   </details>
                 ))}
               </div>
             </section>
           )}
 
+          {/* ── Bottom CTA ───────────────────────────────────────────────── */}
           <section className="mt-16 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 border border-border p-6 md:p-8">
             <div className="max-w-3xl">
               <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground">
@@ -660,6 +748,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             </div>
           </section>
 
+          {/* ── Back to blogs ─────────────────────────────────────────────── */}
           <div className="mt-16 text-center">
             <Link
               href="/blogs"
