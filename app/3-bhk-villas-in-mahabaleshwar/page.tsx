@@ -1,19 +1,14 @@
 // app/3-bhk-villas-in-mahabaleshwar/page.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-// Semantic SEO landing page — "3 BHK Villas in Mahabaleshwar"
-// URL: /3-bhk-villas-in-mahabaleshwar
-// Intent: small families, couples, weekend groups (4–10 guests)
-// Content: ~2200 words | 20 FAQs | full schema | internal linking
-// ─────────────────────────────────────────────────────────────────────────────
 
 import Link from 'next/link'
 import { ChevronRight, Home, MessageCircle, Phone } from 'lucide-react'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { FloatingButtons } from '@/components/FloatingButtons'
+import { VillaCard } from '@/components/VillaCard'
 import { JsonLd } from '@/components/seo/json-ld'
-import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
+import villas from '@/lib/data/villas.json'
 import {
   buildBreadcrumbSchema,
   buildFaqSchema,
@@ -56,6 +51,19 @@ export function generateMetadata() {
   })
 }
 
+// ── Villa selection ───────────────────────────────────────────────────────────
+// Filter strictly by villa.bhk === '3 BHK'. No capacity filtering. No category filtering.
+
+const featuredVillas = villas
+  .filter((v) => {
+    const bhkNum = Number((v.bhk ?? '').replace(/[^0-9]/g, ''))
+    return bhkNum === 3
+  })
+  .sort((a, b) => {
+    if (b.rating !== a.rating) return b.rating - a.rating
+    return b.capacity - a.capacity
+  })
+
 // ── FAQ Data ──────────────────────────────────────────────────────────────────
 
 const faqs = [
@@ -65,7 +73,7 @@ const faqs = [
   },
   {
     q: 'How many guests can stay in a 3 BHK villa in Mahabaleshwar?',
-    a: 'Most 3 BHK villas in Mahabaleshwar comfortably accommodate 6 to 12 guests, depending on the bed configuration and available mattresses. Some villas support up to 14 guests with additional bedding. Always confirm capacity with us before booking.',
+    a: 'Most 3 BHK villas in Mahabaleshwar comfortably accommodate 6 to 12 guests, depending on the bed configuration and available mattresses. Some villas support up to 15 guests with additional bedding. Always confirm capacity with us before booking.',
   },
   {
     q: 'Do 3 BHK villas in Mahabaleshwar have private pools?',
@@ -81,7 +89,7 @@ const faqs = [
   },
   {
     q: 'How far are 3 BHK villas from Mapro Garden in Mahabaleshwar?',
-    a: 'Depending on the specific villa, most properties in our collection are located 5 to 20 minutes from Mapro Garden. We can recommend the closest option based on your preference during inquiry.',
+    a: 'Depending on the specific villa, most properties in our collection are located 5 to 22 minutes from Mapro Garden. We can recommend the closest option based on your preference during inquiry.',
   },
   {
     q: 'Do 3 BHK villas in Mahabaleshwar include a caretaker?',
@@ -117,15 +125,15 @@ const faqs = [
   },
   {
     q: 'Is a 3 BHK villa cheaper than booking multiple hotel rooms in Mahabaleshwar?',
-    a: 'For a group of 6 or more, a private 3 BHK villa is almost always more economical per person than equivalent hotel rooms, while offering significantly more space, a private pool, and a caretaker. The per-head math changes decisively in the villa\'s favour once you split across 8 to 12 guests.',
+    a: "For a group of 6 or more, a private 3 BHK villa is almost always more economical per person than equivalent hotel rooms, while offering significantly more space, a private pool, and a caretaker. The per-head math changes decisively in the villa's favour once you split across 8 to 12 guests.",
   },
   {
     q: 'Are 3 BHK villas in Mahabaleshwar suitable for office trips or corporate groups?',
-    a: 'A 3 BHK villa works well for a small corporate team of 8 to 12 people. The private setting, WiFi, and common areas support informal meetings and team bonding. For larger corporate groups, 4 BHK or 5 BHK villas offer more space.',
+    a: 'A 3 BHK villa works well for a small corporate team of 8 to 12 people. The private setting, WiFi, and common areas support informal meetings and team bonding. For larger corporate groups, 4 BHK or larger villas offer more space.',
   },
   {
     q: 'What tourist places are near 3 BHK villas in Mahabaleshwar?',
-    a: 'Most 3 BHK villas in our portfolio are within easy reach of Mapro Garden (5–15 min), Venna Lake (8–22 min), Wilson Point (12–25 min), Lingmala Waterfall (10–20 min), Panchgani Table Land (20–30 min), and Pratapgad Fort (20–30 min).',
+    a: 'Most 3 BHK villas in our portfolio are within easy reach of Mapro Garden (5–18 min), Venna Lake (8–22 min), Wilson Point (12–25 min), Lingmala Waterfall (10–20 min), Panchgani Table Land (5–30 min), and Pratapgad Fort (20–30 min).',
   },
   {
     q: 'Do 3 BHK villas in Mahabaleshwar have valley views?',
@@ -141,7 +149,7 @@ const faqs = [
   },
 ]
 
-// ── Villa highlights (entity content) ────────────────────────────────────────
+// ── Villa highlights ──────────────────────────────────────────────────────────
 
 const highlights = [
   {
@@ -176,12 +184,12 @@ const highlights = [
   },
 ]
 
-// ── Who books 3 BHK villas ─────────────────────────────────────────────────────
+// ── Who books 3 BHK villas ────────────────────────────────────────────────────
 
 const useCases = [
   {
     title: 'Small Families (4–8 Guests)',
-    body: 'One bedroom per generation — parents, children, grandparents — with a shared pool and garden that brings everyone together. Mahabaleshwar\'s proximity to Mumbai and Pune makes it a natural school-holiday destination for small families who want privacy without a resort price tag.',
+    body: "One bedroom per generation — parents, children, grandparents — with a shared pool and garden that brings everyone together. Mahabaleshwar's proximity to Mumbai and Pune makes it a natural school-holiday destination for small families who want privacy without a resort price tag.",
   },
   {
     title: 'Couples & Honeymoon Stays',
@@ -200,11 +208,11 @@ const useCases = [
 // ── Nearby attractions ────────────────────────────────────────────────────────
 
 const nearbyAttractions = [
-  { name: 'Mapro Garden', distance: '5–15 min', note: 'Strawberry products, restaurant, farm visits' },
+  { name: 'Mapro Garden', distance: '5–18 min', note: 'Strawberry products, restaurant, farm visits' },
   { name: 'Venna Lake', distance: '8–22 min', note: 'Boating, horse riding, lakeside food' },
   { name: 'Wilson Point', distance: '12–25 min', note: 'Best sunrise viewpoint in Mahabaleshwar' },
   { name: 'Lingmala Waterfall', distance: '10–20 min', note: 'Forest walk, peak flow in monsoon' },
-  { name: 'Panchgani Table Land', distance: '20–30 min', note: 'Asia\'s second-largest volcanic plateau' },
+  { name: 'Panchgani Table Land', distance: '5–30 min', note: "Asia's second-largest volcanic plateau" },
   { name: 'Pratapgad Fort', distance: '20–30 min', note: '17th-century Maratha fort, ridge views' },
 ]
 
@@ -224,18 +232,18 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
         ])}
       />
       <JsonLd data={buildFaqSchema(faqs)} />
-      <JsonLd
-        data={buildItemListSchema({
-          name: '3 BHK Villas in Mahabaleshwar',
-          description: 'Private 3 bedroom villas in Mahabaleshwar for small families, couples and weekend groups',
-          items: [
-            { name: 'Luxury Villas in Mahabaleshwar', url: '/luxury-villas-in-mahabaleshwar' },
-            { name: 'Private Pool Villas in Mahabaleshwar', url: '/private-pool-villas-in-mahabaleshwar' },
-            { name: 'Family Villas in Mahabaleshwar', url: '/villas-for-family-in-mahabaleshwar' },
-            { name: 'Villas Near Mapro Garden', url: '/villas-near-mapro-garden' },
-          ],
-        })}
-      />
+      {featuredVillas.length > 0 && (
+        <JsonLd
+          data={buildItemListSchema({
+            name: '3 BHK Villas in Mahabaleshwar',
+            description: 'Private 3 bedroom villas in Mahabaleshwar for small families, couples and weekend groups',
+            items: featuredVillas.map((villa) => ({
+              name: villa.name,
+              url: `/villas/${villa.id}`,
+            })),
+          })}
+        />
+      )}
 
       <NavBar />
 
@@ -272,7 +280,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
               Ideal for small families, couples, and friend groups of 6 to 12 guests. Direct booking — no platform fees.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <a
+             <a 
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -281,8 +289,8 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
                 <MessageCircle className="w-4 h-4" />
                 WhatsApp for Availability
               </a>
-              <a
-                href="tel:8080557611"
+              
+               <a href="tel:8080557611"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors"
               >
                 <Phone className="w-4 h-4" />
@@ -317,10 +325,10 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
           <p>
             Our collection of 3 bedroom private villas spans locations across Mahabaleshwar,
             Panchgani, and Bhilar. Some are positioned close to Mapro Garden for convenience;
-            others sit higher on the plateau with valley-facing pools and quieter surroundings.
-            All properties include a dedicated caretaker, AC bedrooms, and private parking.
-            Booking is direct via WhatsApp — we recommend the best available property for your
-            dates and group after a short conversation.
+            others sit at Table Land elevation with quieter surroundings and distinctive
+            atmospheric views. All properties include a dedicated caretaker, AC bedrooms, and
+            private parking. Booking is direct via WhatsApp — we recommend the best available
+            property for your dates and group after a short conversation.
           </p>
           <p>
             Whether you are planning a small family vacation, a romantic couple escape, a group
@@ -332,8 +340,55 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
         </div>
       </section>
 
-      {/* ── Highlights Grid ──────────────────────────────────────────────────── */}
+      {/* ── Featured Villas ──────────────────────────────────────────────────── */}
       <section className="py-14 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-playfair text-3xl font-bold text-foreground mb-3">
+            3 BHK Villas in Mahabaleshwar
+          </h2>
+          <p className="text-muted-foreground mb-10 max-w-2xl">
+            All 3 bedroom private villas in the current portfolio — bookable directly via WhatsApp.
+          </p>
+
+          {featuredVillas.length > 0 ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredVillas.map((villa) => (
+                <VillaCard
+                  key={villa.id}
+                  id={villa.id}
+                  name={villa.name}
+                  location={villa.location}
+                  rating={villa.rating}
+                  capacity={villa.capacity}
+                  amenities={villa.amenities}
+                  image={villa.images.listing}
+                  category={villa.category}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-muted-foreground text-center py-10">
+              No 3 BHK villas found.{' '}
+              <Link href="/villas" className="text-primary underline">
+                Browse all villas
+              </Link>
+              .
+            </p>
+          )}
+
+          <div className="text-center mt-10">
+            <Link
+              href="/villas"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg"
+            >
+              Browse All Villas
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Highlights Grid ──────────────────────────────────────────────────── */}
+      <section className="py-14 px-4 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-playfair text-3xl font-bold text-foreground mb-3 text-center">
             What to Expect in a 3 BHK Villa in Mahabaleshwar
@@ -345,7 +400,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
             {highlights.map((item) => (
               <div
                 key={item.title}
-                className="bg-card border border-border rounded-2xl p-6 space-y-3 hover:border-primary/40 hover:shadow-md transition-all duration-300"
+                className="bg-background border border-border rounded-2xl p-6 space-y-3 hover:border-primary/40 hover:shadow-md transition-all duration-300"
               >
                 <div className="text-3xl">{item.emoji}</div>
                 <h3 className="font-playfair text-lg font-bold text-foreground">{item.title}</h3>
@@ -357,7 +412,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
       </section>
 
       {/* ── Who Books a 3 BHK Villa ───────────────────────────────────────────── */}
-      <section className="py-14 px-4 bg-card border-y border-border">
+      <section className="py-14 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-playfair text-3xl font-bold text-foreground mb-3">
             Who Books 3 BHK Villas in Mahabaleshwar
@@ -370,7 +425,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
             {useCases.map((uc) => (
               <div
                 key={uc.title}
-                className="bg-background border border-border rounded-2xl p-6 space-y-3"
+                className="bg-card border border-border rounded-2xl p-6 space-y-3"
               >
                 <h3 className="font-playfair text-xl font-bold text-foreground">{uc.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{uc.body}</p>
@@ -381,7 +436,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
       </section>
 
       {/* ── Nearby Attractions ───────────────────────────────────────────────── */}
-      <section className="py-14 px-4 bg-background">
+      <section className="py-14 px-4 bg-card border-y border-border">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-playfair text-3xl font-bold text-foreground mb-3">
             Attractions Near 3 BHK Villas in Mahabaleshwar
@@ -393,7 +448,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
             {nearbyAttractions.map((place) => (
               <div
                 key={place.name}
-                className="bg-card border border-border rounded-2xl p-5 space-y-2"
+                className="bg-background border border-border rounded-2xl p-5 space-y-2"
               >
                 <h3 className="font-semibold text-foreground">{place.name}</h3>
                 <p className="text-primary text-sm font-semibold">📍 {place.distance}</p>
@@ -405,7 +460,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
       </section>
 
       {/* ── Internal Linking — Related Collections ──────────────────────────── */}
-      <section className="py-12 px-4 bg-card border-y border-border">
+      <section className="py-12 px-4 bg-background border-b border-border">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-playfair text-2xl font-bold text-foreground mb-3">
             Explore Related Villa Collections
@@ -423,7 +478,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group flex flex-col gap-2 rounded-2xl border border-border bg-background p-5 hover:border-primary hover:shadow-md hover:bg-primary/5 transition-all duration-200"
+                className="group flex flex-col gap-2 rounded-2xl border border-border bg-card p-5 hover:border-primary hover:shadow-md hover:bg-primary/5 transition-all duration-200"
               >
                 <span className="text-2xl">{item.emoji}</span>
                 <span className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm leading-snug">
@@ -435,18 +490,23 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
             ))}
           </div>
 
-          {/* BHK size links */}
+          {/* BHK size links — only existing pages */}
           <div className="mt-8 pt-8 border-t border-border">
             <h3 className="font-playfair text-xl font-bold text-foreground mb-4">Browse by Bedroom Count</h3>
             <div className="flex flex-wrap gap-3">
-              <span className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold">3 BHK Villas</span>
-              <Link href="/4-bhk-villas-in-mahabaleshwar" className="px-4 py-2 rounded-full border border-primary text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-200">
+              <span className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                3 BHK Villas
+              </span>
+              <Link
+                href="/4-bhk-villas-in-mahabaleshwar"
+                className="px-4 py-2 rounded-full border border-primary text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+              >
                 4 BHK Villas
               </Link>
-              <Link href="/5-bhk-villas-in-mahabaleshwar" className="px-4 py-2 rounded-full border border-primary text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-200">
-                5 BHK Villas
-              </Link>
-              <Link href="/budget-villas-in-mahabaleshwar" className="px-4 py-2 rounded-full border border-border text-muted-foreground text-sm font-semibold hover:border-primary hover:text-primary transition-all duration-200">
+              <Link
+                href="/budget-villas-in-mahabaleshwar"
+                className="px-4 py-2 rounded-full border border-border text-muted-foreground text-sm font-semibold hover:border-primary hover:text-primary transition-all duration-200"
+              >
                 Budget Villas
               </Link>
             </div>
@@ -455,7 +515,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
       </section>
 
       {/* ── Why Book Direct ──────────────────────────────────────────────────── */}
-      <section className="py-14 px-4 bg-background">
+      <section className="py-14 px-4 bg-card border-b border-border">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-playfair text-3xl font-bold text-foreground mb-6 text-center">
             Why Book Your 3 BHK Villa Directly with Us
@@ -467,7 +527,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
               { stat: '24/7', label: 'Human Support', desc: 'A real person responds to your inquiry — not a chatbot or a ticket system.' },
               { stat: '100%', label: 'Private Occupancy', desc: 'Your group has the entire 3 BHK villa. No other guests in the property.' },
             ].map((item) => (
-              <div key={item.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2">
+              <div key={item.label} className="bg-background border border-border rounded-2xl p-6 text-center space-y-2">
                 <p className="font-playfair text-3xl font-bold text-primary">{item.stat}</p>
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
                 <p className="text-muted-foreground text-xs leading-relaxed">{item.desc}</p>
@@ -478,7 +538,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
-      <section className="py-14 px-4 bg-card border-t border-border">
+      <section className="py-14 px-4 bg-background border-b border-border">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-playfair text-3xl font-bold text-foreground mb-3">
             Frequently Asked Questions — 3 BHK Villas in Mahabaleshwar
@@ -490,7 +550,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
             {faqs.map((faq, idx) => (
               <details
                 key={idx}
-                className="group bg-background border border-border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="group bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <summary className="flex items-center justify-between cursor-pointer list-none px-6 py-5 select-none">
                   <h3 className="font-playfair text-base md:text-lg font-bold text-foreground pr-4 leading-snug">
@@ -498,7 +558,7 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
                   </h3>
                   <span
                     aria-hidden="true"
-                    className="flex-shrink-0 w-7 h-7 rounded-full border border-border bg-card flex items-center justify-center text-primary font-bold text-lg transition-transform duration-300 ease-in-out group-open:rotate-45"
+                    className="flex-shrink-0 w-7 h-7 rounded-full border border-border bg-background flex items-center justify-center text-primary font-bold text-lg transition-transform duration-300 ease-in-out group-open:rotate-45"
                   >
                     +
                   </span>
@@ -527,8 +587,8 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
             Mapro Garden, or budget. We will find the right 3 BHK property and confirm availability the same day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={WHATSAPP_URL}
+            
+            <a  href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors"
@@ -548,7 +608,6 @@ export default function ThreeBHKVillasMahabaleshwarPage() {
 
       <Footer />
       <FloatingButtons />
-      <StickyMobileCTA />
     </main>
   )
 }
