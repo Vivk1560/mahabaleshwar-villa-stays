@@ -11,7 +11,6 @@ import { ChevronRight, Home, MessageCircle, Phone } from 'lucide-react'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { FloatingButtons } from '@/components/FloatingButtons'
-import { StickyMobileCTA } from '@/components/StickyMobileCTA'
 import { JsonLd } from '@/components/seo/json-ld'
 import { buildMetadata, dedupeKeywords } from '@/lib/seo/metadata'
 import {
