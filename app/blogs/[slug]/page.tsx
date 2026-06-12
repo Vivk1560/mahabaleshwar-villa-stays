@@ -238,7 +238,7 @@ export async function generateMetadata({ params }: PageProps) {
     type: 'article',
     image: imageUrl,
     imageAlt: blog.title,
-    authors: [{ name: 'Mahabaleshwar Villa Stays' }],
+   authors: [{ name: 'Rajesh Garela', url: 'https://www.mahabaleshwarvillastays.com/about' }],
     publishedTime: blog.date,
     modifiedTime: blog.date,
     keywords: dedupeKeywords(
@@ -491,7 +491,20 @@ export default async function BlogDetailPage({ params }: PageProps) {
       {pageFaqs.length > 0 && <JsonLd data={buildFaqSchema(pageFaqs)} />}
 
       <NavBar />
-
+  {/* ── Mobile WhatsApp CTA — above the fold on mobile (H5 fix) ────────── */}
+<div className="md:hidden sticky top-16 z-30 bg-primary text-primary-foreground px-4 py-2.5 flex items-center justify-between gap-3 shadow-md">
+  <span className="text-sm font-medium leading-tight">
+    Planning a trip? WhatsApp Rajesh
+  </span>
+  
+   <a href="https://wa.me/919921372661?text=Hi%2C%20I%20am%20planning%20a%20Mahabaleshwar%20trip%20and%20need%20villa%20recommendations."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex-shrink-0 bg-white text-primary text-xs font-bold px-3 py-1.5 rounded-full hover:bg-white/90 transition-colors"
+  >
+    Chat now
+  </a>
+</div>
       <section className="pt-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <article className="grid lg:grid-cols-[1.6fr_0.7fr] gap-10">
