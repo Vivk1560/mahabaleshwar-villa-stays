@@ -10,9 +10,9 @@ import { JsonLd } from '@/components/seo/json-ld';
 import { buildBreadcrumbSchema, buildLocalBusinessSchema } from '@/lib/seo/schema';
 
 export function generateMetadata() {
-  const title = 'Contact Mahabaleshwar Villa Stays'
-  const description =
-    'Contact Mahabaleshwar Villa Stays via WhatsApp, call, or email for villa inquiries, availability, and concierge support.'
+const title = 'Book a Villa in Mahabaleshwar – Contact Rajesh Directly'
+const description =
+  'WhatsApp or call Rajesh Garela to book a private villa in Mahabaleshwar. Same-day availability confirmation, no OTA markup, direct host booking from ₹11,999/night.'
 
   return buildMetadata({
     title,
@@ -45,7 +45,7 @@ export default function ContactPage() {
       <section className="pt-20 pb-12 md:pt-24 md:pb-16 px-4 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-playfair text-3xl md:text-5xl font-bold text-foreground mb-3 md:mb-4 leading-tight">
-            Get in Touch
+            Book a Villa in Mahabaleshwar
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Have questions about our villas? We&apos;re here to help! Contact us anytime for
