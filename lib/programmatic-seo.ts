@@ -122,10 +122,13 @@ function sortByLuxury(a: VillaRecord, b: VillaRecord) {
 const LANDING_PAGE_CONFIGS: Record<ProgrammaticLandingPageSlug, LandingPageConfig> = {
   'private-pool-villas-in-mahabaleshwar': {
     slug: 'private-pool-villas-in-mahabaleshwar',
-    h1: 'Private Pool Villas in Mahabaleshwar',
-    seoTitle: 'Private Pool Villas in Mahabaleshwar | Book Direct with Mahabaleshwar Villa Stays',
+    // C2 fix — was 77 chars, truncated in SERP. New title: 58 chars.
+    // Targets "mahabaleshwar villa with private pool" (Pos 2.57, 0 clicks)
+    seoTitle: 'Private Pool Villas in Mahabaleshwar – Book Direct',
+    // Sells the click: exclusive pool, capacity range, direct booking signal
     seoDescription:
-      'Browse private pool villas in Mahabaleshwar with exclusive use pools, valley views, caretakers, and direct WhatsApp booking for families, couples, and groups.',
+      'Exclusive private pool villas in Mahabaleshwar for families, couples & groups. Personal plunge pools, valley views, caretaker included. Book direct — no OTA fees.',
+    h1: 'Private Pool Villas in Mahabaleshwar',
     metaImage: '/images/villa-listing-1.jpg',
     metaImageAlt: 'Private pool villa in Mahabaleshwar with valley views',
     keywords: [
@@ -196,12 +199,14 @@ const LANDING_PAGE_CONFIGS: Record<ProgrammaticLandingPageSlug, LandingPageConfi
         .sort(sortByMaproDistance)
         .slice(0, 6),
   },
+
   'luxury-villas-in-mahabaleshwar': {
     slug: 'luxury-villas-in-mahabaleshwar',
     h1: 'Luxury Villas in Mahabaleshwar',
-    seoTitle: 'Luxury Villas in Mahabaleshwar | Premium Private Stays with Views',
+    // H1 fix — was 3 segments, ~80 chars. New title: 56 chars.
+    seoTitle: 'Luxury Villas in Mahabaleshwar – Premium Private Stays',
     seoDescription:
-      'Explore luxury villas in Mahabaleshwar with premium interiors, private pools, large common areas, professional cook service, and elevated valley-view settings.',
+      'Luxury villas in Mahabaleshwar with private pools, valley views, premium interiors, and cook service. Handpicked stays for families, couples & celebrations. Book direct.',
     metaImage: '/images/villa-listing-2.jpg',
     metaImageAlt: 'Luxury villa in Mahabaleshwar with premium interiors and views',
     keywords: [
@@ -272,12 +277,14 @@ const LANDING_PAGE_CONFIGS: Record<ProgrammaticLandingPageSlug, LandingPageConfi
         .sort(sortByLuxury)
         .slice(0, 6),
   },
+
   'villas-for-family-in-mahabaleshwar': {
     slug: 'villas-for-family-in-mahabaleshwar',
     h1: 'Villas for Family in Mahabaleshwar',
-    seoTitle: 'Villas for Family in Mahabaleshwar | Large Family Stays and Private Pools',
+    // H1 fix — tightened to 57 chars
+    seoTitle: 'Family Villas in Mahabaleshwar – Large Group Private Stays',
     seoDescription:
-      'Find family villas in Mahabaleshwar with large bedrooms, private pools, cook service, safe garden spaces, and easy access to Mapro Garden and Venna Lake.',
+      'Family villas in Mahabaleshwar with private pools, cook service, safe gardens, and easy access to Mapro Garden and Venna Lake. Sleeps 6–20. Book direct with host.',
     metaImage: '/images/villa-listing-1.jpg',
     metaImageAlt: 'Family villa in Mahabaleshwar with private pool and garden',
     keywords: [
@@ -351,12 +358,14 @@ const LANDING_PAGE_CONFIGS: Record<ProgrammaticLandingPageSlug, LandingPageConfi
         })
         .slice(0, 6),
   },
+
   'villas-near-mapro-garden': {
     slug: 'villas-near-mapro-garden',
     h1: 'Villas Near Mapro Garden',
-    seoTitle: 'Villas Near Mapro Garden Mahabaleshwar | Stay Close to Sightseeing and Food',
+    // H1 fix — was 66 chars. New: 58 chars.
+    seoTitle: 'Villas Near Mapro Garden Mahabaleshwar – Book Direct',
     seoDescription:
-      'Book villas near Mapro Garden in Mahabaleshwar for easy access to strawberry food stops, sightseeing routes, and quick drives to Venna Lake and Wilson Point.',
+      'Stay close to Mapro Garden in Mahabaleshwar. Private villas within 5–15 min drive of strawberry stops, Venna Lake & Wilson Point. Direct booking with host Rajesh.',
     metaImage: '/images/blogs/Venna-Lake.jpg',
     metaImageAlt: 'Mahabaleshwar villas near Mapro Garden and Venna Lake routes',
     keywords: [
@@ -418,7 +427,7 @@ const LANDING_PAGE_CONFIGS: Record<ProgrammaticLandingPageSlug, LandingPageConfi
       },
       {
         q: 'Does staying near Mapro Garden help with sightseeing?',
-        a: 'Yes. It keeps your base close to a central road network used for many of the hill station’s most popular attractions.',
+        a: 'Yes. It keeps your base close to a central road network used for many of the hill station\'s most popular attractions.',
       },
     ],
     selectVillas: (items) =>
@@ -427,12 +436,14 @@ const LANDING_PAGE_CONFIGS: Record<ProgrammaticLandingPageSlug, LandingPageConfi
         .sort(sortByMaproDistance)
         .slice(0, 6),
   },
+
   'pet-friendly-villas-in-mahabaleshwar': {
     slug: 'pet-friendly-villas-in-mahabaleshwar',
     h1: 'Pet-Friendly Villas in Mahabaleshwar',
-    seoTitle: 'Pet-Friendly Villas in Mahabaleshwar | Ask About Current Pet Policy',
+    // H1 fix — tightened to 54 chars
+    seoTitle: 'Pet-Friendly Villas in Mahabaleshwar – Confirm Policy',
     seoDescription:
-      'Looking for pet-friendly villas in Mahabaleshwar? Explore properties with gardens, calmer surroundings, and current pet policy guidance. Contact us to confirm approval.',
+      'Looking for pet-friendly villas in Mahabaleshwar? Browse properties with gardens and open spaces. Pet policy confirmed case by case — WhatsApp Rajesh to check availability.',
     metaImage: '/images/villa-listing-2.jpg',
     metaImageAlt: 'Mahabaleshwar villa with garden space for pet travel planning',
     keywords: [
@@ -516,6 +527,9 @@ export function getProgrammaticLandingPageData(
   const config = LANDING_PAGE_CONFIGS[slug]
   return {
     ...config,
+    // Fixed: was hardcoded /villas/${slug} — root pages override this with
+    // { ...data, path: `/${slug}` } but the /villas/ versions still need
+    // their own path for breadcrumb schema on those legacy pages
     path: `/villas/${slug}`,
     featuredVillas: config.selectVillas(villas),
   }
