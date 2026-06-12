@@ -156,9 +156,9 @@ const attractions = [
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export function generateMetadata() {
-  const title = 'Luxury Villas in Mahabaleshwar'
+  const title = 'Villas in Mahabaleshwar for Rent | Mahabaleshwar Villa Stays'
   const description =
-    'Book 25+ handpicked private villas in Mahabaleshwar and Panchgani. Pool villas, family stays, couple retreats, and group escapes near Mapro Garden with direct WhatsApp booking.'
+    '25+ private villas in Mahabaleshwar, Panchgani and Bhilar from ₹11,999/night. Pool villas, family stays, couple retreats & large group estates near Mapro Garden. Book direct on WhatsApp — no OTA fees.'
 
   return buildMetadata({
     title,
@@ -224,14 +224,14 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-start justify-center min-h-[420px] md:min-h-[600px]">
             <div className="space-y-4 md:space-y-6 text-white max-w-2xl pr-4 md:pr-0">
-              <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
-                Luxury Villas in Mahabaleshwar
-              </h1>
+             <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
+  Villas in Mahabaleshwar for Rent
+</h1>
 
-              <p className="text-sm sm:text-base md:text-lg text-white/95 leading-relaxed max-w-xl">
-                25+ handpicked private villas across Mahabaleshwar, Panchgani &amp; Bhilar.
-                Pool villas, family retreats, couple stays &amp; large group estates — all with direct booking and no platform fees.
-              </p>
+             <p className="text-sm sm:text-base md:text-lg text-white/95 leading-relaxed max-w-xl">
+  25+ handpicked private villas across Mahabaleshwar, Panchgani &amp; Bhilar.
+  Pool villas, family retreats, couple stays &amp; large group estates from ₹11,999/night — direct booking, no OTA fees.
+</p>
 
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
                 <PremiumButton
