@@ -248,7 +248,7 @@ export default function VillasPage() {
                 description: 'Convenient stays close to the main sightseeing and food corridor.',
               },
               {
-                href: '/villas/pet-friendly-villas-in-mahabaleshwar',
+               href: '/pet-friendly-villas-in-mahabaleshwar',
                 title: 'Pet-friendly villas',
                 description: 'A careful shortlist and policy guidance before you book with pets.',
               },
