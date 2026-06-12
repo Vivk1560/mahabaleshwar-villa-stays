@@ -15,10 +15,9 @@ import { JsonLd } from '@/components/seo/json-ld';
 import { buildBreadcrumbSchema } from '@/lib/seo/schema';
 
 export function generateMetadata() {
-  const title = 'About Mahabaleshwar Villa Stays'
-  const description =
-    'Meet the Mahabaleshwar Villa Stays team and learn how we curate authentic hospitality, valley-view stays, and villa experiences in Mahabaleshwar.'
-
+ const title = 'About Mahabaleshwar Villa Stays – Rajesh Garela, Villa Host Since 2015'
+const description =
+  'Mahabaleshwar Villa Stays is managed by Rajesh Garela, a local villa host with 15+ years in Mahabaleshwar. 25+ handpicked private villas, direct booking, no OTA fees.'
   return buildMetadata({
     title,
     description,
