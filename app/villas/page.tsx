@@ -22,33 +22,29 @@ import { buildBreadcrumbSchema, buildItemListSchema } from '@/lib/seo/schema'
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
 export function generateMetadata() {
-  const title = 'All Luxury Villas in Mahabaleshwar'
-  const description =
-    'Browse 25+ premium villas in Mahabaleshwar and Panchgani. Private pool villas, family villas, couple villas, group villas, and budget options with direct WhatsApp booking.'
-
   return buildMetadata({
-    title,
-    description,
+    title: 'Villas in Mahabaleshwar for Rent – Private Pool, Luxury & Family Stays',
+    description:
+      'Browse 24+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family villas, couple & group stays. Book direct from ₹11,999/night — no OTA markup, WhatsApp booking.',
     path: '/villas',
     image: '/images/villa-listing-1.jpg',
-    imageAlt: 'Luxury villas in Mahabaleshwar',
+    imageAlt: 'Villas in Mahabaleshwar for rent — private pool and luxury stays',
     keywords: dedupeKeywords(
       [
-        'luxury villas Mahabaleshwar',
-        'pool villas Mahabaleshwar',
-        'family villas Mahabaleshwar',
-        'couple villas Mahabaleshwar',
+        'villas in mahabaleshwar',
+        'mahabaleshwar villa rentals',
+        'private villas mahabaleshwar with pool',
+        'luxury villa mahabaleshwar',
       ],
       [
-        'group villas Mahabaleshwar',
-        'budget villas Mahabaleshwar',
-        'vacation rentals Mahabaleshwar',
-        'private villa Panchgani',
+        'family villas mahabaleshwar',
+        'group villas mahabaleshwar',
+        'budget villas mahabaleshwar',
+        'vacation rentals mahabaleshwar',
       ]
     ),
   })
 }
-
 // ── Category config for real URL links ───────────────────────────────────────
 const CATEGORY_LINKS = [
   {
@@ -135,8 +131,8 @@ export default function VillasPage() {
       <section className="pt-6 pb-8 px-4 bg-background">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Luxury Villas in Mahabaleshwar
-          </h1>
+  Villas in Mahabaleshwar for Rent
+</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {villas.length}+ handpicked private villas in Mahabaleshwar &amp; Panchgani.
             Pool villas, family stays, romantic escapes &amp; large group retreats — all with direct WhatsApp booking.
