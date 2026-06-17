@@ -40,15 +40,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Mahabaleshwar Villa Stays' }],
   creator: 'Mahabaleshwar Villa Stays',
- icons: {
-  icon: [
-    { url: '/icon.svg', type: 'image/svg+xml' },
-    { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
-  ],
-  apple: [
-    { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-  ],
-  shortcut: '/icon-light-32x32.png',
+icons: {
+  icon: '/icon.jpeg',
+  shortcut: '/icon.jpeg',
 },
   manifest: '/manifest.webmanifest',
   openGraph: {
