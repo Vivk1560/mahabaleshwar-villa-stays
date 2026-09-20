@@ -12,7 +12,7 @@ export function generateMetadata() {
     title,
     description,
     path: '/privacy-policy',
-    image: '/images/hero-bg.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836757/mahabaleshwar-villa-stays/images/k5dj6qxy9p02atfoefq3.jpg',
     imageAlt: 'Mahabaleshwar Villa Stays privacy policy',
     keywords: dedupeKeywords(['privacy policy', 'Mahabaleshwar Villa Stays'], [
       'villa booking privacy',

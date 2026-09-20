@@ -18,7 +18,7 @@ const description =
     title,
     description,
     path: '/contact',
-    image: '/images/villa-listing-2.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836829/mahabaleshwar-villa-stays/images/dfcfv0u7r2syfr7f4gkv.jpg',
     imageAlt: 'Contact Mahabaleshwar Villa Stays',
     keywords: dedupeKeywords(
       ['contact Mahabaleshwar Villa Stays', 'WhatsApp booking', 'villa inquiry'],

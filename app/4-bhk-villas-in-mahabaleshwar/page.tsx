@@ -115,7 +115,7 @@ export function generateMetadata() {
     title: SEO_TITLE,
     description: SEO_DESCRIPTION,
     path: PAGE_PATH,
-    image: '/images/villa-listing-1.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836821/mahabaleshwar-villa-stays/images/l1h0guwxzjgwg7zom3cj.jpg',
     imageAlt: '4 BHK villa in Mahabaleshwar with private pool and valley views',
     keywords: dedupeKeywords(KEYWORDS, ['Mahabaleshwar villa booking', 'hill station villa Maharashtra']),
   })

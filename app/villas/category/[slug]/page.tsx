@@ -210,7 +210,7 @@ export async function generateMetadata({
     title: config.seoTitle,
     description: config.seoDescription,
     path: `/villas/category/${slug}`,
-    image: '/images/villa-listing-2.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836829/mahabaleshwar-villa-stays/images/dfcfv0u7r2syfr7f4gkv.jpg',
     imageAlt: config.h1,
     keywords: dedupeKeywords(
       [

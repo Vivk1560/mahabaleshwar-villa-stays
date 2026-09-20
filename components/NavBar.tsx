@@ -23,7 +23,7 @@ export function NavBar() {
           <Link href="/" className="flex items-center gap-3.5 flex-shrink-0 min-w-0">
             <div className="w-12 md:w-14 h-12 md:h-14 flex-shrink-0 rounded-lg overflow-hidden border border-primary/10 shadow-sm">
               <Image
-                src="/logo.jpeg"
+                src="https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836725/mahabaleshwar-villa-stays/misc/qhmb9ypjwz3clbbpwj8b.jpg"
                 alt={buildImageAltText({
                   subject: 'Mahabaleshwar Villa Stays',
                   context: 'logo',

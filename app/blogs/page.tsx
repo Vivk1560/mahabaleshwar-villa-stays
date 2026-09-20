@@ -36,7 +36,7 @@ export function generateMetadata() {
     title,
     description,
     path: '/blogs',
-    image: '/images/blogs/image.png',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836734/mahabaleshwar-villa-stays/images/blogs/ol4vzqa9m13xr3fwfdtv.png',
     imageAlt: 'Mahabaleshwar travel guides and tips',
     keywords: dedupeKeywords(
       [

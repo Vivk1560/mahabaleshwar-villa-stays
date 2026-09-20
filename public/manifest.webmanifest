@@ -1,23 +1,22 @@
 {
-  "name": "Mahabaleshwar Villa Stays",
-  "short_name": "MVS",
-  "description": "Luxury villa stays in Mahabaleshwar and Panchgani",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "icons": [
-    {
-      "src": "/apple-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/logo.jpeg",
-      "sizes": "any",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
-    }
-  ]
+    "name": "Mahabaleshwar Villa Stays",
+    "short_name": "MVS",
+    "description": "Luxury villa stays in Mahabaleshwar and Panchgani",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [{
+            "src": "/apple-icon.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/apple-icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
 }

@@ -23,7 +23,7 @@ export function generateMetadata() {
     description:
       'Book 3 BHK villas in Mahabaleshwar with private pool, AC rooms & caretaker. Perfect for small families, couples & weekend groups of 6–12 guests. Direct WhatsApp booking.',
     path: '/3-bhk-villas-in-mahabaleshwar',
-    image: '/images/villa-listing-1.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836821/mahabaleshwar-villa-stays/images/l1h0guwxzjgwg7zom3cj.jpg',
     imageAlt: '3 BHK villa in Mahabaleshwar with private pool and valley views',
     keywords: dedupeKeywords(
       [

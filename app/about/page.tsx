@@ -22,7 +22,7 @@ const description =
     title,
     description,
     path: '/about',
-    image: '/images/Founder-RajeshGarela.jpeg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836756/mahabaleshwar-villa-stays/images/fuydrse1npehnbpusss2.jpg',
     imageAlt: 'Founder Rajesh Garela - Mahabaleshwar Villa Stays',
     keywords: dedupeKeywords(
       [
@@ -106,7 +106,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-96 rounded-lg overflow-hidden shadow-elevated">
               <Image
-                src="/images/villa-listing-1.jpg"
+                src="https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836821/mahabaleshwar-villa-stays/images/l1h0guwxzjgwg7zom3cj.jpg"
                 alt={buildImageAltText({
                   subject: 'Mahabaleshwar villas',
                   context: 'about page image',

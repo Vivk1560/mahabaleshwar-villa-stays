@@ -1,0 +1,26 @@
+[
+  {
+    "id": "testimonial-1",
+    "author": "Kavya Reddy",
+    "location": "Hyderabad",
+    "rating": 5,
+    "comment": "The villa exceeded all expectations! Pristine cleanliness, wonderful food, and staff that goes above and beyond.",
+    "role": "Business Executive"
+  },
+  {
+    "id": "testimonial-2",
+    "author": "Sanjana Dutta",
+    "location": "Indore",
+    "rating": 5,
+    "comment": "This villa is an absolute gem! The attention to detail is incredible. Perfect for romantic getaways.",
+    "role": "Honeymoon Couple"
+  },
+  {
+    "id": "testimonial-3",
+    "author": "Meera Singh",
+    "location": "Jaipur",
+    "rating": 5,
+    "comment": "The best villa experience ever! Excellent hospitality, beautiful surroundings, and wonderful memories created here.",
+    "role": "Family Vacation"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "review-1",
+    "author": "Rahul Sharma",
+    "location": "Mumbai",
+    "rating": 5,
+    "comment": "Absolutely stunning villa! The views were breathtaking and the hospitality was exceptional. We felt like we were staying in paradise.",
+    "date": "2024-11-15",
+    "villa": "mist-haven"
+  },
+  {
+    "id": "review-2",
+    "author": "Priya Desai",
+    "location": "Pune",
+    "rating": 5,
+    "comment": "Our family had the best vacation here. The villa is spacious, clean, and the kids loved the play area. Highly recommended!",
+    "date": "2024-11-10",
+    "villa": "valley-view-manor"
+  },
+  {
+    "id": "review-3",
+    "author": "Vikram Patel",
+    "location": "Bangalore",
+    "rating": 4.5,
+    "comment": "Great location with amazing valley views. The infrastructure is modern and the staff was very helpful. A bit pricey but worth it.",
+    "date": "2024-11-05",
+    "villa": "sunset-retreat"
+  },
+  {
+    "id": "review-4",
+    "author": "Neha Gupta",
+    "location": "Delhi",
+    "rating": 5,
+    "comment": "Perfect getaway for couples. The romantic setup and privacy made our anniversary unforgettable. Best decision ever!",
+    "date": "2024-10-28",
+    "villa": "elegant-escape"
+  },
+  {
+    "id": "review-5",
+    "author": "Amit Verma",
+    "location": "Ahmedabad",
+    "rating": 4,
+    "comment": "Good villa with nice ambiance. The pool was refreshing and the views are spectacular. Only minor issue was water pressure.",
+    "date": "2024-10-20",
+    "villa": "paradise-pool"
+  },
+  {
+    "id": "review-6",
+    "author": "Meera Singh",
+    "location": "Jaipur",
+    "rating": 5,
+    "comment": "The best villa experience ever! Excellent hospitality, beautiful surroundings, and wonderful memories created here.",
+    "date": "2024-10-15",
+    "villa": "royal-escape"
+  },
+  {
+    "id": "review-7",
+    "author": "Arjun Khanna",
+    "location": "Surat",
+    "rating": 4.5,
+    "comment": "Great for family vacation. Spacious rooms, good food, and nice surroundings. The location is perfect for exploring Mahabaleshwar.",
+    "date": "2024-10-10",
+    "villa": "family-fiesta"
+  },
+  {
+    "id": "review-8",
+    "author": "Deepika Nair",
+    "location": "Chennai",
+    "rating": 5,
+    "comment": "Simply magical! The sunset from the terrace was unforgettable. Every moment felt special. Would love to come back again.",
+    "date": "2024-10-05",
+    "villa": "twilight-tower"
+  },
+  {
+    "id": "review-9",
+    "author": "Rohan Sharma",
+    "location": "Kolkata",
+    "rating": 4,
+    "comment": "Nice villa with good amenities. The pool was great for relaxation. Staff could be more responsive but overall a good stay.",
+    "date": "2024-09-28",
+    "villa": "zenith-zone"
+  },
+  {
+    "id": "review-10",
+    "author": "Kavya Reddy",
+    "location": "Hyderabad",
+    "rating": 5,
+    "comment": "The villa exceeded all expectations! Pristine cleanliness, wonderful food, and staff that goes above and beyond. Definitely coming back!",
+    "date": "2024-09-20",
+    "villa": "mist-haven"
+  },
+  {
+    "id": "review-11",
+    "author": "Anand Gupta",
+    "location": "Chandigarh",
+    "rating": 4.5,
+    "comment": "Fantastic property with amazing views. The facilities are top-notch. A bit expensive but you get what you pay for here.",
+    "date": "2024-09-15",
+    "villa": "grand-vista"
+  },
+  {
+    "id": "review-12",
+    "author": "Sanjana Dutta",
+    "location": "Indore",
+    "rating": 5,
+    "comment": "This villa is an absolute gem! The attention to detail is incredible. Perfect for romantic getaways. Highly recommended!",
+    "date": "2024-09-10",
+    "villa": "romantic-refuge"
+  },
+  {
+    "id": "review-13",
+    "author": "Nikhil Saxena",
+    "location": "Nagpur",
+    "rating": 4,
+    "comment": "Good value for money. The villa is well-maintained and the location is great. Would recommend for budget-conscious travelers.",
+    "date": "2024-09-05",
+    "villa": "mountain-echo"
+  },
+  {
+    "id": "review-14",
+    "author": "Riya Bose",
+    "location": "Vadodara",
+    "rating": 5,
+    "comment": "Absolutely pristine! Every corner of this villa is beautiful. The hospitality and service were exemplary. Worth every penny!",
+    "date": "2024-08-28",
+    "villa": "zenith-zone"
+  },
+  {
+    "id": "review-15",
+    "author": "Harsh Jain",
+    "location": "Lucknow",
+    "rating": 4.5,
+    "comment": "Beautiful property in a serene location. Great for family bonding. The cook prepared delicious meals. Highly satisfied!",
+    "date": "2024-08-20",
+    "villa": "blossom-bower"
+  }
+]

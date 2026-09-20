@@ -27,7 +27,7 @@ export function generateMetadata() {
     description:
       'Browse 24+ handpicked private villas in Mahabaleshwar & Panchgani. Pool villas, family villas, couple & group stays. Book direct from ₹11,999/night — no OTA markup, WhatsApp booking.',
     path: '/villas',
-    image: '/images/villa-listing-1.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836821/mahabaleshwar-villa-stays/images/l1h0guwxzjgwg7zom3cj.jpg',
     imageAlt: 'Villas in Mahabaleshwar for rent — private pool and luxury stays',
     keywords: dedupeKeywords(
       [

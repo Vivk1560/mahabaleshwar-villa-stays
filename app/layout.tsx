@@ -106,7 +106,7 @@ export default function RootLayout({
             '@type': 'Organization',
             name: 'Mahabaleshwar Villa Stays',
             url: SITE.url,
-            logo: `${SITE.url}/logo.jpeg`,
+            logo: `${SITE.url}https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836725/mahabaleshwar-villa-stays/misc/qhmb9ypjwz3clbbpwj8b.jpg`,
             contactPoint: {
               '@type': 'ContactPoint',
               telephone: '+91-9921372661',

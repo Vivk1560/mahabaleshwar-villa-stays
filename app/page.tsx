@@ -164,7 +164,7 @@ export function generateMetadata() {
     title,
     description,
     path: '/',
-    image: '/images/villa-listing-1.jpg',
+    image: 'https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836821/mahabaleshwar-villa-stays/images/l1h0guwxzjgwg7zom3cj.jpg',
     imageAlt: 'Luxury villa stays in Mahabaleshwar',
     keywords: dedupeKeywords(
       [
@@ -205,7 +205,7 @@ export default function Home() {
       <section className="relative pt-24 pb-20 md:pt-28 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg.jpg"
+            src="https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836757/mahabaleshwar-villa-stays/images/k5dj6qxy9p02atfoefq3.jpg"
             alt={buildImageAltText({
               subject: 'Private luxury villa',
               context: 'hero image',
@@ -356,7 +356,7 @@ export default function Home() {
             {/* Atmospheric image */}
             <div className="relative w-full h-72 sm:h-80 md:h-[480px] rounded-2xl overflow-hidden shadow-2xl order-last md:order-first">
               <Image
-                src="/images/home/lingmala-waterfall-mahabaleshwar-tourism-entry-fee-timings-holidays-reviews-header.jpg"
+                src="https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836763/mahabaleshwar-villa-stays/images/home/gx6auakfwu1chflhikm6.jpg"
                 alt={buildImageAltText({
                   subject: 'Misty morning valley views',
                   context: 'waterfall landscape',
@@ -695,7 +695,7 @@ export default function Home() {
 
             <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/villa-listing-2.jpg"
+                src="https://res.cloudinary.com/bz9mkyyv/image/upload/v1788836829/mahabaleshwar-villa-stays/images/dfcfv0u7r2syfr7f4gkv.jpg"
                 alt={buildImageAltText({
                   subject: 'Luxury private villa interior',
                   context: 'editorial image',
