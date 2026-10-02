@@ -4,8 +4,9 @@ const nextConfig = {
         ignoreBuildErrors: true,
     },
     images: {
+        loaderFile: './lib/cloudinary-loader.js',
         formats: ['image/avif', 'image/webp'],
-        qualities: [75, 85],
+        qualities: [75, 78, 85],
         remotePatterns: [{
             protocol: 'https',
             hostname: 'res.cloudinary.com',
